@@ -24,32 +24,6 @@ network={
 ```
 
 
-Bluez:
-```
-wget http://www.kernel.org/pub/linux/bluetooth/bluez-5.42.tar.xz
-tar -xvf bluez-5.42.tar.xz
-cd bluez-5.42
-
-sudo apt-get update
-sudo apt-get install -y libusb-dev libdbus-1-dev libglib2.0-dev libudev-dev libical-dev libreadline-dev
-
-./configure
-make
-sudo make install
-
-sudo cp attrib/gatttool /usr/local/bin/
-
-systemctl status bluetooth
-sudo systemctl start bluetooth
-sudo systemctl enable bluetooth
-
-sudo nano /lib/systemd/system/bluetooth.service
-ExecStart=/usr/local/libexec/bluetooth/bluetoothd --experimental               
-                                                  ^^^^^^^^^^^^
-sudo systemctl daemon-reload
-sudo systemctl restart bluetooth
-```
-
 Github:
 ```
 ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
@@ -58,6 +32,12 @@ ssh-add ~/.ssh/id_rsa
 
 sudo git config --global user.email "you@example.com"
 sudo git config --global user.name "Your Name"
+
+sudo git remote add origin git@github.com:ggravlingen/home-assistant.git
+
+git push -f <remote> <branch>
+
+
 ```
 
 Misc:
@@ -107,13 +87,6 @@ npm install --production
 ESP-module:
 ```
 http://www.wch.cn/download/CH341SER_ZIP.html
-```
-
-Monit:
-```
-sudo apt-get install monit
-sudo nano /etc/monit/monitrc
-sudo monit 
 ```
 
 MQTT-stuff:
