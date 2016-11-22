@@ -55,6 +55,9 @@ Github:
 ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_rsa
+
+sudo git config --global user.email "you@example.com"
+sudo git config --global user.name "Your Name"
 ```
 
 Misc:
