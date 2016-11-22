@@ -1,4 +1,5 @@
-- platform: forecast
+- platform: darksky
+  name: forecastio
   api_key: !secret token_forecast_io
   monitored_conditions:
     - precip_probability

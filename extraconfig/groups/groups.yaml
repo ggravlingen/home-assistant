@@ -21,7 +21,8 @@ lights:
 switch_other:
   name: "Ovrigt"
   entities:
-    - switch.stereo_switch_6_0
+   # - switch.stereo_switch_6_0
+    - switch.wenzhou_tkb_control_system_tz68_onoff_switch_socket_switch_6_0
 
 ### DIFFERENT CAMERAS
 camera1:
