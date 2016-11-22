@@ -1,0 +1,5 @@
+entities:
+  - name: Enable 720p
+    url: http://192.168.0.198:81/camera_control.cgi?loginuse=admin&loginpas=Five2Vino&param=0&value=3
+    icon: mdi:router-wireless
+

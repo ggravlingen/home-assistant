@@ -1,0 +1,13 @@
+- platform: forecast
+  api_key: !secret token_forecast_io
+  monitored_conditions:
+    - precip_probability
+#    - temperature
+    - apparent_temperature
+    - wind_speed
+    - wind_bearing
+    - cloud_cover
+    - humidity
+    - pressure
+    - ozone
+    - hourly_summary

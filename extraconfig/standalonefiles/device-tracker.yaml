@@ -1,0 +1,24 @@
+#- platform: asuswrt
+#  host: 192.168.0.1
+#  protocol: ssh
+#  mode: router
+#  username: !secret router_user
+#  password: !secret router_pass
+  # If new discovered devices are tracked by default (default: yes)
+#  track_new_devices: yes
+  # Seconds between each scan for new devices (default: 12)
+#  interval_seconds: 30
+  # Seconds to wait till marking someone as not home after not being seen
+  # (default: 180)
+#  consider_home: 180
+
+#- platform: owntracks
+#  max_gps_accuracy: 200
+#  waypoints: True
+#  waypoint_whitelist:
+#  - patrik
+
+- platform: mqtt
+  qos: 1
+  devices:
+    patrik_iphone: /location/patrik_iphone

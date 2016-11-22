@@ -1,0 +1,96 @@
+### MEDIA PLAYERS
+media:
+  name: "Media players"
+  entities:
+    - media_player.vardagsrum
+    - media_player.lg_webos_tv_remote
+#    - configurator.plex_media_server
+#    - configurator.lg_webos_tv
+
+
+### ALL LIGHT SWITCHES
+lights:
+  name: "Lampor"
+  entities:
+    - switch.garderob
+    - switch.laslampa
+    - switch.sovrum
+    - switch.koksbank
+    - light.sovrumstak
+
+switch_other:
+  name: "Ovrigt"
+  entities:
+    - switch.stereo_switch_6_0
+
+### DIFFERENT CAMERAS
+camera1:
+  name: "Vardagsrum"
+  entities:
+  - camera.vardagsrum
+
+
+### SYSTEM MONITORING
+system_sensors:
+  name: "System"
+  entities:
+  - sensor.cpu_use
+  - sensor.disk_use_home
+  - sensor.ram_free
+  - sensor.ram_use
+  - sensor.since_last_boot
+  - sensor.system_wifi_strength
+
+#Internet:
+#  - sensor.speedtest_download
+#  - sensor.speedtest_upload
+
+
+### USER TRACKING ###
+user_tracking:
+  entities:
+  - device_tracker.patrik_iphone
+
+
+### SONOS MANAGEMENT  ###
+mysonos:
+  - input_select.sonos_playlist
+  - input_select.sonos_favorites
+
+
+### SYSTEM MONITORS ###
+systemstates:
+  - sensor.sonos_controller_online
+  - sensor.sonos_kitchen_state
+  - sensor.camera_controller_online
+
+
+### WEATHER DATA
+weatherbasics:
+  - sensor.forecastio_humidity
+  - sensor.forecastio_cloud_coverage
+  - sensor.forecastio_precip_probability
+  - sensor.forecastio_ozone
+  - sensor.forecastio_pressure
+  - sensor.forecastio_wind_bearing
+  - sensor.forecastio_wind_speed
+
+
+### FLOWER MONITOR CONFIGURATION ###
+vaxt1:
+  - sensor.flower_1_light_intensity
+  - sensor.flower_1_moisture
+  - sensor.flower_1_conductivity
+  - sensor.flower_1_temperature
+
+vaxt2:
+  - sensor.flower_2_light_intensity
+  - sensor.flower_2_moisture
+  - sensor.flower_2_conductivity
+  - sensor.flower_2_temperature
+
+vaxt3:
+  - sensor.flower_3_light_intensity
+  - sensor.flower_3_moisture
+  - sensor.flower_3_conductivity
+  - sensor.flower_3_temperature

@@ -1,0 +1,10 @@
+alias: Flower 1
+trigger:
+  platform: numeric_state
+  entity_id: sensor.flower_1_moisture
+  below: 10
+action:
+  service: notify.pushbullet
+  data:
+    message: "Flower 1"
+    title: "Please water me!"

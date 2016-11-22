@@ -1,0 +1,8 @@
+alias: "Do stuff when I arrive home"
+trigger:
+  platform: state
+  entity_id: device_tracker.patrik_iphone
+  from: 'Away'
+  to: 'Home'
+action:
+  - service: script.arrive_home_anytime

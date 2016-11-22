@@ -1,0 +1,17 @@
+#- platform: command_line
+#  name: camera_controller_online_shell
+#  command: '/usr/bin/wget 192.168.0.198:81 &> /dev/null && echo success || echo fail'
+#  payload_on: "success"
+#  payload_off: "fail"
+
+#- platform: template
+#  sensors:
+#    sonos_grejare:
+#      friendly_name: 'Sonos hej'
+#      sensor_class: heat
+#      value_template: >-
+#        {% if 'success' in states('sensor.sonos_controller_online_shell') %}
+#          On
+#        {%- else -%}
+#          Off
+#        {%- endif %}

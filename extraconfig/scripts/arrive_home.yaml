@@ -1,0 +1,23 @@
+arrive_home_anytime:
+    alias: Arrive home anytime
+    sequence:
+      # This is Home Assistant Script Syntax
+#      - event: LOGBOOK_ENTRY
+#        event_data:
+#          name: foo
+#          message: just arrived home
+#          entity_id: device_tracker.thelurofpv6
+#          #domain: light
+
+      - alias: Camera off
+        service: homeassistant.turn_off
+        data:
+          entity_id:
+          - switch.webcam
+
+      - alias: Notify Patrik
+        service: notify.pushbullet
+        data:
+          message: "Apartment"
+          title: "Someone home, disable camera"
+

@@ -1,0 +1,7 @@
+alias: "Shut down stereo when sonos is not playing"
+trigger:
+  platform: state
+  entity_id: media_player.kitchen
+  state: 'paused'
+action:
+  - service: script.sonos_stereo_off

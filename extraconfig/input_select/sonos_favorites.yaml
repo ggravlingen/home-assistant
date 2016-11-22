@@ -1,0 +1,15 @@
+sonos_favorites:
+  name: Sonos Favorites
+  options:
+   - 'Pick one'
+   - 'All Out 70s'
+   - 'An Instrumental Sunday'
+   - 'BBC Radio 4'
+   - 'Calm Radio - Gregorian Chant'
+   - 'Lugna Favoriter'
+   - 'Piano Dinner'
+   - 'Sommarhits'
+   - 'Tagga ner'
+   - 'Women of Jazz'
+  initial: 'Pick one'
+  icon: 'mdi:playlist-check'

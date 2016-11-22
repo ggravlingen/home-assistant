@@ -1,0 +1,9 @@
+alias: Start Sonos Playlist
+trigger:
+- platform: state
+  entity_id: input_select.sonos_playlist
+action:
+  - service: shell_command.sonos_control_shuffle_off
+  - service: shell_command.sonos_volume_8
+  - service_template: >
+      shell_command.sonos_playlist_{{states.input_select.sonos_playlist.state.lower().replace(" ", "").replace("-", "")}}

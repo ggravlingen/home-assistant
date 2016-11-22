@@ -1,0 +1,5 @@
+broker: hem.gammelgravlingen.com
+port: 1883
+client_id: home-assistant-1
+username: !secret mqtt_user
+password: !secret mqtt_pass

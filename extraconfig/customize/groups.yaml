@@ -1,0 +1,28 @@
+group.user_tracking:
+  friendly_name: " "
+  order: 1
+
+group.lights:
+  friendly_name: "Lampor"
+  order: 2
+  
+group.mysonos:
+  friendly_name: " "
+  order: 1
+
+group.systemstates:
+  friendly_name: " "
+  order: 4
+
+group.weatherbasics:
+  friendly_name: " "
+  order: 1
+
+group.vaxt1:
+  friendly_name: "Juvelorkidé #1"
+
+group.vaxt2:
+  friendly_name: "Juvelorkidé #2"
+
+group.vaxt3:
+  friendly_name: "Basilika"

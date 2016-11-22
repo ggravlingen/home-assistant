@@ -1,0 +1,1 @@
+sonos_voice_good_morning: '/usr/bin/curl -X GET http://192.168.0.140:5005/kitchen/say/Good%20morning%20Sir,%20another%20bright%20and%20shiny%20day%20awaits/en-gb'

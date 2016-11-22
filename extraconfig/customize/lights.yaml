@@ -1,0 +1,5 @@
+switch.koksbank:
+  friendly_name: "Köksbänk"
+
+switch.laslampa:
+  friendly_name: "Läslampa"

@@ -1,0 +1,16 @@
+alias: "Rise and shine"
+trigger:
+  platform: time
+  hours: 6
+  minutes: 15
+  seconds: 0
+condition:
+  condition: time
+  weekday:
+    - mon
+    - tue
+    - wed
+    - thu
+    - fri
+action:
+  - service: script.wake_up

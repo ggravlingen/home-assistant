@@ -1,0 +1,17 @@
+group.flowers:
+  order: 2
+
+group.controlmusic:
+  order: 3
+
+group.weathercenter:
+  order: 4
+
+group.mediaplayers:
+  order: 5
+
+group.monitor:
+  order: 6
+
+group.system:
+  order: 7

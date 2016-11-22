@@ -1,0 +1,11 @@
+- name: Home
+  latitude: !secret zone_home_lat
+  longitude: !secret zone_home_long
+  radius: 50
+  icon: mdi:castle
+
+- name: Office
+  latitude: !secret zone_office_lat
+  longitude: !secret zone_office_long
+  radius: 50
+  icon: mdi:cash-multiple

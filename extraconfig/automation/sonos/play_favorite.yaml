@@ -1,0 +1,11 @@
+alias: Start Sonos Favorite
+trigger:
+- platform: state
+  entity_id: input_select.sonos_favorites
+action:
+  - service: shell_command.sonos_control_shuffle_off
+  - service: shell_command.sonos_volume_8
+  - service_template: >
+      shell_command.sonos_favorite_{{states.input_select.sonos_favorites.state.lower().replace(" ", "").replace("-", "")}}
+
+

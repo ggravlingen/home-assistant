@@ -1,0 +1,17 @@
+#http://192.168.0.140:5005/kitchen/playlist/Dinner%20with%20friends
+#0d1e0e6e4e7e4212930b207f2c53cfab
+#- platform: command_line
+#  switches:
+#    sonos_playlist_dinner_with_friends:
+#      oncmd: "/usr/bin/curl -X GET http://192.168.0.140:5005/kitchen/volume/8; /usr/bin/curl -X GET http://192.168.0.140:5005/kitchen/playlist/Dinner%20with%20friends"
+
+#- platform: command_line
+#  hidden: true
+#  switches:
+#    sonos_playlist_home_from_work:
+#      oncmd: shell_command.sonos_playlist_home_from_work
+
+
+
+
+
