@@ -2,9 +2,9 @@
 
 *.pyc
 
-*.jpg
+*.[jJ][pP][gG]
 
-*.jpeg
+*.[jJ][pP][eE][gG]
 
 deps
 
