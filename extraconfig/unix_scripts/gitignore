@@ -2,7 +2,9 @@
 
 *.pyc
 
-.jpg
+*.jpg
+
+*.jpeg
 
 deps
 
@@ -31,3 +33,5 @@ secrets.yaml
 known_devices.yaml
 
 __pycache__
+
+*.uuid
