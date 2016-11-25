@@ -36,5 +36,6 @@ __pycache__
 
 *.uuid
 
- google_calendars.yaml
+google_calendars.yaml
 
+*.google.token
