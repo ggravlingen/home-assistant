@@ -11,15 +11,18 @@ url_favorites = "http://192.168.0.140:5005/favorites"
 location_input_select = '/home/hass/.homeassistant/extraconfig/input_select/'
 location_shell_command = '/home/hass/.homeassistant/extraconfig/shell_command/sonos/'
 
+exit;
 
 # LOAD PLAYLIST-LIST IN JSON-FORMAT
 response_playlists = urllib.urlopen(url_playlist)
+
+exit;
+
 data_playlists = json.loads(response_playlists.read())
 
 
 response_favorites = urllib.urlopen(url_favorites)
 data_favorites = json.loads(response_favorites.read())
-
 
 # START CREATING CONFIG-FILES
 
@@ -36,6 +39,7 @@ f.write("  icon: 'mdi:playlist-check'" + "\n")
 f.close()
 
 
+
 f = open( location_input_select + "sonos_favorites.yaml","w")
 f.write("sonos_favorites:" + "\n")
 f.write("  name: Sonos Favorites" + "\n")
@@ -47,8 +51,6 @@ for key in data_favorites:
 f.write("  initial: 'Pick one'" + "\n")
 f.write("  icon: 'mdi:playlist-check'" + "\n")
 f.close()
-
-
 
 
 ## Shell commands
@@ -63,7 +65,9 @@ f.close()
 
 f = open(location_shell_command + "sonos_favorites.yaml","w")
 for key in data_favorites:
+  print ""
   keyname = ''.join(e for e in key if e.isalnum()).lower()
   keyvalue = urllib.quote(key)
+  #keyvalue = "aa"
   f.write("sonos_favorite_" + keyname + ": '/usr/bin/curl +X POST http://192.168.0.140:5005/kitchen/favorite/" + keyvalue + "'\n")
 f.close()

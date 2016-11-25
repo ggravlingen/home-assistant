@@ -94,3 +94,13 @@ MQTT-stuff:
 mosquitto_sub -h 192.168.0.140 -u xx -P xx -t /myDevice/sensor/
 sudo tcpdump port 1883 -A -t -vvv
 ```
+
+Bluetooth remove
+```
+bluetoothctl
+scan on
+pair [mac]
+trust [mac]
+connect [connect]
+```
+

@@ -35,3 +35,6 @@ known_devices.yaml
 __pycache__
 
 *.uuid
+
+ google_calendars.yaml
+

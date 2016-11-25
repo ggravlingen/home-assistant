@@ -1,5 +1,6 @@
 - platform: command_line
-  command: 'nmap -p 5005 localhost | grep open &> /dev/null && echo success || echo fail'
+  #command: 'nmap -p 5005 localhost | grep open &> /dev/null && echo success || echo fail'
+  command: 'nmap -p 5005 localhost'
   #command: shell_command.sonos_check_controller
   name: 'sonos_controller_online_shell'
 
@@ -13,7 +14,7 @@
     sonos_controller_online:
       friendly_name: 'Sonos Controller'
       value_template: >-
-        {% if 'success' in states('sensor.sonos_controller_online_shell') %}
+        {% if 'open' in states('sensor.sonos_controller_online_shell') %}
           Online
         {%- else -%}
           Offline
