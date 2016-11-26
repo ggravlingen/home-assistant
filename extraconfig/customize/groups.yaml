@@ -19,10 +19,10 @@ group.weatherbasics:
   order: 1
 
 group.vaxt1:
-  friendly_name: "Juvelorkidé #1"
+  friendly_name: "Juvelorkidé | vardagsrum"
 
 group.vaxt2:
-  friendly_name: "Juvelorkidé #2"
+  friendly_name: "Juvelorkidé | sovrum"
 
 group.vaxt3:
   friendly_name: "Basilika"
