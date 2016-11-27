@@ -57,7 +57,26 @@ systemctl enable mosquitto
 # Enable google cal (check states for info)
 
 # Video monitor
-sudo apt-get install libav-tools
+sudo apt-get install libav-tools -y
+
+# Running device detection through IFTTT on iOS. The JSON below is what I'm sending through Maker:
+echo -e "curl -H "Content-Type: application/json" -X POST -d '{"topic": "/location/patrik_iphone", "payload": "Home" }' http://IP:8123/api/services/mqtt/publish?api_password=" > set_home.sh
+
+# Install nodeJS, which is needed for Sonos control
+curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
+sudo apt-get install -y nodejs
+
+# pm2 is used to ensure nodjs-scripts are always running
+sudo npm install pm2 -g # install
+sudo pm2 startup # enable autostart on reboot
+
+# Install Sonos control
+cd /opt
+sudo git clone https://github.com/jishi/node-sonos-http-api
+sudo
+npm install --production
+sudo pm2 start server.js
+sudo pm2 save
 
 
 
@@ -73,49 +92,6 @@ Cron run as root:
 ```
 
 
-Running device detection through IFTTT on iOS. The JSON below is what I sending through Maker:
-
-```
-curl -H "Content-Type: application/json" -X POST -d '{"topic": "/location/patrik_iphone", "payload": "Home" }' http://IP:8123/api/services/mqtt/publish?api_password= > /home/pi/set_home.sh
-```
-
-
-
-
-Plex:
-```
-sudo apt-get update && sudo apt-get upgrade -y  
-sudo apt-get update && sudo apt-get dist-upgrade  
-sudo apt-get install apt-transport-https -y --force-yes  
-wget -O - https://dev2day.de/pms/dev2day-pms.gpg.key  | sudo apt-key add -  
-echo "deb https://dev2day.de/pms/ jessie main" | sudo tee /etc/apt/sources.list.d/pms.list  
-sudo apt-get update  
-sudo apt-get install -t jessie plexmediaserver -y  
-sudo reboot  
-```
-
-Node:
-```
-curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
-sudo apt-get install -y nodejs
-```
-
-PM2:
-```
-npm install pm2 -g 
-pm2 startup
-pm2 start app.js
-pm2 save
-
-```
-
-Sonos:
-```
-cd /opt
-sudo git clone https://github.com/jishi/node-sonos-http-api
-sudo 
-npm install --production
-```
 
 ESP-module:
 ```

@@ -1,10 +1,3 @@
-#- platform: mjpeg
-#  mjpeg_url: http://192.168.0.198:81/snapshot.cgi
-#  name: Vardagsrum
-#  username: !secret camera_user
-#  password: !secret camera_pass
-#  authentication: basic
-
 - platform: local_file
   name: Vardagsrum
-  file_path: /home/hass/.homeassistant/extraconfig/webcam/no1.jpg
+  file_path: /home/homeassistant/.homeassistant/extraconfig/webcam/no1.jpg
