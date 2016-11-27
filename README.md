@@ -20,10 +20,16 @@ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_rsa
 
-# Git
+# Git setup and clone settings
 sudo apt-get install git
 sudo git config --global user.email "you@example.com"
 sudo git config --global user.name "Your Name"
+sudo systemctl stop home-assistant@homeassistant.service
+
+sudo git clone git@github.com:ggravlingen/home-assistant.git .
+
+sudo git remote add origin git@github.com:ggravlingen/home-assistant.git
+
 
 ```
 
