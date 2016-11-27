@@ -26,9 +26,13 @@ sudo git config --global user.email "you@example.com"
 sudo git config --global user.name "Your Name"
 sudo systemctl stop home-assistant@homeassistant.service
 
+# .homeassistamt-folder must be empty
+cd /home/homeassistant/.homeassistant
 sudo git clone git@github.com:ggravlingen/home-assistant.git .
+sudo chown -R homeassistant.homeassistant *
 
-sudo git remote add origin git@github.com:ggravlingen/home-assistant.git
+
+#sudo git remote add origin git@github.com:ggravlingen/home-assistant.git
 
 
 ```
@@ -52,9 +56,6 @@ curl -H "Content-Type: application/json" -X POST -d '{"topic": "/location/patrik
 
 Github:
 ```
-sudo git config --global user.email "you@example.com"
-sudo git config --global user.name "Your Name"
-
 sudo git remote add origin git@github.com:ggravlingen/home-assistant.git
 
 git push -f <remote> <branch>
@@ -126,3 +127,11 @@ trust [mac]
 connect [connect]
 ```
 
+
+
+$ sudo systemctl stop home-assistant@homeassistant.service 
+$ sudo su -s /bin/bash homeassistant
+$  source /srv/homeassistant/bin/activate
+$ pip3 install --upgrade homeassistant
+$ exit
+$ sudo systemctl start home-assistant@homeassistant.service
