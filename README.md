@@ -20,47 +20,24 @@ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_rsa
 
+# Give pi access righst to homeassistant folder
+
 # Git setup and clone settings
-sudo apt-get install git
-sudo git config --global user.email "you@example.com"
-sudo git config --global user.name "Your Name"
-sudo systemctl stop home-assistant@homeassistant.service
+git config --global user.email "you@example.com"
+git config --global user.name "Your Name"
+sudo systemctl stop home-assistant.service
 
 # nb: .homeassistant-folder must be empty
 cd /home/homeassistant/.homeassistant
-sudo git clone git@github.com:ggravlingen/home-assistant.git .
+git clone git@github.com:ggravlingen/home-assistant.git .
 sudo chown -R homeassistant.homeassistant *
 
 # Backup bask profile and gitingore (gitignore not needed anymore?)
-sudo rm -rf /home/homeassistant/.homeassistant/extraconfig/unix_scripts/bash_profile
-sudo ln /home/pi/.bash_profile /home/homeassistant/.homeassistant/extraconfig/unix_scripts/bash_profile
+sudo rm -rf /home/hass/.homeassistant/extraconfig/unix_scripts/bash_profile
+sudo ln /home/pi/.bash_profile /home/hass/.homeassistant/extraconfig/unix_scripts/bash_profile
 
-sudo rm /home/homeassistant/.homeassistant/extraconfig/unix_scripts/gitignore
-sudo ln /home/homeassistant/.homeassistant/.gitignore /home/homeassistant/.homeassistant/extraconfig/unix_scripts/gitignore
-
-
-# Zwave
-sudo apt-get install cython3 libudev-dev python3-sphinx python3-setuptools git -y
-
-sudo su -s /bin/bash homeassistant
-source /srv/homeassistant/bin/activate
-pip install --upgrade cython==0.24.1
-exit
-
-
-cd /srv
-sudo mkdir python-openzwave
-sudo chown pi:pi python-openzwave
-#grab the project from git
-git clone https://github.com/OpenZWave/python-openzwave.git
-cd python-openzwave
-git checkout python3
-PYTHON_EXEC=$(which python3) make build
-sudo PYTHON_EXEC=$(which python3) make install
-
-# MQTT
-systemctl start mosquitto
-systemctl enable mosquitto
+sudo rm /home/hass/.homeassistant/extraconfig/unix_scripts/gitignore
+sudo ln /home/hass/.homeassistant/.gitignore /home/hass/.homeassistant/extraconfig/unix_scripts/gitignore
 
 # Enable google cal (check states for info)
 
