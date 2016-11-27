@@ -41,9 +41,6 @@ sudo ln /home/hass/.homeassistant/.gitignore /home/hass/.homeassistant/extraconf
 
 # Enable google cal (check states for info)
 
-# Video monitor
-sudo apt-get install libav-tools -y
-
 # Running device detection through IFTTT on iOS. The JSON below is what I'm sending through Maker:
 echo -e "curl -H "Content-Type: application/json" -X POST -d '{"topic": "/location/patrik_iphone", "payload": "Home" }' http://IP:8123/api/services/mqtt/publish?api_password=" > set_home.sh
 
@@ -71,8 +68,12 @@ sudo crontab -e
 
 
 # Misc
-sudo apt-get install locate
+sudo apt-get install locate -y
 sudo updatedb
+
+# Video monitor
+sudo apt-get install libav-tools -y
+
 
 
 ```
