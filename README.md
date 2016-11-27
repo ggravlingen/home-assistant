@@ -1,4 +1,33 @@
-This is the configuration I'm using for my Home Assistant instance, which is running on a Raspberry Pi 3 (model b).
+This is the configuration I'm using for my Home Assistant instance, which is running on a Raspberry Pi 3 (model b). The base is the HASSbian image.
+
+Reinstall sequence (after first startup):
+```
+sudo raspi-config
+
+#Network
+sudo nano /etc/wpa_supplicant/wpa_supplicant.conf
+network={
+               ssid="home"
+               psk="very secret passphrase"
+          }
+
+#Update system
+sudo apt-get update
+sudo apt-get upgrade
+
+# SSH setup
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_rsa
+
+# Git
+sudo apt-get install git
+sudo git config --global user.email "you@example.com"
+sudo git config --global user.name "Your Name"
+
+```
+
+
 
 Cron run as root:
 ```
@@ -14,22 +43,9 @@ Running device detection through IFTTT on iOS. The JSON below is what I sending 
 curl -H "Content-Type: application/json" -X POST -d '{"topic": "/location/patrik_iphone", "payload": "Home" }' http://IP:8123/api/services/mqtt/publish?api_password=
 ```
 
-Wi-fi:
-```
-sudo nano /etc/wpa_supplicant/wpa_supplicant.conf
-network={
-               ssid="home"
-               psk="very secret passphrase"
-          }
-```
-
 
 Github:
 ```
-ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
-eval "$(ssh-agent -s)"
-ssh-add ~/.ssh/id_rsa
-
 sudo git config --global user.email "you@example.com"
 sudo git config --global user.name "Your Name"
 
