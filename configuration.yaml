@@ -41,6 +41,8 @@ sun:
 
 logger:
   default: critical
+  logs:
+    homeassistant.components.zwave: debug
 
 
 
