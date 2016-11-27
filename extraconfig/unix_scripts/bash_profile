@@ -1,10 +1,10 @@
 alias ls="ls -GFhla"
-alias bootha="sudo systemctl restart home-assistant.service"
-alias cda="cd /home/hass/.homeassistant"
-alias halog="watch tail /home/hass/.homeassistant/home-assistant.log"
+alias bootha="sudo systemctl restart home-assistant@homeassistant.service"
+#sudo systemctl stop home-assistant@homeassistant.service
+alias cda="cd /home/homeassistant/.homeassistant"
+alias halog="watch tail /home/homeassistant/.homeassistant/home-assistant.log"
 alias btversion="dpkg --status bluez | grep '^Version:'"
 alias gitcommit="git push origin master"
 alias mp3tom4v="rename "s/.mp3/.m4v/" *.mp3"
 alias zwavecfg="cd /srv/hass/src/open-zwave-control-panel/ && ./ozwcp -p 8888"
 alias backupbase="sudo tar -zcvf allfiles.tar.gz -T /home/hass/.homeassistant/extraconfig/unix_scripts/tar_textfile.ttxt"
-

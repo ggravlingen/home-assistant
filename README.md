@@ -26,13 +26,34 @@ sudo git config --global user.email "you@example.com"
 sudo git config --global user.name "Your Name"
 sudo systemctl stop home-assistant@homeassistant.service
 
-# .homeassistamt-folder must be empty
+# nb: .homeassistant-folder must be empty
 cd /home/homeassistant/.homeassistant
 sudo git clone git@github.com:ggravlingen/home-assistant.git .
 sudo chown -R homeassistant.homeassistant *
 
+# Backup bask profile and gitingore (gitignore not needed anymore?)
+sudo rm -rf /home/homeassistant/.homeassistant/extraconfig/unix_scripts/bash_profile
+sudo ln /home/pi/.bash_profile /home/homeassistant/.homeassistant/extraconfig/unix_scripts/bash_profile
 
-#sudo git remote add origin git@github.com:ggravlingen/home-assistant.git
+sudo rm /home/homeassistant/.homeassistant/extraconfig/unix_scripts/gitignore
+sudo ln /home/homeassistant/.homeassistant/.gitignore /home/homeassistant/.homeassistant/extraconfig/unix_scripts/gitignore
+
+
+# Zwave
+sudo apt-get install cython3 libudev-dev python3-sphinx python3-setuptools git -y
+sudo pip3 install --upgrade cython==0.24.1
+
+cd
+git clone https://github.com/OpenZWave/python-openzwave.git
+cd python-openzwave
+git checkout python3
+PYTHON_EXEC=$(which python3) make build
+sudo PYTHON_EXEC=$(which python3) make install
+
+
+# Video monitor
+sudo apt-get install libav-tools
+
 
 
 ```
@@ -54,23 +75,7 @@ curl -H "Content-Type: application/json" -X POST -d '{"topic": "/location/patrik
 ```
 
 
-Github:
-```
-sudo git remote add origin git@github.com:ggravlingen/home-assistant.git
 
-git push -f <remote> <branch>
-
-
-```
-
-Misc:
-```
-sudo ln /home/pi/.bash_profile bash_profile
-sudo ln /home/hass/.homeassistant/.gitignore gitignore
-
-#Avconv
-sudo apt-get install libav-tools
-```
 
 Plex:
 ```
