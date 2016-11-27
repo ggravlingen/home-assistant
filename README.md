@@ -41,9 +41,17 @@ sudo ln /home/homeassistant/.homeassistant/.gitignore /home/homeassistant/.homea
 
 # Zwave
 sudo apt-get install cython3 libudev-dev python3-sphinx python3-setuptools git -y
-sudo pip3 install --upgrade cython==0.24.1
 
-cd
+sudo su -s /bin/bash homeassistant
+source /srv/homeassistant/bin/activate
+pip install --upgrade cython==0.24.1
+exit
+
+
+cd /srv
+sudo mkdir python-openzwave
+sudo chown pi:pi python-openzwave
+#grab the project from git
 git clone https://github.com/OpenZWave/python-openzwave.git
 cd python-openzwave
 git checkout python3
@@ -86,8 +94,8 @@ sudo crontab -e
 
 
 # Misc
-apt-get install locate
-
+sudo apt-get install locate
+sudo updatedb
 
 
 ```
