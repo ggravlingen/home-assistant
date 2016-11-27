@@ -50,6 +50,11 @@ git checkout python3
 PYTHON_EXEC=$(which python3) make build
 sudo PYTHON_EXEC=$(which python3) make install
 
+# MQTT
+systemctl start mosquitto
+systemctl enable mosquitto
+
+# Enable google cal (check states for info)
 
 # Video monitor
 sudo apt-get install libav-tools
@@ -71,7 +76,7 @@ Cron run as root:
 Running device detection through IFTTT on iOS. The JSON below is what I sending through Maker:
 
 ```
-curl -H "Content-Type: application/json" -X POST -d '{"topic": "/location/patrik_iphone", "payload": "Home" }' http://IP:8123/api/services/mqtt/publish?api_password=
+curl -H "Content-Type: application/json" -X POST -d '{"topic": "/location/patrik_iphone", "payload": "Home" }' http://IP:8123/api/services/mqtt/publish?api_password= > /home/pi/set_home.sh
 ```
 
 
