@@ -39,10 +39,10 @@ logbook:
 # Track the sun
 sun:
 
-logger:
-  default: critical
-  logs:
-    homeassistant.components.zwave: debug
+logger: !include extraconfig/standalonefiles/logger.yaml
+#  default: critical
+#  logs:
+#    homeassistant.components.zwave: debug
 
 
 
