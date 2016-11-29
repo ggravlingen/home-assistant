@@ -63,7 +63,7 @@ sudo pm2 save
 # Setup cron
 sudo crontab -e
 * 3 * * * cd /home/hass/.homeassistant/extraconfig/python_code && sudo /usr/bin/python sonos_playlist.py > /tmp/listener.log 2>&1
-* * * * * cd /home/hass/.homeassistant/extraconfig/webcam && sudo /usr/bin/avconv -i rtsp://192.168.0.59:554/onvif1 -ss 0:0:0 -frames 1 no1$
+* * * * * cd /home/hass/.homeassistant/extraconfig/webcam && sudo /usr/bin/avconv -i rtsp://192.168.0.59:554/onvif1 -ss 0:0:0 -frames 1 no1.jpg
 2 * * * * cd /home/hass/.homeassistant/extraconfig/unix_scripts && sudo ./check_webcamfile.sh
 
 
@@ -102,12 +102,3 @@ pair [mac]
 trust [mac]
 connect [connect]
 ```
-
-
-
-$ sudo systemctl stop home-assistant@homeassistant.service 
-$ sudo su -s /bin/bash homeassistant
-$  source /srv/homeassistant/bin/activate
-$ pip3 install --upgrade homeassistant
-$ exit
-$ sudo systemctl start home-assistant@homeassistant.service
