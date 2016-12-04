@@ -43,3 +43,5 @@ google_calendars.yaml
 *.cfg
 
 *.rb
+
+*.log
