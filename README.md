@@ -27,9 +27,11 @@ git config --global user.name "Your Name"
 sudo systemctl stop home-assistant.service
 
 # nb: .homeassistant-folder must be empty
-cd /home/homeassistant/.homeassistant
+cd /home/hass/.homeassistant
+sudo mv deps ./.. #temporarily move deps out of the way
+sudo rm .*
 git clone git@github.com:ggravlingen/home-assistant.git .
-sudo chown -R homeassistant.homeassistant *
+sudo chown -R hass.hass *
 
 # Backup bask profile and gitingore (gitignore not needed anymore?)
 sudo rm -rf /home/hass/.homeassistant/extraconfig/unix_scripts/bash_profile
