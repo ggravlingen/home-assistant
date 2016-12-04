@@ -13,6 +13,9 @@ network={
                psk="very secret passphrase"
           }
 
+
+sudo apt-get install libwebsockets-dev
+
 # Install home assistant
 wget -Nnv https://raw.githubusercontent.com/home-assistant/fabric-home-assistant/master/hass_rpi_installer.sh && bash hass_rpi_installer.sh
 
