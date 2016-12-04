@@ -4,6 +4,8 @@ Reinstall sequence (after first startup):
 ```
 sudo raspi-config
 
+sudo apt-get update&&sudo apt-get dist-upgrade
+
 #Network
 sudo nano /etc/wpa_supplicant/wpa_supplicant.conf
 network={
