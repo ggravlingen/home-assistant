@@ -11,6 +11,9 @@ network={
                psk="very secret passphrase"
           }
 
+# Install home assistant
+wget -Nnv https://raw.githubusercontent.com/home-assistant/fabric-home-assistant/master/hass_rpi_installer.sh && bash hass_rpi_installer.sh
+
 #Update system
 sudo apt-get update
 sudo apt-get upgrade
