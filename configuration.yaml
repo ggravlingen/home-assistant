@@ -79,3 +79,11 @@ notify: !include extraconfig/standalonefiles/notify.yaml
 light: !include extraconfig/standalonefiles/hue.yaml
 google: !include extraconfig/standalonefiles/googlecalendar.yaml
 
+
+mqtt:
+  broker: 127.0.0.1
+  port: 1883
+  client_id: home-assistant-1
+  username: pi
+  password: raspberry
+

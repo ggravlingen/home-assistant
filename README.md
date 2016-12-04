@@ -75,6 +75,16 @@ sudo updatedb
 sudo apt-get install libav-tools -y
 
 
+# Docker
+curl -sSL get.docker.com | sh
+sudo usermod -aG docker pi
+sudo systemctl enable docker
+
+git clone https://github.com/home-assistant/hadashboard.git
+cd hadashboard
+docker build -f Docker-raspi/Dockerfile -t hadashboard .
+
+
 
 ```
 

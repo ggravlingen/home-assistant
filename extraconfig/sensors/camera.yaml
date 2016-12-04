@@ -9,8 +9,8 @@
       friendly_name: 'Kamera Vardagsrum'
       value_template: >-
         {% if '1 received' in states('sensor.camera_controller_online_shell') %}
-          Online
+          On
         {%- else -%}
-          Offline
+          Off
         {%- endif %}
 

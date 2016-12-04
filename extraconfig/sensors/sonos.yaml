@@ -15,9 +15,9 @@
       friendly_name: 'Sonos Controller'
       value_template: >-
         {% if 'open' in states('sensor.sonos_controller_online_shell') %}
-          Online
+          On
         {%- else -%}
-          Offline
+          Off
         {%- endif %}
 
 - platform: template

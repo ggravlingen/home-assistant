@@ -39,3 +39,7 @@ __pycache__
 google_calendars.yaml
 
 *.google.token
+
+*.cfg
+
+*.rb
