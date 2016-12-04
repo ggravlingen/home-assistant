@@ -14,10 +14,6 @@ network={
 # Install home assistant
 wget -Nnv https://raw.githubusercontent.com/home-assistant/fabric-home-assistant/master/hass_rpi_installer.sh && bash hass_rpi_installer.sh
 
-#Update system
-sudo apt-get update
-sudo apt-get upgrade
-
 # SSH setup
 ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
 eval "$(ssh-agent -s)"
