@@ -1,5 +1,5 @@
 default: debug
-logs:
+#logs:
   #homeassistant.components.zwave: debug
   #homeassistant.components.camera: debug
 
