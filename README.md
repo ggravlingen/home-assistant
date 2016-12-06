@@ -49,7 +49,7 @@ sudo ln /home/hass/.homeassistant/.gitignore /home/hass/.homeassistant/extraconf
 # Enable google cal (check states for info)
 
 # Running device detection through IFTTT on iOS. The JSON below is what I'm sending through Maker:
-echo -e "curl -H "Content-Type: application/json" -X POST -d '{"topic": "/location/patrik_iphone", "payload": "Home" }' http://IP:8123/api/services/mqtt/publish?api_password=" > set_home.sh
+echo -e "curl -H "Content-Type: application/json" -X POST -d '{"topic": "/location/patrik_iphone", "payload": "Home" }' http://localhost:8123/api/services/mqtt/publish?api_password=" > set_home.sh && sudo chmod +x set_home.sh
 
 # Install nodeJS, which is needed for Sonos control
 curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
