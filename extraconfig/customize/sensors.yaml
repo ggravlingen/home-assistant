@@ -57,6 +57,9 @@ sensor.flower_1_conductivity:
 sensor.flower_1_temperature:
   friendly_name: "Temperatur"
 
+sensor.flower_1_battery:
+  friendly_name: "Batteri"
+
 sensor.flower_2_light_intensity:
   friendly_name: "Ljusstyrka"
 
@@ -68,6 +71,9 @@ sensor.flower_2_conductivity:
 
 sensor.flower_2_temperature:
   friendly_name: "Temperatur"
+
+sensor.flower_2_battery:
+  friendly_name: "Batteri"
 
 sensor.flower_3_light_intensity:
   friendly_name: "Ljusstyrka"
@@ -81,3 +87,5 @@ sensor.flower_3_conductivity:
 sensor.flower_3_temperature:
   friendly_name: "Temperatur"
 
+sensor.flower_3_battery:
+  friendly_name: "Batteri"

@@ -7,6 +7,7 @@
    - light
    - temperature
    - conductivity
+   - battery
 
 - platform: miflora
   mac: C4:7C:8D:61:3C:DC
@@ -17,6 +18,7 @@
    - light
    - temperature
    - conductivity
+   - battery
 
 - platform: miflora
   mac: C4:7C:8D:61:7E:CC
@@ -27,4 +29,5 @@
    - light
    - temperature
    - conductivity
+   - battery
 
