@@ -9,6 +9,12 @@ wake_up:
           entity_id: device_tracker.thelurofpv6
           #domain: light
 
+      - alias: Start low
+        service: light.turn_on
+        data:
+          entity_id: light.sovrumstak
+          brightness: 0
+
       - alias: Gradually on
         service: light.turn_on
         data:
