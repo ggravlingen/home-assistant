@@ -5,12 +5,17 @@ trigger:
   minutes: 15
   seconds: 0
 condition:
-  condition: time
-  weekday:
-    - mon
-    - tue
-    - wed
-    - thu
-    - fri
+  condition: and
+  conditions:
+    - condition: time
+      weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+    - condition: state
+      entity_id: device_tracker.patrik_iphone
+      state: home
 action:
   - service: script.wake_up
