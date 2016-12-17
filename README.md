@@ -50,7 +50,7 @@ sudo ln /home/hass/.homeassistant/.gitignore /home/hass/.homeassistant/extraconf
 
 # Running device detection through IFTTT on iOS. The JSON below is what I'm sending through Maker:
 echo -e "curl -H "Content-Type: application/json" -X POST -d '{"topic": "/location/patrik_iphone", "payload": "Home" }' http://localhost:8123/api/services/mqtt/publish?api_password=" > set_home.sh && sudo chmod +x set_home.sh
-sudo echo -e 'SUBSYSTEM=="tty", ATTRS{idVendor}=="0658", ATTRS{idProduct}=="0200", SYMLINK+="zwave"' > /etc/udev/rules.d/rules.d/99-usb-serial.rule
+sudo echo -e 'SUBSYSTEM=="tty", ATTRS{idVendor}=="0658", ATTRS{idProduct}=="0200", SYMLINK+="zwave"' > /etc/udev/rules.d/99-usb-serial.rules
 
 
 # Install nodeJS, which is needed for Sonos control
