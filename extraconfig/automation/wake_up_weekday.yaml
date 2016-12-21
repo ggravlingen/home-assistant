@@ -16,6 +16,6 @@ condition:
         - fri
     - condition: state
       entity_id: device_tracker.patrik_iphone
-      state: home
+      state: Home
 action:
   - service: script.wake_up
