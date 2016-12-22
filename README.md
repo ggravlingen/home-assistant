@@ -1,4 +1,4 @@
-This is the configuration I'm using for my Home Assistant instance, which is running on a Raspberry Pi 3 (model b). The base is the HASSbian image.
+This is the configuration I'm using for my Home Assistant instance, which is running on a Raspberry Pi 3 (model b). The base is the jessie lite image.
 
 Reinstall sequence (after first startup):
 ```
