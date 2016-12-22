@@ -8,8 +8,6 @@
 
 deps
 
-www
-
 *.xml
 
 *.txt
