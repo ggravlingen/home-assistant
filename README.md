@@ -121,3 +121,10 @@ pair [mac]
 trust [mac]
 connect [connect]
 ```
+
+# On restore from image
+# USD serial rules
+# sudo chown -R pi.pi *
+# git pull
+# git stash
+# git reset --hard
