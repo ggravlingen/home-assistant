@@ -51,7 +51,8 @@ sudo systemctl status home-assistant@homeassistant -l
 
 
 
-
+# Install Openzwave
+apt-get install cython3 libudev-dev python3-sphinx python3-setuptools git
 
 
 
