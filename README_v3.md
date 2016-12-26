@@ -66,6 +66,9 @@ rm .*
 git clone git@github.com:ggravlingen/home-assistant.git .
 systemctl start home-assistant.service@homeassistant
 
+# Put things in .bash_profile
+rm -rf /home/hass/.homeassistant/extraconfig/unix_scripts/bash_profile
+ln /root/.bash_profile /home/hass/.homeassistant/extraconfig/unix_scripts/bash_profile
 
 
 # Install Openzwave
