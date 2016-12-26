@@ -97,6 +97,26 @@ sudo apt-get install libav-tools -y
 # Misc
 echo -e "curl -H "Content-Type: application/json" -X POST -d '{"topic": "/location/patrik_iphone", "payload": "Home" }' http://localhost:8123/api/services/mqtt/publish?api_password=" > set_home.sh && sudo chmod +x set_home.sh
 
+# MQTT
+sudo apt-get install libwebsockets-dev
+useradd mosquitto
+cd /var/lib/
+mkdir mosquitto
+chown mosquitto:mosquitto mosquitto
+cd /srv/homeassistant/homeassistant_venv/src
+curl -O http://repo.mosquitto.org/debian/mosquitto-repo.gpg.key
+apt-key add mosquitto-repo.gpg.key
+cd /etc/apt/sources.list.d/
+curl -O http://repo.mosquitto.org/debian/mosquitto-jessie.list
+apt-get update
+apt-cache search mosquitto
+apt-get install -y mosquitto mosquitto-clients
+cd /etc/mosquitto
+touch pwfile
+chown mosquitto: pwfile
+chmod 0600 pwfile
+sudo mosquitto_passwd -b pwfile pi raspberry
+sudo chown mosquitto: mosquitto.conf
 
 
 # Install Openzwave
