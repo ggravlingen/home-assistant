@@ -28,29 +28,26 @@ source /srv/homeassistant/homeassistant_venv/bin/activate
 # Install HA
 pip3 install homeassistant
 
-pico /etc/systemd/system/hass.service   # Create hass (Home Assistant) systemd file
-
+su -c 'cat <<EOF >> /etc/systemd/system/home-assistant@homeassistant.service
 [Unit]
 Description=Home Assistant
 After=network.target
 
 [Service]
 Type=simple
-User=homeassistant
-ExecStartPre=source /srv/homeassistant/bin/activate
-ExecStart=/srv/homeassistant/bin/hass -c "/home/hass/.homeassistant"
+User=hass
+ExecStartPre=source /srv/hass/bin/activate
+ExecStart=/srv/hass/bin/hass -c "/home/hass/.homeassistant"
 
 [Install]
 WantedBy=multi-user.target
-
-# End systemd file here
-
-systemctl --system daemon-reload
-systemctl enable hass.service
-systemctl start hass.service
+EOF'
 
 
-
+sudo systemctl --system daemon-reload
+sudo systemctl enable home-assistant@homeassistant
+sudo systemctl start home-assistant@homeassistant
+sudo systemctl status home-assistant@homeassistant -l
 
 
 
