@@ -1,3 +1,12 @@
+Running on DietPi:
+Enable: Wi-fi
+Enable: Bluetooth
+Install: Node.js, Build-essentials, Git client, ssh-client
+
+# Install of home assistant and zwave is based on this
+# https://deviantengineer.com/2016/09/hass-dietpi/
+
+
 ```
 
 apt-get update && apt-get -y upgrade   # Make sure we're fully upgraded
@@ -18,5 +27,40 @@ source /srv/homeassistant/homeassistant_venv/bin/activate
 
 # Install HA
 pip3 install homeassistant
+
+pico /etc/systemd/system/hass.service   # Create hass (Home Assistant) systemd file
+
+[Unit]
+Description=Home Assistant
+After=network.target
+
+[Service]
+Type=simple
+User=hass
+ExecStartPre=source /srv/hass/bin/activate
+ExecStart=/srv/hass/bin/hass -c "/home/hass/.homeassistant"
+
+[Install]
+WantedBy=multi-user.target
+
+# End systemd file here
+
+systemctl --system daemon-reload
+systemctl enable hass.service
+systemctl start hass.service
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ```
