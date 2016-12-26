@@ -49,9 +49,30 @@ sudo systemctl enable home-assistant@homeassistant
 sudo systemctl start home-assistant@homeassistant
 sudo systemctl status home-assistant@homeassistant -l
 
+# Setup ssh
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_rsa
+
+# Git setup and clone settings
+git config --global user.email "you@example.com"
+git config --global user.name "Your Name"
+systemctl stop home-assistant.service@homeassistant
+
+# nb: .homeassistant-folder must be empty
+cd /home/hass/.homeassistant
+mv deps ./.. #temporarily move deps out of the way
+rm .*
+git clone git@github.com:ggravlingen/home-assistant.git .
+systemctl start home-assistant.service@homeassistant
+
+# Put things in .bash_profile
+rm -rf /home/hass/.homeassistant/extraconfig/unix_scripts/bash_profile
+ln /root/.bash_profile /home/hass/.homeassistant/extraconfig/unix_scripts/bash_profile
 
 
 # Install Openzwave
+echo 'SUBSYSTEM=="tty", ATTRS{idVendor}=="0658", ATTRS{idProduct}=="0200", SYMLINK+="zwave"' > /etc/udev/rules.d/99-usb-serial.rules
 apt-get install cython3 libudev-dev python3-sphinx python3-setuptools git
 
 
