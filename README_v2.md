@@ -103,6 +103,10 @@ pico ~/.bash_profile
 rm -rf /home/hass/.homeassistant/extraconfig/unix_scripts/bash_profile
 ln /home/pi/.bash_profile /home/hass/.homeassistant/extraconfig/unix_scripts/bash_profile
 
+pip install --upgrade pip
+pip install pip-tools
+
+
 
 
 
