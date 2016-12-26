@@ -128,3 +128,11 @@ connect [connect]
 # git pull
 # git stash
 # git reset --hard
+
+Experimental
+```
+DietPi
+Node.js
+Build-essentials
+Git client
+```
