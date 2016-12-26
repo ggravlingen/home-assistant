@@ -44,10 +44,10 @@ WantedBy=multi-user.target
 EOF'
 
 # Load systemd script and make sure it's working properly
-sudo systemctl --system daemon-reload
-sudo systemctl enable home-assistant@homeassistant
-sudo systemctl start home-assistant@homeassistant
-sudo systemctl status home-assistant@homeassistant -l
+systemctl --system daemon-reload
+systemctl enable home-assistant@homeassistant
+systemctl start home-assistant@homeassistant
+systemctl status home-assistant@homeassistant -l
 
 # Setup ssh
 ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
@@ -70,19 +70,19 @@ rm -rf /home/hass/.homeassistant/extraconfig/unix_scripts/bash_profile
 ln /root/.bash_profile /home/hass/.homeassistant/extraconfig/unix_scripts/bash_profile
 
 # pm2 is used to ensure nodjs-scripts are always running
-sudo npm install pm2 -g # install
-sudo pm2 startup # enable autostart on reboot
+npm install pm2 -g # install
+pm2 startup # enable autostart on reboot
 
 # Install Sonos control
 cd /opt
-sudo git clone https://github.com/jishi/node-sonos-http-api
+git clone https://github.com/jishi/node-sonos-http-api
 cd node-sonos-http-api/
-sudo npm install --production
-sudo pm2 start server.js
-sudo pm2 save
+npm install --production
+pm2 start server.js
+pm2 save
 
 # Setup cron
-sudo crontab -e
+crontab -e
 * 3 * * * cd /home/hass/.homeassistant/extraconfig/python_code && sudo /usr/bin/python sonos_playlist.py > /tmp/listener.log 2>&1
 * * * * * cd /home/hass/.homeassistant/extraconfig/webcam && sudo /usr/bin/avconv -i rtsp://192.168.0.59:554/onvif1 -ss 0:0:0 -frames 1 no1.jpg
 2 * * * * cd /home/hass/.homeassistant/extraconfig/unix_scripts && sudo ./check_webcamfile.sh
