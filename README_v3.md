@@ -43,7 +43,7 @@ ExecStart=/srv/homeassistant/homeassistant_venv/bin/hass -c "/home/hass/.homeass
 WantedBy=multi-user.target
 EOF'
 
-
+# Load systemd script and make sure it's working properly
 sudo systemctl --system daemon-reload
 sudo systemctl enable home-assistant@homeassistant
 sudo systemctl start home-assistant@homeassistant
