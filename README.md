@@ -133,7 +133,7 @@ Experimental
 DietPi setup:
 Enable: Wi-fi
 Enable: Bluetooth
-Install: Node.js, Build-essentials, Git client
+Install: Node.js, Build-essentials, Git client, ssh-client
 
 # Install of home assistant and zwave is based on this work https://deviantengineer.com/2016/09/hass-dietpi/
 # Difference is that I am using default hass AIO directory for compatability with some of my old config-files
@@ -210,5 +210,11 @@ ln -s /opt/python-openzwave/openzwave/config   # Create symlink for openzwave co
 systemctl enable hass.service   # Enable HASS to run at system start
 rm -rf /opt/libmicrohttpd*   # Cleanup unnecessary libmicrohttpd files
 systemctl reboot   # Reboot server
+
+# SSH setup
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_rsa
+
 
 ```
