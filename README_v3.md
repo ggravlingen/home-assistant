@@ -11,6 +11,7 @@ Install: Node.js, Build-essentials, Git client, ssh-client
 
 apt-get update && apt-get -y upgrade   # Make sure we're fully upgraded
 apt-get -y install build-essential checkinstall cython3 git htop libgcrypt11-dev libgnutls28-dev libudev-dev libyaml-dev python3-dev python3-pip python3-setuptools python3-sphinx vim python3-venv
+apt-get -y install nmap
 
 sudo useradd -rm homeassistant
 
@@ -123,10 +124,21 @@ sudo chown mosquitto: mosquitto.conf
 echo 'SUBSYSTEM=="tty", ATTRS{idVendor}=="0658", ATTRS{idProduct}=="0200", SYMLINK+="zwave"' > /etc/udev/rules.d/99-usb-serial.rules
 apt-get install cython3 libudev-dev python3-sphinx python3-setuptools git
 
+su -s /bin/bash homeassistant 
+d /srv/homeassistant
+source /srv/homeassistant/homeassistant_venv/bin/activate
 
+# Must be run in venv
+pip3 install --upgrade cython==0.24.1
 
+cd /srv/homeassistant/homeassistant_venv
+git clone https://github.com/OpenZWave/python-openzwave.git
+cd python-openzwave
+git checkout python3
 
-
+# must be run in venv
+PYTHON_EXEC=$(which python3) make build
+PYTHON_EXEC=$(which python3) make install
 
 
 
