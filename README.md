@@ -172,4 +172,11 @@ systemctl start hass.service && sleep 5 &&  systemctl stop hass.service
 
 # Create a link to /dev/zwave for the zwave-controller
 echo 'SUBSYSTEM=="tty", ATTRS{idVendor}=="0658", ATTRS{idProduct}=="0200", SYMLINK+="zwave"' > /etc/udev/rules.d/99-usb-serial.rules
+
+# Install python zwave
+cd /opt && git clone https://github.com/OpenZWave/python-openzwave.git   # Grab python-openzwave
+cd /opt/python-openzwave && git checkout python3   # Checkout python3 branch
+PYTHON_EXEC=$(which python3) make build   # Compile python-openzwave
+PYTHON_EXEC=$(which python3) make install   # Install python-openzwave
+
 ```
