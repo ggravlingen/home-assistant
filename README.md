@@ -179,4 +179,36 @@ cd /opt/python-openzwave && git checkout python3   # Checkout python3 branch
 PYTHON_EXEC=$(which python3) make build   # Compile python-openzwave
 PYTHON_EXEC=$(which python3) make install   # Install python-openzwave
 
+# Install openzwave controller
+cd /opt && wget ftp://ftp.gnu.org/gnu/libmicrohttpd/libmicrohttpd-0.9.19.tar.gz   # Grab libmicrohttpd (dependency for OZWCP)
+tar xf libmicrohttpd-0.9.19.tar.gz   # Extract libmicrohttpd
+mv libmicrohttpd-0.9.19 libmicrohttpd && cd libmicrohttpd   # Rename package
+wget -O config.sub 'http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.sub;hb=HEAD'   # Grab updated config.sub file
+wget -O config.guess 'http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess;hb=HEAD'   # Grab updated config.guess file
+./configure && make   # Complie libmicrohttpd
+make install   # Install libmicrohttpd
+cd /opt && git clone https://github.com/OpenZWave/open-zwave-control-panel.git   # Grab open zwave control panel (OZWCP)
+cd /opt/open-zwave-control-panel && vim Makefile   # Edit Makefile
+# Edit lines 24-25 to be
+---
+OPENZWAVE := ../python-openzwave/openzwave  
+LIBMICROHTTPD := /usr/local/lib/libmicrohttpd.a
+---
+
+# Uncomment line 33, and edit to be
+---
+GNUTLS := -lgnutls -lgcrypt
+---
+
+# Uncomment lines 37-38, and Comment out lines 44-45
+make   # Compile OZWCP
+ln -s /opt/python-openzwave/openzwave/config   # Create symlink for openzwave configs
+./ozwcp -p 8888   # Start ozwcp as a test (note, OZWCP and HASS should never both be running at the same time -- stop HASS before starting OZWCP, and kill OZWCP before starting HASS)
+
+  config_path: /usr/local/lib/python3.4/dist-packages/libopenzwave-0.3.1-py3.4-linux-aarch64.egg/config
+
+systemctl enable hass.service   # Enable HASS to run at system start
+rm -rf /opt/libmicrohttpd*   # Cleanup unnecessary libmicrohttpd files
+systemctl reboot   # Reboot server
+
 ```
