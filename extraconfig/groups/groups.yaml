@@ -16,7 +16,16 @@ lights:
     - switch.laslampa
     - switch.sovrum
     - switch.koksbank
+#    - light.sovrumstak
+
+taklampor:
+  name: "Taklampor"
+  entities:
     - light.sovrumstak
+    - light.vardagsrumstak_1
+    - light.vardagsrumstak_2
+    - light.vardagsrumstak_3
+
 
 switch_other:
   name: "Ovrigt"

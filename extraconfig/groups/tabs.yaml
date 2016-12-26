@@ -8,6 +8,7 @@ default_view:
   - sensor.forecastio_hourly_summary
 #  - group.user_tracking
   - group.lights
+  - group.taklampor
   - group.switch_other
   - group.systemstates
 

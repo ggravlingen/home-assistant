@@ -61,14 +61,43 @@ systemctl stop home-assistant.service@homeassistant
 
 # nb: .homeassistant-folder must be empty
 cd /home/homeassistant/.homeassistant
-mv deps ./.. #temporarily move deps out of the way
-rm .*
+rm -rf * .*
 git clone git@github.com:ggravlingen/home-assistant.git .
 systemctl start home-assistant.service@homeassistant
 
-# Put things in .bash_profile
+# Manually put things in .bash_profile
 rm -rf /home/hass/.homeassistant/extraconfig/unix_scripts/bash_profile
 ln /root/.bash_profile /home/hass/.homeassistant/extraconfig/unix_scripts/bash_profile
+
+# pm2 is used to ensure nodjs-scripts are always running
+sudo npm install pm2 -g # install
+sudo pm2 startup # enable autostart on reboot
+
+# Install Sonos control
+cd /opt
+sudo git clone https://github.com/jishi/node-sonos-http-api
+cd node-sonos-http-api/
+sudo npm install --production
+sudo pm2 start server.js
+sudo pm2 save
+
+# Setup cron
+sudo crontab -e
+* 3 * * * cd /home/hass/.homeassistant/extraconfig/python_code && sudo /usr/bin/python sonos_playlist.py > /tmp/listener.log 2>&1
+* * * * * cd /home/hass/.homeassistant/extraconfig/webcam && sudo /usr/bin/avconv -i rtsp://192.168.0.59:554/onvif1 -ss 0:0:0 -frames 1 no1.jpg
+2 * * * * cd /home/hass/.homeassistant/extraconfig/unix_scripts && sudo ./check_webcamfile.sh
+
+
+# Misc
+sudo apt-get install locate -y
+sudo updatedb
+
+# Video monitor
+sudo apt-get install libav-tools -y
+
+# Misc
+echo -e "curl -H "Content-Type: application/json" -X POST -d '{"topic": "/location/patrik_iphone", "payload": "Home" }' http://localhost:8123/api/services/mqtt/publish?api_password=" > set_home.sh && sudo chmod +x set_home.sh
+
 
 
 # Install Openzwave
