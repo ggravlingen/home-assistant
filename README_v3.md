@@ -60,7 +60,7 @@ git config --global user.name "Your Name"
 systemctl stop home-assistant.service@homeassistant
 
 # nb: .homeassistant-folder must be empty
-cd /home/hass/.homeassistant
+cd /home/homeassistant/.homeassistant
 mv deps ./.. #temporarily move deps out of the way
 rm .*
 git clone git@github.com:ggravlingen/home-assistant.git .
