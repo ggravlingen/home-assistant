@@ -10,8 +10,11 @@ Install: Node.js, Build-essentials, Git client, ssh-client
 
 
 apt-get update && apt-get -y upgrade   # Make sure we're fully upgraded
-apt-get -y install build-essential checkinstall cython3 git htop libgcrypt11-dev libgnutls28-dev libudev-dev libyaml-dev python3-dev python3-pip python3-setuptools python3-sphinx vim python3-venv
-apt-get -y install nmap
+apt-get -y install build-essential checkinstall cython3 git htop libgcrypt11-dev libgnutls28-dev libudev-dev libyaml-dev python3-dev python3-pip python3-setuptools python3-sphinx vim python3-venv nmap
+
+apt-get install --upgrade pi-bluetooth
+apt-get install --upgrade bluez
+apt-get install --upgrade bluez-firmware
 
 sudo useradd -rm homeassistant
 
@@ -125,7 +128,7 @@ echo 'SUBSYSTEM=="tty", ATTRS{idVendor}=="0658", ATTRS{idProduct}=="0200", SYMLI
 apt-get install cython3 libudev-dev python3-sphinx python3-setuptools git
 
 su -s /bin/bash homeassistant 
-d /srv/homeassistant
+cd /srv/homeassistant
 source /srv/homeassistant/homeassistant_venv/bin/activate
 
 # Must be run in venv
@@ -139,6 +142,34 @@ git checkout python3
 # must be run in venv
 PYTHON_EXEC=$(which python3) make build
 PYTHON_EXEC=$(which python3) make install
+
+wget ftp://ftp.gnu.org/gnu/libmicrohttpd/libmicrohttpd-0.9.19.tar.gz
+tar xf libmicrohttpd-0.9.19.tar.gz   # Extract libmicrohttpd
+mv libmicrohttpd-0.9.19 libmicrohttpd && cd libmicrohttpd   # Rename package
+
+wget -O config.sub 'http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.sub;hb=HEAD'   # Grab updated config.sub file
+wget -O config.guess 'http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess;hb=HEAD'   # Grab updated config.guess file
+./configure && make   # Complie libmicrohttpd
+make install   # Install libmicrohttpd
+
+git clone https://github.com/OpenZWave/open-zwave-control-panel.git
+cd /opt/open-zwave-control-panel && nano Makefile   # Edit Makefile
+
+# Edit lines 24-25 to be
+---
+OPENZWAVE := ../python-openzwave/openzwave  
+LIBMICROHTTPD := /usr/local/lib/libmicrohttpd.a
+---
+
+# Uncomment line 33, and edit to be
+---
+GNUTLS := -lgnutls -lgcrypt
+---
+
+# Uncomment lines 37-38, and Comment out lines 44-45
+make   # Compile OZWCP
+ln -s /srv/homeassistant/homeassistant_venv/src/python-openzwave/openzwave/config/   # Create symlink for openzwave configs
+./ozwcp -p 8888   # Start ozwcp as a test (note, OZWCP and HASS should never both be running at the same time -- stop HASS before starting OZWCP, and kill OZWCP before starting HASS)
 
 
 

@@ -13,7 +13,7 @@ lights:
   name: "Lampor"
   entities:
     - switch.garderob
-    - switch.laslampa
+    - light.laslampa
     - switch.sovrum
     - switch.koksbank
 #    - light.sovrumstak
