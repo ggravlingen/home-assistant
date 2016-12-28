@@ -13,6 +13,7 @@ left_home:
         data:
           entity_id:
           - group.lights
+          - group.taklampor
 
       - alias: Sonos off
         service: shell_command.sonos_control_pause

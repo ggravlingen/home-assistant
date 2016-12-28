@@ -1,14 +1,6 @@
 wake_up:
     alias: Wake Up
     sequence:
-      # This is Home Assistant Script Syntax
-      - event: LOGBOOK_ENTRY
-        event_data:
-          name: Patrik
-          message: is waking up
-          entity_id: device_tracker.thelurofpv6
-          #domain: light
-
       - alias: Start low
         service: light.turn_on
         data:
@@ -22,15 +14,12 @@ wake_up:
           brightness: 255
           transition: 900
 
-      - alias: Lights on
-        service: homeassistant.turn_on
+      - alias: Living room gradually on
+        service: light.turn_on
         data:
-          entity_id:
-            - switch.garderob
-            - switch.laslampa
-#            - switch.sovrum
-            - switch.koksbank
-#          entity_id: group.lights
+          entity_id: light.vardagsrumstak_1, light.vardagsrumstak_2, light.vardagsrumstak_3
+          brightness: 174
+          transition: 900
 
       - alias: Set volume
         service: shell_command.sonos_volume_low
@@ -38,12 +27,23 @@ wake_up:
       - alias: Start radio
         service: shell_command.sonos_favorite_bbcradio4
 
-      - delay:
-          minutes: 15
+      - alias: Start lights
+        service: light.turn_on
+        data:
+          entity_id: light.laslampa
+          brightness: 100
 
-      - alias: Red light on
+      - alias: Start other
         service: homeassistant.turn_on
         data:
           entity_id:
-            - switch.sovrum
+            - switch.garderob
+            - switch.koksbank
+
+      - delay:
+          minutes: 15
+
+      - alias: Bed lights on
+        service: homeassistant.turn_on
+        entity_id: light.sovrum
 

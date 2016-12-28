@@ -1,39 +1,27 @@
 arrive_home:
     alias: Arrive home
     sequence:
-      # This is Home Assistant Script Syntax
-      - event: LOGBOOK_ENTRY
-        event_data:
-          name: Patrik
-          message: just arrived home
-          entity_id: device_tracker.thelurofpv6
-          #domain: light
-
       - alias: Lights on
         service: homeassistant.turn_on
         data:
           entity_id:
           - switch.garderob
           - switch.koksbank
-          - switch.laslampa
 
-      - alias: Enable sovrum
+      - alias: Enable taklampor
         service: light.turn_on
         data:
-          entity_id: light.sovrumstak
+          entity_id: group.taklampor
           brightness: 40
 
-#      - alias: Camera off
-#        service: homeassistant.turn_off
-#        data:
-#          entity_id:
-#          - switch.webcam
+      - alias: Set volume
+        service: shell_command.sonos_volume_low
 
       - alias: Enable shuffle
         service: shell_command.sonos_control_shuffle_on
 
-      - alias: Set volume
-        service: shell_command.sonos_volume_low
+      - delay:
+          minutes: 1
 
       - alias: Start playlist
         service: shell_command.sonos_playlist_homefromwork
