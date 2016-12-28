@@ -5,8 +5,10 @@ Install: Node.js, Build-essentials, Git client, ssh-client
 
 ```
 
-# Install of home assistant and zwave is based on this
+# Install of home assistant and zwave is based on:
 # https://deviantengineer.com/2016/09/hass-dietpi/
+# Home assistant site
+# Guesswork
 
 
 apt-get update && apt-get -y upgrade   # Make sure we're fully upgraded
@@ -60,7 +62,6 @@ systemctl status home-assistant@homeassistant -l
   eval "$(ssh-agent -s)"
   ssh-add ~/.ssh/id_rsa
 
-# Optional: only if you're using github
   # Git setup and clone settings
   git config --global user.email "you@example.com"
   git config --global user.name "Your Name"
@@ -77,26 +78,29 @@ systemctl status home-assistant@homeassistant -l
   rm -rf /home/hass/.homeassistant/extraconfig/unix_scripts/bash_profile
   ln /root/.bash_profile /home/hass/.homeassistant/extraconfig/unix_scripts/bash_profile
 
-# pm2 is used to ensure nodjs-scripts are always running
-npm install pm2 -g # install
-pm2 startup # enable autostart on reboot
+# Optional: recommended if you use nodejs
+  # pm2 is used to ensure nodjs-scripts are always running
+  npm install pm2 -g # install
+  pm2 startup # enable autostart on reboot
 
-# Install Sonos controller
-cd /opt
-git clone https://github.com/jishi/node-sonos-http-api
-cd node-sonos-http-api/
-npm install --production
-pm2 start server.js
-pm2 save
+# Optional: a nodejs-based Sonos controller
+  # Install Sonos controller
+  cd /opt
+  git clone https://github.com/jishi/node-sonos-http-api
+  cd node-sonos-http-api/
+  npm install --production
+  pm2 start server.js
+  pm2 save
 
-# Setup cron
-crontab -e
-* 3 * * * cd /home/homeassistant/.homeassistant/extraconfig/python_code && sudo /usr/bin/python sonos_playlist.py > /tmp/listener.log 2>&1
-* * * * * cd /home/homeassistant/.homeassistant/extraconfig/webcam && sudo /usr/bin/avconv -i rtsp://192.168.0.59:554/onvif1 -ss 0:0:0 -frames 1 no1.$
-2 * * * * cd /home/homeassistant/.homeassistant/extraconfig/unix_scripts && sudo ./check_webcamfile.sh
+# Optional: my settings for cron
+  # Setup cron
+  crontab -e
+  * 3 * * * cd /home/homeassistant/.homeassistant/extraconfig/python_code && sudo /usr/bin/python sonos_playlist.py > /tmp/listener.log 2>&1
+  * * * * * cd /home/homeassistant/.homeassistant/extraconfig/webcam && sudo /usr/bin/avconv -i rtsp://192.168.0.59:554/onvif1 -ss 0:0:0 -frames 1 no1.$
+  2 * * * * cd /home/homeassistant/.homeassistant/extraconfig/unix_scripts && sudo ./check_webcamfile.sh
 
-# Misc
-# Not required, this is for my setup only
+# Optional
+  # Misc
   # My preferred search tool
   sudo apt-get install locate -y
   sudo updatedb
@@ -104,7 +108,7 @@ crontab -e
   # Video monitor
   sudo apt-get install libav-tools -y
 
-  # Misc
+  # Misc 2
   echo -e "curl -H "Content-Type: application/json" -X POST -d '{"topic": "/location/patrik_iphone", "payload": "Home" }' http://localhost:8123/api/services/mqtt/publish?api_password=" > set_home.sh && sudo chmod +x set_home.sh
 
 # MQTT
@@ -143,6 +147,9 @@ make install   # Install libmicrohttpd
 # Make a symlink to /dev/zwave instead of trying to figure out what TTY it is on
 echo 'SUBSYSTEM=="tty", ATTRS{idVendor}=="0658", ATTRS{idProduct}=="0200", SYMLINK+="zwave"' > /etc/udev/rules.d/99-usb-serial.rules
 
+# Make sure homeassistant has write access to /dev/zwave
+usermod -G root -a homeassistant
+
 # Dependencies
 apt-get install cython3 libudev-dev python3-sphinx python3-setuptools git
 
@@ -152,23 +159,23 @@ cd /srv/homeassistant
 source /srv/homeassistant/homeassistant_venv/bin/activate
 
 # Everything below must be run in venv
-  pip3 install --upgrade cython==0.24.1
+pip3 install --upgrade cython==0.24.1
 
-  cd /srv/homeassistant/homeassistant_venv
-  mkdir src
-  cd src
-  git clone https://github.com/OpenZWave/python-openzwave.git
-  cd python-openzwave
-  git checkout python3
+cd /srv/homeassistant/homeassistant_venv
+mkdir src
+cd src
+git clone https://github.com/OpenZWave/python-openzwave.git
+cd python-openzwave
+git checkout python3
 
-  PYTHON_EXEC=$(which python3) make build
-  PYTHON_EXEC=$(which python3) make install
+PYTHON_EXEC=$(which python3) make build
+PYTHON_EXEC=$(which python3) make install
 
-  cd /srv/homeassistant/homeassistant_venv/src
-  git clone https://github.com/OpenZWave/open-zwave-control-panel.git
-  cd /opt/open-zwave-control-panel && nano Makefile   # Edit Makefile
+cd /srv/homeassistant/homeassistant_venv/src
+git clone https://github.com/OpenZWave/open-zwave-control-panel.git
+cd /opt/open-zwave-control-panel && nano Makefile   # Edit Makefile
 
-  # Edit lines 24-25 to be
+# Edit lines 24-25 to be
 ---
 OPENZWAVE := ../python-openzwave/openzwave  
 LIBMICROHTTPD := /usr/local/lib/libmicrohttpd.a
@@ -182,6 +189,10 @@ GNUTLS := -lgnutls -lgcrypt
 # Uncomment lines 37-38, and Comment out lines 44-45
 make   # Compile OZWCP
 ln -s /srv/homeassistant/homeassistant_venv/src/python-openzwave/openzwave/config/   # Create symlink for openzwave configs
+#Maybe
+#ln -s /srv/homeassistant/homeassistant_venv/lib/python3.4/site-packages/libopenzwave-0.3.1-py3.4-linux-armv7l.egg/config
+
+# If you want to test openzwave control panel make sure home assistant is off and run the following from bash
 ./ozwcp -p 8888
 
 
