@@ -31,7 +31,7 @@ wake_up:
         service: light.turn_on
         data:
           entity_id: light.laslampa
-          brightness: 100
+          brightness: 200
 
       - alias: Start other
         service: homeassistant.turn_on
@@ -45,5 +45,6 @@ wake_up:
 
       - alias: Bed lights on
         service: homeassistant.turn_on
-        entity_id: light.sovrum
+        data:
+          entity_id: switch.sovrum
 
