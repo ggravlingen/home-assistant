@@ -5,14 +5,22 @@ trigger:
     #from: 'Away'
     to: 'Home'
 condition:
-  - condition: time
-    after: '15:00:00'
-    before: '23:00:00'
-    weekday:
-      - mon
-      - tue
-      - wed
-      - thu
-      - fri
+  condition: and
+  conditions:
+    - condition: time
+      after: '15:00:00'
+#      after: '9:00:00'
+      before: '23:00:00'
+      weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+#        - sat
+#        - sun
+    - condition: state
+      entity_id: input_select.arm_debug
+      state: Av
 action:
   - service: script.arrive_home
