@@ -14,8 +14,13 @@ condition:
         - wed
         - thu
         - fri
+#        - sat
+#        - sun
     - condition: state
       entity_id: device_tracker.patrik_iphone
       state: Home
+    - condition: state
+      entity_id: input_select.arm_wakeup_alarm
+      state: På
 action:
   - service: script.wake_up

@@ -52,4 +52,5 @@ system:
   entities:
   - group.system_sensors
   - switch.webcam
+  - group.arm_system
 

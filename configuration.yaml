@@ -78,6 +78,7 @@ notify: !include extraconfig/standalonefiles/notify.yaml
 #ifttt: !include extraconfig/standalonefiles/ifttt.yaml
 light: !include extraconfig/standalonefiles/hue.yaml
 google: !include extraconfig/standalonefiles/googlecalendar.yaml
+tts: !include extraconfig/standalonefiles/tts.yaml
 
 
 #mqtt:

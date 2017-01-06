@@ -1,0 +1,14 @@
+arm_wakeup_alarm:
+  name: Väckarklocka
+  options:
+   - 'På'
+   - 'Av'
+
+arm_debug:
+  name: Debug
+  initial: 'Av'
+  options:
+   - 'På'
+   - 'Av'
+
+

@@ -51,6 +51,13 @@ system_sensors:
   - sensor.since_last_boot
   - sensor.system_wifi_strength
 
+### MISC
+arm_system:
+  name: "Aktivera system"
+  entities:
+  - input_select.arm_wakeup_alarm
+  - input_select.arm_debug
+
 #Internet:
 #  - sensor.speedtest_download
 #  - sensor.speedtest_upload
