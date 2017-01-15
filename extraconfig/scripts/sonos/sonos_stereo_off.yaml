@@ -7,5 +7,3 @@ sonos_stereo_off:
           entity_id:
 #          - switch.stereo_switch_6_0
            - switch.wenzhou_tkb_control_system_tz68_onoff_switch_socket_switch_6_0
-
-

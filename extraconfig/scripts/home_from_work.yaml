@@ -12,7 +12,10 @@ arrive_home:
         service: light.turn_on
         data:
 #          entity_id: group.taklampor
-          entity_id: light.vardagsrumstak_1, light.vardagsrumstak_2, light.vardagsrumstak_3
+          entity_id:
+            - light.vardagsrumstak_1
+            - light.vardagsrumstak_2
+            - light.vardagsrumstak_3
           brightness: 100
 
       - alias: Set volume
