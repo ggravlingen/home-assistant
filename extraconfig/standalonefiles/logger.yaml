@@ -1,7 +1,7 @@
 default: critical
 #default: debug
-#logs:
-#  homeassistant.components.zwave: debug
+logs:
+  homeassistant.components.zwave: debug
 #  homeassistant.components.miflora: debug
   #homeassistant.components.camera: debug
 
