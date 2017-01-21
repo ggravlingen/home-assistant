@@ -80,7 +80,7 @@ mysonos:
 systemstates:
   - sensor.sonos_controller_online
   - sensor.sonos_kitchen_state
-  - sensor.camera_controller_online
+#  - sensor.camera_controller_online
 
 
 ### WEATHER DATA

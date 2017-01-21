@@ -3,13 +3,10 @@ default_view:
   entities:
   - device_tracker.patrik_iphone
   - updater.updater
-#  - sun.sun
   - sensor.forecastio_apparent_temperature
   - sensor.forecastio_hourly_summary
-#  - group.user_tracking
   - group.lights
   - group.taklampor
-  - group.switch_other
   - group.systemstates
 
 flowers:
@@ -25,7 +22,6 @@ weathercenter:
   view: yes
   entities:
   - group.weatherbasics
-  #- sensor.forecastio_humidity
 
 controlmusic:
   name: "Musik"
@@ -33,6 +29,7 @@ controlmusic:
   entities:
   - media_player.kitchen
   - group.mysonos
+  - group.switch_other
 
 monitor:
   name: "Monitor"
