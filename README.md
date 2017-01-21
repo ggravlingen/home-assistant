@@ -43,9 +43,6 @@ sudo chown -R hass.hass *
 sudo rm -rf /home/hass/.homeassistant/extraconfig/unix_scripts/bash_profile
 sudo ln /home/pi/.bash_profile /home/hass/.homeassistant/extraconfig/unix_scripts/bash_profile
 
-sudo rm /home/hass/.homeassistant/extraconfig/unix_scripts/gitignore
-sudo ln /home/hass/.homeassistant/.gitignore /home/hass/.homeassistant/extraconfig/unix_scripts/gitignore
-
 # Enable google cal (check states for info)
 
 # Running device detection through IFTTT on iOS. The JSON below is what I'm sending through Maker:
@@ -71,8 +68,6 @@ sudo pm2 save
 # Setup cron
 sudo crontab -e
 * 3 * * * cd /home/hass/.homeassistant/extraconfig/python_code && sudo /usr/bin/python sonos_playlist.py > /tmp/listener.log 2>&1
-* * * * * cd /home/hass/.homeassistant/extraconfig/webcam && sudo /usr/bin/avconv -i rtsp://192.168.0.59:554/onvif1 -ss 0:0:0 -frames 1 no1.jpg
-2 * * * * cd /home/hass/.homeassistant/extraconfig/unix_scripts && sudo ./check_webcamfile.sh
 
 
 # Misc

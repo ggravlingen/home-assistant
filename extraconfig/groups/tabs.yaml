@@ -53,4 +53,5 @@ system:
   - group.system_sensors
   - switch.webcam
   - group.arm_system
+  - group.wan_stats
 

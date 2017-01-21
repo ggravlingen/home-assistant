@@ -1,4 +1,4 @@
-alias: "Shut down stereo when sonos is not playing"
+alias: "Shut down stereo when sonos is not playing a"
 trigger:
   platform: state
   entity_id: media_player.kitchen

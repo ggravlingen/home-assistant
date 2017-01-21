@@ -40,11 +40,9 @@ logbook:
 sun:
 
 logger: !include extraconfig/standalonefiles/logger.yaml
-#  default: critical
-#  logs:
-#    homeassistant.components.zwave: debug
 
-
+ffmpeg:
+  ffmpeg_bin: /usr/bin/avconv
 
 # Merge named
 automation: !include_dir_list extraconfig/automation
@@ -79,12 +77,3 @@ notify: !include extraconfig/standalonefiles/notify.yaml
 light: !include extraconfig/standalonefiles/hue.yaml
 google: !include extraconfig/standalonefiles/googlecalendar.yaml
 tts: !include extraconfig/standalonefiles/tts.yaml
-
-
-#mqtt:
-#  broker: 127.0.0.1
-#  port: 1883
-##  client_id: home-assistant-1
-#  username: pi
-#  password: raspberry
-

@@ -58,9 +58,10 @@ arm_system:
   - input_select.arm_wakeup_alarm
   - input_select.arm_debug
 
-#Internet:
-#  - sensor.speedtest_download
-#  - sensor.speedtest_upload
+wan_stats:
+  - sensor.speedtest_download
+  - sensor.speedtest_upload
+  - sensor.speedtest_ping
 
 
 ### USER TRACKING ###

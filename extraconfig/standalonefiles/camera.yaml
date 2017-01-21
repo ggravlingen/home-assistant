@@ -1,3 +1,5 @@
-- platform: local_file
+- platform: ffmpeg
+  ffmpeg_bin: /usr/bin/avconv
   name: Vardagsrum
-  file_path: /home/homeassistant/.homeassistant/extraconfig/webcam/no1.jpg
+  input: -i rtsp://192.168.0.59:554/onvif1
+  extra_arguments: -ss 0:0:0 -frames 1

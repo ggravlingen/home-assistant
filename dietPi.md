@@ -96,8 +96,6 @@ systemctl status home-assistant@homeassistant -l
   # Setup cron
   crontab -e
   * 3 * * * cd /home/homeassistant/.homeassistant/extraconfig/python_code && sudo /usr/bin/python sonos_playlist.py > /tmp/listener.log 2>&1
-  * * * * * cd /home/homeassistant/.homeassistant/extraconfig/webcam && sudo /usr/bin/avconv -i rtsp://192.168.0.59:554/onvif1 -ss 0:0:0 -frames 1 no1.$
-  2 * * * * cd /home/homeassistant/.homeassistant/extraconfig/unix_scripts && sudo ./check_webcamfile.sh
 
 # Optional
   # Misc
