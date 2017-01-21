@@ -1,17 +1,20 @@
-group.flowers:
+group.miscii:
   order: 2
 
-group.controlmusic:
+group.flowers:
   order: 3
 
-group.weathercenter:
+group.controlmusic:
   order: 4
 
-group.mediaplayers:
+group.weathercenter:
   order: 5
 
-group.monitor:
+group.mediaplayers:
   order: 6
 
-group.system:
+group.monitor:
   order: 7
+
+group.system:
+  order: 8
