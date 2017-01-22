@@ -76,7 +76,7 @@ systemctl status home-assistant@homeassistant -l
   # Not needed, I'm using this to backup my bash_profile
   # Manually put things in .bash_profile
   rm -rf /home/hass/.homeassistant/extraconfig/unix_scripts/bash_profile
-  ln /root/.bash_profile /home/hass/.homeassistant/extraconfig/unix_scripts/bash_profile
+  ln /root/.bash_profile /home/homeassistant/.homeassistant/extraconfig/unix_scripts/bash_profile
 
 # Optional: recommended if you use nodejs
   # pm2 is used to ensure nodjs-scripts are always running
@@ -95,7 +95,9 @@ systemctl status home-assistant@homeassistant -l
 # Optional: my settings for cron
   # Setup cron
   crontab -e
-  * 3 * * * cd /home/homeassistant/.homeassistant/extraconfig/python_code && sudo /usr/bin/python sonos_playlist.py > /tmp/listener.log 2>&1
+  * 3 * * * cd /home/homeassistant/.homeassistant/extraconfig/python_code && sudo /usr/bin/python3 sonos_playlist.py > /tmp/listener.log 2>&1
+  0 0 * * * cd /home/homeassistant/.homeassistant/extraconfig/python_code && sudo /usr/bin/python3 dropbox.py > /tmp/backup.log 2>&1
+
 
 # Optional
   # Misc
@@ -192,6 +194,24 @@ ln -s /srv/homeassistant/homeassistant_venv/src/python-openzwave/openzwave/confi
 
 # If you want to test openzwave control panel make sure home assistant is off and run the following from bash
 ./ozwcp -p 8888
+
+
+# For backup purposes
+# https://www.raspberrypi.org/forums/viewtopic.php?f=63&t=164166
+ln /home/homeassistant/.homeassistant/google_calendars.yaml /home/homeassistant/haconf/google_calendars.yaml
+ln /home/homeassistant/.homeassistant/.google.token /home/homeassistant/haconf/.google.token
+ln /home/homeassistant/.homeassistant/ha_conf.rb /home/homeassistant/haconf/ha_conf.rb
+ln /home/homeassistant/.homeassistant/known_devices.yaml /home/homeassistant/haconf/known_devices.yaml
+ln /home/homeassistant/.homeassistant/phue.conf /home/homeassistant/haconf/phue.conf
+ln /home/homeassistant/.homeassistant/secrets.yaml /home/homeassistant/haconf/secrets.yaml
+ln /home/homeassistant/.homeassistant/zwcfg_0xcf3eab81.xml /home/homeassistant/haconf/zwcfg_0xcf3eab81.xml
+ln /home/homeassistant/.homeassistant/zwscene.xml /home/homeassistant/haconf/zwscene.xml
+
+
+
+
+
+
 
 
 

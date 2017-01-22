@@ -23,9 +23,9 @@ http:
 # Checks for available updates
 updater:
 
-#recorder:
+recorder:
   # Delete events and states older than 2 weeks
-#  purge_days: 14
+  purge_days: 14
 
 # Discover some devices automatically
 discovery:

@@ -9,6 +9,12 @@ default_view:
   - group.taklampor
   - group.systemstates
 
+miscii:
+  name: "Automatisering"
+  view: yes
+  entities:
+  - group.standardscript
+
 flowers:
   name: "Växter"
   view: yes

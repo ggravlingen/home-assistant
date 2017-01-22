@@ -1,5 +1,5 @@
 wake_up:
-    alias: Wake Up
+    alias: "Dags att vakna"
     sequence:
       - alias: Start low
         service: light.turn_on

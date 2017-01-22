@@ -26,3 +26,6 @@ group.vaxt2:
 
 group.vaxt3:
   friendly_name: "Basilika"
+
+group.wan_stats:
+  friendly_name: "WAN"
