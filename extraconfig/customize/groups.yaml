@@ -29,3 +29,6 @@ group.vaxt3:
 
 group.wan_stats:
   friendly_name: "WAN"
+
+group.standardscript:
+  friendly_name: " "

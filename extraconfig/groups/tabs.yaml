@@ -13,7 +13,10 @@ miscii:
   name: "Automatisering"
   view: yes
   entities:
-  - group.standardscript
+#  - group.standardscript
+  - script.wake_up
+  - script.sleep_time
+
 
 flowers:
   name: "Växter"

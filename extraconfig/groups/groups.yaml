@@ -118,3 +118,5 @@ vaxt3:
 
 standardscript:
   - script.wake_up
+  - script.sleep_time
+

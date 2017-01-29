@@ -2,7 +2,7 @@ alias: "Rise and shine"
 trigger:
   platform: time
   hours: 6
-  minutes: 15
+  minutes: 0
   seconds: 0
 condition:
   condition: and
