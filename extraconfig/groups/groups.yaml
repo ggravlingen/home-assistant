@@ -116,7 +116,3 @@ vaxt3:
   - sensor.flower_3_temperature
   - sensor.flower_3_battery    
 
-standardscript:
-  - script.wake_up
-  - script.sleep_time
-

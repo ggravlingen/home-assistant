@@ -41,6 +41,7 @@ sun:
 
 logger: !include extraconfig/standalonefiles/logger.yaml
 
+
 ffmpeg:
   ffmpeg_bin: /usr/bin/avconv
 
@@ -77,3 +78,7 @@ notify: !include extraconfig/standalonefiles/notify.yaml
 light: !include extraconfig/standalonefiles/hue.yaml
 google: !include extraconfig/standalonefiles/googlecalendar.yaml
 tts: !include extraconfig/standalonefiles/tts.yaml
+#keyboard_remote: !include extraconfig/standalonefiles/keyboard_remote.yaml
+
+
+

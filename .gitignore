@@ -14,6 +14,8 @@ deps
 
 *.txt
 
+.pylgtv
+
 home-assistant.db
 
 home-assistant_v2.db

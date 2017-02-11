@@ -13,9 +13,9 @@ miscii:
   name: "Automatisering"
   view: yes
   entities:
-#  - group.standardscript
   - script.wake_up
   - script.sleep_time
+  - script.arrive_home
 
 
 flowers:
