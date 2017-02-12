@@ -206,7 +206,7 @@ ln /home/homeassistant/.homeassistant/phue.conf /home/homeassistant/haconf/phue.
 ln /home/homeassistant/.homeassistant/secrets.yaml /home/homeassistant/haconf/secrets.yaml
 ln /home/homeassistant/.homeassistant/zwcfg_0xcf3eab81.xml /home/homeassistant/haconf/zwcfg_0xcf3eab81.xml
 ln /home/homeassistant/.homeassistant/zwscene.xml /home/homeassistant/haconf/zwscene.xml
-ln /home/homeassistant/.homeassistant/.pylgtv /home/homeassistant/haconf/.pylgtv
+ln /home/homeassistant/.homeassistant/webostv.conf /home/homeassistant/haconf/webostv.conf
 
 
 

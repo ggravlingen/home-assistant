@@ -3,10 +3,9 @@ media:
   name: "Media players"
   entities:
     - media_player.vardagsrum
-    - media_player.lg_webos_tv_remote
+    - media_player.living_room_tv
 #    - configurator.plex_media_server
 #    - configurator.lg_webos_tv
-
 
 ### ALL LIGHT SWITCHES
 lights:

@@ -8,13 +8,15 @@
 
 deps
 
+hapush.log
+
 *.xml
 
 *.mp3
 
 *.txt
 
-.pylgtv
+webostv.conf
 
 home-assistant.db
 
