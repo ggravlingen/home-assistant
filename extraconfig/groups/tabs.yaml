@@ -16,6 +16,7 @@ miscii:
   - script.wake_up
   - script.sleep_time
   - script.arrive_home
+  - script.left_home
 
 
 flowers:
