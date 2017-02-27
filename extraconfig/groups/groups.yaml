@@ -18,12 +18,24 @@ lights:
 #    - light.sovrumstak
 
 taklampor:
-  name: "Taklampor"
+  name: "Alla taklampor"
   entities:
     - light.sovrumstak
     - light.vardagsrumstak_1
     - light.vardagsrumstak_2
     - light.vardagsrumstak_3
+
+vardagsrumstak:
+  name: "Vardagsrumstak"
+  entities:
+    - light.vardagsrumstak_1
+    - light.vardagsrumstak_2
+    - light.vardagsrumstak_3
+
+sovrumstak:
+  name: "Sovrumstak"
+  entities:
+    - light.sovrumstak
 
 
 switch_other:

@@ -6,7 +6,8 @@ default_view:
   - sensor.forecastio_apparent_temperature
   - sensor.forecastio_hourly_summary
   - group.lights
-  - group.taklampor
+  - group.vardagsrumstak
+  - group.sovrumstak
   - group.systemstates
 
 miscii:
