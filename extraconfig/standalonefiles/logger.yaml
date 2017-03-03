@@ -1,9 +1,9 @@
 default: critical
 #default: debug
-#logs:
+logs:
 #  homeassistant.components.zwave: debug
 #  homeassistant.components.camera: debug
 #  homeassistant.components.keyboard-remote: debug
 #  homeassistant.components.ffmpeg: debug
-#  homeassistant.components.mqtt: debug
+  homeassistant.components.mqtt: debug
 

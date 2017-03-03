@@ -1,0 +1,4 @@
+media_player.kitchen:
+  friendly_name: "Sonos Vardagsrum"
+  homebridge_name: "Sonos Vardagsrum"
+

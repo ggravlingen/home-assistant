@@ -209,6 +209,21 @@ ln /home/homeassistant/.homeassistant/zwscene.xml /home/homeassistant/haconf/zws
 ln /home/homeassistant/.homeassistant/webostv.conf /home/homeassistant/haconf/webostv.conf
 
 
+# Homebridge
+  sudo apt-get install libavahi-compat-libdnssd-dev
+  npm install -g node-gyp
+  npm install -g --unsafe-perm homebridge hap-nodejs
+
+  cd /usr/local/lib/node_modules/homebridge/
+  sudo npm install --unsafe-perm bignum
+  cd /usr/local/lib/node_modules/hap-nodejs/node_modules/mdns
+  sudo node-gyp BUILDTYPE=Release rebuild
+
+  npm install -g homebridge-homeassistant
+
+  sudo npm upgrade -g homebridge-homeassistant
+
+  ln /root/.homebridge/config.json /home/homeassistant/haconf/homebridge.conf
 
 
 # Bluetooth remote
