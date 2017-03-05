@@ -49,3 +49,5 @@ google_calendars.yaml
 *.rb
 
 *.log
+
+hapush.log
