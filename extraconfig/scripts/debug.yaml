@@ -1,0 +1,24 @@
+debug_sethome:
+    alias: "Set home"
+    sequence:
+      - alias: Do thing
+        service: mqtt.publish
+        data:
+          topic: '/location/patrik_iphone'
+          payload: 'Home'
+          retain: 'true'
+
+
+debug_setaway:
+    alias: "Set away"
+    sequence:
+      - alias: Do thing
+        service: mqtt.publish
+        data:
+          topic: '/location/patrik_iphone'
+          payload: 'Away'
+          retain: 'true'
+
+
+
+

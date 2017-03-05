@@ -1,5 +1,17 @@
-### MEDIA PLAYERS
-media:
+### VARDAGSRUM
+vardagsrum_tak:
+  name: "Taklampa"
+  entities:
+    - light.vardagsrumstak_1
+    - light.vardagsrumstak_2
+    - light.vardagsrumstak_3
+
+vardagsrum_switchar:
+  name: "Switchar"
+  entities:
+    - light.laslampa
+
+vardagsrum_media:
   name: "Media players"
   entities:
     - media_player.vardagsrum
@@ -7,35 +19,56 @@ media:
 #    - configurator.plex_media_server
 #    - configurator.lg_webos_tv
 
-### ALL LIGHT SWITCHES
-lights:
-  name: "Lampor"
-  entities:
-    - switch.garderob
-    - light.laslampa
-    - switch.sovrum
-    - switch.koksbank
-#    - light.sovrumstak
+vaxt1:
+  - sensor.flower_1_light_intensity
+  - sensor.flower_1_moisture
+  - sensor.flower_1_conductivity
+  - sensor.flower_1_temperature
+  - sensor.flower_1_battery
 
-taklampor:
-  name: "Alla taklampor"
-  entities:
-    - light.sovrumstak
-    - light.vardagsrumstak_1
-    - light.vardagsrumstak_2
-    - light.vardagsrumstak_3
 
-vardagsrumstak:
-  name: "Vardagsrumstak"
-  entities:
-    - light.vardagsrumstak_1
-    - light.vardagsrumstak_2
-    - light.vardagsrumstak_3
 
-sovrumstak:
-  name: "Sovrumstak"
+### SOVRUM
+vaxt2:
+  - sensor.flower_2_light_intensity
+  - sensor.flower_2_moisture
+  - sensor.flower_2_conductivity
+  - sensor.flower_2_temperature
+  - sensor.flower_2_battery
+
+
+
+### KITCHEN
+
+
+### SYSTEM
+system_sensors:
+  name: "System"
   entities:
-    - light.sovrumstak
+  - sensor.cpu_use
+  - sensor.disk_use_home
+  - sensor.ram_free
+  - sensor.ram_use
+  - sensor.since_last_boot
+  - sensor.system_wifi_strength
+
+system_arm:
+  name: "Aktivera system"
+  entities:
+  - input_select.arm_wakeup_alarm
+  - input_select.arm_debug
+
+system_wan_stats:
+  - sensor.speedtest_download
+  - sensor.speedtest_upload
+  - sensor.speedtest_ping
+
+debug_sethomeaway:
+  - script.debug_sethome
+  - script.debug_setaway
+
+
+
 
 
 switch_other:
@@ -51,28 +84,6 @@ camera1:
   - camera.vardagsrum
 
 
-### SYSTEM MONITORING
-system_sensors:
-  name: "System"
-  entities:
-  - sensor.cpu_use
-  - sensor.disk_use_home
-  - sensor.ram_free
-  - sensor.ram_use
-  - sensor.since_last_boot
-  - sensor.system_wifi_strength
-
-### MISC
-arm_system:
-  name: "Aktivera system"
-  entities:
-  - input_select.arm_wakeup_alarm
-  - input_select.arm_debug
-
-wan_stats:
-  - sensor.speedtest_download
-  - sensor.speedtest_upload
-  - sensor.speedtest_ping
 
 
 ### USER TRACKING ###
@@ -106,24 +117,28 @@ weatherbasics:
 
 
 ### FLOWER MONITOR CONFIGURATION ###
-vaxt1:
-  - sensor.flower_1_light_intensity
-  - sensor.flower_1_moisture
-  - sensor.flower_1_conductivity
-  - sensor.flower_1_temperature
-  - sensor.flower_1_battery
-
-vaxt2:
-  - sensor.flower_2_light_intensity
-  - sensor.flower_2_moisture
-  - sensor.flower_2_conductivity
-  - sensor.flower_2_temperature
-  - sensor.flower_2_battery    
-
 vaxt3:
   - sensor.flower_3_light_intensity
   - sensor.flower_3_moisture
   - sensor.flower_3_conductivity
   - sensor.flower_3_temperature
   - sensor.flower_3_battery    
+
+
+### ALL LIGHT SWITCHES
+lights:
+  name: "Lampor"
+  entities:
+    - switch.garderob
+    - light.laslampa
+    - switch.sovrum
+    - switch.koksbank
+
+taklampor:
+  name: "Alla taklampor"
+  entities:
+    - light.sovrumstak
+    - light.vardagsrumstak_1
+    - light.vardagsrumstak_2
+    - light.vardagsrumstak_3
 

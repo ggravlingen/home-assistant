@@ -2,3 +2,6 @@ media_player.kitchen:
   friendly_name: "Sonos Vardagsrum"
   homebridge_name: "Sonos Vardagsrum"
 
+media_player.vardagsrum:
+  friendly_name: "Chromecast vardagsrum"
+  homebridge_name: "Chromecast vardagsrum"

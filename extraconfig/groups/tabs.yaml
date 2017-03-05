@@ -1,3 +1,4 @@
+
 default_view:
   view: yes
   entities:
@@ -5,54 +6,77 @@ default_view:
   - updater.updater
   - sensor.forecastio_apparent_temperature
   - sensor.forecastio_hourly_summary
-  - group.lights
-  - group.vardagsrumstak
-  - group.sovrumstak
+#  - group.lights
+#  - group.vardagsrumstak
+#  - group.sovrumstak
   - group.systemstates
 
-miscii:
-  name: "Automatisering"
+
+### VARDAGSRUM
+vardagsrum:
   view: yes
   entities:
-  - script.wake_up
-  - script.sleep_time
-  - script.arrive_home
-  - script.left_home
-
-
-flowers:
-  name: "Växter"
-  view: yes
-  entities:
+  - group.vardagsrum_tak
+  - group.vardagsrum_switchar
+  - group.vardagsrum_media
   - group.vaxt1
+
+
+### SOVRUM
+sovrum:
+  view: yes
+  entities:
+  - light.sovrumstak
+  - switch.sovrum
   - group.vaxt2
-  - group.vaxt3
 
-weathercenter:
-  name: "Väder"
+
+### KITCHEN
+kitchen:
   view: yes
+  name: "Kök"
   entities:
-  - group.weatherbasics
+  - switch.koksbank
 
-controlmusic:
-  name: "Musik"
+### HALL
+hallway:
   view: yes
+  name: "Hall"
   entities:
-  - media_player.kitchen
-  - group.mysonos
-  - group.switch_other
+  - switch.garderob
 
-monitor:
+
+
+
+#miscii:
+#  name: "Automatisering"
+#  view: yes
+#  entities:
+#  - script.wake_up
+#  - script.sleep_time
+#  - script.arrive_home
+#  - script.left_home
+
+#controlmusic:
+#  name: "Musik"
+#  view: yes
+#  entities:
+#  - media_player.kitchen
+#  - group.mysonos
+#  - group.switch_other
+
+security_monitor:
   name: "Monitor"
   view: yes
   entities:
   - group.camera1
 
-mediaplayers:
-  name: "Media"
+misc_weathercenter:
+  name: "Väder"
   view: yes
   entities:
-  - group.media
+  - group.weatherbasics
+
 
 system:
   name: "System"
@@ -60,6 +84,8 @@ system:
   entities:
   - group.system_sensors
   - switch.webcam
-  - group.arm_system
-  - group.wan_stats
+  - group.system_arm
+  - group.system_wan_stats
+  - group.debug_sethomeaway
+
 

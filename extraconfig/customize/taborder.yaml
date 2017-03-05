@@ -1,20 +1,30 @@
-group.miscii:
-  order: 2
+group.vardagsrum:
+  order: 200
 
-group.flowers:
-  order: 3
+group.sovrum:
+  order: 201
 
-group.controlmusic:
-  order: 4
+group.kitchen:
+  order: 202
 
-group.weathercenter:
-  order: 5
+group.hallway:
+  order: 203
 
-group.mediaplayers:
-  order: 6
 
-group.monitor:
-  order: 7
+#group.mediaplayers:
+#  order: 700
+
+
+
+
+#group.controlmusic:
+#  order: 500
+
+group.misc_weathercenter:
+  order: 700
+
+group.security_monitor:
+  order: 800
 
 group.system:
-  order: 8
+  order: 900
