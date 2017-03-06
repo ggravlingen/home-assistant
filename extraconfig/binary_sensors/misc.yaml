@@ -1,0 +1,6 @@
+- platform: command_line
+  name: systemstate_homebridge
+  scan_interval: 5
+  command:  if [ -z "$(pgrep -lf homebridge &> /dev/null && echo ON || echo OFF=ON)" ]; then echo off; else echo on; fi
+  payload_on: "on"
+  payload_off: "off"

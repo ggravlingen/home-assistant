@@ -5,5 +5,6 @@ logs:
 #  homeassistant.components.camera: debug
 #  homeassistant.components.keyboard-remote: debug
 #  homeassistant.components.ffmpeg: debug
-  homeassistant.components.mqtt: debug
+#  homeassistant.components.mqtt: debug
+  homeassistant.components.binary_sensor: debug
 

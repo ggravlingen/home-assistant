@@ -6,6 +6,7 @@ default_view:
   - updater.updater
   - sensor.forecastio_apparent_temperature
   - sensor.forecastio_hourly_summary
+  - group.temperatures
 #  - group.lights
 #  - group.vardagsrumstak
 #  - group.sovrumstak

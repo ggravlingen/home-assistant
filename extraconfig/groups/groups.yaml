@@ -1,3 +1,16 @@
+### MAIN SCREEN
+systemstates:
+  - sensor.sonos_controller_online
+  - sensor.sonos_kitchen_state
+  - binary_sensor.systemstate_homebridge
+
+temperatures:
+  - sensor.flower_1_temperature
+  - sensor.flower_2_temperature
+  - sensor.flower_3_temperature
+
+
+
 ### VARDAGSRUM
 vardagsrum_tak:
   name: "Taklampa"
@@ -98,11 +111,6 @@ mysonos:
   - input_select.sonos_favorites
 
 
-### SYSTEM MONITORS ###
-systemstates:
-  - sensor.sonos_controller_online
-  - sensor.sonos_kitchen_state
-#  - sensor.camera_controller_online
 
 
 ### WEATHER DATA
