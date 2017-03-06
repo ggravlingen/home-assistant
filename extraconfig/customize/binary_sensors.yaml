@@ -4,3 +4,9 @@ binary_sensor.systemstate_homebridge:
 binary_sensor.systemstate_sonoscontrol:
   friendly_name: "Sonos Controller"
 
+binary_sensor.systemstate_mosquitto:
+  friendly_name: "Mosquitto"
+
+binary_sensor.systemstate_pm2:
+  friendly_name: "PM2"
+

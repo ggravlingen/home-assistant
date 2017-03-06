@@ -4,6 +4,8 @@ systemstates:
   - sensor.sonos_kitchen_state
   - binary_sensor.systemstate_sonoscontrol
   - binary_sensor.systemstate_homebridge
+  - binary_sensor.systemstate_mosquitto
+  - binary_sensor.systemstate_pm2
 
 temperatures:
   - sensor.flower_1_temperature
