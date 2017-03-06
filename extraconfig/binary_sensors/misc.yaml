@@ -1,6 +1,16 @@
 - platform: command_line
   name: systemstate_homebridge
-  scan_interval: 5
-  command:  if [ -z "$(pgrep -lf homebridge &> /dev/null && echo ON || echo OFF=ON)" ]; then echo off; else echo on; fi
-  payload_on: "on"
-  payload_off: "off"
+  scan_interval: 10
+  command: if pgrep -x "homebridge" > /dev/null; then echo Online; else echo Offline; fi
+  payload_on: "Online"
+  payload_off: "Offline"
+  device_class: connectivity
+
+- platform: command_line
+  name: systemstate_sonoscontrol
+  scan_interval: 10
+  command: if pgrep -fa "node-sonos-http-api" > /dev/null; then echo Online; else echo Offline; fi
+  payload_on: "Online"
+  payload_off: "Offline"
+  device_class: connectivity
+
