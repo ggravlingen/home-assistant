@@ -10,3 +10,10 @@ binary_sensor.systemstate_mosquitto:
 binary_sensor.systemstate_pm2:
   friendly_name: "PM2"
 
+binary_sensor.systemstate_ftpserver:
+  friendly_name: "FTP server"
+
+binary_sensor.systemstate_ssh:
+  friendly_name: "SSH server"
+
+

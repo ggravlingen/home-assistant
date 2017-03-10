@@ -30,3 +30,18 @@
   payload_off: "Offline"
   device_class: connectivity
 
+- platform: command_line
+  name: systemstate_ftpserver
+  scan_interval: 10
+  command: if pgrep -fa "vsftp" > /dev/null; then echo Online; else echo Offline; fi
+  payload_on: "Online"
+  payload_off: "Offline"
+  device_class: connectivity
+
+- platform: command_line
+  name: systemstate_ssh
+  scan_interval: 10
+  command: if pgrep -fa "sshd" > /dev/null; then echo Online; else echo Offline; fi
+  payload_on: "Online"
+  payload_off: "Offline"
+  device_class: connectivity

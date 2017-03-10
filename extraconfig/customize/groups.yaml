@@ -32,3 +32,6 @@ group.wan_stats:
 
 group.standardscript:
   friendly_name: " "
+
+group.temperatures:
+  friendly_name: "Temperaturer"
