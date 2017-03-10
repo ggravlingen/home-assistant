@@ -1,24 +1,7 @@
-#- platform: command_line
-#  #command: 'nmap -p 5005 localhost | grep open &> /dev/null && echo success || echo fail'
-#  command: 'nmap -p 5005 localhost'
-#  #command: shell_command.sonos_check_controller
-#  name: 'sonos_controller_online_shell'
-
 - platform: command_line
   scan_interval: 5
   command: /usr/bin/curl --silent GET http://192.168.0.140:5005/kitchen/state | python -c 'import sys, json; print json.load(sys.stdin)["playbackState"]'
   name: 'sonos_kitchen_state_shell'
-
-#- platform: template
-#  sensors:
-#   sonos_controller_online:
-#      friendly_name: 'Sonos Controller'
-#      value_template: >-
-#        {% if 'open' in states('sensor.sonos_controller_online_shell') %}
-#          On
-#        {%- else -%}
-#          Off
-#        {%- endif %}
 
 - platform: template
   sensors:
@@ -30,10 +13,9 @@
         {%- else -%}
           Paused
         {%- endif %}
-
-
-#- platform: template
-#  sensors:
-#    customtimehour:
-#      value_template: "{{ now.strftime('%H') | float }}"
-#      friendly_name: "Hour of day"
+      icon_template: >-
+        {% if 'PLAYING' in states('sensor.sonos_kitchen_state_shell') %}
+          mdi:weather-sunny
+        {% else %}
+          mdi:weather-night
+        {% endif %}

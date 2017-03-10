@@ -2,6 +2,7 @@
 default_view:
   view: yes
   entities:
+  - sensor.sonos_kitchen_state
   - device_tracker.patrik_iphone
   - updater.updater
   - sensor.forecastio_apparent_temperature

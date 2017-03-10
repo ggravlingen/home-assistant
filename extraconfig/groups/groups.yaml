@@ -1,7 +1,7 @@
 ### MAIN SCREEN
 systemstates:
 #  - sensor.sonos_controller_online
-  - sensor.sonos_kitchen_state
+#  - sensor.sonos_kitchen_state
   - binary_sensor.systemstate_sonoscontrol
   - binary_sensor.systemstate_homebridge
   - binary_sensor.systemstate_mosquitto
