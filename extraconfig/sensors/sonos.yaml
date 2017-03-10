@@ -6,7 +6,7 @@
 - platform: template
   sensors:
     sonos_kitchen_state:
-      friendly_name: 'Sonos: Kök'
+      friendly_name: 'Sonos: Vardagsrum'
       value_template: >-
         {% if 'PLAYING' in states('sensor.sonos_kitchen_state_shell') %}
           Playing
