@@ -27,8 +27,8 @@ vardagsrum:
 sovrum:
   view: yes
   entities:
-  - light.sovrumstak
-  - switch.sovrum
+  - group.sovrum_lights
+  - group.sovrum_switchar
   - group.vaxt2
 
 
@@ -37,14 +37,14 @@ kitchen:
   view: yes
   name: "Kök"
   entities:
-  - switch.koksbank
+  - group.kitchen_switchar
 
 ### HALL
 hallway:
   view: yes
   name: "Hall"
   entities:
-  - switch.garderob
+  - group.hall_switchar
 
 
 
