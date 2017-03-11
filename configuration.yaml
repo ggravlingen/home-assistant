@@ -41,6 +41,10 @@ sun:
 
 config:
 
+### Custom components
+#sonos_watcher:
+
+
 
 
 logger: !include extraconfig/standalonefiles/logger.yaml

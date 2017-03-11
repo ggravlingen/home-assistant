@@ -51,3 +51,5 @@ google_calendars.yaml
 *.log
 
 hapush.log
+
+__pycache__

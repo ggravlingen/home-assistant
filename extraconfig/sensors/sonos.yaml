@@ -15,7 +15,9 @@
         {%- endif %}
       icon_template: >-
         {% if 'PLAYING' in states('sensor.sonos_kitchen_state_shell') %}
-          mdi:weather-sunny
+          mdi:play-circle-outline
         {% else %}
-          mdi:weather-night
+          mdi:pause-circle-outline
         {% endif %}
+
+- platform: sonos_watcher
