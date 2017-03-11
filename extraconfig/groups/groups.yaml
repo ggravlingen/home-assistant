@@ -175,3 +175,8 @@ taklampor:
     - light.vardagsrumstak_2
     - light.vardagsrumstak_3
 
+### MISC
+scripts:
+  name: "Skript"
+  entities:
+    - script.wake_up

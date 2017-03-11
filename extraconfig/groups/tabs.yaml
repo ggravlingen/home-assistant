@@ -51,10 +51,12 @@ hallway:
 
 
 
-#miscii:
-#  name: "Automatisering"
-#  view: yes
-#  entities:
+
+automation:
+  name: "Automatisering"
+  view: yes
+  entities:
+  - group.scripts
 #  - script.wake_up
 #  - script.sleep_time
 #  - script.arrive_home
