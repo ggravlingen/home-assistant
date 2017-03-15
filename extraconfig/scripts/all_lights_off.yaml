@@ -1,0 +1,10 @@
+all_lights_off:
+    alias: "Släck alla lampor"
+    sequence:
+      - alias: Shut down all lights
+        service: homeassistant.turn_off
+        data:
+          entity_id:
+            - group.all_lights
+            - group.all_switches
+

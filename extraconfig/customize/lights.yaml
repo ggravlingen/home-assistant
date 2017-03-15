@@ -3,3 +3,18 @@ switch.koksbank:
 
 switch.laslampa:
   friendly_name: "Läslampa"
+
+### VARDAGSRUM
+light.vardagsrumstak_1:
+  icon: mdi:ceiling-light
+
+light.vardagsrumstak_2:
+  icon: mdi:ceiling-light
+
+light.vardagsrumstak_3:
+  icon: mdi:ceiling-light
+
+### SOVRUM
+light.sovrumstak:
+  icon: mdi:ceiling-light
+

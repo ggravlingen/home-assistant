@@ -1,5 +1,7 @@
 """ Just a different way of displaying current state of Sonos players  """
 
+# https://github.com/Amir974/home-assistant-custom-components/blob/master/custom_components/notify/pushoverglances.py
+
 import logging
 import voluptuous as vol
 from homeassistant.components.sensor import PLATFORM_SCHEMA
@@ -10,7 +12,6 @@ import json, sys, urllib
 #from homeassistant.const import (CONF_MONITORED_CONDITIONS, CONF_NAME)
 
 DEPENDENCIES = []
-
 
 CONF_START_IMAGE = 'startimage'
 CONF_PLAY = 'playimage'
@@ -55,7 +56,6 @@ class SonosWatcher(Entity):
     @property
     def name(self):
         """Return the name of the sensor."""
-        _LOGGER.info("Sonos Watcher: setting name")
         return 'Sonos Vardagsrum (new)'
 
     @property
@@ -78,6 +78,6 @@ class SonosWatcher(Entity):
 #        response_state = urllib.urlopen(url_playlist)
 #        foo = json.load(response_state)["playbackState"]
 #        _LOGGER.info(foo)
-        _LOGGER.info("asdasdasd")
+#        _LOGGER.info("asdasdasd")
 #        _LOGGER.info(url_state)
         self._state = "Playing"

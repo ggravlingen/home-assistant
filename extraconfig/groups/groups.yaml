@@ -181,3 +181,4 @@ scripts:
   name: "Skript"
   entities:
     - script.wake_up
+    - script.all_lights_off
