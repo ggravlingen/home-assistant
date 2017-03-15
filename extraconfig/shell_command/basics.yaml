@@ -2,22 +2,22 @@ sonos_check_controller: /usr/bin/nmap -p 5005 localhost | grep open &> /dev/null
 camera_livingroom: '/bin/nc -z -v -w3 192.168.0.198 81  &> /dev/null && echo success || echo fail'
 
 # SONOS: COMFORTABLE VOLUMES
-sonos_volume_8: '/usr/bin/curl -X GET http://192.168.0.140:5005/kitchen/volume/8'
-sonos_volume_18: '/usr/bin/curl -X GET http://192.168.0.140:5005/kitchen/volume/18'
+sonos_volume_8: '/usr/bin/curl -X GET http://192.168.0.140:5005/vardagsrum%20musik/volume/8'
+sonos_volume_18: '/usr/bin/curl -X GET http://192.168.0.140:5005/vardagsrum%20musik/volume/18'
 
 
-sonos_volume_low: '/usr/bin/curl -X GET http://192.168.0.140:5005/kitchen/volume/30'
-sonos_volume_high: '/usr/bin/curl -X GET http://192.168.0.140:5005/kitchen/volume/50'
+sonos_volume_low: '/usr/bin/curl -X GET http://192.168.0.140:5005/vardagsrum%20musik/volume/30'
+sonos_volume_high: '/usr/bin/curl -X GET http://192.168.0.140:5005/vardagsrum%20musik/volume/50'
 
 
-sonos_volume_custom: '/usr/bin/curl -X GET http://192.168.0.140:5005/kitchen/volume/'
+sonos_volume_custom: '/usr/bin/curl -X GET http://192.168.0.140:5005/vardagsrum%20musik/volume/'
 
 
 # SONOS: BASIC COMMANDS COMMAND
-sonos_control_pause: /usr/bin/curl -X GET http://192.168.0.140:5005/kitchen/pause
-sonos_control_shuffle_on: /usr/bin/curl -X GET http://192.168.0.140:5005/kitchen/shuffle/on
-sonos_control_shuffle_off: /usr/bin/curl -X GET http://192.168.0.140:5005/kitchen/shuffle/off
-sonos_control_next: /usr/bin/curl -X GET http://192.168.0.140:5005/kitchen/next
+sonos_control_pause: /usr/bin/curl -X GET http://192.168.0.140:5005/vardagsrum%20musik/pause
+sonos_control_shuffle_on: /usr/bin/curl -X GET http://192.168.0.140:5005/vardagsrum%20musik/shuffle/on
+sonos_control_shuffle_off: /usr/bin/curl -X GET http://192.168.0.140:5005/vardagsrum%20musik/shuffle/off
+sonos_control_next: /usr/bin/curl -X GET http://192.168.0.140:5005/vardagsrum%20musik/next
 
 # UNIX: RANDOM STUFF
 system_check_wifi_strength: /usr/bin/awk 'NR==3 {print $3 "00"}''' /proc/net/wireless

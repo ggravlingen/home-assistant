@@ -80,4 +80,11 @@ class SonosWatcher(Entity):
 #        _LOGGER.info(foo)
 #        _LOGGER.info("asdasdasd")
 #        _LOGGER.info(url_state)
+        currentState = getPlayerState()
         self._state = "Playing"
+
+    def getPlayerState(self):
+        """Get current state of player
+        """
+        currentState = "Playing"
+

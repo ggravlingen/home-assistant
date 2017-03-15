@@ -21,6 +21,9 @@ arrive_home:
       - alias: Set volume
         service: shell_command.sonos_volume_low
 
+      - delay:
+          minutes: 1
+
       - alias: Enable shuffle
         service: shell_command.sonos_control_shuffle_on
 

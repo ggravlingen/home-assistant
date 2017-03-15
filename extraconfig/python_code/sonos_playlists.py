@@ -5,7 +5,7 @@ import json, sys, urllib
 #sys.setdefaultencoding("utf-8")
 
 # CONFIG
-url_playlist = "http://192.168.0.140:5005/kitchen/playlists"
+url_playlist = "http://192.168.0.140:5005/vardagsrum%20musik/playlists"
 url_favorites = "http://192.168.0.140:5005/favorites"
 
 location_input_select = '/home/hass/.homeassistant/extraconfig/input_select/'
@@ -56,7 +56,7 @@ f = open(location_shell_command + "sonos_playlist.yaml","w")
 for key in data_playlists:
   keyname = ''.join(e for e in key if e.isalnum()).lower()
   keyvalue = urllib.quote(key)
-  f.write("sonos_playlist_" + keyname + ": '/usr/bin/curl +X POST http://192.168.0.140:5005/kitchen/playlist/" + keyvalue + "'\n")
+  f.write("sonos_playlist_" + keyname + ": '/usr/bin/curl +X POST http://192.168.0.140:5005/vardagsrum%20musik/playlist/" + keyvalue + "'\n")
 f.close()
 
 
@@ -65,5 +65,5 @@ f = open(location_shell_command + "sonos_favorites.yaml","w")
 for key in data_favorites:
   keyname = ''.join(e for e in key if e.isalnum()).lower()
   keyvalue = urllib.quote(key)
-  f.write("sonos_favorite_" + keyname + ": '/usr/bin/curl +X POST http://192.168.0.140:5005/kitchen/favorite/" + keyvalue + "'\n")
+  f.write("sonos_favorite_" + keyname + ": '/usr/bin/curl +X POST http://192.168.0.140:5005/vardagsrum%20musik/favorite/" + keyvalue + "'\n")
 f.close()
