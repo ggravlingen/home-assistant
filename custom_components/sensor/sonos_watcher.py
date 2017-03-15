@@ -52,6 +52,7 @@ class SonosWatcher(Entity):
         _LOGGER.info("Sonos Watcher: initializing")
         self._state = None
         self._picture = picture
+        self._myCurrentState = "Not Initialized"
 
     @property
     def name(self):
@@ -67,7 +68,20 @@ class SonosWatcher(Entity):
     def entity_picture(self):
         """Type of player."""
         return self._picture
-#sensor.sonos_kitchen_state
+
+    @classmethod
+    def setPlayerState(self):
+        """Get current state of player
+        """
+        self._myCurrentState = "Playing"
+        return _myCurrentState
+#        try:
+#            return PushoverGlanceService(config[CONF_USER_KEY],
+#                                               config[CONF_API_KEY])
+#        except InitError:
+#            _LOGGER.error('Wrong API key supplied pushover glances. Get it at https://pushover.net')
+#            return None
+#        self._myCurrentState = "Playing"
 
     def update(self):
         """Fetch new state data for the sensor.
@@ -77,14 +91,10 @@ class SonosWatcher(Entity):
 #        url_state = "http://192.168.0.140:5005/kitchen/state"
 #        response_state = urllib.urlopen(url_playlist)
 #        foo = json.load(response_state)["playbackState"]
-#        _LOGGER.info(foo)
-#        _LOGGER.info("asdasdasd")
-#        _LOGGER.info(url_state)
-        currentState = getPlayerState()
         self._state = "Playing"
 
-    def getPlayerState(self):
-        """Get current state of player
-        """
-        currentState = "Playing"
+#        this.setPlayerState(self)
 
+#        currentState = getPlayerState(self)
+        #currentState = "aa" #getPlayerState()
+        _LOGGER.info("Current state = %s", self._myCurrentState )
