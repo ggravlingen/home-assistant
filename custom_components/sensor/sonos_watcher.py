@@ -83,6 +83,13 @@ class SonosWatcher(Entity):
 #            return None
 #        self._myCurrentState = "Playing"
 
+    @classmethod
+    def playerType(self):
+      """ 
+      http://192.168.0.85:1400/status/zp
+      """
+
+
     def update(self):
         """Fetch new state data for the sensor.
 
@@ -91,10 +98,16 @@ class SonosWatcher(Entity):
 #        url_state = "http://192.168.0.140:5005/kitchen/state"
 #        response_state = urllib.urlopen(url_playlist)
 #        foo = json.load(response_state)["playbackState"]
+#        try 1 == 1:
         self._state = "Playing"
+ #       except:
+  #        _LOGGER.error('Threw error')
+   #       return None
+#          self._state = "Threw error"
+
 
 #        this.setPlayerState(self)
 
 #        currentState = getPlayerState(self)
         #currentState = "aa" #getPlayerState()
-        _LOGGER.info("Current state = %s", self._myCurrentState )
+#        _LOGGER.info("Current state = %s", self._myCurrentState )
