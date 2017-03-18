@@ -1,4 +1,5 @@
 #!/usr/bin/python
+# -*- coding: utf-8 -*-
 import json, sys, urllib
 
 # Fix for special chars
@@ -8,8 +9,8 @@ import json, sys, urllib
 url_playlist = "http://192.168.0.140:5005/vardagsrum%20musik/playlists"
 url_favorites = "http://192.168.0.140:5005/favorites"
 
-location_input_select = '/home/hass/.homeassistant/extraconfig/input_select/'
-location_shell_command = '/home/hass/.homeassistant/extraconfig/shell_command/sonos/'
+location_input_select = '/home/homeassistant/.homeassistant/extraconfig/input_select/'
+location_shell_command = '/home/homeassistant/.homeassistant/extraconfig/shell_command/sonos/'
 
 
 # LOAD PLAYLIST-LIST IN JSON-FORMAT
@@ -49,21 +50,18 @@ f.write("  icon: 'mdi:playlist-check'" + "\n")
 f.close()
 
 
+def fileWriter(location_shell_command, outputfile, sonosCommand, dataArray):
+  f = open(location_shell_command + outputfile + ".yaml","w")
+  for key in dataArray:
+    keyname = ''.join( e for e in key if e.isalnum() ).lower()
+    keyvalue = urllib.quote(key.encode("utf-8"))
+    try:
+      writeString = outputfile + "_" + keyname + ": /usr/bin/curl +X POST http://192.168.0.140:5005/vardagsrum%20musik/" + sonosCommand + keyvalue + "\n"
+      f.write(writeString)
+    except:
+      print("")
 
-
-## Shell commands
-f = open(location_shell_command + "sonos_playlist.yaml","w")
-for key in data_playlists:
-  keyname = ''.join(e for e in key if e.isalnum()).lower()
-  keyvalue = urllib.quote(key)
-  f.write("sonos_playlist_" + keyname + ": '/usr/bin/curl +X POST http://192.168.0.140:5005/vardagsrum%20musik/playlist/" + keyvalue + "'\n")
 f.close()
 
-
-
-f = open(location_shell_command + "sonos_favorites.yaml","w")
-for key in data_favorites:
-  keyname = ''.join(e for e in key if e.isalnum()).lower()
-  keyvalue = urllib.quote(key)
-  f.write("sonos_favorite_" + keyname + ": '/usr/bin/curl +X POST http://192.168.0.140:5005/vardagsrum%20musik/favorite/" + keyvalue + "'\n")
-f.close()
+fileWriter(location_shell_command, "sonos_playlist", "playlist" ,data_playlists)
+fileWriter(location_shell_command, "sonos_favorites", "favorite" ,data_favorites)

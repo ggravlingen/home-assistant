@@ -1,4 +1,4 @@
-sonos_playlist_dinnerwithfriends: '/usr/bin/curl +X POST http://192.168.0.140:5005/kitchen/playlist/Dinner%20with%20friends'
-sonos_playlist_homefromwork: '/usr/bin/curl +X POST http://192.168.0.140:5005/kitchen/playlist/Home%20from%20work'
-sonos_playlist_slatenightfocus: '/usr/bin/curl +X POST http://192.168.0.140:5005/kitchen/playlist/S%20-%20Late%20Night%20Focus'
-sonos_playlist_test: '/usr/bin/curl +X POST http://192.168.0.140:5005/kitchen/playlist/test'
+sonos_playlist_dinnerwithfriends: /usr/bin/curl +X POST http://192.168.0.140:5005/vardagsrum%20musik/playlistDinner%20with%20friends
+sonos_playlist_homefromwork: /usr/bin/curl +X POST http://192.168.0.140:5005/vardagsrum%20musik/playlistHome%20from%20work
+sonos_playlist_slatenightfocus: /usr/bin/curl +X POST http://192.168.0.140:5005/vardagsrum%20musik/playlistS%20-%20Late%20Night%20Focus
+sonos_playlist_test: /usr/bin/curl +X POST http://192.168.0.140:5005/vardagsrum%20musik/playlisttest
