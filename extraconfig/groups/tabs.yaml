@@ -2,13 +2,13 @@
 default_view:
   view: yes
   entities:
-  - sensor.sonos_vardagsrum_new
   - sensor.sonos_kitchen_state
   - device_tracker.patrik_iphone
   - updater.updater
   - sensor.forecastio_apparent_temperature
   - sensor.forecastio_hourly_summary
   - group.temperatures
+  - group.mediaplayer_mini
 #  - group.lights
 #  - group.vardagsrumstak
 #  - group.sovrumstak
