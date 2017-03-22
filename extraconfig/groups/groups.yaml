@@ -15,7 +15,7 @@ temperatures:
   - sensor.flower_3_temperature
 
 mediaplayer_mini:
-  - sensor.vardagsrum_musik_mini
+  - sensor.vardagsrum_musik
 
 ### VARDAGSRUM
 vardagsrum_tak:

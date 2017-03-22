@@ -25,7 +25,7 @@ wake_up:
         service: shell_command.sonos_volume_low
 
       - alias: Start radio
-        service: shell_command.sonos_favorite_bbcradio4
+        service: shell_command.sonos_favorites_bbcradio4
 
       - alias: Start lights
         service: light.turn_on

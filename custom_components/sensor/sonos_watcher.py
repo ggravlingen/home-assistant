@@ -4,14 +4,18 @@ import voluptuous as vol
 from homeassistant.components.sensor import PLATFORM_SCHEMA
 from homeassistant.helpers.entity import Entity
 import homeassistant.helpers.config_validation as cv
+import homeassistant.components.group as group
+
 from soco import SoCo
 
 DEPENDENCIES = []
 
+
 # Setup the logger platform
 _LOGGER = logging.getLogger(__name__)
 
-#SoCoData = SoCo(IP)
+#group.Group.create_group(hass, 'test_group', ['sensor.vardagsrum_musik'])
+
 
 def setup_platform(hass, config, add_devices, discovery_info=None):
   """Setup the sensor platform."""
@@ -43,7 +47,7 @@ class SonosWatcher(Entity):
   @property
   def name(self):
     """Return the name of the sensor."""
-    returnName = self._player_name + ' (mini)'
+    returnName = self._player_name
     return returnName
 
   @property
@@ -68,8 +72,10 @@ class SonosWatcher(Entity):
     SoCoData = self._SoCoData
     internalState = SoCoData.get_current_transport_info()['current_transport_state']
     if internalState == "PLAYING":
-      self._state = "mdi:self.model_state_icon"
+      self._state = "Playing"
+#      self._state = "mdi:self.model_state_icon"
 #      self._icon = "mdi:self.model_state_icon"
     else:
       self._state = "mdi:pause-octagon-outline"
+      self._state = "Paused"
 #      self._icon = "mdi:pause-octagon-outline"
