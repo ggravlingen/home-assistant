@@ -23,6 +23,7 @@ group.vaxt1:
 
 group.vaxt2:
   friendly_name: "Juvelorkidé | sovrum"
+  order: 3
 
 group.vaxt3:
   friendly_name: "Basilika"
@@ -35,3 +36,9 @@ group.standardscript:
 
 group.temperatures:
   friendly_name: "Temperaturer"
+
+group.sovrum_lights:
+  order: 1
+
+group.sovrum_switchar:
+  order: 2

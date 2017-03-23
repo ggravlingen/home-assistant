@@ -18,6 +18,7 @@ default_view:
 ### VARDAGSRUM
 vardagsrum:
   view: yes
+  icon: mdi:emoticon-happy
   entities:
   - group.vardagsrum_tak
   - group.vardagsrum_switchar
@@ -28,6 +29,7 @@ vardagsrum:
 ### SOVRUM
 sovrum:
   view: yes
+  icon: mdi:hotel
   entities:
   - group.sovrum_lights
   - group.sovrum_switchar
@@ -37,6 +39,7 @@ sovrum:
 ### KITCHEN
 kitchen:
   view: yes
+  icon: mdi:food-variant
   name: "Kök"
   entities:
   - group.kitchen_switchar
@@ -44,6 +47,7 @@ kitchen:
 ### HALL
 hallway:
   view: yes
+  icon: mdi:glassdoor
   name: "Hall"
   entities:
   - group.hall_switchar
@@ -54,6 +58,7 @@ hallway:
 
 automation:
   name: "Automatisering"
+  icon: mdi:apple-keyboard-command
   view: yes
   entities:
   - group.scripts
@@ -72,12 +77,14 @@ automation:
 
 security_monitor:
   name: "Monitor"
+  icon: mdi:camera
   view: yes
   entities:
   - group.camera1
 
 misc_weathercenter:
   name: "Väder"
+  icon: mdi:weather-sunny
   view: yes
   entities:
   - group.weatherbasics
@@ -86,6 +93,7 @@ misc_weathercenter:
 system:
   name: "System"
   view: yes
+  icon: mdi:monitor-multiple
   entities:
   - group.system_sensors
   - switch.webcam

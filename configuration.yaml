@@ -2,7 +2,7 @@ homeassistant:
   #https://materialdesignicons.com/
   #https://gist.github.com/CCOSTAN/9934de973a293b809868
   # Name of the location where Home Assistant is running
-  name: Hem
+  name: Översikt
   # Location required to calculate the time the sun rises and sets
   latitude: 59.344164
   longitude: 18.055501
