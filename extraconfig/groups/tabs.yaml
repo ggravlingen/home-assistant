@@ -2,7 +2,7 @@
 default_view:
   view: yes
   entities:
-  - sensor.sonos_kitchen_state
+#  - sensor.sonos_kitchen_state
   - device_tracker.patrik_iphone
   - updater.updater
   - sensor.forecastio_apparent_temperature
@@ -100,5 +100,6 @@ system:
   - group.system_arm
   - group.system_wan_stats
   - group.debug_sethomeaway
+  - group.zwavedebug
 
 

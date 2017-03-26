@@ -207,7 +207,7 @@ ln /home/homeassistant/.homeassistant/secrets.yaml /home/homeassistant/haconf/se
 ln /home/homeassistant/.homeassistant/zwcfg_0xcf3eab81.xml /home/homeassistant/haconf/zwcfg_0xcf3eab81.xml
 ln /home/homeassistant/.homeassistant/zwscene.xml /home/homeassistant/haconf/zwscene.xml
 ln /home/homeassistant/.homeassistant/webostv.conf /home/homeassistant/haconf/webostv.conf
-
+ln /srv/homeassistant/homeassistant_venv/src/python-openzwave/openzwave/config/options.xml /home/homeassistant/haconf/options.xml
 
 # Homebridge
   sudo apt-get install libavahi-compat-libdnssd-dev

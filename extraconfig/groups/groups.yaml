@@ -183,3 +183,12 @@ scripts:
   entities:
     - script.wake_up
     - script.all_lights_off
+
+
+### DEBUG
+zwavedebug:
+  name: "Zwave debug"
+  entities:
+    - switch.fibaro_system_fgwpe_wall_plug_switch_15_0
+    - sensor.fibaro_system_fgwpe_wall_plug_energy_15_0
+    - sensor.fibaro_system_fgwpe_wall_plug_power_15_4
