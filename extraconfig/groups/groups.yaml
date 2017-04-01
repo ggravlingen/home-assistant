@@ -73,7 +73,7 @@ kitchen_switchar:
   name: " "
   entities:
   - switch.koksbank
-  - switch.kylskap
+#  - switch.kylskap
 
 ### HALLWAY
 hall_switchar:

@@ -1,5 +1,5 @@
 - platform: sonos
-  hosts: 192.168.0.85
+  hosts: 192.168.0.85, 192.168.0.218
 
 - platform: cast
   hosts: 192.168.0.40

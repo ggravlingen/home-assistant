@@ -18,7 +18,7 @@ hapush.log
 
 webostv.conf
 
-home-assistant.db
+home-assistant.db*
 
 home-assistant_v2.db
 

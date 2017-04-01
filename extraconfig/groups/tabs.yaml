@@ -52,6 +52,13 @@ hallway:
   entities:
   - group.hall_switchar
 
+### Badrum
+bathroom:
+  view: yes
+  icon: mdi:scale-bathroom
+  name: "Badrum"
+  entities:
+    - media_player.badrum
 
 
 

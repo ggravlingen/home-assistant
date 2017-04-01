@@ -10,15 +10,8 @@ group.kitchen:
 group.hallway:
   order: 203
 
-
-#group.mediaplayers:
-#  order: 700
-
-
-
-
-#group.controlmusic:
-#  order: 500
+group.bathroom:
+  order: 204
 
 group.misc_weathercenter:
   order: 700

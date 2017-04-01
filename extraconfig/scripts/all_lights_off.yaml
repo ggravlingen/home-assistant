@@ -6,5 +6,7 @@ all_lights_off:
         data:
           entity_id:
             - group.all_lights
-            - group.all_switches
-
+            - switch.garderob
+            - switch.koksbank
+            - switch.webcam
+            - switch.sovrum
