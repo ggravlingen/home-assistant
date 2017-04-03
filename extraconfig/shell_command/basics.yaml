@@ -10,6 +10,8 @@ sonos_volume_low: '/usr/bin/curl -X GET http://192.168.0.140:5005/vardagsrum%20m
 sonos_volume_high: '/usr/bin/curl -X GET http://192.168.0.140:5005/vardagsrum%20musik/volume/50'
 
 
+sonos_badrum_volume_low: '/usr/bin/curl -X GET http://192.168.0.140:5005/badrum/volume/10'
+
 sonos_volume_custom: '/usr/bin/curl -X GET http://192.168.0.140:5005/vardagsrum%20musik/volume/'
 
 

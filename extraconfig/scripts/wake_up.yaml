@@ -24,6 +24,9 @@ wake_up:
       - alias: Set volume
         service: shell_command.sonos_volume_low
 
+      - alias: Set volume badrum
+        service: shell_command.sonos_badrum_volume_low
+
       - alias: Start radio
         service: shell_command.sonos_favorites_bbcradio4
 
