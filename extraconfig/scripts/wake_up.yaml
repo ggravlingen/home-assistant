@@ -43,6 +43,9 @@ wake_up:
             - switch.garderob
             - switch.koksbank
 
+      - alias: IKEA
+        service: shell_command.kitchenlight_working_light
+
       - delay:
           minutes: 15
 

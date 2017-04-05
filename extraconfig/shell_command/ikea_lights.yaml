@@ -1,0 +1,3 @@
+kitchenlight_off: '/usr/bin/python3 /home/homeassistant/.homeassistant/extraconfig/python_code/ikea.py "65537" "0" "Yellow"'
+kitchenlight_working_light: '/usr/bin/python3 /home/homeassistant/.homeassistant/extraconfig/python_code/ikea.py "65537" "150" "Yellow"'
+

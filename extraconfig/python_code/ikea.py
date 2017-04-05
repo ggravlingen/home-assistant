@@ -1,37 +1,42 @@
-"""
-192.168.0.129 -sU -p 5684
-https://bitsex.net/software/2017/coap-endpoints-on-ikea-tradfri/
-"""
+# -*- coding: utf-8 -*-
+# ikea.py
+import os, sys
+
+# Printed on the back of your gateway
+#securityCode = "xxx"
+
+from ikea_pw import *
+# the file ikea_pw, stored in the same folder as this script, contains nothing but
+# securityCode = "xxx"
+
+### --- extract code from here
+
+# The id number of your lamp
+#lampID = "65537"
+lampID = str(sys.argv[1])
+
+# The light intensity [0=off, 255]
+#lightIntensity = "180"
+lightIntensity = str(sys.argv[2])
+
+#lightSetting = "Yellow" # White | Middle | Yellow
+lightSetting = str(sys.argv[3])
+
+if lightSetting == "White":
+  lightColorA = "24930"
+  lightColorB = "24694"
+elif lightSetting == "Middle":
+  lightColorA = "30140"
+  lightColorB = "26909"
+else:
+  lightColorA = "33135"
+  lightColorB = "27211"
 
 
-import logging
-import asyncio
+stringCommand = """echo '{ "3311" : [{ "5851" : """ + lightIntensity + """ , "5709": """ + lightColorA + """ , "5710": """ + lightColorB + """ } ] }'"""
+stringCoap = """coap-client -u "Client_identity" -k """ + securityCode + """ -m put "coaps://192.168.0.129:5684/15001/""" + lampID + """" -f -"""
 
-from aiocoap import *
+print(stringCommand + " | " + stringCoap)
 
-logging.basicConfig(level=logging.INFO)
 
-async def main():
-    """
-    Example class which performs single PUT request to localhost
-    port 5683 (official IANA assigned CoAP port), URI "/other/block".
-    Request is sent 2 seconds after initialization.
-
-    Payload is bigger than 1kB, and thus is sent as several blocks.
-    """
-
-    context = await Context.create_client_context()
-
-    await asyncio.sleep(2)
-
-    payload = b"The quick brown fox jumps over the lazy dog.\n" * 30
-    request = Message(code=PUT, payload=payload)
-    request.opt.uri_host = '127.0.0.1'
-    request.opt.uri_path = ("other", "block")
-
-    response = await context.request(request).response
-
-    print('Result: %s\n%r'%(response.code, response.payload))
-
-if __name__ == "__main__":
-    asyncio.get_event_loop().run_until_complete(main())
+os.system(stringCommand + " | " + stringCoap)

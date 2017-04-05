@@ -10,3 +10,6 @@ all_lights_off:
             - switch.koksbank
             - switch.webcam
             - switch.sovrum
+
+      - alias: manual
+        service: shell_command.kitchenlight_off
