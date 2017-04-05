@@ -1,5 +1,9 @@
 # -*- coding: utf-8 -*-
 # ikea.py
+# Usage:
+# Run this command from shell: python ikea.py "65537" "100" "4000K"
+
+
 import os, sys
 
 # Printed on the back of your gateway
