@@ -22,10 +22,10 @@ lightIntensity = str(sys.argv[2])
 #lightSetting = "Yellow" # White | Middle | Yellow
 lightSetting = str(sys.argv[3])
 
-if lightSetting == "White":
+if lightSetting == "4000K":
   lightColorA = "24930"
   lightColorB = "24694"
-elif lightSetting == "Middle":
+elif lightSetting == "2700K":
   lightColorA = "30140"
   lightColorB = "26909"
 else:
