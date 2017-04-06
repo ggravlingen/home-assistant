@@ -242,6 +242,6 @@ curl -L https://install.pivpn.io | bash
 
 mosquitto_sub -t /location/patrik_iphone -q 1
 curl -X POST -H "x-ha-access: pwd" -H "Content-Type: application/json" -d '{"payload": "Home", "topic": "/location/patrik_iphone"}' http://localhost:8123//api/services/mqtt/publish
-
+# 123
 
 ```
