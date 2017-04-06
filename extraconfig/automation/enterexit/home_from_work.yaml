@@ -2,7 +2,7 @@ alias: "A good playlist after a day at work"
 trigger:
   - platform: state
     entity_id: device_tracker.patrik_iphone
-    #from: 'Away'
+    from: 'Away'
     to: 'Home'
 condition:
   condition: and

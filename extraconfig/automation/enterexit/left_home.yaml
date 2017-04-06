@@ -2,7 +2,7 @@ alias: "Shut down house when I leave home"
 trigger:
   platform: state
   entity_id: device_tracker.patrik_iphone
-#  from: 'Home'
+  from: 'Home'
   to: 'Away'
 action:
   - service: script.left_home
