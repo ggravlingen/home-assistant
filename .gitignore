@@ -56,7 +56,7 @@ __pycache__
 
 ikea_pw.py
 
-*2.db-shm
+*.db-shm
 
 *.db-wal
 
