@@ -56,3 +56,7 @@ __pycache__
 
 ikea_pw.py
 
+home-assistant_v2.db-shm
+
+home-assistant_v2.db-wal
+
