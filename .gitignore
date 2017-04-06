@@ -22,8 +22,6 @@ home-assistant.db*
 
 home-assistant_v2.db
 
-home-assistant.log
-
 OZW_Log.txt
 
 *.conf
@@ -47,10 +45,6 @@ google_calendars.yaml
 *.cfg
 
 *.rb
-
-*.log
-
-hapush.log
 
 __pycache__
 
