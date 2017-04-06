@@ -8,7 +8,7 @@
 
 deps
 
-hapush.log
+*.log
 
 *.xml
 
