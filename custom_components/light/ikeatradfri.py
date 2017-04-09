@@ -3,11 +3,11 @@ Support for the IKEA Tradfri platform
 Version 0.1
 """
 
-    
-from subprocess import *
-from json import *
+
 import logging
 import voluptuous as vol
+import subprocess
+import json
 
 # Import the device class from the component that you want to support
 from homeassistant.components.light import ATTR_BRIGHTNESS, \
@@ -49,44 +49,45 @@ class IKEATradfriHub(object):
     """ This class connects to the IKEA Tradfri Gateway """
 
     def __init__(self, host, securityCode):
+
         self._bulbs = []
-        self._coapString = "coap-client -u 'Client_identity' -k '" \
+        self._coap_string = "coap-client -u 'Client_identity' -k '" \
             + securityCode + "' -v 0 -m %s 'coaps://" + host + ":5684/%s' %s"
 
         self._host = host
-        self._securityCode = securityCode
+        self._security_code = securityCode
 
         _LOGGER.debug("IKEA Tradfri Hub: Initialized")
 
     def get_lights(self):
         """ Returns the lights linked to the gateway """
-        output = self.commandHelper(self._coapString, ("get", "15001", ""), "[")
+        output = self.command_helper(self._coap_string, ("get", "15001", ""), "[")
         _LOGGER.debug("IKEA Tradfri Hub: Get Lights [1]")
 
         for light_id in output:
             self._bulbs.append(IKEATradfriHelper(self._host,
-                                                 self._securityCode, light_id))
+                                                 self._security_code, light_id))
 
         _LOGGER.debug("IKEA Tradfri Hub: Get Lights [2]")
 
         # return a list of Bulb objects
         return self._bulbs
 
-    def commandHelper(self, command, arguments, needle):
+    @staticmethod
+    def command_helper(command, arguments, needle):
         """ Execute the command through shell """
 
         _LOGGER.debug("IKEA Tradfri Hub: Command Helper [1]")
 
-        shellCommand = command % arguments
         _LOGGER.debug("IKEA Tradfri Hub: Command Helper [2]")
-        proc = subprocess.Popen(shellCommand, stdout=subprocess.PIPE, shell=True)
+        proc = subprocess.Popen(command % arguments, stdout=subprocess.PIPE, shell=True)
         _LOGGER.debug("IKEA Tradfri Hub: Command Helper [3]")
         (out, err) = proc.communicate()
         _LOGGER.debug("IKEA Tradfri Hub: Command Helper [4]")
 
-        jsonStart = out.find(needle, out.find(needle) + 1)
+        JSON_START = out.find(needle, out.find(needle) + 1)
         _LOGGER.debug("IKEA Tradfri Hub: Command Helper [5]")
-        output = json.loads(out[jsonStart:])
+        output = json.loads(out[JSON_START:])
         _LOGGER.debug("IKEA Tradfri Hub: Command Helper [6]")
 
         return output
@@ -148,10 +149,10 @@ class IKEATradfri(Light):
 class IKEATradfriHelper(object):
     """ Gets information on a specific device """
 
-    def __init__(self, host, securityCode, deviceID):
+    def __init__(self, host, securityCode, device_id):
         self._devices = {}
-        self._deviceID = deviceID
-        self._coapString = "coap-client -u 'Client_identity' -k '" \
+        self._device_id = device_id
+        self._coap_string = "coap-client -u 'Client_identity' -k '" \
             + securityCode + "' -v 0 -m %s 'coaps://" + host + ":5684/%s' %s"
 
         self._name = None
@@ -161,9 +162,9 @@ class IKEATradfriHelper(object):
     @property
     def name(self):
         """ Get the name of a device  """
-        output = commandHelper(
-            self._coapString,
-            ("get", "15001/" + str(self._deviceID), ""),
+        output = self.command_helper(
+            self._coap_string,
+            ("get", "15001/" + str(self._device_id), ""),
             "{"
             )
 
@@ -177,9 +178,9 @@ class IKEATradfriHelper(object):
     @property
     def brightness(self):
         """ Get the brightness level """
-        output = commandHelper(
-            self._coapString,
-            ("get", "15001/" + str(self._deviceID), ""),
+        output = self.command_helper(
+            self._coap_string,
+            ("get", "15001/" + str(self._device_id), ""),
             "{"
             )
 
@@ -202,3 +203,22 @@ class IKEATradfriHelper(object):
             self._state = False
 
         return self._state
+
+    @staticmethod
+    def command_helper(command, arguments, needle):
+        """ Execute the command through shell """
+
+        _LOGGER.debug("IKEA Tradfri Hub: Command Helper [1]")
+
+        _LOGGER.debug("IKEA Tradfri Hub: Command Helper [2]")
+        proc = subprocess.Popen(command % arguments, stdout=subprocess.PIPE, shell=True)
+        _LOGGER.debug("IKEA Tradfri Hub: Command Helper [3]")
+        (out, err) = proc.communicate()
+        _LOGGER.debug("IKEA Tradfri Hub: Command Helper [4]")
+
+        JSON_START = out.find(needle, out.find(needle) + 1)
+        _LOGGER.debug("IKEA Tradfri Hub: Command Helper [5]")
+        output = json.loads(out[JSON_START:])
+        _LOGGER.debug("IKEA Tradfri Hub: Command Helper [6]")
+
+        return output
