@@ -1,6 +1,7 @@
 """
 Support for the IKEA Tradfri platform
 Version 0.1
+Thanks for the great support @balloob
 """
 
 
@@ -111,7 +112,6 @@ class IKEATradfri(Light):
         self._name = light.name
         self._state = None
         self._brightness = None
-        _LOGGER.info("IKEA Tradfri: test")
 
     @property
     def name(self):
