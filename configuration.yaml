@@ -25,7 +25,7 @@ updater:
 
 recorder:
   # Delete events and states older than 2 weeks
-  purge_days: 14
+  purge_days: 7
 
 # Discover some devices automatically
 discovery:
@@ -58,10 +58,11 @@ script: !include_dir_merge_named extraconfig/scripts
 # Merge list
 sensor: !include_dir_merge_list extraconfig/sensors
 binary_sensor: !include_dir_merge_list extraconfig/binary_sensors
+light: !include_dir_merge_list extraconfig/light
 
 
 # Dir list
-scene: !include_dir_list extraconfig/scenes
+#scene: !include_dir_list extraconfig/scenes
 
 
 # Plain import
@@ -78,7 +79,7 @@ camera: !include extraconfig/standalonefiles/camera.yaml
 tellduslive: !include extraconfig/standalonefiles/tellduslive.yaml
 notify: !include extraconfig/standalonefiles/notify.yaml
 #ifttt: !include extraconfig/standalonefiles/ifttt.yaml
-light: !include extraconfig/standalonefiles/hue.yaml
+#light: !include extraconfig/standalonefiles/hue.yaml
 google: !include extraconfig/standalonefiles/googlecalendar.yaml
 tts: !include extraconfig/standalonefiles/tts.yaml
 #keyboard_remote: !include extraconfig/standalonefiles/keyboard_remote.yaml

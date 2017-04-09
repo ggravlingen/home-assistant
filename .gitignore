@@ -54,3 +54,4 @@ ikea_pw.py
 
 *.db-wal
 
+debug*
