@@ -1,6 +1,6 @@
 - platform: command_line
   scan_interval: 5
-  command: /usr/bin/curl --silent GET http://192.168.0.140:5005/vardagsrum%20musik/state | python -c 'import sys, json; print json.load(sys.stdin)["playbackState"]'
+  command: /usr/bin/curl --silent GET http://192.168.0.140:5005/vardagsrum%20musik/state | python -c 'import sys, json; print(json.load(sys.stdin)["playbackState"])'
   name: 'sonos_kitchen_state_shell'
 
 - platform: template
