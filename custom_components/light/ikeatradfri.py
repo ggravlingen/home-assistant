@@ -89,7 +89,7 @@ class IKEATradfriHub(object):
             '-u',
             'Client_identity',
             '-k',
-            'PnHhjOjepj8vhbZB',
+            self._security_code,
             '-v',
             '0',
             '-m',
