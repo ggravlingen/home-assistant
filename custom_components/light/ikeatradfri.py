@@ -171,8 +171,8 @@ class IKEATradfri(Light):
         """Initialize an AwesomeLight."""
         self._light = light
         self._name = light.name
-        self._state = light.is_on
-        self._brightness = None#light.brightness
+        self._state = None
+        self._brightness = None
 
     @property
     def name(self):
