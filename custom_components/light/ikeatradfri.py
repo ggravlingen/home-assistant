@@ -91,7 +91,7 @@ class IKEATradfriHub(object):
             (out, err) = proc.communicate()
         except:
             _LOGGER.debug("IKEA Tradfri Hub: Command Helper [2][" + sys.exc_info() + "]")
-        out = proc.communicate()
+            
         _LOGGER.debug("IKEA Tradfri Hub: Command Helper [4][" + out + "]")
         _LOGGER.debug("IKEA Tradfri Hub: Command Helper [4][" + err + "]")
         _LOGGER.debug("IKEA Tradfri Hub: Command Helper [3][" + command % arguments + "]")
