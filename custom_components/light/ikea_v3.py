@@ -21,7 +21,7 @@ class IKEATradfriHelper(object):
         self._name = None
         self._state = True
         self._brightness = None
- 
+
     @property
     def name(self):
         output = commandHelper(self._coapString, ("get", "15001/" + str(self._deviceID), "") )

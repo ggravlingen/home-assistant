@@ -44,7 +44,7 @@ def setup_platform(hass, config, add_devices, discovery_info=None):
     lights.append( light )
             
     # Add devices
-    add_devices( IKEATradfri( lights[0] ) )  # for light in lights )
+    add_devices( IKEATradfri( [ lights[0] ] ) )  # for light in lights )
 
 
 class IKEATradfri(Light):
@@ -54,7 +54,7 @@ class IKEATradfri(Light):
     
     def __init__(self, Light):
         """Initialize an AwesomeLight."""
-        _LOGGER.info("IKEA Tradfri: Laddar 3")
+        _LOGGER.info("IKEA Tradfri: test")
         self._light = Light
         self._name = Light.name
         self._state = None
