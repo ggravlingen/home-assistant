@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 ##############################################################
 #
 # IKEA TRADFRI LIGHT PLATFORM
@@ -8,6 +9,8 @@
 ##############################################################
 
 
+
+import json, subprocess
 import logging
 import voluptuous as vol
 
@@ -15,7 +18,10 @@ import voluptuous as vol
 # Import the device class from the component that you want to support
 from homeassistant.components.light import ATTR_BRIGHTNESS, Light, PLATFORM_SCHEMA
 from homeassistant.const import CONF_HOST, CONF_PASSWORD
+
 import homeassistant.helpers.config_validation as cv
+
+
 
 # Home Assistant depends on 3rd party packages for API specific code.
 REQUIREMENTS = []
@@ -30,37 +36,21 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
 
 def setup_platform(hass, config, add_devices, discovery_info=None):
     """Setup the Awesome Light platform."""
-
-    _LOGGER.debug("1")
-    import ikea_v3
     
-    _LOGGER.debug("2")
     # Assign configuration variables. The configuration check takes care they are
     # present. 
-    _LOGGER.debug("3")
     host         = config.get(CONF_HOST)
-    _LOGGER.debug("4")
     securitycode = config.get(CONF_PASSWORD)
-    _LOGGER.debug("5")
     
-    lights = []
-    _LOGGER.debug("6")
-    light = IKEATradfriHelper(host, securitycode, "65537")
-    _LOGGER.debug("7")
+    hub = IKEATradfriHub(host, securitycode)
     
-    lights.append( light )
-            
-    # Add devices
-    #add_devices( IKEATradfri(light) for light in lights )
-    #add_devices( [ IKEATradfri(light) ] )
-    _LOGGER.debug("8")
-    add_devices( [ IKEATradfri( lights[0] ) ] )
-    _LOGGER.debug("9")
-    #add_devices( [ IKEATradfri( lights[0] ) ] )  # for light in lights )
+    _LOGGER.debug("IKEA Tradfri: 8")
+    add_devices( IKEATradfri(light) for light in hub.get_lights() )
+    _LOGGER.debug("IKEA Tradfri: 9")
+    
 
 class IKEATradfri(Light):
-    """Representation of an Awesome Light."""
-    
+
     def __init__(self, light):
         """Initialize an AwesomeLight."""
         self._light = light
@@ -109,3 +99,92 @@ class IKEATradfri(Light):
         self._light.update()
         self._state = self._light.is_on()
         self._brightness = self._light.brightness
+        
+        
+        
+        
+        
+        
+        
+        
+        
+def commandHelper(command, arguments, needle):
+    proc = subprocess.Popen( command % arguments , stdout=subprocess.PIPE, shell=True)
+    (out, err) = proc.communicate()
+    jsonStart = out.find(needle, out.find(needle) + 1 )
+    output = json.loads( out[jsonStart:] )
+    
+    return output
+
+class IKEATradfriHub(object):
+    def __init__(self, host, securityCode):
+        self._bulbs = []
+        self._coapString = "coap-client -u 'Client_identity' -k '" + securityCode + "' -v 0 -m %s 'coaps://" + host + ":5684/%s' %s"
+        
+        self._host = host
+        self._securityCode = securityCode
+        
+        _LOGGER.debug("IKEA Tradfri Hub: Initialized")
+        
+    def get_lights(self):
+        output = commandHelper(self._coapString, ("get", "15001", "") , "[" )
+        
+        _LOGGER.debug("IKEA Tradfri Hub: Get Lights loaded")
+
+        print(self._host)
+        print(self._securityCode)
+        
+        x = 0
+        for light_id in output:
+            self._bulbs.append( IKEATradfriHelper(self._host, self._securityCode, light_id ) )
+            x = x + 1
+    
+        # return a list of Bulb objects
+        return self._bulbs
+        
+        
+class IKEATradfriHelper(object):
+
+    def __init__(self, host, securityCode, deviceID):
+        self._devices = {}
+        self._deviceID = deviceID
+        self._coapString = "coap-client -u 'Client_identity' -k '" + securityCode + "' -v 0 -m %s 'coaps://" + host + ":5684/%s' %s"
+        
+        self._name = None
+        self._state = True
+        self._brightness = None
+        
+    @property
+    def name(self):
+        output = commandHelper(self._coapString, ("get", "15001/" + str(self._deviceID), ""), "{" )
+		
+        try:
+            self._name = output["9001"]
+        except ValueError:
+            error = 1 # print("No device")
+		
+        return self._name
+        
+    @property
+    def brightness(self):
+        output = commandHelper(self._coapString, ("get", "15001/" + str(self._deviceID), ""), "{" )
+        
+        try:
+            self._brightness = int(output["3311"][0]["5851"])
+        except KeyError:
+            error = 1 # print("No device")
+        except TypeError:
+            error = 1 # print("No device")
+		
+        return self._brightness
+        
+    @property
+    def is_on(self):
+        """Return true if light is on."""
+        
+        if self._brightness > 0:
+            self._state = True
+        else:
+            self._state = False
+            
+        return self._state
