@@ -57,7 +57,7 @@ class IKEATradfriHelper(object):
             
         return self._state
         
-    ########### above here is real stuff, below is debug
+    ########### below is debug, ignore
 """
     def setBrightness(self, deviceID, lightIntensity):
         commandString = "echo '{ \"3311\" : [{ \"5851\" : " + str(lightIntensity) + " }] }' | " + self._coapString % ('put', "15001/" + deviceID , '-f -')

@@ -31,34 +31,43 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
 def setup_platform(hass, config, add_devices, discovery_info=None):
     """Setup the Awesome Light platform."""
 
+    _LOGGER.debug("1")
     import ikea_v3
     
+    _LOGGER.debug("2")
     # Assign configuration variables. The configuration check takes care they are
     # present. 
+    _LOGGER.debug("3")
     host         = config.get(CONF_HOST)
+    _LOGGER.debug("4")
     securitycode = config.get(CONF_PASSWORD)
+    _LOGGER.debug("5")
     
     lights = []
+    _LOGGER.debug("6")
     light = IKEATradfriHelper(host, securitycode, "65537")
+    _LOGGER.debug("7")
     
     lights.append( light )
             
     # Add devices
-    add_devices( [ IKEATradfri( lights[0] ) ] )  # for light in lights )
-
+    #add_devices( IKEATradfri(light) for light in lights )
+    #add_devices( [ IKEATradfri(light) ] )
+    _LOGGER.debug("8")
+    add_devices( [ IKEATradfri( lights[0] ) ] )
+    _LOGGER.debug("9")
+    #add_devices( [ IKEATradfri( lights[0] ) ] )  # for light in lights )
 
 class IKEATradfri(Light):
     """Representation of an Awesome Light."""
-
-    _LOGGER.info("IKEA Tradfri: Initialized device")
     
-    def __init__(self, Light):
+    def __init__(self, light):
         """Initialize an AwesomeLight."""
-        _LOGGER.info("IKEA Tradfri: test")
-        self._light = Light
-        self._name = Light.name
+        self._light = light
+        self._name = light.name
         self._state = None
         self._brightness = None
+        _LOGGER.info("IKEA Tradfri: test")
 
     @property
     def name(self):
