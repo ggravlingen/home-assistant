@@ -11,43 +11,74 @@ _LOGGER = logging.getLogger(__name__)
 
 class IKEATradfriHub(object):
     """ This class connects to the IKEA Tradfri Gateway """
-    
-    import subprocess
 
     def __init__(self, host, securityCode):
+
         self._bulbs = []
-        self._coapString = "coap-client -u 'Client_identity' -k '" \
+        self._coap_string = "/usr/local/bin/coap-client -u 'Client_identity' -k '" \
             + securityCode + "' -v 0 -m %s 'coaps://" + host + ":5684/%s' %s"
 
         self._host = host
-        self._securityCode = securityCode
+        self._security_code = securityCode
 
         _LOGGER.debug("IKEA Tradfri Hub: Initialized")
 
     def get_lights(self):
         """ Returns the lights linked to the gateway """
-        output = self.commandHelper(self._coapString, ("get", "15001", ""), "[")
-
-        _LOGGER.debug("IKEA Tradfri Hub: Get Lights loaded")
+        output = self.command_helper(self._coap_string, ("get", "15001", ""), "[")
+        _LOGGER.debug("IKEA Tradfri Hub: Get Lights [1]")
 
         for light_id in output:
             self._bulbs.append(IKEATradfriHelper(self._host,
-                                                 self._securityCode, light_id))
+                                                 self._security_code, light_id))
+
+        _LOGGER.debug("IKEA Tradfri Hub: Get Lights [2]")
 
         # return a list of Bulb objects
         return self._bulbs
 
-    def commandHelper(self, command, arguments, needle):
+    @staticmethod
+    def find_nth(haystack, needle, n):
+        """ Find the n:th occurence of a string """
+        start = haystack.find(needle)
+        while start >= 0 and n > 1:
+            start = haystack.find(needle, start+len(needle))
+            n -= 1
+
+    def command_helper(self, command, arguments, needle):
         """ Execute the command through shell """
 
-        shellCommand = command % arguments
-        proc = subprocess.Popen(shellCommand, stdout=subprocess.PIPE, shell=True)
-        (out, err) = proc.communicate()
+        _LOGGER.debug("IKEA Tradfri Hub: Command Helper [1]")
 
-        jsonStart = out.find(needle, out.find(needle) + 1)
-        output = json.loads(out[jsonStart:])
+        theCommand = [
+            '/usr/local/bin/coap-client',
+            '-u',
+            'Client_identity',
+            '-k',
+            'PnHhjOjepj8vhbZB',
+            '-v',
+            '0',
+            '-m',
+            'get',
+            'coaps://192.168.0.129:5684/15001'
+            ]
 
-        return output
+        #_LOGGER.debug("IKEA Tradfri Hub: Command Helper [1][" + theCommand + "]")
+
+        try:
+            return_value = subprocess.check_output(theCommand)
+            out = return_value.strip().decode('utf-8')
+        except subprocess.CalledProcessError:
+            _LOGGER.error('Command failed: %s', theCommand)
+#        except subprocess.TimeoutExpired:
+#            _LOGGER.error('Timeout for command: %s', theCommand)
+
+        _LOGGER.debug("IKEA Tradfri Hub: Command Helper [1][" + out + "]")
+
+        #output = json.loads(out[json_startpos:])
+        #_LOGGER.debug("IKEA Tradfri Hub: Command Helper [6][" + output + "]")
+
+        return out
 
         
 class IKEATradfriHelper(object):
