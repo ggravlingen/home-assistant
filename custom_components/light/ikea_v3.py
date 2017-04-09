@@ -37,14 +37,6 @@ class IKEATradfriHub(object):
         # return a list of Bulb objects
         return self._bulbs
 
-    @staticmethod
-    def find_nth(haystack, needle, n):
-        """ Find the n:th occurence of a string """
-        start = haystack.find(needle)
-        while start >= 0 and n > 1:
-            start = haystack.find(needle, start+len(needle))
-            n -= 1
-
     def command_helper(self, command, arguments, needle):
         """ Execute the command through shell """
 

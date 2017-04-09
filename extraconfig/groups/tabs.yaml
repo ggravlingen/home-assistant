@@ -43,6 +43,7 @@ kitchen:
   name: "Kök"
   entities:
   - group.kitchen_switchar
+  - light.kokslampa
 
 ### HALL
 hallway:

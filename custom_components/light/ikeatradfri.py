@@ -39,10 +39,12 @@ def setup_platform(hass, config, add_devices, discovery_info=None):
 
     hub = IKEATradfriHub(host, securitycode)
 
-    _LOGGER.debug("IKEA Tradfri: 8")
-    #hub.get_lights()
-    add_devices(IKEATradfri(light) for light in hub.get_lights())
-    _LOGGER.debug("IKEA Tradfri: 9")
+    #_LOGGER.debug("IKEA Tradfri: 8")
+    lights = hub.get_lights()
+    print("WOW LIGHTS", lights)
+    add_devices(IKEATradfri(light) for light in lights)
+    #add_devices(IKEATradfri(light) for light in hub.get_lights())
+    #_LOGGER.debug("IKEA Tradfri: 9")
 
 
 class IKEATradfriHub(object):
@@ -159,6 +161,8 @@ class IKEATradfriHelper(object):
     def __init__(self, host, securityCode, device_id):
         self._devices = {}
         self._device_id = device_id
+        self._security_code = securityCode
+        
         self._coap_string = "coap-client -u 'Client_identity' -k '" \
             + securityCode + "' -v 0 -m %s 'coaps://" + host + ":5684/%s' %s"
 
@@ -175,6 +179,8 @@ class IKEATradfriHelper(object):
             "{"
             )
 
+        print(output)
+        
         try:
             self._name = output["9001"]
         except ValueError:
@@ -211,20 +217,28 @@ class IKEATradfriHelper(object):
 
         return self._state
 
-    @staticmethod
-    def command_helper(command, arguments, needle):
+    def command_helper(self, command, arguments, needle):
         """ Execute the command through shell """
 
-        _LOGGER.debug("IKEA Tradfri Hub: Command Helper [1]")
+        theCommand = [
+            '/usr/local/bin/coap-client',
+            '-u',
+            'Client_identity',
+            '-k',
+            self._security_code,
+            '-v',
+            '0',
+            '-m',
+            'get',
+            'coaps://192.168.0.129:5684/15001' + str(self._device_id),
+            ]
 
-        proc = subprocess.Popen(command % arguments, stdout=subprocess.PIPE, shell=True)
-        _LOGGER.debug("IKEA Tradfri Hub: Command Helper [2]")
-        (out, err) = proc.communicate()
-        _LOGGER.debug("IKEA Tradfri Hub: Command Helper [3][" + out + "]")
+        try:
+            return_value = subprocess.check_output(theCommand)
+            out = return_value.strip().decode('utf-8')
+        except subprocess.CalledProcessError:
+            _LOGGER.error('Command failed: %s', theCommand)
 
-        json_startpos = out.find(needle, out.find(needle) + 1)
-        _LOGGER.debug("IKEA Tradfri Hub: Command Helper [5]")
-        output = json.loads(out[json_startpos:])
-        _LOGGER.debug("IKEA Tradfri Hub: Command Helper [6]")
+        output = json.loads(out.split('\n')[-1])
 
         return output
