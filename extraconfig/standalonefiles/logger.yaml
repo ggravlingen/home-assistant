@@ -1,5 +1,5 @@
-default: critical
-#default: debug
+#default: critical
+default: debug
 logs:
 #  custom_components.sensor: debug
   custom_components: debug

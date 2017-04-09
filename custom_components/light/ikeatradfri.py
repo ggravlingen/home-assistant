@@ -142,7 +142,7 @@ class IKEATradfriHelper(object):
         _LOGGER.debug(output)
 
         try:
-            self._brightness = int(output["3311"][0]["5851"])
+            self._brightness = int(output["3311"][0]["5851"])+1
         except KeyError:
             _LOGGER.debug("IKEA Tradfri Hub: Error getting brightness")
         except TypeError:
@@ -154,7 +154,7 @@ class IKEATradfriHelper(object):
     def is_on(self):
         """Return true if light is on."""
 
-        if self._brightness > 1:
+        if self._brightness is not None and self._brightness > 1:
             self._state = True
         else:
             self._state = False
@@ -169,8 +169,8 @@ class IKEATradfri(Light):
         """Initialize an AwesomeLight."""
         self._light = light
         self._name = light.name
-        self._state = None
-        self._brightness = None
+        self._state = light.is_on
+        self._brightness = light.brightness
 
     @property
     def name(self):
@@ -180,9 +180,6 @@ class IKEATradfri(Light):
     @property
     def brightness(self):
         """Brightness of the light (an integer in the range 1-255).
-
-        This method is optional. Removing it indicates to Home Assistant
-        that brightness is not supported for this light.
         """
         return self._brightness
 
