@@ -9,69 +9,80 @@ import json, subprocess
 import logging
 _LOGGER = logging.getLogger(__name__)
 
+def command_helper_v2(host, security_code, method, light_id = ''):
+    """ Execute the command through shell """
+
+#    _LOGGER.error(host + ' | ' + security_code + ' | ' + method + ' | ' + light_id)
+
+    if len(light_id) > 0:
+        commandString = 'coaps://' + host + ':5684/15001/' + light_id
+    else:
+        commandString = 'coaps://' + host + ':5684/15001'
+
+    theCommand = [
+        '/usr/local/bin/coap-client',
+        '-u',
+        'Client_identity',
+        '-k',
+        security_code,
+        '-v',
+        '0',
+        '-m',
+        method,
+        commandString,
+#        .'-f -'
+        ]
+
+    try:
+        return_value = subprocess.check_output(theCommand)
+        out = return_value.strip().decode('utf-8')
+    except subprocess.CalledProcessError:
+        _LOGGER.error('Command failed: %s', theCommand)
+
+    """ Return only the last line, where there's JSON """
+    output = json.loads(out.split('\n')[-1])
+
+    return output
+
+
 class IKEATradfriHub(object):
     """ This class connects to the IKEA Tradfri Gateway """
 
     def __init__(self, host, securityCode):
-
         self._bulbs = []
-        self._coap_string = "/usr/local/bin/coap-client -u 'Client_identity' -k '" \
-            + securityCode + "' -v 0 -m %s 'coaps://" + host + ":5684/%s' %s"
 
         self._host = host
         self._security_code = securityCode
 
-        _LOGGER.debug("IKEA Tradfri Hub: Initialized")
+        _LOGGER.debug("IKEA Tradfri Hub | init | Initialization Process Complete")
 
     def get_lights(self):
         """ Returns the lights linked to the gateway """
-        output = self.command_helper(self._coap_string, ("get", "15001", ""), "[")
-        _LOGGER.debug("IKEA Tradfri Hub: Get Lights [1]")
+        output = command_helper_v2(self._host, self._security_code, 'get', '')
 
         for light_id in output:
             self._bulbs.append(IKEATradfriHelper(self._host,
                                                  self._security_code, light_id))
 
-        _LOGGER.debug("IKEA Tradfri Hub: Get Lights [2]")
+        _LOGGER.debug("IKEA Tradfri Hub | get_lights | All Lights Loaded")
 
         # return a list of Bulb objects
         return self._bulbs
 
-    def command_helper(self, command, arguments, needle):
-        """ Execute the command through shell """
 
-        theCommand = [
-            '/usr/local/bin/coap-client',
-            '-u',
-            'Client_identity',
-            '-k',
-            self._security_code,
-            '-v',
-            '0',
-            '-m',
-            'get',
-            'coaps://192.168.0.129:5684/15001'
-            ]
-
-        try:
-            return_value = subprocess.check_output(theCommand)
-            out = return_value.strip().decode('utf-8')
-        except subprocess.CalledProcessError:
-            _LOGGER.error('Command failed: %s', theCommand)
-
-        output = json.loads(out.split('\n')[-1])
-
-        return output
-
-        
 class IKEATradfriHelper(object):
     """ Gets information on a specific device """
 
-    def __init__(self, host, securityCode, deviceID):
+    def __init__(self, host, securityCode, light_id):
         self._devices = {}
-        self._deviceID = deviceID
-        self._coapString = "coap-client -u 'Client_identity' -k '" \
-            + securityCode + "' -v 0 -m %s 'coaps://" + host + ":5684/%s' %s"
+        
+        if light_id is not None:
+            self._light_id = str(light_id)
+        else:
+            self._light_id = 0
+
+        self._host = host
+        self._security_code = securityCode
 
         self._name = None
         self._state = True
@@ -80,34 +91,26 @@ class IKEATradfriHelper(object):
     @property
     def name(self):
         """ Get the name of a device  """
-        output = commandHelper(
-            self._coapString,
-            ("get", "15001/" + str(self._deviceID), ""),
-            "{"
-            )
+        output = command_helper_v2(self._host, self._security_code, 'get', self._light_id)
 
         try:
-            self._name = output["9001"]
+            self._name = output['9001']
         except ValueError:
-            _LOGGER.debug("IKEA Tradfri Hub: Error getting name")
+            _LOGGER.debug("IKEA Tradfri Helper | Name | Error Setting Name")
 
         return self._name
 
     @property
     def brightness(self):
         """ Get the brightness level """
-        output = commandHelper(
-            self._coapString,
-            ("get", "15001/" + str(self._deviceID), ""),
-            "{"
-            )
-
+        output = command_helper_v2(self._host, self._security_code, 'get', self._light_id)
+        
         try:
-            self._brightness = int(output["3311"][0]["5851"])
+            self._brightness = int(output['3311'][0]['5851'])+1 # The bulbs run from 0=off to 254=max but ha is 1-255
         except KeyError:
-            _LOGGER.debug("IKEA Tradfri Hub: Error getting brightness")
+            _LOGGER.debug("IKEA Tradfri Helper | Brightness | KeyError")
         except TypeError:
-            _LOGGER.debug("IKEA Tradfri Hub: Error getting brightness")
+            _LOGGER.debug("IKEA Tradfri Helper | Brightness | TypeError")
 
         return self._brightness
 
@@ -115,9 +118,14 @@ class IKEATradfriHelper(object):
     def is_on(self):
         """Return true if light is on."""
 
-        if self._brightness > 0:
+        if self._brightness is not None and self._brightness > 1:
             self._state = True
         else:
             self._state = False
 
         return self._state
+
+#    def update(self):
+#        """ Updates the state of the lamp """
+#        self._state = this.is_on
+#        self._brightness = this.brightness

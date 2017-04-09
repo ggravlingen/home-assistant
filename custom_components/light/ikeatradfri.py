@@ -13,7 +13,7 @@ import voluptuous as vol
 # Import the device class from the component that you want to support
 from homeassistant.components.light import ATTR_BRIGHTNESS, \
     Light, PLATFORM_SCHEMA
-from homeassistant.const import CONF_HOST, CONF_PASSWORD
+from homeassistant.const import CONF_HOST, CONF_API_KEY
 
 import homeassistant.helpers.config_validation as cv
 
@@ -26,17 +26,17 @@ _LOGGER = logging.getLogger(__name__)
 # Validation of the user's configuration
 PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
     vol.Required(CONF_HOST): cv.string,
-    vol.Optional(CONF_PASSWORD): cv.string,
+    vol.Optional(CONF_API_KEY): cv.string,
 })
 
 
 def command_helper_v2(host, security_code, method, light_id = ''):
     """ Execute the command through shell """
 
-#    _LOGGER.error(host + ' | ' + security_code + ' | ' + method + ' | ' + light_id)
+    #_LOGGER.debug(host + ' | ' + security_code + ' | ' + method + ' | ' + light_id)
 
     if len(light_id) > 0:
-        commandString = 'coaps://' + host + ':5684/15001/' + str(light_id)
+        commandString = 'coaps://' + host + ':5684/15001/' + light_id
     else:
         commandString = 'coaps://' + host + ':5684/15001'
 
@@ -50,15 +50,14 @@ def command_helper_v2(host, security_code, method, light_id = ''):
         '0',
         '-m',
         method,
-        commandString,
-#        .'-f -'
+        commandString
         ]
 
     try:
         return_value = subprocess.check_output(theCommand)
         out = return_value.strip().decode('utf-8')
     except subprocess.CalledProcessError:
-        _LOGGER.error('Command failed: %s', theCommand)
+        _LOGGER.debug('Command failed: %s', theCommand)
 
     """ Return only the last line, where there's JSON """
     output = json.loads(out.split('\n')[-1])
@@ -72,7 +71,7 @@ def setup_platform(hass, config, add_devices, discovery_info=None):
     # Assign configuration variables.
     # The configuration check takes care they are present.
     host = config.get(CONF_HOST)
-    securitycode = config.get(CONF_PASSWORD)
+    securitycode = config.get(CONF_API_KEY)
 
     hub = IKEATradfriHub(host, securitycode)
 
@@ -93,11 +92,11 @@ class IKEATradfriHub(object):
 
     def get_lights(self):
         """ Returns the lights linked to the gateway """
-        output = command_helper_v2(self._host, self._security_code, 'get')
+        output = command_helper_v2(self._host, self._security_code, 'get', '')
 
         for light_id in output:
             self._bulbs.append(IKEATradfriHelper(self._host,
-                                                 self._security_code, str(light_id)))
+                                                 self._security_code, light_id))
 
         _LOGGER.debug("IKEA Tradfri Hub | get_lights | All Lights Loaded")
 
@@ -110,13 +109,11 @@ class IKEATradfriHelper(object):
 
     def __init__(self, host, securityCode, light_id):
         self._devices = {}
-        self._light_id = light_id
+        
+        self._light_id = str(light_id)
 
         self._host = host
         self._security_code = securityCode
-
-        self._coap_string = "coap-client -u 'Client_identity' -k '" \
-            + securityCode + "' -v 0 -m %s 'coaps://" + host + ":5684/%s' %s"
 
         self._name = None
         self._state = True
@@ -125,7 +122,7 @@ class IKEATradfriHelper(object):
     @property
     def name(self):
         """ Get the name of a device  """
-        output = command_helper_v2(self._host, self._security_code, 'get', str(self._light_id))
+        output = command_helper_v2(self._host, self._security_code, 'get', self._light_id)
 
         try:
             self._name = output['9001']
@@ -137,16 +134,14 @@ class IKEATradfriHelper(object):
     @property
     def brightness(self):
         """ Get the brightness level """
-        output = command_helper_v2(self._host, self._security_code, 'get', str(self._light_id))
-        _LOGGER.debug("Setting brightness")
-        _LOGGER.debug(output)
-
+        output = command_helper_v2(self._host, self._security_code, 'get', self._light_id)
+        
         try:
-            self._brightness = int(output["3311"][0]["5851"])+1
+            self._brightness = int(output['3311'][0]['5851'])+1 # The bulbs run from 0=off to 254=max but ha is 1-255
         except KeyError:
-            _LOGGER.debug("IKEA Tradfri Hub: Error getting brightness")
+            _LOGGER.debug("IKEA Tradfri Helper | Brightness | KeyError")
         except TypeError:
-            _LOGGER.debug("IKEA Tradfri Hub: Error getting brightness")
+            _LOGGER.debug("IKEA Tradfri Helper | Brightness | TypeError")
 
         return self._brightness
 
@@ -161,6 +156,10 @@ class IKEATradfriHelper(object):
 
         return self._state
 
+    def update(self):
+        """ Updates the state of the lamp """
+        self._state = this.is_on
+        self._brightness = this.brightness
 
 class IKEATradfri(Light):
     """ The platform class required by hass """
@@ -169,8 +168,8 @@ class IKEATradfri(Light):
         """Initialize an AwesomeLight."""
         self._light = light
         self._name = light.name
-        self._state = light.is_on
-        self._brightness = light.brightness
+        self._state = None# light.is_on
+        self._brightness = None#light.brightness
 
     @property
     def name(self):

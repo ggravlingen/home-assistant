@@ -1,3 +1,3 @@
 - platform: ikeatradfri
   host: 192.168.0.129
-  password: !secret ikeatradfri_securitycode
+  api_key: !secret ikeatradfri_securitycode
