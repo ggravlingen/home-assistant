@@ -44,7 +44,7 @@ def setup_platform(hass, config, add_devices, discovery_info=None):
     lights.append( light )
             
     # Add devices
-    add_devices( IKEATradfri( [ lights[0] ] ) )  # for light in lights )
+    add_devices( [ IKEATradfri( lights[0] ) ] )  # for light in lights )
 
 
 class IKEATradfri(Light):
