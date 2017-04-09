@@ -85,19 +85,20 @@ class IKEATradfriHub(object):
         """ Execute the command through shell """
 
         _LOGGER.debug("IKEA Tradfri Hub: Command Helper [1]")
+        
+        theCommand = command % arguments
+        
+        _LOGGER.debug("IKEA Tradfri Hub: Command Helper [1][" + theCommand + "]")
 
         try:
-            proc = subprocess.Popen(command % arguments, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=False)
-            (out, err) = proc.communicate()
-        except:
-            _LOGGER.debug("IKEA Tradfri Hub: Command Helper [2][" + sys.exc_info() + "]")
+            return_value = subprocess.check_output(theCommand , timeout=15)
+            out = return_value.strip().decode('utf-8')
+        except subprocess.CalledProcessError:
+            _LOGGER.error('Command failed: %s', theCommand)
+        except subprocess.TimeoutExpired:
+            _LOGGER.error('Timeout for command: %s', theCommand)
             
-        _LOGGER.debug("IKEA Tradfri Hub: Command Helper [4][" + out + "]")
-        _LOGGER.debug("IKEA Tradfri Hub: Command Helper [4][" + err + "]")
-        _LOGGER.debug("IKEA Tradfri Hub: Command Helper [3][" + command % arguments + "]")
-
-#        _LOGGER.debug("IKEA Tradfri Hub: Command Helper [4][" +
-#                      self.find_nth(out, needle, 2) + "]")
+        _LOGGER.debug("IKEA Tradfri Hub: Command Helper [1][" + out + "]")
 
         #output = json.loads(out[json_startpos:])
         #_LOGGER.debug("IKEA Tradfri Hub: Command Helper [6][" + output + "]")
