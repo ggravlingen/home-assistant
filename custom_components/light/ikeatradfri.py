@@ -4,10 +4,10 @@ Version 0.1
 """
 
 
-import logging
-import voluptuous as vol
 import subprocess
 import json
+import logging
+import voluptuous as vol
 
 # Import the device class from the component that you want to support
 from homeassistant.components.light import ATTR_BRIGHTNESS, \
@@ -30,7 +30,7 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
 
 
 def setup_platform(hass, config, add_devices, discovery_info=None):
-    """Setup the Awesome Light platform."""
+    """Setup the IKEA Tradfri Light platform."""
 
     # Assign configuration variables.
     # The configuration check takes care they are present.
@@ -51,7 +51,7 @@ class IKEATradfriHub(object):
     def __init__(self, host, securityCode):
 
         self._bulbs = []
-        self._coap_string = "coap-client -u 'Client_identity' -k '" \
+        self._coap_string = "/usr/local/bin/coap-client -u 'Client_identity' -k '" \
             + securityCode + "' -v 0 -m %s 'coaps://" + host + ":5684/%s' %s"
 
         self._host = host
@@ -74,21 +74,33 @@ class IKEATradfriHub(object):
         return self._bulbs
 
     @staticmethod
-    def command_helper(command, arguments, needle):
+    def find_nth(haystack, needle, n):
+        """ Find the n:th occurence of a string """
+        start = haystack.find(needle)
+        while start >= 0 and n > 1:
+            start = haystack.find(needle, start+len(needle))
+            n -= 1
+
+    def command_helper(self, command, arguments, needle):
         """ Execute the command through shell """
 
         _LOGGER.debug("IKEA Tradfri Hub: Command Helper [1]")
 
-        _LOGGER.debug("IKEA Tradfri Hub: Command Helper [2]")
-        proc = subprocess.Popen(command % arguments, stdout=subprocess.PIPE, shell=True)
-        _LOGGER.debug("IKEA Tradfri Hub: Command Helper [3]")
-        (out, err) = proc.communicate()
-        _LOGGER.debug("IKEA Tradfri Hub: Command Helper [4]")
+        try:
+            proc = subprocess.Popen(command % arguments, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=False)
+            (out, err) = proc.communicate()
+        except:
+            _LOGGER.debug("IKEA Tradfri Hub: Command Helper [2][" + sys.exc_info() + "]")
+        out = proc.communicate()
+        _LOGGER.debug("IKEA Tradfri Hub: Command Helper [4][" + out + "]")
+        _LOGGER.debug("IKEA Tradfri Hub: Command Helper [4][" + err + "]")
+        _LOGGER.debug("IKEA Tradfri Hub: Command Helper [3][" + command % arguments + "]")
 
-        JSON_START = out.find(needle, out.find(needle) + 1)
-        _LOGGER.debug("IKEA Tradfri Hub: Command Helper [5]")
-        output = json.loads(out[JSON_START:])
-        _LOGGER.debug("IKEA Tradfri Hub: Command Helper [6]")
+#        _LOGGER.debug("IKEA Tradfri Hub: Command Helper [4][" +
+#                      self.find_nth(out, needle, 2) + "]")
+
+        #output = json.loads(out[json_startpos:])
+        #_LOGGER.debug("IKEA Tradfri Hub: Command Helper [6][" + output + "]")
 
         return output
 
@@ -210,15 +222,14 @@ class IKEATradfriHelper(object):
 
         _LOGGER.debug("IKEA Tradfri Hub: Command Helper [1]")
 
-        _LOGGER.debug("IKEA Tradfri Hub: Command Helper [2]")
         proc = subprocess.Popen(command % arguments, stdout=subprocess.PIPE, shell=True)
-        _LOGGER.debug("IKEA Tradfri Hub: Command Helper [3]")
+        _LOGGER.debug("IKEA Tradfri Hub: Command Helper [2]")
         (out, err) = proc.communicate()
-        _LOGGER.debug("IKEA Tradfri Hub: Command Helper [4]")
+        _LOGGER.debug("IKEA Tradfri Hub: Command Helper [3][" + out + "]")
 
-        JSON_START = out.find(needle, out.find(needle) + 1)
+        json_startpos = out.find(needle, out.find(needle) + 1)
         _LOGGER.debug("IKEA Tradfri Hub: Command Helper [5]")
-        output = json.loads(out[JSON_START:])
+        output = json.loads(out[json_startpos:])
         _LOGGER.debug("IKEA Tradfri Hub: Command Helper [6]")
 
         return output
