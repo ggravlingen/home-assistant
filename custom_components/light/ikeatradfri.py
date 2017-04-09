@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 ##############################################################
 #
 # IKEA TRADFRI LIGHT PLATFORM
@@ -7,6 +6,7 @@
 #
 #
 ##############################################################
+# -*- coding: utf-8 -*-
 
 import json
 import subprocess
@@ -33,6 +33,17 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
 })
 
 
+def commandHelper(command, arguments, needle):
+    """ Execute the command through shell """
+    proc = subprocess.Popen(command % arguments, stdout=subprocess.PIPE,
+                            shell=True)
+    (out, err) = proc.communicate()
+    jsonStart = out.find(needle, out.find(needle) + 1)
+    output = json.loads(out[jsonStart:])
+
+    return output
+
+
 def setup_platform(hass, config, add_devices, discovery_info=None):
     """Setup the Awesome Light platform."""
 
@@ -49,6 +60,18 @@ def setup_platform(hass, config, add_devices, discovery_info=None):
 
 
 class IKEATradfriHub(object):
+    """ This class connects to the IKEA Tradfri Gateway """
+
+    def commandHelper(command, arguments, needle):
+        """ Execute the command through shell """
+        proc = subprocess.Popen(command % arguments, stdout=subprocess.PIPE,
+                                shell=True)
+        (out, err) = proc.communicate()
+        jsonStart = out.find(needle, out.find(needle) + 1)
+        output = json.loads(out[jsonStart:])
+
+        return output
+
     def __init__(self, host, securityCode):
         self._bulbs = []
         self._coapString = "coap-client -u 'Client_identity' -k '" \
@@ -60,6 +83,7 @@ class IKEATradfriHub(object):
         _LOGGER.debug("IKEA Tradfri Hub: Initialized")
 
     def get_lights(self):
+        """ Returns the lights linked to the gateway """
         output = commandHelper(self._coapString, ("get", "15001", ""), "[")
 
         _LOGGER.debug("IKEA Tradfri Hub: Get Lights loaded")
@@ -73,6 +97,7 @@ class IKEATradfriHub(object):
 
 
 class IKEATradfri(Light):
+    """ The platform class required by hass """
 
     def __init__(self, light):
         """Initialize an AwesomeLight."""
@@ -124,17 +149,8 @@ class IKEATradfri(Light):
         self._brightness = self._light.brightness
 
 
-def commandHelper(command, arguments, needle):
-    proc = subprocess.Popen(command % arguments, stdout=subprocess.PIPE,
-                            shell=True)
-    (out, err) = proc.communicate()
-    jsonStart = out.find(needle, out.find(needle) + 1)
-    output = json.loads(out[jsonStart:])
-
-    return output
-
-
 class IKEATradfriHelper(object):
+    """ Gets information on a specific device """
 
     def __init__(self, host, securityCode, deviceID):
         self._devices = {}
@@ -148,6 +164,7 @@ class IKEATradfriHelper(object):
 
     @property
     def name(self):
+        """ Get the name of a device  """
         output = commandHelper(
             self._coapString,
             ("get", "15001/" + str(self._deviceID), ""),
@@ -163,6 +180,7 @@ class IKEATradfriHelper(object):
 
     @property
     def brightness(self):
+        """ Get the brightness level """
         output = commandHelper(
             self._coapString,
             ("get", "15001/" + str(self._deviceID), ""),
