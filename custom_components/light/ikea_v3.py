@@ -48,14 +48,12 @@ class IKEATradfriHub(object):
     def command_helper(self, command, arguments, needle):
         """ Execute the command through shell """
 
-        _LOGGER.debug("IKEA Tradfri Hub: Command Helper [1]")
-
         theCommand = [
             '/usr/local/bin/coap-client',
             '-u',
             'Client_identity',
             '-k',
-            'PnHhjOjepj8vhbZB',
+            self._security_code,
             '-v',
             '0',
             '-m',
@@ -63,22 +61,15 @@ class IKEATradfriHub(object):
             'coaps://192.168.0.129:5684/15001'
             ]
 
-        #_LOGGER.debug("IKEA Tradfri Hub: Command Helper [1][" + theCommand + "]")
-
         try:
             return_value = subprocess.check_output(theCommand)
             out = return_value.strip().decode('utf-8')
         except subprocess.CalledProcessError:
             _LOGGER.error('Command failed: %s', theCommand)
-#        except subprocess.TimeoutExpired:
-#            _LOGGER.error('Timeout for command: %s', theCommand)
 
-        _LOGGER.debug("IKEA Tradfri Hub: Command Helper [1][" + out + "]")
+        output = json.loads(out.split('\n')[-1])
 
-        #output = json.loads(out[json_startpos:])
-        #_LOGGER.debug("IKEA Tradfri Hub: Command Helper [6][" + output + "]")
-
-        return out
+        return output
 
         
 class IKEATradfriHelper(object):

@@ -73,14 +73,6 @@ class IKEATradfriHub(object):
         # return a list of Bulb objects
         return self._bulbs
 
-    @staticmethod
-    def find_nth(haystack, needle, n):
-        """ Find the n:th occurence of a string """
-        start = haystack.find(needle)
-        while start >= 0 and n > 1:
-            start = haystack.find(needle, start+len(needle))
-            n -= 1
-
     def command_helper(self, command, arguments, needle):
         """ Execute the command through shell """
 
@@ -103,10 +95,7 @@ class IKEATradfriHub(object):
         except subprocess.CalledProcessError:
             _LOGGER.error('Command failed: %s', theCommand)
 
-        _LOGGER.debug("IKEA Tradfri Hub: Get Lights [99]" + self.find_nth(out, needle, 2) + "")
-
-        output = json.loads(out.split('\n')[-1])            
-        _LOGGER.debug("IKEA Tradfri Hub: Get Lights [99] " + output)
+        output = json.loads(out.split('\n')[-1])
 
         return output
 
