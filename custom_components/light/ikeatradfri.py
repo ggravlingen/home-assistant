@@ -135,7 +135,10 @@ class IKEATradfriHelper(object):
     def brightness(self):
         """ Get the brightness level """
         output = command_helper_v2(self._host, self._security_code, 'get', self._light_id)
-        
+        _LOGGER.debug( output['3311'][0]['5851'] )
+        _LOGGER.debug( output['3311']['0']['5851'] )
+        _LOGGER.debug(int(output['3311'][0]['5851']))
+
         try:
             self._brightness = int(output['3311'][0]['5851'])+1 # The bulbs run from 0=off to 254=max but ha is 1-255
         except KeyError:
@@ -149,7 +152,7 @@ class IKEATradfriHelper(object):
     def is_on(self):
         """Return true if light is on."""
 
-        if self._brightness is not None and self._brightness > 1:
+        if self._brightness > 1:
             self._state = True
         else:
             self._state = False
@@ -168,7 +171,7 @@ class IKEATradfri(Light):
         """Initialize an AwesomeLight."""
         self._light = light
         self._name = light.name
-        self._state = None# light.is_on
+        self._state = light.is_on
         self._brightness = None#light.brightness
 
     @property
