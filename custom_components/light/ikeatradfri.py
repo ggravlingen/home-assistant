@@ -45,8 +45,7 @@ def setup_platform(hass, config, add_devices, discovery_info=None):
     _LOGGER.debug("IKEA Tradfri Hub | init | Initialization Process Complete")
 
     lights = hub.get_lights()
-    #add_devices(IKEATradfri(light) for light in lights)
-    add_devices(openikeatradfri.Light(light) for light in lights)
+    add_devices(IKEATradfri(light) for light in lights)
     
     _LOGGER.debug("IKEA Tradfri Hub | get_lights | All Lights Loaded")
 
