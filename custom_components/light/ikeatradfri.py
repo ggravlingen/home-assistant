@@ -4,6 +4,7 @@ Version 0.1
 Thanks for the great support @balloob
 """
 
+from pprint import pprint
 
 import subprocess
 import json
@@ -47,6 +48,9 @@ def setup_platform(hass, config, add_devices, discovery_info=None):
     lights = hub.get_lights()
     add_devices(IKEATradfri(light) for light in lights)
 
+    #devices = hub.get_devices()
+    #add_devices(IKEATradfri(device) for device in devices)
+
     _LOGGER.debug("IKEA Tradfri Hub | get_lights | All Lights Loaded")
 
 
@@ -57,6 +61,10 @@ class IKEATradfri(Light):
         """Initialize an IKEA Tradfri Light."""
         self._light = light
         self._name = light.name
+        print("HERE!!!")
+        print(light)
+        pprint(vars(light))
+
         self._state = None #light.lights.is_on
         self._brightness = None
 
@@ -69,6 +77,7 @@ class IKEATradfri(Light):
     def brightness(self):
         """Brightness of the light (an integer in the range 1-255).
         """
+
         return self._brightness
 
     @property
