@@ -19,7 +19,7 @@ import homeassistant.helpers.config_validation as cv
 
 
 # Home Assistant depends on 3rd party packages for API specific code.
-REQUIREMENTS = []
+REQUIREMENTS = ['openikeatradfri==0.1']
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -30,79 +30,75 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
 })
 
 
-def command_helper_v2(host, security_code, method, light_id = ''):
-    """ Execute the command through shell """
-
-    #_LOGGER.debug(host + ' | ' + security_code + ' | ' + method + ' | ' + light_id)
-
-    if len(light_id) > 0:
-        commandString = 'coaps://' + host + ':5684/15001/' + light_id
-    else:
-        commandString = 'coaps://' + host + ':5684/15001'
-
-    theCommand = [
-        '/usr/local/bin/coap-client',
-        '-u',
-        'Client_identity',
-        '-k',
-        security_code,
-        '-v',
-        '0',
-        '-m',
-        method,
-        commandString
-        ]
-
-    try:
-        return_value = subprocess.check_output(theCommand)
-        out = return_value.strip().decode('utf-8')
-    except subprocess.CalledProcessError:
-        _LOGGER.debug('Command failed: %s', theCommand)
-
-    """ Return only the last line, where there's JSON """
-    output = json.loads(out.split('\n')[-1])
-
-    return output
-
-
 def setup_platform(hass, config, add_devices, discovery_info=None):
     """Setup the IKEA Tradfri Light platform."""
 
+    import openikeatradfri
+    
     # Assign configuration variables.
     # The configuration check takes care they are present.
     host = config.get(CONF_HOST)
     securitycode = config.get(CONF_API_KEY)
-
-    hub = IKEATradfriHub(host, securitycode)
+    
+    api = openikeatradfri.api_factory(host, securitycode)
+    hub = openikeatradfri.Hub(api)
+    _LOGGER.debug("IKEA Tradfri Hub | init | Initialization Process Complete")
 
     lights = hub.get_lights()
-    add_devices(IKEATradfri(light) for light in lights)
+    #add_devices(IKEATradfri(light) for light in lights)
+    add_devices(openikeatradfri.Light(light) for light in lights)
+    
+    _LOGGER.debug("IKEA Tradfri Hub | get_lights | All Lights Loaded")
 
 
-class IKEATradfriHub(object):
-    """ This class connects to the IKEA Tradfri Gateway """
+class IKEATradfri(Light):
+    """ The platform class required by hass """
 
-    def __init__(self, host, securityCode):
-        self._bulbs = []
+    def __init__(self, light):
+        """Initialize an IKEA Tradfri Light."""
+        self._light = light
+        self._name = light.name
+        self._state = None
+        self._brightness = None
 
-        self._host = host
-        self._security_code = securityCode
+    @property
+    def name(self):
+        """Return the display name of this light."""
+        return self._name
 
-        _LOGGER.debug("IKEA Tradfri Hub | init | Initialization Process Complete")
+    @property
+    def brightness(self):
+        """Brightness of the light (an integer in the range 1-255).
+        """
+        return self._brightness
 
-    def get_lights(self):
-        """ Returns the lights linked to the gateway """
-        output = command_helper_v2(self._host, self._security_code, 'get', '')
+    @property
+    def is_on(self):
+        """Return true if light is on."""
+        return self._state
 
-        for light_id in output:
-            self._bulbs.append(IKEATradfriHelper(self._host,
-                                                 self._security_code, light_id))
+    def turn_on(self, **kwargs):
+        """Instruct the light to turn on.
 
-        _LOGGER.debug("IKEA Tradfri Hub | get_lights | All Lights Loaded")
+        You can skip the brightness part if your light does not support
+        brightness control.
+        """
+        self._light.brightness = kwargs.get(ATTR_BRIGHTNESS, 255)
+        self._light.turn_on()
 
-        # return a list of Bulb objects
-        return self._bulbs
+    def turn_off(self, **kwargs):
+        """Instruct the light to turn off."""
+        self._light.turn_off()
 
+    def update(self):
+        """Fetch new state data for this light.
+
+        This is the only method that should fetch new data for Home Assistant.
+        """
+        self._light.update()
+        self._state = self._light.is_on()
+        self._brightness = self._light.brightness
+        
 
 class IKEATradfriHelper(object):
     """ Gets information on a specific device """
@@ -164,50 +160,37 @@ class IKEATradfriHelper(object):
         self._state = this.is_on
         self._brightness = this.brightness
 
-class IKEATradfri(Light):
-    """ The platform class required by hass """
+def command_helper_v2(host, security_code, method, light_id = ''):
+    """ Execute the command through shell """
 
-    def __init__(self, light):
-        """Initialize an AwesomeLight."""
-        self._light = light
-        self._name = light.name
-        self._state = None
-        self._brightness = None
+    #_LOGGER.debug(host + ' | ' + security_code + ' | ' + method + ' | ' + light_id)
 
-    @property
-    def name(self):
-        """Return the display name of this light."""
-        return self._name
+    if len(light_id) > 0:
+        commandString = 'coaps://' + host + ':5684/15001/' + light_id
+    else:
+        commandString = 'coaps://' + host + ':5684/15001'
 
-    @property
-    def brightness(self):
-        """Brightness of the light (an integer in the range 1-255).
-        """
-        return self._brightness
+    theCommand = [
+        '/usr/local/bin/coap-client',
+        '-u',
+        'Client_identity',
+        '-k',
+        security_code,
+        '-v',
+        '0',
+        '-m',
+        method,
+        commandString
+        ]
 
-    @property
-    def is_on(self):
-        """Return true if light is on."""
-        return self._state
+    try:
+        return_value = subprocess.check_output(theCommand)
+        out = return_value.strip().decode('utf-8')
+    except subprocess.CalledProcessError:
+        _LOGGER.debug('Command failed: %s', theCommand)
 
-    def turn_on(self, **kwargs):
-        """Instruct the light to turn on.
+    """ Return only the last line, where there's JSON """
+    output = json.loads(out.split('\n')[-1])
 
-        You can skip the brightness part if your light does not support
-        brightness control.
-        """
-        self._light.brightness = kwargs.get(ATTR_BRIGHTNESS, 255)
-        self._light.turn_on()
+    return output
 
-    def turn_off(self, **kwargs):
-        """Instruct the light to turn off."""
-        self._light.turn_off()
-
-    def update(self):
-        """Fetch new state data for this light.
-
-        This is the only method that should fetch new data for Home Assistant.
-        """
-        self._light.update()
-        self._state = self._light.is_on()
-        self._brightness = self._light.brightness
