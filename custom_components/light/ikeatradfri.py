@@ -20,7 +20,7 @@ import homeassistant.helpers.config_validation as cv
 
 
 # Home Assistant depends on 3rd party packages for API specific code.
-REQUIREMENTS = ['openikeatradfri==0.1']
+REQUIREMENTS = ['openikeatradfri==0.3']
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -34,7 +34,7 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
 def setup_platform(hass, config, add_devices, discovery_info=None):
     """Setup the IKEA Tradfri Light platform."""
 
-    import openikeatradfri
+    from openikeatradfri import *
 
     # Assign configuration variables.
     # The configuration check takes care they are present.
@@ -42,14 +42,17 @@ def setup_platform(hass, config, add_devices, discovery_info=None):
     securitycode = config.get(CONF_API_KEY)
 
     api = openikeatradfri.api_factory(host, securitycode)
-    hub = openikeatradfri.Hub(api)
+    print(api)
+
+    gateway = openikeatradfri.Gateway(api)
+    devices = gateway.get_devices()
+    lights = [dev for dev in devices if dev.has_light_control]
+    
     _LOGGER.debug("IKEA Tradfri Hub | init | Initialization Process Complete")
 
-    lights = hub.get_lights()
     add_devices(IKEATradfri(light) for light in lights)
-
-    #devices = hub.get_devices()
-    #add_devices(IKEATradfri(device) for device in devices)
+    
+    print(lights)
 
     _LOGGER.debug("IKEA Tradfri Hub | get_lights | All Lights Loaded")
 
@@ -61,11 +64,8 @@ class IKEATradfri(Light):
         """Initialize an IKEA Tradfri Light."""
         self._light = light
         self._name = light.name
-        print("HERE!!!")
-        print(light)
-        pprint(vars(light))
 
-        self._state = None #light.lights.is_on
+        self._state = None
         self._brightness = None
 
     @property
@@ -77,7 +77,6 @@ class IKEATradfri(Light):
     def brightness(self):
         """Brightness of the light (an integer in the range 1-255).
         """
-
         return self._brightness
 
     @property

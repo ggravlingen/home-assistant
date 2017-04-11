@@ -239,9 +239,13 @@ mkdir /home/vpnserver
 chown vpnserver:vpnserver /home/vpnserver
 curl -L https://install.pivpn.io | bash
 
+# Install docker
+curl -sSL https://get.docker.com | sh
 
 mosquitto_sub -t /location/patrik_iphone -q 1
 curl -X POST -H "x-ha-access: pwd" -H "Content-Type: application/json" -d '{"payload": "Home", "topic": "/location/patrik_iphone"}' http://localhost:8123//api/services/mqtt/publish
 # #123
 pip3 install colorlog
+
+
 ```
