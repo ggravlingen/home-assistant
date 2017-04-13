@@ -15,8 +15,8 @@ left_home:
           - group.lights
           - group.taklampor
 
-      - alias: manual
-        service: shell_command.kitchenlight_off
+#      - alias: manual
+#        service: shell_command.kitchenlight_off
 
       - alias: Sonos off
         service: shell_command.sonos_control_pause

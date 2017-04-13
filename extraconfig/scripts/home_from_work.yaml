@@ -16,10 +16,11 @@ arrive_home:
             - light.vardagsrumstak_1
             - light.vardagsrumstak_2
             - light.vardagsrumstak_3
+            - light.kokslampa
           brightness: 100
 
-      - alias: IKEA
-        service: shell_command.kitchenlight_working_light
+#      - alias: IKEA
+#        service: shell_command.kitchenlight_working_light
 
       - alias: Set volume
         service: shell_command.sonos_volume_low

@@ -18,3 +18,7 @@ light.vardagsrumstak_3:
 light.sovrumstak:
   icon: mdi:ceiling-light
 
+### KITCHEN
+light.kokslampa:
+  icon: mdi:ceiling-light
+

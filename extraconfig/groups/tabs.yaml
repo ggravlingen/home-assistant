@@ -22,6 +22,7 @@ vardagsrum:
   entities:
   - group.vardagsrum_tak
   - group.vardagsrum_switchar
+  - light.koksbord
   - group.vardagsrum_media
   - group.vaxt1
 
