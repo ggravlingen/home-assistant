@@ -44,7 +44,6 @@ vaxt1:
   - sensor.flower_1_moisture
   - sensor.flower_1_conductivity
   - sensor.flower_1_temperature
-  - sensor.flower_1_battery
 
 
 
@@ -54,7 +53,6 @@ vaxt2:
   - sensor.flower_2_moisture
   - sensor.flower_2_conductivity
   - sensor.flower_2_temperature
-  - sensor.flower_2_battery
 
 
 sovrum_lights:
@@ -157,7 +155,6 @@ vaxt3:
   - sensor.flower_3_moisture
   - sensor.flower_3_conductivity
   - sensor.flower_3_temperature
-  - sensor.flower_3_battery    
 
 
 ### ALL LIGHT SWITCHES
@@ -184,6 +181,12 @@ scripts:
     - script.wake_up
     - script.all_lights_off
 
+### BATTERY LEVELS
+batteries:
+  - sensor.flower_1_battery
+  - sensor.flower_2_battery
+  - sensor.flower_3_battery
+
 
 ### DEBUG
 zwavedebug:
@@ -192,3 +195,9 @@ zwavedebug:
     - switch.fibaro_system_fgwpe_wall_plug_switch_15_0
     - sensor.fibaro_system_fgwpe_wall_plug_energy_15_0
     - sensor.fibaro_system_fgwpe_wall_plug_power_15_4
+    - binary_sensor.neo_coolcam_battery_powered_pir_sensor_sensor_16_0
+#    - sensor.neo_coolcam_battery_powered_pir_sensor_luminance_16_3
+#    - sensor.neo_coolcam_battery_powered_pir_sensor_burglar_16_10
+#    - sensor.neo_coolcam_battery_powered_pir_sensor_alarm_type_16_0
+#    - sensor.neo_coolcam_battery_powered_pir_sensor_alarm_level_16_1
+# binary_sensor.neo_coolcam_battery_powered_pir_sensor_sensor_8_0

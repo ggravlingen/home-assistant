@@ -28,3 +28,16 @@ print(lights[1].name)
 
 # Example 4: Set the light level of light 2
 lights[1].light_control.set_dimmer(20)
+
+# Example 5: Change color of light 2
+lights[1].light_control.set_hex_color('f5faf6') # f5faf6 = cold | f1e0b5 = normal | efd275 = warm
+
+#rgb(245,250,246)
+#rgb(241,224,181)
+#rgb(239,210,117)
+
+# Example 6: Color temp
+print("Color")
+print(lights[1].light_control.lights[0].raw)
+print(lights[1].light_control.lights[0].xy_color[0])
+

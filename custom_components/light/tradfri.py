@@ -5,14 +5,18 @@ import logging
 
 import voluptuous as vol
 
-# Import the device class from the component that you want to support
+import homeassistant.util as util
+from homeassistant.util.color import (
+    color_temperature_mired_to_kelvin as mired_to_kelvin,
+    color_temperature_kelvin_to_mired as kelvin_to_mired)
 from homeassistant.components.light import ATTR_BRIGHTNESS, \
-    SUPPORT_BRIGHTNESS, Light, PLATFORM_SCHEMA
+    ATTR_WHITE_VALUE, SUPPORT_WHITE_VALUE, SUPPORT_BRIGHTNESS, \
+    Light, PLATFORM_SCHEMA
 from homeassistant.const import CONF_HOST, CONF_API_KEY
 import homeassistant.helpers.config_validation as cv
 
 
-SUPPORTED_FEATURES = (SUPPORT_BRIGHTNESS)
+SUPPORTED_FEATURES = (SUPPORT_BRIGHTNESS | SUPPORT_WHITE_VALUE)
 
 # Home Assistant depends on 3rd party packages for API specific code.
 REQUIREMENTS = ['pytradfri==0.4']
@@ -58,8 +62,8 @@ class IKEATradfri(Light):
         self._light_control = light.light_control
         self._light_data = light.light_control.lights[0]
         self._name = light.name
-        self._state = None
         self._brightness = None
+        self._white = None
 
     @property
     def supported_features(self):
@@ -81,6 +85,11 @@ class IKEATradfri(Light):
         """Brightness of the light (an integer in the range 1-255)."""
         return self._light_data.dimmer
 
+    @property
+    def white_value(self):
+        """Return the white property."""
+        return self._white
+
     def turn_off(self, **kwargs):
         """Instruct the light to turn off."""
         return self._light_control.set_state(False)
@@ -99,4 +108,4 @@ class IKEATradfri(Light):
         """
         self._light.update()
         self._brightness = self._light_data.dimmer
-        self._state = self._light.light_control.lights[0].state
+        #self._xy_color = self._light_data.xy_color

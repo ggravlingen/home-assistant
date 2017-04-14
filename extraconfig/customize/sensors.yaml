@@ -50,7 +50,8 @@ sensor.flower_1_temperature:
   friendly_name: "Temperatur vardagsrum"
 
 sensor.flower_1_battery:
-  friendly_name: "Batteri"
+  friendly_name: "Batteri | Juvelorkidé | vardagsrum"
+  icon: mdi:battery
 
 sensor.flower_2_light_intensity:
   friendly_name: "Ljusstyrka"
@@ -65,7 +66,8 @@ sensor.flower_2_temperature:
   friendly_name: "Temperatur sovrum"
 
 sensor.flower_2_battery:
-  friendly_name: "Batteri"
+  friendly_name: "Batteri | Juvelorkidé | sovrum"
+  icon: mdi:battery
 
 sensor.flower_3_light_intensity:
   friendly_name: "Ljusstyrka"

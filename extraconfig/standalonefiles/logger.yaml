@@ -2,7 +2,7 @@ default: critical
 #default: debug
 logs:
 #  custom_components.sensor: debug
-  custom_components: debug
+#  custom_components: debug
 #  homeassistant.components.zwave: debug
 #  homeassistant.components.camera: debug
 #  homeassistant.components.keyboard-remote: debug
@@ -10,3 +10,5 @@ logs:
 #  homeassistant.components.mqtt: debug
 #  homeassistant.components.binary_sensor: debug
 #  homeassistant.components.sensor: debug
+  homeassistant.components.automation: debug
+

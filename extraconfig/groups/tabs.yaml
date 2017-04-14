@@ -109,6 +109,7 @@ system:
   - group.system_arm
   - group.system_wan_stats
   - group.debug_sethomeaway
+  - group.batteries
   - group.zwavedebug
 
 

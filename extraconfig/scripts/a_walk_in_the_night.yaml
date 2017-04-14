@@ -1,0 +1,17 @@
+a_walk_in_the_night:
+    alias: "Dags att vakna"
+    sequence:
+      - alias: Start lights
+        service: light.turn_on
+        data:
+          entity_id: light.laslampa
+          brightness: 20
+
+      - delay:
+          minutes: 5
+
+      - alias: Start lights
+        service: light.turn_off
+        data:
+          entity_id: light.laslampa
+

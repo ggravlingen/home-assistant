@@ -1,0 +1,31 @@
+#!/bin/sh
+# Build and run Home Assistant in Docker.
+
+# Optional: pass in a timezone as first argument
+# If not given will attempt to mount /etc/localtime
+
+# Stop on errors
+set -e
+
+MACHINE=$(uname -m)
+PWD=$(pwd)
+
+#cd "$(dirname "$0")/."
+
+
+cd /home/homeassistant/repos/home-assistant/virtualization/Docker
+
+# Should be amended with other platforms
+DOCKERFILE=$(case "$MACHINE" in
+  armv7l) echo "Dockerfile.dev" ;;
+  *)      echo "Dockerfile.dev" ;;
+esac)
+
+docker build -t tradfri-dev -f "$PWD/$DOCKERFILE" .
+
+docker run \
+  --net=host \
+  -v /etc/localtime:/etc/localtime:ro \
+  -v `pwd`:/usr/src/app \
+  -t -i --rm tradfri-dev
+
