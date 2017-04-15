@@ -1,0 +1,8 @@
+#https://community.home-assistant.io/t/my-way-to-track-my-battery-states/8191/2
+- platform: template
+  sensors:
+    coolcam_battery_powered_pir_sensor_16_batter_level:
+      friendly_name: 'Batteri rörelsevakt sovrum'
+      value_template: '{{ states.zwave.neo_coolcam_battery_powered_pir_sensor_16.attributes.battery_level }}'
+      unit_of_measurement: '%'
+

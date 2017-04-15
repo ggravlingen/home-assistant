@@ -173,6 +173,8 @@ taklampor:
     - light.vardagsrumstak_1
     - light.vardagsrumstak_2
     - light.vardagsrumstak_3
+    - light.kokslampa
+    - light.koksbord
 
 ### MISC
 scripts:
@@ -186,7 +188,7 @@ batteries:
   - sensor.flower_1_battery
   - sensor.flower_2_battery
   - sensor.flower_3_battery
-
+  - sensor.coolcam_battery_powered_pir_sensor_16_batter_level
 
 ### DEBUG
 zwavedebug:

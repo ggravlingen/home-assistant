@@ -82,4 +82,4 @@ sensor.flower_3_temperature:
   friendly_name: "Temperatur hall"
 
 sensor.flower_3_battery:
-  friendly_name: "Batteri"
+  friendly_name: "Batteri | Ej använd Mi Flora"

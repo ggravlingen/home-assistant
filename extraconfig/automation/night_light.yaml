@@ -1,4 +1,4 @@
-alias: "A walkt in the night"
+alias: "A walk in the night"
 trigger:
   platform: state
   entity_id: binary_sensor.neo_coolcam_battery_powered_pir_sensor_sensor_16_0
@@ -7,7 +7,7 @@ condition:
   condition: and
   conditions:
     - condition: time
-      after: '12:00:00'
+      after: '00:00:00'
       before: '07:00:00'
       weekday:
         - mon

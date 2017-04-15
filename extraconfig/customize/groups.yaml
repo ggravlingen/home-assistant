@@ -31,6 +31,9 @@ group.vaxt3:
 group.wan_stats:
   friendly_name: "WAN"
 
+group.batteries:
+  friendly_name: "Batterier"
+
 group.standardscript:
   friendly_name: " "
 
