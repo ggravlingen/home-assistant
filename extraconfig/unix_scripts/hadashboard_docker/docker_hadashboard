@@ -1,0 +1,27 @@
+#!/bin/sh
+# Build and run Home Assistant in Docker.
+
+# Optional: pass in a timezone as first argument
+# If not given will attempt to mount /etc/localtime
+
+# Stop on errors
+set -e
+
+MACHINE=$(uname -m)
+PWD=$(pwd)
+
+#cd "$(dirname "$0")/."
+
+
+cd /home/homeassistant/.homeassistant/appdaemon_dashboard/appdaemon
+
+docker build -t appdaemon_dashboard .
+
+docker create --name appdaemon_dashboard --restart always -p 5050:5050 \
+  -v /etc/localtime:/etc/localtime:ro \
+  -v /home/homeassistant/.homeassistant/extraconfig/dashboards:/conf appd &
+
+#docker start appdaemon_dashboard
+#docker logs -f appdaemon_dashboard
+
+
