@@ -39,6 +39,8 @@ logbook:
 # Track the sun
 sun:
 
+ios:
+
 config:
 
 logger: !include extraconfig/standalonefiles/logger.yaml

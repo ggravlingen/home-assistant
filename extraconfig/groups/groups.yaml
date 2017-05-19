@@ -79,6 +79,12 @@ hall_switchar:
   entities:
   - switch.garderob
 
+hall_taklampa:
+  name: "Taklampa"
+  entities:
+  - light.hall_1
+  - light.hall_2
+
 
 ### SYSTEM
 system_sensors:
@@ -175,6 +181,8 @@ taklampor:
     - light.vardagsrumstak_3
     - light.kokslampa
     - light.koksbord
+    - light.hall_1
+    - light.hall_2
 
 ### MISC
 scripts:

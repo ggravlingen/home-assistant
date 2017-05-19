@@ -51,6 +51,7 @@ hallway:
   name: "Hall"
   entities:
   - group.hall_switchar
+  - group.hall_taklampa
 
 ### Badrum
 bathroom:
