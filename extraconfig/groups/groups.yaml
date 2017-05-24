@@ -180,9 +180,9 @@ taklampor:
     - light.vardagsrumstak_2
     - light.vardagsrumstak_3
     - light.kokslampa
-    - light.koksbord
     - light.hall_1
     - light.hall_2
+    - light.koksbord
 
 ### MISC
 scripts:

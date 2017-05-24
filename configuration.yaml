@@ -45,13 +45,16 @@ config:
 
 logger: !include extraconfig/standalonefiles/logger.yaml
 
+# Build-in editor
+automation: !include automations.yaml
+
 
 ffmpeg:
   ffmpeg_bin: /usr/bin/avconv
 
 # Merge named
 group: !include_dir_merge_named extraconfig/groups
-automation: !include_dir_list extraconfig/automation
+automation old: !include_dir_list extraconfig/automation
 input_select: !include_dir_merge_named extraconfig/input_select
 shell_command: !include_dir_merge_named extraconfig/shell_command
 script: !include_dir_merge_named extraconfig/scripts

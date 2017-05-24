@@ -33,8 +33,20 @@ wake_up:
       - alias: Start lights
         service: light.turn_on
         data:
-          entity_id: light.laslampa, light.kokslampa
+          entity_id: light.laslampa
           brightness: 140
+
+      - alias: Start kitchen lights
+        service: light.turn_on
+        data:
+          entity_id: light.kokslampa
+          brightness: 200
+
+      - alias: Start hallway lights
+        service: light.turn_on
+        data:
+          entity_id: light.hall_1, light.hall_2
+          brightness: 255
 
       - alias: Start other
         service: homeassistant.turn_on
@@ -42,9 +54,6 @@ wake_up:
           entity_id:
             - switch.garderob
             - switch.koksbank
-
-#      - alias: IKEA
-#        service: shell_command.kitchenlight_working_light
 
       - delay:
           minutes: 15

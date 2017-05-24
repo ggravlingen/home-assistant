@@ -1,0 +1,26 @@
+- action:
+  - service: script.a_walk_in_the_night
+  alias: Turn on light at night
+  id: '1495643723115'
+  trigger:
+  - entity_id: binary_sensor.neo_coolcam_battery_powered_pir_sensor_sensor_16_0
+    platform: state
+    to: 'on'
+  condition:
+    condition: and
+    conditions:
+      - condition: time
+        after: '00:00:00'
+        before: '07:00:00'
+        weekday:
+          - mon
+          - tue
+          - wed
+          - thu
+          - fri
+          - sat
+          - sun
+      - condition: state
+        entity_id: input_select.arm_debug
+        state: Av
+
