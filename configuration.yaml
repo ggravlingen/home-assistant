@@ -30,64 +30,63 @@ recorder:
 # Discover some devices automatically
 discovery:
 
-# Enables support for tracking state changes over time.
-history:
+#  Enables support for tracking state changes over time.
+#  history:
 
-# View all events in a logbook
-logbook:
+#  View all events in a logbook
+#  logbook:
 
-# Track the sun
+#  Track the sun
 sun:
 
+#  Enable ios app support
 ios:
 
 config:
 
-logger: !include extraconfig/standalonefiles/logger.yaml
-
-# Build-in editor
+#  Add support for built-in automation editor
 automation: !include automations.yaml
 
+#  Logging settings
+logger: !include extraconfig/standalonefiles/logger.yaml
 
+#  Used for webcam support
 ffmpeg:
   ffmpeg_bin: /usr/bin/avconv
 
-# Merge named
-group: !include_dir_merge_named extraconfig/groups
+#  Merge named
 automation old: !include_dir_list extraconfig/automation
+group: !include_dir_merge_named extraconfig/groups
 input_select: !include_dir_merge_named extraconfig/input_select
 shell_command: !include_dir_merge_named extraconfig/shell_command
 script: !include_dir_merge_named extraconfig/scripts
 
-
-# Merge list
-sensor: !include_dir_merge_list extraconfig/sensors
+#  Merge list
 binary_sensor: !include_dir_merge_list extraconfig/binary_sensors
 light: !include_dir_merge_list extraconfig/light
+sensor: !include_dir_merge_list extraconfig/sensors
 
+#  Dir list
+scene: !include_dir_list extraconfig/scenes
 
-# Dir list
-#scene: !include_dir_list extraconfig/scenes
-
-
-# Plain import
-mqtt: !include extraconfig/standalonefiles/mqtt.yaml
-zwave: !include extraconfig/standalonefiles/zwave.yaml
-device_tracker: !include extraconfig/standalonefiles/device-tracker.yaml
-zone: !include extraconfig/standalonefiles/zones.yaml
-#binary_sensor: !include extraconfig/standalonefiles/binary_sensor.yaml
-media_player: !include extraconfig/standalonefiles/media_player.yaml
-switch: !include extraconfig/standalonefiles/switch.yaml
-panel_iframe: !include extraconfig/standalonefiles/panel_iframe.yaml
+#  Plain import | enabled
 camera: !include extraconfig/standalonefiles/camera.yaml
-#weblink: !include extraconfig/standalonefiles/weblink.yaml
-tellduslive: !include extraconfig/standalonefiles/tellduslive.yaml
-notify: !include extraconfig/standalonefiles/notify.yaml
-#ifttt: !include extraconfig/standalonefiles/ifttt.yaml
-#light: !include extraconfig/standalonefiles/hue.yaml
+device_tracker: !include extraconfig/standalonefiles/device-tracker.yaml
 google: !include extraconfig/standalonefiles/googlecalendar.yaml
+media_player: !include extraconfig/standalonefiles/media_player.yaml
+mqtt: !include extraconfig/standalonefiles/mqtt.yaml
+notify: !include extraconfig/standalonefiles/notify.yaml
+panel_iframe: !include extraconfig/standalonefiles/panel_iframe.yaml
+switch: !include extraconfig/standalonefiles/switch.yaml
+tellduslive: !include extraconfig/standalonefiles/tellduslive.yaml
 tts: !include extraconfig/standalonefiles/tts.yaml
-#keyboard_remote: !include extraconfig/standalonefiles/keyboard_remote.yaml
+zone: !include extraconfig/standalonefiles/zones.yaml
+zwave: !include extraconfig/standalonefiles/zwave.yaml
 
-
+#  Plain import | disabled
+#  binary_sensor: !include extraconfig/standalonefiles/binary_sensor.yaml
+#  weblink: !include extraconfig/standalonefiles/weblink.yaml
+#  ifttt: !include extraconfig/standalonefiles/ifttt.yaml
+#  light: !include extraconfig/standalonefiles/hue.yaml
+#  keyboard_remote: !include extraconfig/standalonefiles/keyboard_remote.yaml
 

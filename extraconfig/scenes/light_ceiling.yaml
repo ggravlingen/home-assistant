@@ -1,0 +1,14 @@
+- name: Ceiling relax
+  entities:
+    group.hall_taklampa:
+      state: on
+      brightness: 10
+    group.vardagsrum_tak:
+      state: on
+      brightness: 30
+    light.kokslampa:
+      state: on
+      brightness: 20
+    light.sovrumstak:
+      state: on
+      brightness: 10

@@ -190,6 +190,7 @@ scripts:
   entities:
     - script.wake_up
     - script.all_lights_off
+    - scene.ceiling_relax
 
 ### BATTERY LEVELS
 batteries:

@@ -1,6 +1,6 @@
 default: critical
 #default: debug
-logs:
+#logs:
 #  custom_components.sensor: debug
 #  custom_components: debug
 #  homeassistant.components.zwave: debug
@@ -11,4 +11,6 @@ logs:
 #  homeassistant.components.binary_sensor: debug
 #  homeassistant.components.sensor: debug
 #  homeassistant.components.automation: debug
-  homeassistant.components.switch: debug
+#  homeassistant.components.switch: debug
+#  homeassistant.components.scene: debug
+
