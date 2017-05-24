@@ -77,7 +77,7 @@ device_tracker: !include extraconfig/standalonefiles/device-tracker.yaml
 zone: !include extraconfig/standalonefiles/zones.yaml
 #binary_sensor: !include extraconfig/standalonefiles/binary_sensor.yaml
 media_player: !include extraconfig/standalonefiles/media_player.yaml
-#switch: !include extraconfig/standalonefiles/switch.yaml
+switch: !include extraconfig/standalonefiles/switch.yaml
 panel_iframe: !include extraconfig/standalonefiles/panel_iframe.yaml
 camera: !include extraconfig/standalonefiles/camera.yaml
 #weblink: !include extraconfig/standalonefiles/weblink.yaml

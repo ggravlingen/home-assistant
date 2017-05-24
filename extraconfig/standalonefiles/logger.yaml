@@ -10,5 +10,5 @@ logs:
 #  homeassistant.components.mqtt: debug
 #  homeassistant.components.binary_sensor: debug
 #  homeassistant.components.sensor: debug
-  homeassistant.components.automation: debug
-
+#  homeassistant.components.automation: debug
+  homeassistant.components.switch: debug

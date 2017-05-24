@@ -23,6 +23,7 @@ vardagsrum:
   - light.koksbord
   - group.vardagsrum_media
   - group.vaxt1
+  - group.vaxt3
 
 
 ### SOVRUM
@@ -105,7 +106,8 @@ system:
   entities:
   - group.system_sensors
   - switch.webcam
-  - group.system_arm
+  - switch.lg_tv_power
+  - switch.lg_tv_power
   - group.system_wan_stats
   - group.debug_sethomeaway
   - group.batteries

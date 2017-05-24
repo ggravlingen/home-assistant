@@ -1,17 +1,18 @@
-#http://192.168.0.140:5005/kitchen/playlist/Dinner%20with%20friends
-#0d1e0e6e4e7e4212930b207f2c53cfab
-#- platform: command_line
-#  switches:
-#    sonos_playlist_dinner_with_friends:
-#      oncmd: "/usr/bin/curl -X GET http://192.168.0.140:5005/kitchen/volume/8; /usr/bin/curl -X GET http://192.168.0.140:5005/kitchen/playlist/Dinner%20with%20friends"
+# Example configuration.yaml entry
+-  platform: broadlink
+   host: 192.168.0.141
+   mac: '34:ea:34:b2:f8:fc'
+   switches:
+     reciever:
+       command_on: 'switch_packet on'
+       command_off: 'switch_packet off'
 
-#- platform: command_line
-#  hidden: true
-#  switches:
-#    sonos_playlist_home_from_work:
-#      oncmd: shell_command.sonos_playlist_home_from_work
-
-
-
-
-
+-  platform: broadlink
+   host: 192.168.0.141
+   mac: '34:ea:34:b2:f8:fc'
+   timeout: 15
+   switches:
+     tv_lg:
+       friendly_name: "LG Tv Power"
+       command_on: 'JgBQAAABKpEVEBMSEzYUERMSExISEhQREzcTNhQREzYUNhM2EzYUNhMSExESExQ2ExESExITExITNhQ1FDYTEhM2EzcTNhM2EgAFIgABKEoSAA0FAAAAAAAAAAA='
+       command_off: 'JgBQAAABKpEVEBMSEzYUERMSExISEhQREzcTNhQREzYUNhM2EzYUNhMSExESExQ2ExESExITExITNhQ1FDYTEhM2EzcTNhM2EgAFIgABKEoSAA0FAAAAAAAAAAA='
