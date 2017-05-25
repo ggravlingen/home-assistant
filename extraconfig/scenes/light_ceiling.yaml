@@ -5,10 +5,10 @@
       brightness: 10
     group.vardagsrum_tak:
       state: on
-      brightness: 30
+      brightness: 50
     light.kokslampa:
       state: on
-      brightness: 20
+      brightness: 10
     light.sovrumstak:
       state: on
       brightness: 10

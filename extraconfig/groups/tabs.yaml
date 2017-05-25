@@ -105,6 +105,7 @@ system:
   icon: mdi:monitor-multiple
   entities:
   - group.system_sensors
+  - group.system_arm
   - switch.webcam
   - switch.lg_tv_power
   - switch.lg_tv_power
