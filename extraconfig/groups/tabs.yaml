@@ -71,6 +71,7 @@ automation:
   view: yes
   entities:
   - group.scripts
+  - group.activate_scenes
 #  - script.wake_up
 #  - script.sleep_time
 #  - script.arrive_home

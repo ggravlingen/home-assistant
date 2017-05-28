@@ -163,6 +163,12 @@ vaxt3:
   - sensor.flower_3_temperature
 
 
+### SCENES
+activate_scenes:
+  - scene.ceiling_relax
+  - scene.ceiling_at_home
+
+
 ### ALL LIGHT SWITCHES
 lights:
   name: "Lampor"
@@ -171,6 +177,7 @@ lights:
     - light.laslampa
     - switch.sovrum
     - switch.koksbank
+
 
 taklampor:
   name: "Alla taklampor"
@@ -190,7 +197,6 @@ scripts:
   entities:
     - script.wake_up
     - script.all_lights_off
-    - scene.ceiling_relax
 
 ### BATTERY LEVELS
 batteries:
