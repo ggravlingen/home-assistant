@@ -51,8 +51,8 @@
 - action:
   - alias: ''
     data:
-      message: "Juvelorkidé | vardagsrum"
-      title: "Please water me!"
+      message: "Juvelorkid\xE9 | vardagsrum"
+      title: Please water me!
     service: notify.pushbullet
   alias: Flower | Vardagsrum | Juvelorkide
   id: '1495725269130'
@@ -63,8 +63,8 @@
 - action:
   - alias: ''
     data:
-      message: "Juvelorkidé | vardagsrum"
-      title: "Please water me!"
+      message: "Juvelorkid\xE9 | sovrum"
+      title: Please water me!
     service: notify.pushbullet
   alias: Flower | Sovrum | Juvelorkide
   id: '1495725269131'
@@ -75,8 +75,8 @@
 - action:
   - alias: ''
     data:
-      message: "Chili | vardagsrum"
-      title: "Please water me!"
+      message: Chili | vardagsrum
+      title: Please water me!
     service: notify.pushbullet
   alias: Flower | Vardagsrum | Chili
   id: '1495725269130'
