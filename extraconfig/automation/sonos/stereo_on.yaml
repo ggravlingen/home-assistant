@@ -1,7 +1,0 @@
-alias: "Start stereo when sonos is playing"
-trigger:
-  platform: state
-  entity_id: media_player.vardagsrum_musik
-  state: 'playing'
-action:
-  - service: script.sonos_stereo_on
