@@ -1,17 +1,17 @@
 - action:
   - service: script.a_walk_in_the_night
-  alias: Turn on light at night
+  alias: Misc | Turn on light at night
   id: '1495643723115'
   trigger:
   - entity_id: binary_sensor.neo_coolcam_battery_powered_pir_sensor_sensor_16_0
     platform: state
     to: 'on'
   condition:
-    condition: and
+  - condition: and
     conditions:
-    - condition: time
-      after: 00:00:00
+    - after: 00:00:00
       before: 07:00:00
+      condition: time
       weekday:
       - mon
       - tue
@@ -25,15 +25,15 @@
       state: Av
 - action:
   - service: script.wake_up
-  alias: Wake up in the morning
+  alias: Misc | Wake up in the morning
   id: '1495718802448'
   trigger:
-    platform: time
-    hours: 6
+  - hours: 6
     minutes: 0
+    platform: time
     seconds: 0
   condition:
-    condition: and
+  - condition: and
     conditions:
     - condition: time
       weekday:
@@ -84,3 +84,10 @@
   - below: '10'
     entity_id: sensor.flower_3_moisture
     platform: numeric_state
+- action:
+  - service: zwave.heal_network
+  alias: Z-wave | Heal
+  id: '1496477445434'
+  trigger:
+  - platform: time
+    after: '2:31:00'

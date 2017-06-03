@@ -85,12 +85,12 @@ automation:
 #  - group.mysonos
 #  - group.switch_other
 
-security_monitor:
-  name: "Monitor"
-  icon: mdi:camera
-  view: yes
-  entities:
-  - group.camera1
+#security_monitor:
+#  name: "Monitor"
+#  icon: mdi:camera
+#  view: yes
+#  entities:
+#  - group.camera1
 
 misc_weathercenter:
   name: "Väder"
