@@ -86,11 +86,11 @@
     platform: numeric_state
 - action:
   - service: zwave.heal_network
-  alias: Z-wave | Heal
+  alias: Maintenance | Z-wave | Heal
   id: '1496477445434'
   trigger:
-  - platform: time
-    after: '2:31:00'
+  - after: '2:31:00'
+    platform: time
 - action:
   - service: script.sonos_stereo_on
   alias: Sonos | Vardagsrum | Start stereo
@@ -130,10 +130,66 @@
 - action:
   - service: shell_command.sonos_control_shuffle_off
   - service: shell_command.sonos_volume_8
-  - service_template: >
-      shell_command.sonos_playlist_{{states.input_select.sonos_playlist.state.lower().replace(" ", "").replace("-", "")}}
+  - service_template: 'shell_command.sonos_playlist_{{states.input_select.sonos_playlist.state.lower().replace("
+      ", "").replace("-", "")}}
+
+      '
   alias: Sonos | Play playlist
   id: '1496478802292'
   trigger:
   - entity_id: input_select.sonos_playlist
     platform: state
+- action:
+  - service: notify.pushbullet
+    data:
+      message: "Diskutrymme \xF6ver tr\xF6skel"
+      title: "D\xF6belnsgatan 89 | RPI3"
+  alias: Maintenance | System | Disk space
+  id: '1496517175891'
+  trigger:
+  - above: '75'
+    entity_id: sensor.disk_use_home
+    platform: numeric_state
+- action:
+  - service: script.arrive_home_anytime
+  alias: Enter/exit | Arrive home
+  id: '1496517346021'
+  trigger:
+  - entity_id: device_tracker.patrik_iphone
+    from: Away
+    platform: state
+    to: Home
+- action:
+  - service: script.left_home
+  alias: Enter/exit | Left home
+  id: '1496517407855'
+  trigger:
+  - entity_id: device_tracker.patrik_iphone
+    from: Home
+    platform: state
+    to: Away
+- action:
+  - service: script.arrive_home
+  alias: Enter/exit | Home from work
+  id: '1496517463812'
+  trigger:
+  - entity_id: device_tracker.patrik_iphone
+    from: Away
+    platform: state
+    to: Home
+  condition:
+  - condition: and
+    conditions:
+      - condition: time
+        after: '15:00:00'
+        before: '23:00:00'
+        weekday:
+          - mon
+          - tue
+          - wed
+          - thu
+          - fri
+      - condition: state
+        entity_id: input_select.arm_debug
+        state: Av
+
