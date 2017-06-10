@@ -109,7 +109,7 @@ system:
   - group.system_arm
   - switch.webcam
   - switch.lg_tv_power
-  - switch.lg_tv_power
+  - switch.remote_2_on
   - group.system_wan_stats
   - group.debug_sethomeaway
   - group.batteries

@@ -57,7 +57,7 @@
   alias: Flower | Vardagsrum | Juvelorkide
   id: '1495725269130'
   trigger:
-  - below: '10'
+  - below: '14'
     entity_id: sensor.flower_1_moisture
     platform: numeric_state
 - action:
@@ -180,16 +180,24 @@
   condition:
   - condition: and
     conditions:
-      - condition: time
-        after: '15:00:00'
-        before: '23:00:00'
-        weekday:
-          - mon
-          - tue
-          - wed
-          - thu
-          - fri
-      - condition: state
-        entity_id: input_select.arm_debug
-        state: Av
-
+    - condition: time
+      after: '15:00:00'
+      before: '23:00:00'
+      weekday:
+      - mon
+      - tue
+      - wed
+      - thu
+      - fri
+    - condition: state
+      entity_id: input_select.arm_debug
+      state: Av
+- action:
+  - service: scene.turn_on
+    entity_id: scene.ceiling_at_home
+  alias: "Lights | Taklampor p\xE5"
+  id: '1497121665496'
+  trigger:
+  - entity_id: switch.remote_2_on
+    platform: state
+    to: 'on'

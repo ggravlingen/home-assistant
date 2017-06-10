@@ -23,9 +23,9 @@ http:
 # Checks for available updates
 updater:
 
-recorder:
+#recorder:
   # Delete events and states older than 2 weeks
-  purge_days: 7
+#  purge_days: 7
 
 # Discover some devices automatically
 discovery:
@@ -86,6 +86,5 @@ zwave: !include extraconfig/standalonefiles/zwave.yaml
 #  binary_sensor: !include extraconfig/standalonefiles/binary_sensor.yaml
 #  weblink: !include extraconfig/standalonefiles/weblink.yaml
 #  ifttt: !include extraconfig/standalonefiles/ifttt.yaml
-#  light: !include extraconfig/standalonefiles/hue.yaml
-#  keyboard_remote: !include extraconfig/standalonefiles/keyboard_remote.yaml
+
 

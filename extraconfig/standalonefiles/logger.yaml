@@ -13,4 +13,5 @@ default: critical
 #  homeassistant.components.automation: debug
 #  homeassistant.components.switch: debug
 #  homeassistant.components.scene: debug
+#  homeassistant.components.tellduslive: debug
 

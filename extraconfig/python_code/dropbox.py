@@ -10,7 +10,7 @@ uploader = "/root/dropbox_uploader.sh"
 #If 1 then files will be uploaded. Set to 0 for testing
 upload = 1
 #If 1 then don't check to see if the file already exists just upload it, if 0 don't upload if already exists
-overwrite = 0
+overwrite = 1
 #If 1 then crawl sub directories for files to upload
 recursive = 1
 #Delete local file on successfull upload
