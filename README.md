@@ -258,8 +258,12 @@ touch /var/log/router_stavsnas.log
 
 # Add to syslog conf
 source s_net { udp(ip(0.0.0.0) port(514)); };
-destination d_router { file("/var/log/router_stavsnas.log"); };
+destination d_router { file("/var/log/remote/${HOST}/${YEAR}_${MONTH}_${DAY}.log" create-dirs(yes)); }; # put files in tidy order
+
 log { source(s_net); destination(d_router); };
+
+sudo service syslog-ng restart
+
 
 
 
