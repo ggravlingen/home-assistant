@@ -250,5 +250,17 @@ curl -X POST -H "x-ha-access: pwd" -H "Content-Type: application/json" -d '{"pay
 # #123
 pip3 install colorlog
 
+###
+###
+### Install syslog-ng
+apt-get install syslog-ng
+touch /var/log/router_stavsnas.log
+
+# Add to syslog conf
+source s_net { udp(ip(0.0.0.0) port(514)); };
+destination d_router { file("/var/log/router_stavsnas.log"); };
+log { source(s_net); destination(d_router); };
+
+
 
 ```

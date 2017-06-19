@@ -3,7 +3,7 @@
   alias: Misc | Turn on light at night
   id: '1495643723115'
   trigger:
-  - entity_id: binary_sensor.neo_coolcam_battery_powered_pir_sensor_sensor_16_0
+  - entity_id: binary_sensor.neo_coolcam_battery_powered_pir_sensor_sensor
     platform: state
     to: 'on'
   condition:
@@ -193,11 +193,11 @@
       entity_id: input_select.arm_debug
       state: Av
 - action:
-  - service: scene.turn_on
-    entity_id: scene.ceiling_at_home
+  - entity_id: scene.ceiling_at_home
+    service: scene.turn_on
   alias: "Lights | Taklampor p\xE5"
   id: '1497121665496'
   trigger:
-  - entity_id: switch.remote_2_on
+  - entity_id: switch.remote_2_on2
     platform: state
     to: 'on'

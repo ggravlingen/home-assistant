@@ -1,10 +1,10 @@
-switch.wenzhou_tkb_control_system_tz68_onoff_switch_socket_switch_13_0:
+switch.wenzhou_tkb_control_system_tz68_onoff_switch_socket_switch:
   friendly_name: "Stereo till Sonos"
   refresh_value: true
   delay: 5
   polling_intensity: 1
 
-switch.fibaro_system_fgwpe_wall_plug_switch_14_0:
+switch.fibaro_system_fgwpe_wall_plug_switch:
   friendly_name: "Wall Plug"
   refresh_value: true
   delay: 5

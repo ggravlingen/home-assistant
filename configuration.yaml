@@ -22,6 +22,7 @@ http:
 
 # Checks for available updates
 updater:
+  include_used_components: true
 
 #recorder:
   # Delete events and states older than 2 weeks
@@ -43,6 +44,15 @@ sun:
 ios:
 
 config:
+
+panel_custom: 
+  - name: floorplan
+    sidebar_title: Floorplan
+    sidebar_icon: mdi:home
+    url_path: floorplan
+    config: !include floorplan.yaml
+
+
 
 #  Add support for built-in automation editor
 automation: !include automations.yaml

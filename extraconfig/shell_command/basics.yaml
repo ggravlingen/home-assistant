@@ -23,3 +23,4 @@ sonos_control_next: /usr/bin/curl -X GET http://192.168.0.140:5005/vardagsrum%20
 
 # UNIX: RANDOM STUFF
 system_check_wifi_strength: /usr/bin/awk 'NR==3 {print $3 "00"}''' /proc/net/wireless
+

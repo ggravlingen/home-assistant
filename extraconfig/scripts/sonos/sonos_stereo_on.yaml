@@ -5,5 +5,5 @@ sonos_stereo_on:
         service: homeassistant.turn_on
         data:
           entity_id:
-          - switch.wenzhou_tkb_control_system_tz68_onoff_switch_socket_switch_13_0
+          - switch.wenzhou_tkb_control_system_tz68_onoff_switch_socket_switch
 
