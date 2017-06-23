@@ -254,7 +254,6 @@ pip3 install colorlog
 ###
 ### Install syslog-ng
 apt-get install syslog-ng
-touch /var/log/router_stavsnas.log
 
 # Add to syslog conf
 source s_net { udp(ip(0.0.0.0) port(514)); };

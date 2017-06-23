@@ -45,13 +45,15 @@ ios:
 
 config:
 
+# Allow creation/running of own scripts
+python_script:
+
 panel_custom: 
   - name: floorplan
     sidebar_title: Floorplan
     sidebar_icon: mdi:home
     url_path: floorplan
-    config: !include floorplan.yaml
-
+    config: !include extraconfig/standalonefiles/floorplan.yaml
 
 
 #  Add support for built-in automation editor
