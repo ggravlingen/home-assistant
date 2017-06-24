@@ -3,7 +3,7 @@ import subprocess
 from subprocess import Popen, PIPE
 
 #The directory to sync
-syncdir="/home/homeassistant/haconf/"
+syncdir="/home/homeassistant/.homeassistant"
 #Path to the Dropbox-uploaded shell script
 uploader = "/root/dropbox_uploader.sh"
 
@@ -15,6 +15,21 @@ overwrite = 1
 recursive = 1
 #Delete local file on successfull upload
 deleteLocal = 0
+
+
+excluded_dirs = [
+  'deps',
+  'tts',
+  '.git'
+]
+
+excluded_files = [
+  'home-assistant_v2.db',
+  'home-assistant.log',
+  '.HA_VERSION',
+  'OZW_Log.txt',
+  'pyozw.sqlite'
+]
 
 
 
@@ -80,26 +95,28 @@ def upload_files(path, level):
             dfiles = list_files(path)
 
         #Loop through the files to check to upload
-        for f in files:                                 
-            print_output("Found File: " + f,level)   
-            if upload == 1 and (overwrite == 1 or not f in dfiles):
-                fullFilePath = os.path.join(fullpath,f)
-                relativeFilePath = os.path.join(path,f)  
-                print_output("Uploading File: " + f,level+1)   
-                if upload_file(fullFilePath, relativeFilePath) == 1:
-                    print_output("Uploaded File: " + f,level + 1)
-                    if deleteLocal == 1:
-                        print_output("Deleting File: " + f,level + 1)
-                        os.remove(fullFilePath)                        
-                else:
-                    print_output("Error Uploading File: " + f,level + 1)
+        for f in files: 
+            if not any(f in s for s in excluded_files):
+                print_output("Found File: " + f,level)   
+                if upload == 1 and (overwrite == 1 or not f in dfiles):
+                    fullFilePath = os.path.join(fullpath,f)
+                    relativeFilePath = os.path.join(path,f)  
+                    print_output("Uploading File: " + f,level+1)   
+                    if upload_file(fullFilePath, relativeFilePath) == 1:
+                        print_output("Uploaded File: " + f,level + 1)
+                        if deleteLocal == 1:
+                           print_output("Deleting File: " + f,level + 1)
+                           os.remove(fullFilePath)                        
+                    else:
+                        print_output("Error Uploading File: " + f,level + 1)
                     
         #If recursive loop through the directories   
         if recursive == 1:
             for d in dirs:
-                print_output("Found Directory: " + d, level)
-                relativePath = os.path.join(path,d)
-                upload_files(relativePath, level + 1)
+                if not any(d in s for s in excluded_dirs):
+                    print_output("Found Directory: " + d, level)
+                    relativePath = os.path.join(path,d)
+                    upload_files(relativePath, level + 1)
             
 
                   
