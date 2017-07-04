@@ -1,5 +1,5 @@
 # My Home Assistant Setup #
-
+The full config is available [here](https://github.com/ggravlingen/home-assistant-config/blob/master/current_install_shell.md).
 
 ## 1. Installed devices
 - Raspberry Pi 3
