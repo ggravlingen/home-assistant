@@ -9,13 +9,13 @@
 - [Philips Hue Bridge 2.0](http://www2.meethue.com/en-us/productdetail/philips-hue-bridge)
 - Xiaomi Mi Plants Monitor
 
-
-
-
-Running on DietPi:
-Enable: Wi-fi
-Enable: Bluetooth
-Install: Node.js, Build-essentials, Git client, ssh-client
+## 2. Installed software
+- DietPi (Wi-fi and Bluetooth enabled)
+- Node.js
+- Build-essentials
+- Git client
+- SSH-client
+- [Sonos HTTP API](http://jishi.github.io/node-sonos-http-api/)
 
 ```shell
 
