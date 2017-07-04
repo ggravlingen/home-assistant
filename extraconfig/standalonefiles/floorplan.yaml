@@ -1,6 +1,8 @@
       name: Döbelnsgatan 89
       image: /local/custom_ui/floorplan/floorplan.svg
       stylesheet: /local/custom_ui/floorplan/floorplan.css
+      warnings:
+      pan_zoom:
 
       last_motion_entity: sensor.template_last_motion
       last_motion_class: last-motion
@@ -9,7 +11,7 @@
 
         - name: Sensors
           entities:
-             - sensor.melbourne_now
+             - sensor.forecastio_apparent_temperature
           text_template: '${entity.state ? entity.state : "unknown"}'
           class_template: '
             var temp = parseFloat(entity.state.replace("°", ""));
