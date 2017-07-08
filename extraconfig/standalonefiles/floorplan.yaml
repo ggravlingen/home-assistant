@@ -2,7 +2,7 @@
       image: /local/custom_ui/floorplan/floorplan.svg
       stylesheet: /local/custom_ui/floorplan/floorplan.css
       warnings:
-#      pan_zoom:
+      pan_zoom:
       hide_app_toolbar:
 
       last_motion_entity: sensor.template_last_motion
@@ -53,13 +53,9 @@
             - light.hall_2
             - light.kokslampa
             - light.laslampa
-            - light.sovrum
             - light.sovrumstak
             - light.vardagsrum
             - group.hall_taklampa
-#            - light.vardagsrumstak_1
-#            - light.vardagsrumstak_2
-#            - light.vardagsrumstak_3
           states:
             - state: 'on'
               class: 'light-on'
@@ -99,6 +95,7 @@
         - name: Switches
           entities:
              - switch.koksbank
+             - switch.sovrum
           states:
             - state: 'on'
               class: 'doorbell-on'

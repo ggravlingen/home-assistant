@@ -39,13 +39,13 @@
      inkscape:window-height="837"
      id="namedview4934"
      showgrid="false"
-     inkscape:zoom="0.98176958"
-     inkscape:cx="806.30344"
-     inkscape:cy="454.03886"
+     inkscape:zoom="1.9635392"
+     inkscape:cx="847.20681"
+     inkscape:cy="509.69583"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
-     inkscape:current-layer="surface3"
+     inkscape:current-layer="svg4932"
      showguides="true"
      inkscape:guide-bbox="true"
      inkscape:snap-text-baseline="true" />
@@ -1300,12 +1300,7 @@
     <g
        transform="matrix(0.47981732,0,0,0.47981732,1047.4043,873.00974)"
        id="light.sovrumstak"
-       inkscape:label="light.sovrumstak ">
-      <desc
-         id="desc286-1">light.sovrumstak</desc>
-      <title
-         id="title284-4">light.sovrumstak
-</title>
+       inkscape:label="">
       <g
          id="g429-2">
         <path
@@ -1402,8 +1397,7 @@
     <g
        id="scene.ceiling_at_home"
        transform="translate(157.5,17.040178)"
-       inkscape:label="scene.ceiling_at_home
-">
+       inkscape:label="scene.ceiling_at_home ">
       <g
          inkscape:label="script.all_lights_off"
          id="script.all_lights_off-9"
@@ -1454,8 +1448,7 @@
     <g
        id="scene.ceiling_relax"
        transform="translate(157.5,42)"
-       inkscape:label="scene.ceiling_relax
-">
+       inkscape:label="scene.ceiling_relax ">
       <g
          inkscape:label="script.all_lights_off"
          id="script.all_lights_off-9-3"
@@ -1592,8 +1585,7 @@
      height="27.596767"
      x="646.05511"
      y="282.18292"
-     inkscape:label="media_player.vardagsrum_chromecast
-" />
+     inkscape:label="media_player.vardagsrum_chromecast " />
   <circle
      style="opacity:1;fill:#800000;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
      id="switch.koksbank"
@@ -1603,12 +1595,11 @@
      inkscape:label="switch.koksbank" />
   <circle
      style="opacity:1;fill:#800000;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-     id="light.sovrum"
-     cx="713.50751"
-     cy="179.84032"
+     id="switch.sovrum"
+     cx="715.00751"
+     cy="175.34032"
      r="7.639267"
-     inkscape:label="light.sovrum
-" />
+     inkscape:label="" />
   <circle
      style="opacity:1;fill:#800000;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
      id="light.laslampa"

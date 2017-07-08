@@ -1,6 +1,12 @@
 all_lights_off:
     alias: "Släck alla lampor"
     sequence:
+#      - alias: Stereo On
+#        service: homeassistant.turn_on
+#        data:
+#          entity_id:
+#          - switch.wenzhou_tkb_control_system_tz68_onoff_switch_socket_switch
+
       - service: tts.google_say
         data:
           message: 'Initiating shut down all lights sequence.'
