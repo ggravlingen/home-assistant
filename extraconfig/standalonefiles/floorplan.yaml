@@ -2,7 +2,8 @@
       image: /local/custom_ui/floorplan/floorplan.svg
       stylesheet: /local/custom_ui/floorplan/floorplan.css
       warnings:
-      pan_zoom:
+#      pan_zoom:
+      hide_app_toolbar:
 
       last_motion_entity: sensor.template_last_motion
       last_motion_class: last-motion
@@ -33,6 +34,7 @@
           entities:
             - media_player.badrum
             - media_player.vardagsrum_musik
+            - media_player.vardagsrum_chromecast
           states:
             - state: 'off'
               class: 'squeezebox-off'
@@ -68,6 +70,29 @@
           text_template: '${entity.state ? entity.state.replace(/\s{3,}/g,"") : "undefined"}'
           class_template: 'return "static-text";'
 
+        - name: scripts
+          entities:
+            - script.all_lights_off
+            - script.wake_up
+          states:
+            - state: 'on'
+              class: 'button-on'
+            - state: 'off'
+              class: 'button-off'
+          action:
+            service: toggle
+
+        - name: scenes
+          entities:
+            - scene.ceiling_relax
+            - scene.ceiling_at_home
+          states:
+            - state: 'on'
+              class: 'button-on'
+            - state: 'off'
+              class: 'button-off'
+          action:
+            service: turn_on
 
 
 
@@ -130,16 +155,4 @@
 #          states:
 #            - state: 'idle'
 #              class: 'camera-idle'
-
-#        - name: script
-#          entities:
-#            - script.all_lights_off
-
-#          states:
-#            - state: 'on'
-#              class: 'button-on'
-#            - state: 'off'
-#              class: 'button-off'
-#          action:
-#            service: toggle
 
