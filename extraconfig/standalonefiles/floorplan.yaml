@@ -9,84 +9,137 @@
 
       groups:
 
-        - name: Sensors
+#        - name: Sensors
+#          entities:
+#             - sensor.forecastio_apparent_temperature
+#          text_template: '${entity.state ? entity.state : "unknown"}'
+#          class_template: '
+#            var temp = parseFloat(entity.state.replace("°", ""));
+#            if (temp < 10)
+#              return "temp-low";
+#            else if (temp < 30)
+#              return "temp-medium";
+#            else
+#              return "temp-high";
+#            '
+
+        - name: temp_forecastio
           entities:
-             - sensor.forecastio_apparent_temperature
-          text_template: '${entity.state ? entity.state : "unknown"}'
-          class_template: '
-            var temp = parseFloat(entity.state.replace("°", ""));
-            if (temp < 10)
-              return "temp-low";
-            else if (temp < 30)
-              return "temp-medium";
-            else
-              return "temp-high";
-            '
+            - sensor.forecastio_apparent_temperature
+          text_template: '${entity.state ? Math.ceil(entity.state) + "°": "undefined"}'
+          class_template: 'return "static-temp";'
+
+        - name: Media Players
+          entities:
+            - media_player.badrum
+            - media_player.vardagsrum_musik
+          states:
+            - state: 'off'
+              class: 'squeezebox-off'
+            - state: 'idle'
+              class: 'squeezebox-off'
+            - state: 'paused'
+              class: 'squeezebox-off'
+            - state: 'playing'
+              class: 'squeezebox-on'
 
         - name: Lights
           entities:
-             - light.hallway
-             - light.living_room
-             - light.patio
+            - light.hall_1
+            - light.hall_2
+#            - light.koksbord
+            - light.kokslampa
+#            - light.laslampa
+#            - light.sovrum
+            - light.sovrumstak
+#            - light.vardagsrum
+            - light.vardagsrumstak_1
+            - light.vardagsrumstak_2
+            - light.vardagsrumstak_3
           states:
             - state: 'on'
               class: 'light-on'
             - state: 'off'
               class: 'light-off'
 
-        - name: Switches
+        - name: text_states
           entities:
-             - switch.doorbell
-          states:
-            - state: 'on'
-              class: 'doorbell-on'
-            - state: 'off'
-              class: 'doorbell-off'
+            - sensor.forecastio_hourly_summary
+          text_template: '${entity.state ? entity.state.replace(/\s{3,}/g,"") : "undefined"}'
+          class_template: 'return "static-text";'
 
-        - name: NVR
-          entities:
-             - binary_sensor.blue_iris_nvr
-          text_template: '${(entity.state === "on") ? "online" : "offline"}'
-          states:
-            - state: 'off'
-              class: 'danger-text'
-            - state: 'on'
-              class: 'success-text'
 
-        - name: Alarm Panel
-          entities:
-             - alarm_control_panel.alarm
-          states:
-            - state: 'armed_away'
-              class: 'alarm-armed'
-            - state: 'armed_home'
-              class: 'alarm-armed'
-            - state: 'disarmed'
-              class: 'alarm-disarmed'
 
-        - name: Binary sensors
-          entities:
-            - binary_sensor.front_hallway
-            - binary_sensor.kitchen
-            - binary_sensor.master_bedroom
-            - binary_sensor.theatre_room
-          states:
-            - state: 'off'
-              class: 'info-background'
-            - state: 'on'
-              class: 'warning-background'
-          state_transitions:
-            - name: On to off
-              from_state: 'on'
-              to_state: 'off'
-              duration: 10
 
-        - name: Cameras
-          entities:
-            - camera.hallway
-            - camera.driveway
-            - camera.front_door
-            - camera.backyard
-          states:
-            - state: 'idle'
-              class: 'camera-idle'
+
+
+
+#        - name: Switches
+#          entities:
+#             - switch.doorbell
+#          states:
+#            - state: 'on'
+#              class: 'doorbell-on'
+#            - state: 'off'
+#              class: 'doorbell-off'
+
+#        - name: NVR
+#          entities:
+#             - binary_sensor.blue_iris_nvr
+#          text_template: '${(entity.state === "on") ? "online" : "offline"}'
+#          states:
+#            - state: 'off'
+#              class: 'danger-text'
+#            - state: 'on'
+#              class: 'success-text'
+
+#        - name: Alarm Panel
+#          entities:
+#             - alarm_control_panel.alarm
+#          states:
+#            - state: 'armed_away'
+#              class: 'alarm-armed'
+#            - state: 'armed_home'
+#              class: 'alarm-armed'
+#            - state: 'disarmed'
+#              class: 'alarm-disarmed'
+
+#        - name: Binary sensors
+#          entities:
+#            - binary_sensor.front_hallway
+#            - binary_sensor.kitchen
+#            - binary_sensor.master_bedroom
+#            - binary_sensor.theatre_room
+#          states:
+#            - state: 'off'
+#              class: 'info-background'
+#            - state: 'on'
+#              class: 'warning-background'
+#          state_transitions:
+#            - name: On to off
+#              from_state: 'on'
+#              to_state: 'off'
+#              duration: 10
+
+#        - name: Cameras
+#          entities:
+#            - camera.hallway
+#            - camera.driveway
+#            - camera.front_door
+#            - camera.backyard
+#          states:
+#            - state: 'idle'
+#              class: 'camera-idle'
+
+#        - name: script
+#          entities:
+#            - script.all_lights_off
+
+#          states:
+#            - state: 'on'
+#              class: 'button-on'
+#            - state: 'off'
+#              class: 'button-off'
+#          action:
+#            service: toggle
+
