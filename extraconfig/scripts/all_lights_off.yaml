@@ -1,15 +1,16 @@
 all_lights_off:
     alias: "Släck alla lampor"
     sequence:
-#      - alias: Stereo On
-#        service: homeassistant.turn_on
-#        data:
-#          entity_id:
-#          - switch.wenzhou_tkb_control_system_tz68_onoff_switch_socket_switch
+      - service: media_player.sonos_unjoin
+        entity_id:
+          - media_player.badrum
+          - media_player.vardagsrum_musik
 
       - service: tts.google_say
+        entity_id:
+          - media_player.badrum
         data:
-          message: 'Initiating shut down all lights sequence.'
+          message: 'All lights shut down sequence initiated.'
 
       - alias: Shut down all lights
         service: homeassistant.turn_off
@@ -19,4 +20,9 @@ all_lights_off:
             - switch.garderob
             - switch.koksbank
             - switch.sovrum
+
+#      - service: media_player.sonos_join
+#        master: media_player.vardagsrum_musik
+#        entity_id:
+#          - media_player.badrum
 
