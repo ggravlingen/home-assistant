@@ -16,7 +16,7 @@
         overflow: hidden;
       }
 
-      #debug {
+      #warnings {
         color: #FF851B;
         display: none;
       }
@@ -28,7 +28,7 @@
       </div>
     </template>
 
-    <div id="debug">
+    <div id="warnings">
       <ul></ul>
     </div>
 
@@ -95,6 +95,12 @@
     },
 
     onAttached() {
+      if (!this.config.groups) {
+        this.isLoading = false;
+        this.warn(`Cannot find 'groups' in floorplan configuration`);
+        return;
+      }
+
       this.hass.connection.socket.addEventListener('message', event => {
         var data = JSON.parse(event.data);
 
@@ -175,7 +181,7 @@
                   }
                 }
                 else {
-                  this.instance.debug(`Cannot find '${entityId}' in HA group configuration`);
+                  this.instance.warn(`Cannot find '${entityId}' in HA group configuration`);
                 }
               }
               else {
@@ -217,7 +223,7 @@
                 });
               }
               else {
-                this.instance.debug(`Cannot find element '${entityId}' in SVG file`);
+                this.instance.warn(`Cannot find element '${entityId}' in SVG file`);
               }
             }
           }
@@ -639,11 +645,11 @@
       return func(entity, entities, this.hass, this.config);
     },
 
-    debug(message) {
+    warn(message) {
       if ((this.config.warnings === null) || (this.config.warnings !== undefined)) {
-        var debug = Polymer.dom(this.$.debug).node;
-        $(debug).find('ul').append(`<li>${message}</li>`)
-        $(debug).css('display', 'block');
+        var warnings = Polymer.dom(this.$.warnings).node;
+        $(warnings).find('ul').append(`<li>${message}</li>`)
+        $(warnings).css('display', 'block');
       }
     },
 

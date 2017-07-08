@@ -1,6 +1,6 @@
 - platform: google
-#  cache: true
-#  cache_dir: /tmp/tts
+  cache: true
+  cache_dir: /tmp/
   time_memory: 300
-  language: 'sv'
+  language: 'en'
 

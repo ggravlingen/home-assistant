@@ -1,3 +1,4 @@
 - platform: tradfri
   host: 192.168.0.129
   api_key: !secret ikeatradfri_securitycode
+  allow_tradfri_groups: true
