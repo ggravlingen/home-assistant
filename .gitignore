@@ -8,6 +8,10 @@
 
 deps
 
+*.pem
+
+cert
+
 *.log
 
 *.xml

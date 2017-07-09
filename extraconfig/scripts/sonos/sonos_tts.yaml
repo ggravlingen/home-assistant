@@ -1,0 +1,35 @@
+# https://community.home-assistant.io/t/sonos-tts-script/8896/62
+sonos_tts:
+  alias: Sonos Text To Speech
+  sequence:
+    - service: media_player.sonos_snapshot
+      data_template:
+        entity_id: "{{ 'media_player.' ~ where }}"
+        with_group: yes
+    - service: media_player.sonos_unjoin
+      data_template:
+        entity_id: "{{ 'media_player.' ~ where }}"
+    - service: media_player.volume_set
+      data_template:
+        entity_id: "{{ 'media_player.' ~ where }}"
+        volume_level: 0.40
+    - service: tts.google_say
+      data_template:
+        entity_id: "{{ 'media_player.' ~ where }}"
+        message: "{{ what }}"
+# Workout the length of the media
+    - delay:
+        seconds: 2
+    - delay: >-
+        {% set duration = states.media_player[where].attributes.media_duration %}
+        {% if duration > 0 %}
+          {% set duration = duration - 1 %}
+        {% endif %}
+        {% set seconds = duration % 60 %}
+        {% set minutes = (duration / 60)|int % 60 %}
+        {% set hours = (duration / 3600)|int %}
+        {{ "%02i:%02i:%02i"|format(hours, minutes, seconds)}}
+    - service: media_player.sonos_restore
+      data_template:
+        entity_id: "{{ 'media_player.' ~ where }}"
+        with_group: yes

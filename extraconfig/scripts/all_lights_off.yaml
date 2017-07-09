@@ -1,28 +1,17 @@
 all_lights_off:
     alias: "Släck alla lampor"
     sequence:
-      - service: media_player.sonos_unjoin
-        entity_id:
-          - media_player.badrum
-          - media_player.vardagsrum_musik
-
-      - service: tts.google_say
-        entity_id:
-          - media_player.badrum
+      - service: script.turn_on
+        entity_id: script.sonos_tts
         data:
-          message: 'All lights shut down sequence initiated.'
+          variables:
+            where: 'badrum'
+            what: 'All lights shut down sequence initiated!'
 
-      - alias: Shut down all lights
-        service: homeassistant.turn_off
+      - service: homeassistant.turn_off
         data:
           entity_id:
             - group.all_lights
             - switch.garderob
             - switch.koksbank
             - switch.sovrum
-
-#      - service: media_player.sonos_join
-#        master: media_player.vardagsrum_musik
-#        entity_id:
-#          - media_player.badrum
-
