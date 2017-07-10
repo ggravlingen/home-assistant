@@ -56,7 +56,12 @@ def fileWriter(location_shell_command, outputfile, sonosCommand, dataArray):
     keyname = ''.join( e for e in key if e.isalnum() ).lower()
     keyvalue = urllib.quote(key.encode("utf-8"))
     try:
+      # for backwards compatibility
       writeString = outputfile + "_" + keyname + ": /usr/bin/curl +X POST http://192.168.0.140:5005/vardagsrum%20musik/" + sonosCommand + "/" + keyvalue + "\n"
+      f.write(writeString)
+      writeString = outputfile + "_" + keyname + "_vardagsrum: /usr/bin/curl +X POST http://192.168.0.140:5005/vardagsrum%20musik/" + sonosCommand + "/" + keyvalue + "\n"
+      f.write(writeString)
+      writeString = outputfile + "_" + keyname + "_badrum: /usr/bin/curl +X POST http://192.168.0.140:5005/badrum/" + sonosCommand + "/" + keyvalue + "\n"
       f.write(writeString)
     except:
       print("")

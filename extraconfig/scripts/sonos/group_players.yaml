@@ -1,0 +1,8 @@
+sonos_group_players:
+  alias: Sonos gruop players
+  sequence:
+    - service: media_player.sonos_join
+      data:
+        master: media_player.vardagsrum_musik
+      entity_id:
+        - media_player.badrum

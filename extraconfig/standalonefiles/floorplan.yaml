@@ -45,7 +45,7 @@
             - state: 'paused'
               class: 'squeezebox-off'
             - state: 'playing'
-              class: 'squeezebox-on'
+              class: 'on-custom'
 
         - name: Lights
           entities:
@@ -58,7 +58,7 @@
             - group.hall_taklampa
           states:
             - state: 'on'
-              class: 'light-on'
+              class: 'on-custom'
             - state: 'off'
               class: 'light-off'
 
@@ -72,6 +72,8 @@
           entities:
             - script.all_lights_off
             - script.wake_up
+            - script.sonos_group_players
+            - script.sonos_guest_mode
           states:
             - state: 'on'
               class: 'button-on'
@@ -98,7 +100,7 @@
              - switch.sovrum
           states:
             - state: 'on'
-              class: 'doorbell-on'
+              class: 'on-custom'
             - state: 'off'
               class: 'doorbell-off'
 
@@ -110,53 +112,3 @@
               class: 'device-tracker-home'
             - state: 'Away'
               class: 'device-tracker-not-home'
-
-
-#        - name: NVR
-#          entities:
-#             - binary_sensor.blue_iris_nvr
-#          text_template: '${(entity.state === "on") ? "online" : "offline"}'
-#          states:
-#            - state: 'off'
-#              class: 'danger-text'
-#            - state: 'on'
-#              class: 'success-text'
-
-#        - name: Alarm Panel
-#          entities:
-#             - alarm_control_panel.alarm
-#          states:
-#            - state: 'armed_away'
-#              class: 'alarm-armed'
-#            - state: 'armed_home'
-#              class: 'alarm-armed'
-#            - state: 'disarmed'
-#              class: 'alarm-disarmed'
-
-#        - name: Binary sensors
-#          entities:
-#            - binary_sensor.front_hallway
-#            - binary_sensor.kitchen
-#            - binary_sensor.master_bedroom
-#            - binary_sensor.theatre_room
-#          states:
-#            - state: 'off'
-#              class: 'info-background'
-#            - state: 'on'
-#              class: 'warning-background'
-#          state_transitions:
-#            - name: On to off
-#              from_state: 'on'
-#              to_state: 'off'
-#              duration: 10
-
-#        - name: Cameras
-#          entities:
-#            - camera.hallway
-#            - camera.driveway
-#            - camera.front_door
-#            - camera.backyard
-#          states:
-#            - state: 'idle'
-#              class: 'camera-idle'
-

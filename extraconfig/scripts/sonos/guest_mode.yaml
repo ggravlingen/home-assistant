@@ -1,0 +1,12 @@
+sonos_guest_mode:
+  alias: Sonos guest mode
+  sequence:
+    - service: media_player.sonos_unjoin
+      entity_id:
+        - media_player.badrum
+        - media_player.vardagsrum_musik
+    - service: media_player.volume_set
+      data:
+        entity_id: media_player.badrum
+        volume_level: 0.20
+    - service: shell_command.sonos_favorites_aninstrumentalsunday_badrum
