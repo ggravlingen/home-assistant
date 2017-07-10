@@ -1,0 +1,20 @@
+@import url("floorplan.css");
+
+// Some custom css stuff
+
+.device-tracker-home {
+  fill-opacity: 1 !important;
+  stroke: #00ff00 !important;
+  stroke-width: 2px !important;
+}
+
+.device-tracker-not-home {
+  fill-opacity: 1 !important;
+  stroke: #ff0000 !important;
+  stroke-width: 2px !important;
+}
+
+
+
+
+

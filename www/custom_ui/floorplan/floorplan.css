@@ -141,3 +141,18 @@ svg, svg * {
 .squeezebox-on {
   fill: #2baaa6 !important;
 }
+
+.device-tracker-home {
+  fill-opacity: 1 !important;
+  stroke: #00ff00 !important;
+  stroke-width: 2px !important;
+}
+
+.device-tracker-not-home {
+  fill-opacity: 1 !important;
+  stroke: #ff0000 !important;
+  stroke-width: 2px !important;
+}
+
+
+

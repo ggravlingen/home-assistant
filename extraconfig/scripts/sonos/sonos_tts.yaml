@@ -19,7 +19,7 @@ sonos_tts:
         message: "{{ what }}"
 # Workout the length of the media
     - delay:
-        seconds: 2
+        seconds: 1
     - delay: >-
         {% set duration = states.media_player[where].attributes.media_duration %}
         {% if duration > 0 %}

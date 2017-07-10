@@ -1,6 +1,6 @@
       name: Döbelnsgatan 89
       image: /local/custom_ui/floorplan/floorplan.svg
-      stylesheet: /local/custom_ui/floorplan/floorplan.css
+      stylesheet: /local/custom_ui/floorplan/base_css.css
       warnings:
       pan_zoom:
       hide_app_toolbar:
@@ -101,6 +101,16 @@
               class: 'doorbell-on'
             - state: 'off'
               class: 'doorbell-off'
+
+        - name: Device trackers
+          entities:
+             - device_tracker.patrik_iphone
+          states:
+            - state: 'Home'
+              class: 'device-tracker-home'
+            - state: 'Away'
+              class: 'device-tracker-not-home'
+
 
 #        - name: NVR
 #          entities:
