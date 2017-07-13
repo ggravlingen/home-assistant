@@ -57,7 +57,7 @@
   alias: Flower | Vardagsrum | Juvelorkide
   id: '1495725269130'
   trigger:
-  - below: '14'
+  - below: '-1'
     entity_id: sensor.flower_1_moisture
     platform: numeric_state
 - action:

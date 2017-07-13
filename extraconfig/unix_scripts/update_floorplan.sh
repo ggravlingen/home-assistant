@@ -9,6 +9,10 @@ wget https://raw.githubusercontent.com/pkozul/ha-floorplan/master/www/custom_ui/
 rm ha-floorplan.html
 wget https://raw.githubusercontent.com/pkozul/ha-floorplan/master/www/custom_ui/floorplan/ha-floorplan.html
 
-rm svg-pan-zoom.min.js
-wget https://raw.githubusercontent.com/pkozul/ha-floorplan/master/www/custom_ui/floorplan/svg-pan-zoom.min.js
+cd /home/homeassistant/.homeassistant/www/custom_ui/floorplan/lib
+
+rm *
+wget https://raw.githubusercontent.com/pkozul/ha-floorplan/master/www/custom_ui/floorplan/lib/svg-pan-zoom.min.js
+wget https://raw.githubusercontent.com/pkozul/ha-floorplan/master/www/custom_ui/floorplan/lib/moment.min.js
+wget https://raw.githubusercontent.com/pkozul/ha-floorplan/master/www/custom_ui/floorplan/lib/jquery-3.2.1.min.js
 
