@@ -209,10 +209,10 @@ batteries:
 zwavedebug:
   name: "Zwave debug"
   entities:
-    - switch.fibaro_system_fgwpe_wall_plug_switch_15_0
-    - sensor.fibaro_system_fgwpe_wall_plug_energy_15_0
-    - sensor.fibaro_system_fgwpe_wall_plug_power_15_4
-    - binary_sensor.neo_coolcam_battery_powered_pir_sensor_sensor_16_0
+    - switch.fibaro_system_fgwpe_wall_plug_switch
+    - sensor.fibaro_system_fgwpe_wall_plug_energy
+    - sensor.fibaro_system_fgwpe_wall_plug_power
+    - binary_sensor.neo_coolcam_battery_powered_pir_sensor_sensor
 #    - sensor.neo_coolcam_battery_powered_pir_sensor_luminance_16_3
 #    - sensor.neo_coolcam_battery_powered_pir_sensor_burglar_16_10
 #    - sensor.neo_coolcam_battery_powered_pir_sensor_alarm_type_16_0

@@ -1,7 +1,11 @@
 sonos_check_controller: /usr/bin/nmap -p 5005 localhost | grep open &> /dev/null && echo success || echo fail
 camera_livingroom: '/bin/nc -z -v -w3 192.168.0.198 81  &> /dev/null && echo success || echo fail'
 
+# SONOS MISC
+sonos_leave_main_group: '/usr/bin/curl -X GET http://192.168.0.140:5005/{{where}}/leave' # works better than built-in
+
 # SONOS: COMFORTABLE VOLUMES
+
 sonos_volume_8: '/usr/bin/curl -X GET http://192.168.0.140:5005/vardagsrum%20musik/volume/8'
 sonos_volume_18: '/usr/bin/curl -X GET http://192.168.0.140:5005/vardagsrum%20musik/volume/18'
 
