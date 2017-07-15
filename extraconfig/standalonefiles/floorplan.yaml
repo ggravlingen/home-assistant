@@ -37,6 +37,7 @@
             - media_player.badrum
             - media_player.vardagsrum_musik
             - media_player.vardagsrum_chromecast
+            - media_player.living_room_tv
           states:
             - state: 'off'
               class: 'squeezebox-off'
@@ -49,8 +50,8 @@
 
         - name: Lights
           entities:
-            - light.hall_1
-            - light.hall_2
+#            - light.hall_1
+#            - light.hall_2
             - light.kokslampa
             - light.laslampa
             - light.sovrumstak
@@ -98,6 +99,7 @@
           entities:
              - switch.koksbank
              - switch.sovrum
+             - switch.garderob
           states:
             - state: 'on'
               class: 'on-custom'
@@ -112,3 +114,15 @@
               class: 'device-tracker-home'
             - state: 'Away'
               class: 'device-tracker-not-home'
+
+        - name: text_font_date
+          entities:
+            - sensor.floorplan_date
+          text_template: '${entity.state ? entity.state : "undefined"}'
+          class_template: 'return "static-text-date";'
+
+        - name: text_font_time
+          entities:
+            - sensor.floorplan_time
+          text_template: '${entity.state ? entity.state : "undefined"}'
+          class_template: 'return "static-text-time";'

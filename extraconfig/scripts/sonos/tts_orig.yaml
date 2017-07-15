@@ -17,16 +17,18 @@ sonos_tts:
       data_template:
         entity_id: "{{ 'media_player.' ~ where }}"
         message: "{{ what }}"
-    - wait_template: >-
-        {{ is_state('media_player.badrum', 'playing') }}
-      timeout: '00:00:03'
-
-    - wait_template: >-
-        {{ not is_state('media_player.badrum', 'playing') }}
-      timeout: '00:01:00'
-
-#        {% set duration = states.media_player[where].attributes.media_duration %}
-
+# Workout the length of the media
+    - delay:
+        seconds: 1
+    - delay: >-
+        {% set duration = states.media_player[where].attributes.media_duration %}
+        {% if duration > 0 %}
+          {% set duration = duration - 1 %}
+        {% endif %}
+        {% set seconds = duration % 60 %}
+        {% set minutes = (duration / 60)|int % 60 %}
+        {% set hours = (duration / 3600)|int %}
+        {{ "%02i:%02i:%02i"|format(hours, minutes, seconds)}}
     - service: media_player.sonos_restore
       data_template:
         entity_id: "{{ 'media_player.' ~ where }}"

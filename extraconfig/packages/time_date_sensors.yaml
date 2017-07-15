@@ -1,0 +1,24 @@
+# https://raw.githubusercontent.com/CCOSTAN/Home-AssistantConfig/a2dd233c860bb15bc63cebccf9d4ac196dfa540f/packages/time_date_sensors.yaml
+#-------------------------------------------
+#  Clean data for the Floorplan UI.
+#-------------------------------------------
+homeassistant:
+  customize_glob:
+    "sensor.floorplan_*":
+      emulated_hue: False
+      hidden: True
+#---Sensor for Time and Date.-----------------------------
+sensor:
+  - platform: template
+    sensors:
+      floorplan_date:
+        friendly_name: 'Date'
+        value_template: >-
+          {{now().strftime("%A")}}, {{now().strftime("%B")}} {{now().strftime("%d")}}
+
+  - platform: template
+    sensors:
+      floorplan_time:
+        friendly_name: 'Time'
+        value_template: >-
+          {{now().strftime("%H")}}:{{now().strftime("%M")}}
