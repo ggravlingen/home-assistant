@@ -1,0 +1,22 @@
+all_lights_off:
+    alias: "Släck alla lampor"
+    sequence:
+      - service: script.turn_on
+        entity_id: script.sonos_tts
+        data:
+          variables:
+            where: 'badrum'
+            what: 'Command received. Going for full shutdown.'
+
+      - wait_template: >-
+          {{ not is_state('media_player.badrum', 'playing') }}
+        timeout: '00:01:00'
+
+      - service: homeassistant.turn_off
+        data:
+          entity_id:
+            - group.all_lights
+            - switch.garderob
+            - switch.koksbank
+            - switch.sovrum
+
