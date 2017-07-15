@@ -18,6 +18,11 @@
   fill: #00ff00 !important;
 }
 
+.button-text-black {
+  stroke: #000000 !important;
+  stroke-width: 0px !important;
+}
+
 body {
-    background-color: yellow;
+    background-color: black;
 }

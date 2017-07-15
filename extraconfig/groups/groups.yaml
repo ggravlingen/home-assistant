@@ -218,3 +218,24 @@ zwavedebug:
 #    - sensor.neo_coolcam_battery_powered_pir_sensor_alarm_type_16_0
 #    - sensor.neo_coolcam_battery_powered_pir_sensor_alarm_level_16_1
 # binary_sensor.neo_coolcam_battery_powered_pir_sensor_sensor_8_0
+
+### FLOORPLAN ###
+
+floorplan_sonos:
+  name: "Sonos"
+  entities:
+    - script.sonos_pause_all
+    - script.sonos_group_players
+    - script.sonos_guest_mode
+
+floorplan_ceiling:
+  name: "Ceiling"
+  entities:
+    - script.all_lights_off
+    - scene.ceiling_relax
+    - scene.ceiling_at_home
+
+floorplan_misc:
+  name: "Misc"
+  entities:
+    - script.wake_up
