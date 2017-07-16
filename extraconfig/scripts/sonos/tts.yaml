@@ -19,11 +19,11 @@ sonos_tts:
         message: "{{ what }}"
 
     - wait_template: >-
-        {{ is_state('media_player.badrum', 'playing') }}
+        {{ is_state('media_player.' ~ where , 'playing') }}
       timeout: '00:00:03'
 
     - wait_template: >-
-        {{ not is_state('media_player.badrum', 'playing') }}
+        {{ not is_state('media_player.' ~ where , 'playing') }}
       timeout: '00:01:00'
 
     - service: media_player.sonos_restore

@@ -1,5 +1,5 @@
 sonos_group_players:
-  alias: Sonos gruop players
+  alias: Sonos group players
   sequence:
     - service: media_player.sonos_join
       data:

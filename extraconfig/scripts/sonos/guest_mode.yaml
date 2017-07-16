@@ -1,11 +1,6 @@
 sonos_guest_mode:
   alias: Sonos guest mode
   sequence:
-#    - service: media_player.sonos_unjoin
-#      entity_id:
-#        - media_player.badrum
-#        - media_player.vardagsrum_musik
-
     - service: shell_command.sonos_leave_main_group
       data_template:
         where: 'Badrum'
