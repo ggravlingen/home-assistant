@@ -9,15 +9,15 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="280"
+   width="210"
    height="64"
-   viewBox="0 0 74.083332 16.933333"
+   viewBox="0 0 210 64"
    version="1.1"
-   id="abc"
+   id="svg5969"
    inkscape:version="0.92.1 r15371"
    sodipodi:docname="Transparent.svg">
   <defs
-     id="defs6087" />
+     id="defs5963" />
   <sodipodi:namedview
      id="base"
      pagecolor="#ffffff"
@@ -25,10 +25,10 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.7388188"
-     inkscape:cx="153.61534"
-     inkscape:cy="3.2540408"
-     inkscape:document-units="mm"
+     inkscape:zoom="1.4142136"
+     inkscape:cx="150.264"
+     inkscape:cy="-92.230447"
+     inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:window-width="1600"
@@ -36,9 +36,32 @@
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
-     units="px" />
+     units="px"
+     showguides="false"
+     inkscape:guide-bbox="true">
+    <sodipodi:guide
+       position="0,63.241658"
+       orientation="1,0"
+       id="guide11"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="0.88291925,64.001379"
+       orientation="0,1"
+       id="guide13"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="210.37891,-0.00390625"
+       orientation="0,1"
+       id="guide15"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="210,-0.453125"
+       orientation="1,0"
+       id="guide17"
+       inkscape:locked="false" />
+  </sodipodi:namedview>
   <metadata
-     id="metadata6090">
+     id="metadata5966">
     <rdf:RDF>
       <cc:Work
          rdf:about="">
@@ -53,5 +76,5 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(0,-280.06659)" />
+     transform="translate(0,-201.62498)" />
 </svg>

@@ -1,8 +1,8 @@
       name: Döbelnsgatan 89
       image: /local/custom_ui/floorplan/floorplan.svg
       stylesheet: /local/custom_ui/floorplan/base_css.css
-      warnings:
-      pan_zoom:
+#      warnings:
+#      pan_zoom:
       hide_app_toolbar:
 
       last_motion_entity: sensor.template_last_motion
