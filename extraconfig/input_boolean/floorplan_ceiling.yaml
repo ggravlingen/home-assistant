@@ -1,0 +1,3 @@
+floorplan_toggle_ceiling_button:
+  name: Display Ceiling Control
+  initial: off

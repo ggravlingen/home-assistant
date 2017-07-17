@@ -78,17 +78,17 @@
           action:
             service: toggle
 
-#        - name: scenes
-#          entities:
-#            - scene.ceiling_relax
-#            - scene.ceiling_at_home
-#          states:
-#            - state: 'on'
-#              class: 'button-on'
-#            - state: 'off'
-#              class: 'button-off'
-#          action:
-#            service: turn_on
+        - name: scenes
+          entities:
+            - scene.ceiling_relax
+            - scene.ceiling_at_home
+          states:
+            - state: 'on'
+              class: 'button-on'
+            - state: 'off'
+              class: 'button-off'
+          action:
+            service: turn_on
 
         - name: Switches
           entities:
@@ -132,3 +132,53 @@
             - sensor.floorplan_time
           text_template: '${entity.state ? entity.state : "undefined"}'
           class_template: 'return "static-text-time";'
+
+
+
+        - name: Buttons Ceiling
+          entities:
+            - input_boolean.floorplan_toggle_ceiling_button
+          image_template: '
+            var imageName = "";
+            switch (entity.state) {
+              case "on":
+                imageName = "Ceiling";
+                break;
+              case "off":
+                imageName = "Transparent";
+                break;
+            }
+            return "/local/custom_ui/floorplan/buttonbars/" + imageName + ".svg";
+            '
+
+        - name: Buttons Sonos
+          entities:
+            - input_select.floorplan_buttons_sonos
+          image_template: '
+            var imageName = "";
+            switch (entity.state) {
+              case "True":
+                imageName = "Home";
+                break;
+              case "False":
+                imageName = "Empty";
+                break;
+            }
+            return "/local/custom_ui/floorplan/buttonbars/" + imageName + ".svg";
+            '
+
+        - name: Buttons Misc
+          entities:
+            - input_select.floorplan_buttons_misc
+          image_template: '
+            var imageName = "";
+            switch (entity.state) {
+              case "True":
+                imageName = "Home";
+                break;
+              case "False":
+                imageName = "Empty";
+                break;
+            }
+            return "/local/custom_ui/floorplan/buttonbars/" + imageName + ".svg";
+            '

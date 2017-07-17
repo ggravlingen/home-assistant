@@ -45,10 +45,10 @@ logger: !include extraconfig/standalonefiles/logger.yaml
 
 
 group: !include_dir_merge_named extraconfig/groups
+input_boolean: !include_dir_merge_named extraconfig/input_boolean
 input_select: !include_dir_merge_named extraconfig/input_select
 shell_command: !include_dir_merge_named extraconfig/shell_command
 script: !include_dir_merge_named extraconfig/scripts
-
 
 
 
