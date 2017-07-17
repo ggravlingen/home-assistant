@@ -70,6 +70,7 @@
         - name: scripts
           entities:
             - script.sonos_pause_all
+            - script.wake_up
           states:
             - state: 'on'
               class: 'button-on'
@@ -146,38 +147,6 @@
                 break;
               case "off":
                 imageName = "Transparent";
-                break;
-            }
-            return "/local/custom_ui/floorplan/buttonbars/" + imageName + ".svg";
-            '
-
-        - name: Buttons Sonos
-          entities:
-            - input_select.floorplan_buttons_sonos
-          image_template: '
-            var imageName = "";
-            switch (entity.state) {
-              case "True":
-                imageName = "Home";
-                break;
-              case "False":
-                imageName = "Empty";
-                break;
-            }
-            return "/local/custom_ui/floorplan/buttonbars/" + imageName + ".svg";
-            '
-
-        - name: Buttons Misc
-          entities:
-            - input_select.floorplan_buttons_misc
-          image_template: '
-            var imageName = "";
-            switch (entity.state) {
-              case "True":
-                imageName = "Home";
-                break;
-              case "False":
-                imageName = "Empty";
                 break;
             }
             return "/local/custom_ui/floorplan/buttonbars/" + imageName + ".svg";
