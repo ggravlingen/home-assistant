@@ -1,4 +1,4 @@
-- name: Ceiling relax
+- name: Ceiling mid
   entities:
     group.hall_taklampa:
       state: on
@@ -13,7 +13,7 @@
       state: on
       brightness: 10
 
-- name: Ceiling at home
+- name: Ceiling max
   entities:
     group.hall_taklampa:
       state: on

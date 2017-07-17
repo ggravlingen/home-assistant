@@ -165,8 +165,8 @@ vaxt3:
 
 ### SCENES
 activate_scenes:
-  - scene.ceiling_relax
-  - scene.ceiling_at_home
+  - scene.ceiling_mid
+  - scene.ceiling_max
 
 
 ### ALL LIGHT SWITCHES

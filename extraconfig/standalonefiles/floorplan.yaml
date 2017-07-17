@@ -1,12 +1,12 @@
-      name: Döbelnsgatan 89
+      name: My Home
       image: /local/custom_ui/floorplan/floorplan.svg
       stylesheet: /local/custom_ui/floorplan/base_css.css
 #      warnings:
 #      pan_zoom:
       hide_app_toolbar:
 
-      last_motion_entity: sensor.template_last_motion
-      last_motion_class: last-motion
+#      last_motion_entity: sensor.template_last_motion
+#      last_motion_class: last-motion
 
       groups:
 
@@ -80,8 +80,8 @@
 
         - name: scenes
           entities:
-            - scene.ceiling_relax
-            - scene.ceiling_at_home
+            - scene.ceiling_mid
+            - scene.ceiling_max
           states:
             - state: 'on'
               class: 'button-on'
@@ -138,7 +138,7 @@
         - name: Buttons Ceiling
           entities:
             - input_boolean.floorplan_toggle_ceiling_button
-          image_template: '
+          image_template_dynamic: '
             var imageName = "";
             switch (entity.state) {
               case "on":

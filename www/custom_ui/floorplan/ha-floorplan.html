@@ -421,6 +421,17 @@
             }
           }
 
+          if (entityConfig.group.image_template_dynamic) {
+            imageUrl = this.assemble(entityConfig.group.image_template_dynamic, entityState, entities);
+
+            entityId = "input_boolean.floorplan_toggle_ceiling_button_target";
+
+            if (entityConfig.imageUrl !== imageUrl) {
+              entityConfig.imageUrl = imageUrl;
+              this.loadImage(imageUrl, entityId, (embeddedSvg) => {});
+            }
+          }
+
           var targetClass = undefined;
           var obsoleteClasses = [];
 
@@ -498,7 +509,7 @@
             .attr('height', bbox.height)
             .attr('width', bbox.width)
             .attr('x', bbox.x)
-            .attr('y', bbox.y);
+            .attr('y', bbox.y-24);
 
           $(embeddedSvg).find('*').append(document.createElementNS('', 'title'));
           $(embeddedSvg).find('title').html('Some title');
