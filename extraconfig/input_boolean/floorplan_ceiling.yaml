@@ -1,3 +1,12 @@
 floorplan_toggle_ceiling_button:
   name: Display Ceiling Control
   initial: off
+
+floorplan_toggle_sonos_button:
+  name: Display Sonos Control
+  initial: off
+
+
+
+
+

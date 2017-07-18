@@ -1,12 +1,25 @@
       name: My Home
       image: /local/custom_ui/floorplan/floorplan.svg
       stylesheet: /local/custom_ui/floorplan/base_css.css
-#      warnings:
+      warnings:
 #      pan_zoom:
       hide_app_toolbar:
 
 #      last_motion_entity: sensor.template_last_motion
 #      last_motion_class: last-motion
+
+      # Table of contents
+      # Flowers
+      # Media Players
+      # Lights
+      # Scripts
+      # Scenes
+      # Switches
+      # Forecast IO
+      # Text states
+      # Date text
+      # Time text
+      # Buttons
 
       groups:
 
@@ -25,13 +38,6 @@
             else
               return "temp-below-average-background";
             '
-
-        - name: temp_forecastio
-          entities:
-            - sensor.forecastio_apparent_temperature
-          text_template: '${entity.state ? Math.ceil(entity.state) + "°": "undefined"}'
-          class_template: 'return "static-temp";'
-
         - name: Media Players
           entities:
             - media_player.badrum
@@ -61,16 +67,13 @@
             - state: 'off'
               class: 'light-off'
 
-        - name: text_states
-          entities:
-            - sensor.forecastio_hourly_summary
-          text_template: '${entity.state ? entity.state.replace(/\s{3,}/g,"") : "undefined"}'
-          class_template: 'return "static-text";'
-
-        - name: scripts
+        - name: Scripts
           entities:
             - script.sonos_pause_all
             - script.wake_up
+            - script.sonos_guest_mode
+            - script.sonos_group_players
+            - script.all_lights_off
           states:
             - state: 'on'
               class: 'button-on'
@@ -79,10 +82,11 @@
           action:
             service: toggle
 
-        - name: scenes
+        - name: Scenes
           entities:
-            - scene.ceiling_mid
             - scene.ceiling_max
+            - scene.ceiling_mid
+            - scene.ceiling_low
           states:
             - state: 'on'
               class: 'button-on'
@@ -111,16 +115,17 @@
             - state: 'Away'
               class: 'device-tracker-not-home'
 
-        - name: Various groups
+        - name: temp_forecastio
           entities:
-            - group.floorplan_sonos
-            - group.floorplan_ceiling
-            - group.floorplan_misc
-          states:
-            - state: 'on'
-              class: 'button-text-black'
-            - state: 'off'
-              class: 'button-text-black'
+            - sensor.forecastio_apparent_temperature
+          text_template: '${entity.state ? Math.ceil(entity.state) + "°": "undefined"}'
+          class_template: 'return "static-temp";'
+
+        - name: text_states
+          entities:
+            - sensor.forecastio_hourly_summary
+          text_template: '${entity.state ? entity.state.replace(/\s{3,}/g,"") : "undefined"}'
+          class_template: 'return "static-text";'
 
         - name: text_font_date
           entities:
@@ -134,20 +139,10 @@
           text_template: '${entity.state ? entity.state : "undefined"}'
           class_template: 'return "static-text-time";'
 
-
-
-        - name: Buttons Ceiling
+        - name: Buttons
           entities:
             - input_boolean.floorplan_toggle_ceiling_button
-          image_template_dynamic: '
-            var imageName = "";
-            switch (entity.state) {
-              case "on":
-                imageName = "Ceiling";
-                break;
-              case "off":
-                imageName = "Transparent";
-                break;
-            }
-            return "/local/custom_ui/floorplan/buttonbars/" + imageName + ".svg";
-            '
+            - input_boolean.floorplan_toggle_sonos_button
+          layer_toggle: true
+          action:
+            service: toggle

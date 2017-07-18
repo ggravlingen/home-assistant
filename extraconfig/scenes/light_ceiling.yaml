@@ -1,3 +1,18 @@
+- name: Ceiling low
+  entities:
+    group.hall_taklampa:
+      state: on
+      brightness: 1
+    group.vardagsrum_tak:
+      state: on
+      brightness: 1
+    light.kokslampa:
+      state: on
+      brightness: 1
+    light.sovrumstak:
+      state: on
+      brightness: 11
+
 - name: Ceiling mid
   entities:
     group.hall_taklampa:
@@ -26,4 +41,3 @@
       brightness: 254
     light.sovrumstak:
       state: off
-

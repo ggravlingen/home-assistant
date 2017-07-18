@@ -1,6 +1,12 @@
 wake_up:
     alias: "Dags att vakna"
     sequence:
+      - alias: Group players just in case
+        service: homeassistant.turn_on
+        data:
+          entity_id:
+            - script.sonos_group_players
+
       - alias: Start low
         service: light.turn_on
         data:

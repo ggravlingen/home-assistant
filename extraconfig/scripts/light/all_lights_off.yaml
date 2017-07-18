@@ -10,7 +10,7 @@ all_lights_off:
 
       - wait_template: >-
           {{ not is_state('media_player.badrum', 'playing') }}
-        timeout: '00:01:00'
+        timeout: '00:05:00'
 
       - service: homeassistant.turn_off
         data:
