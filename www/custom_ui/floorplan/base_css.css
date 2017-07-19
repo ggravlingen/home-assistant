@@ -2,15 +2,6 @@
 
 // Some custom css stuff
 
-.layer_light_settings-on {
-  opacity:1 !important;
-}
-
-.layer_light_settings-off {
-  opacity:0 !important;
-}
-
-
 .device-tracker-home {
   fill-opacity: 1 !important;
   stroke: #00FF00 !important;
@@ -30,4 +21,14 @@
 .button-text-black {
   stroke: #000000 !important;
   stroke-width: 0px !important;
+}
+
+/* Light */
+
+.light-on-custom {
+  fill: #00FF00 !important;
+}
+
+.light-off-custom {
+  fill: #000000 !important;
 }

@@ -15,11 +15,12 @@
       # Scripts
       # Scenes
       # Switches
+      # Buttons
+      # Device trackers
       # Forecast IO
       # Text states
       # Date text
       # Time text
-      # Buttons
 
       groups:
 
@@ -63,9 +64,11 @@
             - group.hall_taklampa
           states:
             - state: 'on'
-              class: 'on-custom'
+              class: 'light-on-custom'
             - state: 'off'
-              class: 'light-off'
+              class: 'light-off-custom'
+          action:
+            service: toggle
 
         - name: Scripts
           entities:
@@ -102,9 +105,20 @@
              - switch.garderob
           states:
             - state: 'on'
-              class: 'on-custom'
+              class: 'light-on-custom'
             - state: 'off'
-              class: 'doorbell-off'
+              class: 'light-off-custom'
+          action:
+            service: toggle
+
+        - name: Buttons
+          entities:
+            - input_boolean.floorplan_toggle_ceiling_button
+            - input_boolean.floorplan_toggle_sonos_button
+            - input_boolean.floorplan_toggle_service_status_button
+          layer_toggle: true
+          action:
+            service: toggle
 
         - name: Device trackers
           entities:
@@ -138,11 +152,3 @@
             - sensor.floorplan_time
           text_template: '${entity.state ? entity.state : "undefined"}'
           class_template: 'return "static-text-time";'
-
-        - name: Buttons
-          entities:
-            - input_boolean.floorplan_toggle_ceiling_button
-            - input_boolean.floorplan_toggle_sonos_button
-          layer_toggle: true
-          action:
-            service: toggle
