@@ -76,7 +76,6 @@
             - script.wake_up
             - script.sonos_guest_mode
             - script.sonos_group_players
-            - script.all_lights_off
           states:
             - state: 'on'
               class: 'button-on'
@@ -90,6 +89,7 @@
             - scene.ceiling_max
             - scene.ceiling_mid
             - scene.ceiling_low
+            - scene.all_lights_off
           states:
             - state: 'on'
               class: 'button-on'
