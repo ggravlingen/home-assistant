@@ -26,9 +26,19 @@
 /* Light */
 
 .light-on-custom {
-  fill: #00FF00 !important;
+  fill: #396300 !important;
 }
 
 .light-off-custom {
+  fill: #002700 !important;
+}
+
+.switch-on-custom {
+  stroke-width: 2px !important;
+  fill: #396300 !important;
+}
+
+.switch-off-custom {
+  stroke-width: 2px !important;
   fill: #000000 !important;
 }

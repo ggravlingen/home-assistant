@@ -8,10 +8,6 @@ all_lights_off:
             where: 'badrum'
             what: 'Command received. Going for full shutdown.'
 
-      - wait_template: >-
-          {{ not is_state('media_player.badrum', 'playing') }}
-        timeout: '00:05:00'
-
       - service: homeassistant.turn_off
         data:
           entity_id:
@@ -19,4 +15,3 @@ all_lights_off:
             - switch.garderob
             - switch.koksbank
             - switch.sovrum
-

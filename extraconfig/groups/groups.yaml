@@ -100,7 +100,7 @@ system_sensors:
 system_arm:
   name: "Aktivera system"
   entities:
-  - input_select.arm_wakeup_alarm
+  - input_boolean.arm_wakeup_alarm
   - input_select.arm_debug
 
 system_wan_stats:

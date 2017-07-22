@@ -20,13 +20,15 @@ sonos_tts:
 
     - wait_template: >-
         {{ is_state('media_player.' ~ where , 'playing') }}
-      timeout: '00:00:03'
+      timeout: '00:00:5'
 
     - wait_template: >-
         {{ not is_state('media_player.' ~ where , 'playing') }}
-      timeout: '00:01:00'
+      timeout: '00:00:05'
 
     - service: media_player.sonos_restore
       data_template:
         entity_id: "{{ 'media_player.' ~ where }}"
         with_group: yes
+
+    - service: script.sonos_group_players

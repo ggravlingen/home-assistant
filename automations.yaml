@@ -46,8 +46,8 @@
       entity_id: device_tracker.patrik_iphone
       state: Home
     - condition: state
-      entity_id: input_select.arm_wakeup_alarm
-      state: "P\xE5"
+      entity_id: input_boolean.arm_wakeup_alarm
+      state: "on"
 - action:
   - alias: ''
     data:

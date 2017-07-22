@@ -111,14 +111,33 @@
           action:
             service: toggle
 
-        - name: Buttons
-          entities:
-            - input_boolean.floorplan_toggle_ceiling_button
-            - input_boolean.floorplan_toggle_sonos_button
-            - input_boolean.floorplan_toggle_service_status_button
-          layer_toggle: true
+        - name: Ceiling buttons
+          elements:
+            - toggle_ceiling_button
           action:
+            domain: class
             service: toggle
+            data:
+              elements:
+                - ceiling_buttons_layer
+              classes:
+                - layer-visible
+                - layer-hidden
+              default_class: layer-hidden
+
+        - name: Sonos buttons
+          elements:
+            - toggle_sonos_button
+          action:
+            domain: class
+            service: toggle
+            data:
+              elements:
+                - sonos_buttons_layer
+              classes:
+                - layer-visible
+                - layer-hidden
+              default_class: layer-hidden
 
         - name: Device trackers
           entities:
@@ -129,6 +148,21 @@
             - state: 'Away'
               class: 'device-tracker-not-home'
 
+        - name: text_per_cent
+          entities:
+            - sensor.cpu_use
+            - sensor.disk_use_home
+            - sensor.system_wifi_strength
+            - sensor.ram_use
+          text_template: '${entity.state ? Math.ceil(entity.state) + "%": "undefined"}'
+          class_template: 'return "static-temp";'
+
+        - name: text_mib
+          entities:
+            - sensor.ram_free
+          text_template: '${entity.state ? Math.ceil(entity.state) + " MiB": "undefined"}'
+          class_template: 'return "static-temp";'
+
         - name: temp_forecastio
           entities:
             - sensor.forecastio_apparent_temperature
@@ -138,6 +172,12 @@
         - name: text_states
           entities:
             - sensor.forecastio_hourly_summary
+            - binary_sensor.systemstate_sonoscontrol
+            - binary_sensor.systemstate_homebridge
+            - binary_sensor.systemstate_mosquitto
+            - binary_sensor.systemstate_pm2
+            - binary_sensor.systemstate_ftpserver
+            - binary_sensor.systemstate_ssh
           text_template: '${entity.state ? entity.state.replace(/\s{3,}/g,"") : "undefined"}'
           class_template: 'return "static-text";'
 
@@ -152,3 +192,11 @@
             - sensor.floorplan_time
           text_template: '${entity.state ? entity.state : "undefined"}'
           class_template: 'return "static-text-time";'
+
+        - name: text_states_boolean
+          entities:
+            - input_boolean.arm_wakeup_alarm
+          text_template: '${entity.state ? entity.state.replace(/\s{3,}/g,"") : "undefined"}'
+          class_template: 'return "static-text";'
+          action:
+            service: toggle
