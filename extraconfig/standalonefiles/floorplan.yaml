@@ -55,13 +55,12 @@
             - state: 'playing'
               class: 'on-custom'
 
-        - name: Lights
+        - name: Light toggle
           entities:
-            - light.kokslampa
-            - light.laslampa
-            - light.sovrumstak
-            - light.vardagsrum
-            - group.hall_taklampa
+            - input_boolean.light_kokslampa
+            - input_boolean.light_sovrumstak
+            - input_boolean.light_vardagsrum
+            - input_boolean.group_hall_taklampa
           states:
             - state: 'on'
               class: 'light-on-custom'
@@ -69,6 +68,19 @@
               class: 'light-off-custom'
           action:
             service: toggle
+
+        - name: Light settings
+          entities:
+            - light.kokslampa
+            - light.sovrumstak
+            - light.vardagsrum
+            - group.hall_taklampa
+            - light.laslampa
+          states:
+            - state: 'on'
+              class: 'light-on-custom'
+            - state: 'off'
+              class: 'light-off-custom'
 
         - name: Scripts
           entities:

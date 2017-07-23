@@ -41,9 +41,9 @@
      inkscape:window-height="837"
      id="namedview4934"
      showgrid="false"
-     inkscape:zoom="0.88252668"
-     inkscape:cx="685.0305"
-     inkscape:cy="406.52327"
+     inkscape:zoom="1.2480812"
+     inkscape:cx="945.33086"
+     inkscape:cy="544.50497"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
@@ -1273,10 +1273,11 @@
        inkscape:groupmode="layer"
        id="layer3"
        inkscape:label="Light areas"
-       style="display:inline">
+       style="display:inline"
+       sodipodi:insensitive="true">
       <rect
          style="opacity:1;fill:#002700;fill-opacity:1;stroke:none;stroke-width:0.76266158;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         id="group.hall_taklampa"
+         id="input_boolean.group_hall_taklampa"
          width="112.49422"
          height="279.26651"
          x="567.29199"
@@ -1284,7 +1285,7 @@
          inkscape:label="#rect5151" />
       <rect
          style="display:inline;opacity:1;fill:#002700;fill-opacity:1;stroke:none;stroke-width:0.68741548;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         id="light.sovrumstak"
+         id="input_boolean.light_sovrumstak"
          width="148.62155"
          height="171.72842"
          x="827.13916"
@@ -1292,7 +1293,7 @@
          inkscape:label="#rect5151-9" />
       <rect
          style="display:inline;opacity:1;fill:#002700;fill-opacity:1;stroke:none;stroke-width:1.11005485;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         id="light.vardagsrum"
+         id="input_boolean.light_vardagsrum"
          width="297.7128"
          height="223.55101"
          x="678.04791"
@@ -1301,7 +1302,7 @@
       <path
          style="opacity:1;fill:#002700;fill-opacity:1;stroke:none;stroke-width:0.56655508;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          d="m 681.81951,184.87675 v -28.61103 h 9.06488 9.06488 V 103.48337 50.701021 l 31.0189,0.375435 c 17.06039,0.206489 45.23234,0.375689 62.60434,0.376001 l 31.58544,5.66e-4 v 81.017377 81.01738 h -71.66922 -71.66922 z"
-         id="light.kokslampa"
+         id="input_boolean.light_kokslampa"
          inkscape:connector-curvature="0"
          inkscape:label="#path1461" />
     </g>
@@ -1328,7 +1329,8 @@
   <g
      inkscape:groupmode="layer"
      id="layer7"
-     inkscape:label="All symbols in apartment">
+     inkscape:label="All symbols in apartment"
+     sodipodi:insensitive="true">
     <path
        inkscape:connector-curvature="0"
        style="clip-rule:evenodd;fill:#ffffff;fill-rule:evenodd;stroke-width:0.19927056"
@@ -1594,6 +1596,36 @@
            d="m 305.96706,279.43813 c 1.53193,1.5757 1.53193,1.5757 3.10762,0 1.53193,-1.53192 1.53193,-1.53192 0,-3.10762 -1.57569,-1.53194 -1.57569,-1.53194 -3.10762,0 -1.57569,1.5757 -1.57569,1.5757 0,3.10762 z M 278.086,307.31919 c 1.5757,1.53193 1.5757,1.53193 3.10762,0 1.5757,-1.57569 1.5757,-1.57569 0,-3.10762 -1.53192,-1.57569 -1.53192,-1.57569 -3.10762,0 -1.53194,1.53193 -1.53194,1.53193 0,3.10762 z m 27.88106,-3.10762 c -1.57569,1.53193 -1.57569,1.53193 0,3.10762 1.53193,1.53193 1.53193,1.53193 3.10762,0 1.53193,-1.57569 1.53193,-1.57569 0,-3.10762 -1.57569,-1.57569 -1.57569,-1.57569 -3.10762,0 z M 278.086,276.33051 c -1.53194,1.5757 -1.53194,1.5757 0,3.10762 1.5757,1.5757 1.5757,1.5757 3.10762,0 1.5757,-1.53192 1.5757,-1.53192 0,-3.10762 -1.53192,-1.53194 -1.53192,-1.53194 -3.10762,0 z m 33.00208,15.49434 c 0,2.18847 0,2.18847 2.18846,2.18847 2.18847,0 2.18847,0 2.18847,-2.18847 0,-2.18847 0,-2.18847 -2.18847,-2.18847 -2.18846,0 -2.18846,0 -2.18846,2.18847 z m -39.39241,0 c 0,2.18847 0,2.18847 2.18846,2.18847 2.18848,0 2.18848,0 2.18848,-2.18847 0,-2.18847 0,-2.18847 -2.18848,-2.18847 -2.18846,0 -2.18846,0 -2.18846,2.18847 z m 21.88467,17.50774 c -2.18847,0 -2.18847,0 -2.18847,2.18846 0,2.18847 0,2.18847 2.18847,2.18847 2.18847,0 2.18847,0 2.18847,-2.18847 0,-2.18846 0,-2.18846 -2.18847,-2.18846 z m 0,-8.75388 c -4.81463,0 -8.75386,-3.93923 -8.75386,-8.75386 0,-4.81463 3.93923,-8.75386 8.75386,-8.75386 4.81463,0 8.75386,3.93923 8.75386,8.75386 0,4.81463 -3.93923,8.75386 -8.75386,8.75386 z m 0,4.37694 c 7.26571,0 13.1308,-5.86509 13.1308,-13.1308 0,-7.26571 -5.86509,-13.13079 -13.1308,-13.13079 -7.26571,0 -13.13079,5.86508 -13.13079,13.13079 0,7.26571 5.86508,13.1308 13.13079,13.1308 z m 0,-35.01547 c -2.18847,0 -2.18847,0 -2.18847,2.18846 0,2.18848 0,2.18848 2.18847,2.18848 2.18847,0 2.18847,0 2.18847,-2.18848 0,-2.18846 0,-2.18846 -2.18847,-2.18846 z"
            inkscape:connector-curvature="0" />
       </g>
+      <rect
+         style="display:inline;opacity:0;fill:#002700;fill-opacity:1;stroke:none;stroke-width:0.76266158;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="group.hall_taklampa"
+         width="112.49422"
+         height="279.26651"
+         x="567.29193"
+         y="155.87697"
+         inkscape:label="#rect5151" />
+      <rect
+         style="display:inline;opacity:0;fill:#002700;fill-opacity:1;stroke:none;stroke-width:0.68741548;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="light.sovrumstak"
+         width="148.62155"
+         height="171.72842"
+         x="827.13916"
+         y="41.71582"
+         inkscape:label="#rect5151-9" />
+      <rect
+         style="display:inline;opacity:0;fill:#002700;fill-opacity:1;stroke:none;stroke-width:1.11005485;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="light.vardagsrum"
+         width="297.7128"
+         height="223.55101"
+         x="678.04797"
+         y="213.1438"
+         inkscape:label="#rect5151-98" />
+      <path
+         style="display:inline;opacity:0;fill:#002700;fill-opacity:1;stroke:none;stroke-width:0.56655508;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 681.8195,184.87676 v -28.61103 h 9.0649 9.0648 V 103.48338 50.701022 l 31.0189,0.375435 c 17.0604,0.206489 45.2324,0.375689 62.6044,0.376001 l 31.5854,5.66e-4 v 81.017386 81.01738 h -71.6692 -71.6692 z"
+         id="light.kokslampa"
+         inkscape:connector-curvature="0"
+         inkscape:label="#path1461" />
     </g>
   </g>
   <g

@@ -12,6 +12,16 @@ default_view:
   - group.scripts
   - group.systemstates
 
+### ALL LIGHTS
+all_lights:
+  view: yes
+  name: Lights
+  #icon: mdi:emoticon-happy
+  entities:
+  - group.hall_taklampa
+  - light.kokslampa
+  - light.sovrumstak
+  - light.vardagsrum
 
 ### VARDAGSRUM
 vardagsrum:
@@ -114,5 +124,3 @@ system:
   - group.debug_sethomeaway
   - group.batteries
   - group.zwavedebug
-
-

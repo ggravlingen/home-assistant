@@ -47,7 +47,7 @@
       state: Home
     - condition: state
       entity_id: input_boolean.arm_wakeup_alarm
-      state: "on"
+      state: 'on'
 - action:
   - alias: ''
     data:
@@ -201,3 +201,75 @@
   - entity_id: switch.remote_2_on2
     platform: state
     to: 'on'
+- action:
+  - entity_id: light.sovrumstak
+    service: light.turn_on
+  alias: Floorplan | Sovrumstak | On
+  id: '1500802730811'
+  trigger:
+  - entity_id: input_boolean.light_sovrumstak
+    platform: state
+    to: 'on'
+- action:
+  - entity_id: light.sovrumstak
+    service: light.turn_off
+  alias: Floorplan | Sovrumstak | Off
+  id: '1500802730812'
+  trigger:
+  - entity_id: input_boolean.light_sovrumstak
+    platform: state
+    to: 'off'
+- action:
+  - entity_id: light.kokslampa
+    service: light.turn_on
+  alias: Floorplan | Kok | On
+  id: '1500802730813'
+  trigger:
+  - entity_id: input_boolean.light_kokslampa
+    platform: state
+    to: 'on'
+- action:
+  - entity_id: light.kokslampa
+    service: light.turn_off
+  alias: Floorplan | Kok | Off
+  id: '1500802730814'
+  trigger:
+  - entity_id: input_boolean.light_kokslampa
+    platform: state
+    to: 'off'
+- action:
+  - entity_id: light.vardagsrum
+    service: light.turn_on
+  alias: Floorplan | Vardagsrum | On
+  id: '1500802730815'
+  trigger:
+  - entity_id: input_boolean.light_vardagsrum
+    platform: state
+    to: 'on'
+- action:
+  - entity_id: light.vardagsrum
+    service: light.turn_off
+  alias: Floorplan | Vardagsrum | Off
+  id: '1500802730816'
+  trigger:
+  - entity_id: input_boolean.light_vardagsrum
+    platform: state
+    to: 'off'
+- action:
+  - entity_id: group.hall_taklampa
+    service: light.turn_on
+  alias: Floorplan | Vardagsrum | On
+  id: '1500802730816'
+  trigger:
+  - entity_id: input_boolean.group_hall_taklampa
+    platform: state
+    to: 'on'
+- action:
+  - entity_id: group.hall_taklampa
+    service: light.turn_off
+  alias: Floorplan | Vardagsrum | Off
+  id: '1500802730817'
+  trigger:
+  - entity_id: input_boolean.group_hall_taklampa
+    platform: state
+    to: 'off'
