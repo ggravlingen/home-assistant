@@ -89,7 +89,7 @@
   alias: Maintenance | Z-wave | Heal
   id: '1496477445434'
   trigger:
-  - after: '2:31:00'
+  - at: '2:31:00'
     platform: time
 - action:
   - service: script.sonos_stereo_on
@@ -192,6 +192,7 @@
     - condition: state
       entity_id: input_select.arm_debug
       state: Av
+
 - action:
   - entity_id: scene.ceiling_at_home
     service: scene.turn_on

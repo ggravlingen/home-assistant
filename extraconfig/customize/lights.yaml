@@ -7,6 +7,7 @@ switch.laslampa:
 ### VARDAGSRUM
 light.vardagsrumstak_1:
   icon: mdi:ceiling-light
+  hidden: true
 
 light.vardagsrumstak_2:
   icon: mdi:ceiling-light
@@ -21,4 +22,3 @@ light.sovrumstak:
 ### KITCHEN
 light.kokslampa:
   icon: mdi:ceiling-light
-
