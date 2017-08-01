@@ -42,3 +42,11 @@
   stroke-width: 2px !important;
   fill: #000000 !important;
 }
+
+.layer-visible {
+  display: initial !important;
+}
+
+.layer-hidden {
+  display: none !important;
+}
