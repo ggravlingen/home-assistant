@@ -1,0 +1,14 @@
+svt_live:
+  alias: Alx Voodoo
+  sequence:
+    - service: media_player.volume_set
+      data:
+        entity_id: media_player.ca_hall
+        volume_level: '0.35'
+    -  service: media_player.play_media
+       data_template:
+         entity_id: >
+            media_player.vardagsrum_chromecast
+         media_content_id: >
+            https://svt01-a.akamaized.net/u/svt01.m3u8?start=1501869180&pevi=1377661-460A&__b__=3000&b=0-9000
+         media_content_type: 'video'

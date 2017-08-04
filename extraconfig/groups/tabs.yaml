@@ -120,6 +120,7 @@ system:
   - switch.webcam
   - switch.lg_tv_power
   - switch.remote_2_on
+  - script.svt_live
   - group.system_wan_stats
   - group.debug_sethomeaway
   - group.batteries

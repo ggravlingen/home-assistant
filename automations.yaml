@@ -192,7 +192,6 @@
     - condition: state
       entity_id: input_select.arm_debug
       state: Av
-
 - action:
   - entity_id: scene.ceiling_at_home
     service: scene.turn_on
@@ -274,111 +273,99 @@
   - entity_id: input_boolean.group_hall_taklampa
     platform: state
     to: 'off'
-
-### Toogle floorplan light areas
 - alias: Floorplan | Sovrumstak | Initiate | On
   id: '1500802730818'
   trigger:
   - platform: homeassistant
     event: start
   condition:
-    - condition: state
-      entity_id: light.sovrumstak
-      state: 'on'
+  - condition: state
+    entity_id: light.sovrumstak
+    state: 'on'
   action:
   - service: input_boolean.turn_on
     entity_id: input_boolean.light_sovrumstak
-
 - alias: Floorplan | Sovrumstak | Initiate | Off
   id: '1500802730819'
   trigger:
   - platform: homeassistant
     event: start
   condition:
-    - condition: state
-      entity_id: light.sovrumstak
-      state: 'off'
+  - condition: state
+    entity_id: light.sovrumstak
+    state: 'off'
   action:
   - service: input_boolean.turn_off
     entity_id: input_boolean.light_sovrumstak
-
-
 - alias: Floorplan | Kok | Initiate | On
   id: '1500802730820'
   trigger:
   - platform: homeassistant
     event: start
   condition:
-    - condition: state
-      entity_id: light.kokslampa
-      state: 'on'
+  - condition: state
+    entity_id: light.kokslampa
+    state: 'on'
   action:
   - service: input_boolean.turn_on
     entity_id: input_boolean.light_kokslampa
-
 - alias: Floorplan | Kok | Initiate | Off
   id: '1500802730821'
   trigger:
   - platform: homeassistant
     event: start
   condition:
-    - condition: state
-      entity_id: light.kokslampa
-      state: 'off'
+  - condition: state
+    entity_id: light.kokslampa
+    state: 'off'
   action:
   - service: input_boolean.turn_off
     entity_id: input_boolean.light_kokslampa
-
-
 - alias: Floorplan | Vardagsrum | Initiate | On
   id: '1500802730822'
   trigger:
   - platform: homeassistant
     event: start
   condition:
-    - condition: state
-      entity_id: light.vardagsrum
-      state: 'on'
+  - condition: state
+    entity_id: light.vardagsrum
+    state: 'on'
   action:
   - service: input_boolean.turn_on
     entity_id: input_boolean.light_vardagsrum
-
 - alias: Floorplan | Vardagsrum | Initiate | Off
   id: '1500802730823'
   trigger:
   - platform: homeassistant
     event: start
   condition:
-    - condition: state
-      entity_id: light.vardagsrum
-      state: 'off'
+  - condition: state
+    entity_id: light.vardagsrum
+    state: 'off'
   action:
   - service: input_boolean.turn_off
     entity_id: input_boolean.light_vardagsrum
-
-
 - alias: Floorplan | Hall taklampa | Initiate | On
   id: '1500802730824'
   trigger:
   - platform: homeassistant
     event: start
   condition:
-    - condition: state
-      entity_id: group.hall_taklampa
-      state: 'on'
+  - condition: state
+    entity_id: group.hall_taklampa
+    state: 'on'
   action:
   - service: input_boolean.turn_on
     entity_id: input_boolean.group_hall_taklampa
-
 - alias: Floorplan | Hall taklampa | Initiate | Off
   id: '1500802730825'
   trigger:
   - platform: homeassistant
     event: start
   condition:
-    - condition: state
-      entity_id: group.hall_taklampa
-      state: 'off'
+  - condition: state
+    entity_id: group.hall_taklampa
+    state: 'off'
   action:
   - service: input_boolean.turn_off
     entity_id: input_boolean.group_hall_taklampa
