@@ -9,18 +9,9 @@ arrive_home:
           - switch.koksbank
 
       - alias: Enable taklampor
-        service: light.turn_on
+        service: scene.turn_on
         data:
-          entity_id: group.taklampor
-#          entity_id:
-#            - light.vardagsrumstak_1
-#            - light.vardagsrumstak_2
-#            - light.vardagsrumstak_3
-#            - light.kokslampa
-#            - light.hall_1
-#            - light.hall_2
-#            - light.kokslampa
-          brightness: 100
+          entity_id: scene.ceiling_at_home
 
       - alias: Set volume
         service: shell_command.sonos_volume_low
