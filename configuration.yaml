@@ -32,16 +32,16 @@ ffmpeg:
   ffmpeg_bin: /usr/bin/avconv
 
 
-influxdb:
-  host: 127.0.0.1
-  username: !secret influx_user
-  password: !secret influx_pw
-  exclude:
-    domains:
-      - sun
-  tags:
-    instance: prod
-    source: home
+#influxdb:
+#  host: 127.0.0.1
+#  username: !secret influx_user
+#  password: !secret influx_pw
+#  exclude:
+#    domains:
+#      - sun
+#  tags:
+#    instance: prod
+#    source: home
 
 
 frontend:

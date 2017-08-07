@@ -276,8 +276,9 @@
 - alias: Floorplan | Sovrumstak | Initiate | On
   id: '1500802730818'
   trigger:
-  - platform: homeassistant
-    event: start
+  - platform: time
+    minutes: '/1'
+    seconds: 00
   condition:
   - condition: state
     entity_id: light.sovrumstak
@@ -288,8 +289,9 @@
 - alias: Floorplan | Sovrumstak | Initiate | Off
   id: '1500802730819'
   trigger:
-  - platform: homeassistant
-    event: start
+  - platform: time
+    minutes: '/1'
+    seconds: 00
   condition:
   - condition: state
     entity_id: light.sovrumstak
@@ -300,8 +302,9 @@
 - alias: Floorplan | Kok | Initiate | On
   id: '1500802730820'
   trigger:
-  - platform: homeassistant
-    event: start
+  - platform: time
+    minutes: '/1'
+    seconds: 00
   condition:
   - condition: state
     entity_id: light.kokslampa
@@ -312,8 +315,9 @@
 - alias: Floorplan | Kok | Initiate | Off
   id: '1500802730821'
   trigger:
-  - platform: homeassistant
-    event: start
+  - platform: time
+    minutes: '/1'
+    seconds: 00
   condition:
   - condition: state
     entity_id: light.kokslampa
@@ -324,8 +328,9 @@
 - alias: Floorplan | Vardagsrum | Initiate | On
   id: '1500802730822'
   trigger:
-  - platform: homeassistant
-    event: start
+  - platform: time
+    minutes: '/1'
+    seconds: 00
   condition:
   - condition: state
     entity_id: light.vardagsrum
@@ -336,8 +341,9 @@
 - alias: Floorplan | Vardagsrum | Initiate | Off
   id: '1500802730823'
   trigger:
-  - platform: homeassistant
-    event: start
+  - platform: time
+    minutes: '/1'
+    seconds: 00
   condition:
   - condition: state
     entity_id: light.vardagsrum
@@ -348,8 +354,9 @@
 - alias: Floorplan | Hall taklampa | Initiate | On
   id: '1500802730824'
   trigger:
-  - platform: homeassistant
-    event: start
+  - platform: time
+    minutes: '/1'
+    seconds: 00
   condition:
   - condition: state
     entity_id: group.hall_taklampa
@@ -360,8 +367,9 @@
 - alias: Floorplan | Hall taklampa | Initiate | Off
   id: '1500802730825'
   trigger:
-  - platform: homeassistant
-    event: start
+  - platform: time
+    minutes: '/1'
+    seconds: 00
   condition:
   - condition: state
     entity_id: group.hall_taklampa

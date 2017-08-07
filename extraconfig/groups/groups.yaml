@@ -14,9 +14,6 @@ temperatures:
   - sensor.flower_2_temperature
   - sensor.flower_3_temperature
 
-mediaplayer_mini:
-  - sensor.vardagsrum_musik
-
 ### VARDAGSRUM
 vardagsrum_tak:
   name: "Taklampa"

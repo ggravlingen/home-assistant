@@ -1,4 +1,3 @@
-
 default_view:
   view: yes
   icon: mdi:home
@@ -8,7 +7,6 @@ default_view:
   - sensor.forecastio_apparent_temperature
   - sensor.forecastio_hourly_summary
   - group.temperatures
-  - group.mediaplayer_mini
   - group.scripts
   - group.systemstates
 
@@ -82,25 +80,6 @@ automation:
   entities:
   - group.scripts
   - group.activate_scenes
-#  - script.wake_up
-#  - script.sleep_time
-#  - script.arrive_home
-#  - script.left_home
-
-#controlmusic:
-#  name: "Musik"
-#  view: yes
-#  entities:
-#  - media_player.kitchen
-#  - group.mysonos
-#  - group.switch_other
-
-#security_monitor:
-#  name: "Monitor"
-#  icon: mdi:camera
-#  view: yes
-#  entities:
-#  - group.camera1
 
 misc_weathercenter:
   name: "Väder"

@@ -8,11 +8,6 @@ arrive_home:
           - switch.garderob
           - switch.koksbank
 
-      - alias: Enable taklampor
-        service: scene.turn_on
-        data:
-          entity_id: scene.ceiling_at_home
-
       - alias: Set volume
         service: shell_command.sonos_volume_low
 

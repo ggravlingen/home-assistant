@@ -1,15 +1,11 @@
 arrive_home_anytime:
     alias: Arrive home anytime
     sequence:
-      - alias: Camera off
-        service: homeassistant.turn_off
-        data:
-          entity_id:
-          - switch.webcam
-
       - alias: Notify Patrik
         service: notify.pushbullet
         data:
           message: "Apartment"
-          title: "Someone home, disable camera"
+          title: "Someone home"
 
+      - service: scene.turn_on
+        entity_id: scene.ceiling_max

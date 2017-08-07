@@ -20,4 +20,4 @@
           mdi:pause-circle-outline
         {% endif %}
 
-- platform: sonos_watcher
+#- platform: sonos_watcher
