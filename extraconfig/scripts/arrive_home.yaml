@@ -6,6 +6,6 @@ arrive_home_anytime:
         data:
           message: "Apartment"
           title: "Someone home"
-
-      - service: scene.turn_on
+      - alias: do stuff
+        service: scene.turn_on
         entity_id: scene.ceiling_max
