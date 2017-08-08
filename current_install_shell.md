@@ -128,68 +128,11 @@ sudo mosquitto_passwd -b pwfile pi raspberry
 sudo chown mosquitto: mosquitto.conf
 
 
-# Requirement for openzwave
-wget ftp://ftp.gnu.org/gnu/libmicrohttpd/libmicrohttpd-0.9.19.tar.gz
-tar xf libmicrohttpd-0.9.19.tar.gz   # Extract libmicrohttpd
-mv libmicrohttpd-0.9.19 libmicrohttpd && cd libmicrohttpd   # Rename package
-
-wget -O config.sub 'http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.sub;hb=HEAD'   # Grab updated config.sub file
-wget -O config.guess 'http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess;hb=HEAD'   # Grab updated config.guess file
-./configure && make   # Complie libmicrohttpd
-make install   # Install libmicrohttpd
-
-# Install Openzwave
 # Make a symlink to /dev/zwave instead of trying to figure out what TTY it is on
 echo 'SUBSYSTEM=="tty", ATTRS{idVendor}=="0658", ATTRS{idProduct}=="0200", SYMLINK+="zwave"' > /etc/udev/rules.d/99-usb-serial.rules
 
 # Make sure homeassistant has write access to /dev/zwave
 usermod -G root -a homeassistant
-
-# Dependencies
-apt-get install cython3 libudev-dev python3-sphinx python3-setuptools git
-
-# Activate virtual environment
-su -s /bin/bash homeassistant 
-cd /srv/homeassistant
-source /srv/homeassistant/homeassistant_venv/bin/activate
-
-# Everything below must be run in venv
-pip3 install --upgrade cython==0.24.1
-
-cd /srv/homeassistant/homeassistant_venv
-mkdir src
-cd src
-git clone https://github.com/OpenZWave/python-openzwave.git
-cd python-openzwave
-git checkout python3
-
-PYTHON_EXEC=$(which python3) make build
-PYTHON_EXEC=$(which python3) make install
-
-cd /srv/homeassistant/homeassistant_venv/src
-git clone https://github.com/OpenZWave/open-zwave-control-panel.git
-cd /opt/open-zwave-control-panel && nano Makefile   # Edit Makefile
-
-# Edit lines 24-25 to be
----
-OPENZWAVE := ../python-openzwave/openzwave  
-LIBMICROHTTPD := /usr/local/lib/libmicrohttpd.a
----
-
-# Uncomment line 33, and edit to be
----
-GNUTLS := -lgnutls -lgcrypt
----
-
-# Uncomment lines 37-38, and Comment out lines 44-45
-make   # Compile OZWCP
-ln -s /srv/homeassistant/homeassistant_venv/src/python-openzwave/openzwave/config/   # Create symlink for openzwave configs
-#Maybe
-#ln -s /srv/homeassistant/homeassistant_venv/lib/python3.4/site-packages/libopenzwave-0.3.1-py3.4-linux-armv7l.egg/config
-
-# If you want to test openzwave control panel make sure home assistant is off and run the following from bash
-./ozwcp -p 8888
-
 
 # For backup purposes
 # https://www.raspberrypi.org/forums/viewtopic.php?f=63&t=164166
@@ -231,11 +174,6 @@ pair [mac]
 trust [mac]
 connect [connect]
 
-
-useradd vpnserver
-mkdir /home/vpnserver
-chown vpnserver:vpnserver /home/vpnserver
-curl -L https://install.pivpn.io | bash
 
 # Install docker
 curl -sSL https://get.docker.com | sh
