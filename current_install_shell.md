@@ -196,7 +196,8 @@ log { source(s_net); destination(d_router); };
 
 sudo service syslog-ng restart
 
-
+#Grafana
+https://github.com/fg2it/grafana-on-raspberry/wiki
 
 
 ```
