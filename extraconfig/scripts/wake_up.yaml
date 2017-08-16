@@ -23,15 +23,15 @@ wake_up:
       - alias: Living room gradually on
         service: light.turn_on
         data:
-          entity_id: light.vardagsrumstak_1, light.vardagsrumstak_2, light.vardagsrumstak_3
-          brightness: 174
+          entity_id: group.vardagsrum_tak
+          brightness: 255
           transition: 900
 
       - alias: Set volume
         service: shell_command.sonos_volume_low
 
-      - alias: Set volume badrum
-        service: shell_command.sonos_badrum_volume_low
+#      - alias: Set volume badrum
+#        service: shell_command.sonos_badrum_volume_low
 
       - alias: Start radio
         service: shell_command.sonos_favorites_bbcradio4
