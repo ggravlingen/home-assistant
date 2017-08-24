@@ -1,0 +1,16 @@
+scene.all_lights_off:
+  homebridge_visible: true
+  homebridge_name: "Lampor av"
+
+scene.ceiling_low:
+  homebridge_visible: true
+  homebridge_name: "Lampor lågt"
+
+scene.ceiling_mid:
+  homebridge_visible: true
+  homebridge_name: "Lampor medel"
+
+scene.ceiling_max:
+  homebridge_visible: true
+  homebridge_name: "Lampor högt"
+

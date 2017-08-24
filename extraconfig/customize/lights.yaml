@@ -15,10 +15,31 @@ light.vardagsrumstak_2:
 light.vardagsrumstak_3:
   icon: mdi:ceiling-light
 
+group.vardagsrum_tak:
+  icon: mdi:ceiling-light
+  homebridge_visible: true
+  homebridge_name: Vardagsrumstak
+
+
 ### SOVRUM
 light.sovrumstak:
   icon: mdi:ceiling-light
+  homebridge_visible: true
+  homebridge_name: Sovrumstak
 
 ### KITCHEN
 light.kokslampa:
   icon: mdi:ceiling-light
+  homebridge_visible: false
+  homebridge_name: Kökstak
+  homebridge_mfg: IKEA
+  homebridge_model: TRADFRI-1
+  homebridge_serial: 123456789
+
+### HALLWAY
+group.hall_taklampa:
+  icon: mdi:ceiling-light
+  homebridge_visible: true
+  homebridge_name: Hall
+
+

@@ -28,8 +28,8 @@
   alias: Misc | Wake up in the morning
   id: '1495718802448'
   trigger:
-  - hours: 6
-    minutes: 0
+  - hours: 5
+    minutes: 50
     platform: time
     seconds: 0
   condition:
