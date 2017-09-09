@@ -1,0 +1,258 @@
+binary_sensor.systemstate_homebridge:
+  friendly_name: "Homebridge"
+
+binary_sensor.systemstate_sonoscontrol:
+  friendly_name: "Sonos Controller"
+
+binary_sensor.systemstate_mosquitto:
+  friendly_name: "Mosquitto"
+
+binary_sensor.systemstate_pm2:
+  friendly_name: "PM2"
+
+binary_sensor.systemstate_ftpserver:
+  friendly_name: "FTP server"
+
+binary_sensor.systemstate_ssh:
+  friendly_name: "SSH server"
+
+media_player.vardagsrum_musik:
+  friendly_name: "Sonos Vardagsrum"
+  homebridge_name: "Musik vardagsrum"
+
+media_player.vardagsrum_chromecast:
+  friendly_name: "Chromecast vardagsrum"
+  homebridge_name: "Chromecast vardagsrum"
+
+switch.wenzhou_tkb_control_system_tz68_onoff_switch_socket_switch:
+  friendly_name: "Stereo till Sonos"
+  refresh_value: true
+  delay: 5
+  polling_intensity: 1
+
+switch.fibaro_system_fgwpe_wall_plug_switch:
+  friendly_name: "Wall Plug"
+  refresh_value: true
+  delay: 5
+  polling_intensity: 1
+
+group.vardagsrum:
+  order: 200
+
+group.sovrum:
+  order: 201
+
+group.kitchen:
+  order: 202
+
+group.hallway:
+  order: 203
+
+group.bathroom:
+  order: 204
+
+group.misc_weathercenter:
+  order: 700
+
+group.security_monitor:
+  order: 800
+
+group.system:
+  order: 900
+
+scene.all_lights_off:
+  homebridge_visible: true
+  homebridge_name: "Lampor av"
+
+scene.ceiling_low:
+  homebridge_visible: true
+  homebridge_name: "Lampor lågt"
+
+scene.ceiling_mid:
+  homebridge_visible: true
+  homebridge_name: "Lampor medel"
+
+scene.ceiling_max:
+  homebridge_visible: true
+  homebridge_name: "Lampor högt"
+
+shell_command.group:
+  hidden: true
+
+group.user_tracking:
+  friendly_name: " "
+  order: 1
+
+group.lights:
+  friendly_name: "Lampor"
+  order: 2
+
+group.mysonos:
+  friendly_name: " "
+  order: 1
+
+group.systemstates:
+  friendly_name: " "
+  order: 4
+
+group.weatherbasics:
+  friendly_name: " "
+  order: 1
+
+group.vaxt1:
+  friendly_name: "Juvelorkidé | vardagsrum"
+
+group.vaxt2:
+  friendly_name: "Juvelorkidé | sovrum"
+  order: 3
+
+group.vaxt3:
+  friendly_name: "Chili | vardagsrum"
+
+group.wan_stats:
+  friendly_name: "WAN"
+
+group.batteries:
+  friendly_name: "Batterier"
+
+group.standardscript:
+  friendly_name: " "
+
+roup.temperatures:
+  friendly_name: "Temperaturer"
+
+group.sovrum_lights:
+  order: 1
+
+group.sovrum_switchar:
+  order: 2
+
+switch.koksbank:
+  friendly_name: "Köksbänk"
+
+switch.laslampa:
+  friendly_name: "Läslampa"
+
+### VARDAGSRUM
+light.vardagsrumstak_1:
+  icon: mdi:ceiling-light
+  hidden: true
+
+light.vardagsrumstak_2:
+  icon: mdi:ceiling-light
+
+light.vardagsrumstak_3:
+  icon: mdi:ceiling-light
+
+group.vardagsrum_tak:
+  icon: mdi:ceiling-light
+  homebridge_visible: true
+  homebridge_name: Vardagsrumstak
+
+### SOVRUM
+light.sovrumstak:
+  icon: mdi:ceiling-light
+  homebridge_visible: true
+  homebridge_name: Sovrumstak
+
+### KITCHEN
+light.kokslampa:
+  icon: mdi:ceiling-light
+  homebridge_visible: false
+  homebridge_name: Kökstak
+  homebridge_mfg: IKEA
+  homebridge_model: TRADFRI-1
+  homebridge_serial: 123456789
+
+### HALLWAY
+group.hall_taklampa:
+  icon: mdi:ceiling-light
+  homebridge_visible: true
+  homebridge_name: Hall
+
+
+# WIFI SIGNAL STRENGTH
+sensor.system_wifi_strength:
+  friendly_name: "Wi-fi signal strength"
+  icon: mdi:signal
+
+# Väderhantering
+sensor.forecastio_apparent_temperature:
+  friendly_name: "Temperatur"
+
+sensor.forecastio_hourly_summary:
+  friendly_name: "Prognos"
+
+sensor.forecastio_humidity:
+  friendly_name: "Luftfuktighet"
+
+sensor.forecastio_cloud_coverage:
+  friendly_name: "Molnmängd"
+
+sensor.forecastio_precip_probability:
+  friendly_name: "Regnsannolikhet"
+
+sensor.forecastio_ozone:
+  friendly_name: "Ozonhalt"
+
+sensor.forecastio_pressure:
+  friendly_name: "Lufttryck"
+
+sensor.forecastio_wind_bearing:
+  friendly_name: "Vindbäring"
+
+sensor.forecastio_wind_speed:
+  friendly_name: "Vindhastighet"
+
+# Sonos
+sensor.sonos_controller_online:
+  friendly_name: "Sonos Controller"
+
+# Växter
+sensor.flower_1_light_intensity:
+  friendly_name: "Ljusstyrka"
+
+sensor.flower_1_moisture:
+  friendly_name: "Fuktighet"
+
+sensor.flower_1_conductivity:
+  friendly_name: "Näringshalt"
+
+sensor.flower_1_temperature:
+  friendly_name: "Temperatur vardagsrum"
+
+sensor.flower_1_battery:
+  friendly_name: "Batteri | Juvelorkidé | vardagsrum"
+  icon: mdi:battery
+
+sensor.flower_2_light_intensity:
+  friendly_name: "Ljusstyrka"
+
+sensor.flower_2_moisture:
+  friendly_name: "Fuktighet"
+
+sensor.flower_2_conductivity:
+  friendly_name: "Näringshalt"
+
+sensor.flower_2_temperature:
+  friendly_name: "Temperatur sovrum"
+
+sensor.flower_2_battery:
+  friendly_name: "Batteri | Juvelorkidé | sovrum"
+  icon: mdi:battery
+
+sensor.flower_3_light_intensity:
+  friendly_name: "Ljusstyrka"
+
+sensor.flower_3_moisture:
+  friendly_name: "Fuktighet"
+
+sensor.flower_3_conductivity:
+  friendly_name: "Näringshalt"
+
+sensor.flower_3_temperature:
+  friendly_name: "Temperatur hall"
+
+sensor.flower_3_battery:
+  friendly_name: "Batteri | Ej använd Mi Flora"
+

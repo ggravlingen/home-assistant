@@ -1,7 +1,0 @@
-media_player.vardagsrum_musik:
-  friendly_name: "Sonos Vardagsrum"
-  homebridge_name: "Musik vardagsrum"
-
-media_player.vardagsrum_chromecast:
-  friendly_name: "Chromecast vardagsrum"
-  homebridge_name: "Chromecast vardagsrum"
