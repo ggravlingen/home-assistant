@@ -47,7 +47,7 @@
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
-     inkscape:current-layer="ceiling_buttons_layer"
+     inkscape:current-layer="layer7"
      showguides="true"
      inkscape:guide-bbox="true"
      inkscape:snap-text-baseline="true"
@@ -2015,8 +2015,7 @@
      id="layer7"
      inkscape:label="All symbols in apartment"
      transform="translate(0,-168)"
-     style="display:inline"
-     sodipodi:insensitive="true">
+     style="display:inline">
     <path
        inkscape:connector-curvature="0"
        style="clip-rule:evenodd;fill:#ffffff;fill-rule:evenodd;stroke-width:0.19927056"
@@ -2036,33 +2035,33 @@
        id="media_player.vardagsrum_musik"
        inkscape:label="Sonos Connect" />
     <circle
-       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.24985158;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.52122056;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="switch.koksbank"
-       cx="820.16016"
-       cy="335.70557"
+       cx="817.89282"
+       cy="333.80325"
        inkscape:label="switch.koksbank"
-       r="11.875074" />
+       r="14.453403" />
     <circle
-       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.25003624;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.52144539;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="switch.sovrum"
-       cx="961.95081"
-       cy="229.85832"
+       cx="958.62854"
+       cy="229.7439"
        inkscape:label=""
-       r="11.874982" />
+       r="14.45329" />
     <circle
-       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.24985158;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.52122056;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="light.laslampa"
-       cx="962.43164"
-       cy="556.5863"
+       cx="959.64032"
+       cy="554.05603"
        inkscape:label="light.laslampa"
-       r="11.875074" />
+       r="14.453403" />
     <circle
-       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.25003624;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.52144539;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="switch.garderob"
-       cx="601.26337"
-       cy="511.89026"
+       cx="604.48114"
+       cy="510.19971"
        inkscape:label=""
-       r="11.874982" />
+       r="14.45329" />
     <path
        inkscape:connector-curvature="0"
        d="m 999.0984,482.07538 v -10.725 l 2.925,2.925 4.05,-4.35 4.05,4.35 2.925,-2.925 v 10.8 c 0,3.525 -2.55,6.45 -5.925,6.975 v 10.725 h -2.1 v -10.8 c -3.375,-0.525 -5.925,-3.45 -5.925,-6.975 z m 9.6,17.4 c 0,0 3.6,1.05 6.675,-2.025 2.175,-2.175 2.025,-6.75 2.025,-6.75 0,0 -4.5,-0.15 -6.675,2.025 -3.075,3.15 -2.025,6.75 -2.025,6.75 z m 6.075,1.2 h -17.475 c -0.6,0 -1.05,0.525 -0.9,1.125 l 2.4,12.15 c 0.075,0.525 0.6,0.975 1.125,0.975 h 12.15 c 0.525,0 1.05,-0.375 1.125,-0.975 l 2.4,-12.15 c 0.15,-0.6 -0.3,-1.125 -0.825,-1.125 z"
