@@ -43,8 +43,8 @@
       - thu
       - fri
     - condition: state
-      entity_id: device_tracker.patrik_iphone
-      state: Home
+      entity_id: device_tracker.e9bdccf176d84a46b89bd9f4d8334c0a
+      state: hemma
     - condition: state
       entity_id: input_boolean.arm_wakeup_alarm
       state: 'on'
@@ -155,28 +155,25 @@
   alias: Enter/exit | Arrive home
   id: '1496517346021'
   trigger:
-  - entity_id: device_tracker.patrik_iphone
-    from: Away
+  - entity_id: device_tracker.e9bdccf176d84a46b89bd9f4d8334c0a
     platform: state
-    to: Home
+    to: hemma
 - action:
   - service: script.left_home
   alias: Enter/exit | Left home
   id: '1496517407855'
   trigger:
-  - entity_id: device_tracker.patrik_iphone
-    from: Home
+  - entity_id: device_tracker.e9bdccf176d84a46b89bd9f4d8334c0a
     platform: state
-    to: Away
+    to: not_home
 - action:
   - service: script.arrive_home
   alias: Enter/exit | Home from work
   id: '1496517463812'
   trigger:
-  - entity_id: device_tracker.patrik_iphone
-    from: Away
+  - entity_id: device_tracker.e9bdccf176d84a46b89bd9f4d8334c0a
     platform: state
-    to: Home
+    to: hemma
   condition:
   - condition: and
     conditions:

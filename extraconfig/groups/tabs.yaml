@@ -2,8 +2,7 @@ default_view:
   view: yes
   icon: mdi:home
   entities:
-  - device_tracker.patrik_iphone
-  - updater.updater
+  - device_tracker.e9bdccf176d84a46b89bd9f4d8334c0a
   - sensor.forecastio_apparent_temperature
   - sensor.forecastio_hourly_summary
   - group.temperatures
