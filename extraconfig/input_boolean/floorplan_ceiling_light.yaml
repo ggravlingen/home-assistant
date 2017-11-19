@@ -1,0 +1,15 @@
+light_sovrumstak:
+  name: Sovrumstak
+  initial: off
+
+light_vardagsrum:
+  name: Vardagsrumstak
+  initial: off
+
+light_kokslampa:
+  name: Kökstak
+  initial: off
+
+group_hall_taklampa:
+  name: Tak hall
+  initial: off

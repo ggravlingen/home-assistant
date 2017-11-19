@@ -1,0 +1,29 @@
+#!/bin/bash
+# Build and run Home Assistant in Docker.
+
+# Optional: pass in a timezone as first argument
+# If not given will attempt to mount /etc/localtime
+
+# Stop on errors
+set -e
+
+MACHINE=$(uname -m)
+PWD=$(pwd)
+
+#cd "$(dirname "$0")/.."
+#cd /home/homeassistant/.homeassistant_dev
+
+cd .
+
+# Should be amended with other platforms
+DOCKERFILE=$(case "$MACHINE" in
+  armv7l) echo "Dockerfile" ;;
+  *)      echo "Dockerfile" ;;
+esac)
+
+docker build -t hass-dev -f Dockerfile .
+
+docker run --network=host \
+  -v /etc/localtime:/etc/localtime:ro \
+  -v /home/homeassistant/.homeassistant_dev:/usr/src/app \
+  -t -i --rm hass-dev

@@ -1,0 +1,6 @@
+arm_debug:
+  name: Debug
+  initial: 'Av'
+  options:
+   - 'På'
+   - 'Av'

@@ -1,0 +1,11 @@
+- platform: sonos
+  hosts:
+    - 192.168.0.85
+    - 192.168.0.218
+
+- platform: cast
+  hosts: 192.168.0.40
+
+- platform: webostv
+  host: 192.168.0.235
+  name: Living Room TV

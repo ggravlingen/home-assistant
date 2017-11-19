@@ -1,0 +1,10 @@
+sonos_playlist:
+  name: Sonos Playlists
+  options:
+   - 'Pick one'
+   - 'Dinner with friends'
+   - 'Home from work'
+   - 'S - Late Night Focus'
+   - 'test'
+  initial: 'Pick one'
+  icon: 'mdi:playlist-check'

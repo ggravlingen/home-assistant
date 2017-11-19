@@ -1,0 +1,8 @@
+test_notify:
+  alias: Test notification
+  sequence:
+    - service: script.send_notification
+      data_template:
+        msg_title: 'Hemma'
+        msg_body: 'Nu <font color="#0000ff">brinner</font> det i <b>knutarna</b>, v3'
+        msg_prio: '1'

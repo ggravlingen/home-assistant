@@ -1,0 +1,47 @@
+- platform: command_line
+  name: systemstate_homebridge
+  scan_interval: 10
+  command: if pgrep -x "homebridge" > /dev/null; then echo Online; else echo Offline; fi
+  payload_on: "Online"
+  payload_off: "Offline"
+  device_class: connectivity
+
+- platform: command_line
+  name: systemstate_sonoscontrol
+  scan_interval: 10
+  command: if pgrep -fa "node-sonos-http-api" > /dev/null; then echo Online; else echo Offline; fi
+  payload_on: "Online"
+  payload_off: "Offline"
+  device_class: connectivity
+
+- platform: command_line
+  name: systemstate_mosquitto
+  scan_interval: 10
+  command: if pgrep -fa "mosquitto" > /dev/null; then echo Online; else echo Offline; fi
+  payload_on: "Online"
+  payload_off: "Offline"
+  device_class: connectivity
+
+- platform: command_line
+  name: systemstate_pm2
+  scan_interval: 10
+  command: if pgrep -fa "pm2" > /dev/null; then echo Online; else echo Offline; fi
+  payload_on: "Online"
+  payload_off: "Offline"
+  device_class: connectivity
+
+- platform: command_line
+  name: systemstate_ftpserver
+  scan_interval: 10
+  command: if pgrep -fa "vsftp" > /dev/null; then echo Online; else echo Offline; fi
+  payload_on: "Online"
+  payload_off: "Offline"
+  device_class: connectivity
+
+- platform: command_line
+  name: systemstate_ssh
+  scan_interval: 10
+  command: if pgrep -fa "sshd" > /dev/null; then echo Online; else echo Offline; fi
+  payload_on: "Online"
+  payload_off: "Offline"
+  device_class: connectivity

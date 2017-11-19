@@ -1,0 +1,10 @@
+svt_live:
+  alias: Alx Voodoo
+  sequence:
+    -  service: media_player.play_media
+       data_template:
+         entity_id: >
+            media_player.vardagsrum_chromecast
+         media_content_id: >
+            https://svt10-a.akamaized.net/u/svt10.m3u8?__b__=3000&b=0-9000
+         media_content_type: 'video'

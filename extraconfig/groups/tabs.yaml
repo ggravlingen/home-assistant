@@ -1,0 +1,106 @@
+default_view:
+  view: yes
+  icon: mdi:home
+  entities:
+  - device_tracker.e9bdccf176d84a46b89bd9f4d8334c0a
+  - sensor.forecastio_apparent_temperature
+  - sensor.forecastio_hourly_summary
+  - group.temperatures
+  - group.scripts
+  - group.systemstates
+
+### ALL LIGHTS
+all_lights:
+  view: yes
+  name: Lights
+  #icon: mdi:emoticon-happy
+  entities:
+  - group.hall_taklampa
+  - light.kokslampa
+  - light.sovrumstak
+  - light.vardagsrum
+  - light.laslampa
+
+### VARDAGSRUM
+vardagsrum:
+  view: yes
+  icon: mdi:emoticon-happy
+  entities:
+  - group.vardagsrum_tak
+  - group.vardagsrum_switchar
+  - light.koksbord
+  - group.vardagsrum_media
+  - group.vaxt1
+  - group.vaxt3
+
+
+### SOVRUM
+sovrum:
+  view: yes
+  icon: mdi:hotel
+  entities:
+  - group.sovrum_lights
+  - group.sovrum_switchar
+  - group.vaxt2
+
+
+### KITCHEN
+kitchen:
+  view: yes
+  icon: mdi:food-variant
+  name: "Kök"
+  entities:
+  - group.kitchen_switchar
+  - light.kokslampa
+
+### HALL
+hallway:
+  view: yes
+  icon: mdi:glassdoor
+  name: "Hall"
+  entities:
+  - group.hall_switchar
+  - group.hall_taklampa
+
+### Badrum
+bathroom:
+  view: yes
+  icon: mdi:scale-bathroom
+  name: "Badrum"
+  entities:
+    - media_player.badrum
+
+
+
+
+automation:
+  name: "Automatisering"
+  icon: mdi:apple-keyboard-command
+  view: yes
+  entities:
+  - group.scripts
+  - group.activate_scenes
+
+misc_weathercenter:
+  name: "Väder"
+  icon: mdi:weather-sunny
+  view: yes
+  entities:
+  - group.weatherbasics
+
+
+system:
+  name: "System"
+  view: yes
+  icon: mdi:monitor-multiple
+  entities:
+  - group.system_sensors
+  - group.system_arm
+  - switch.webcam
+  - switch.lg_tv_power
+  - switch.remote_2_on
+  - script.svt_live
+  - group.system_wan_stats
+  - group.debug_sethomeaway
+  - group.batteries
+  - group.zwavedebug

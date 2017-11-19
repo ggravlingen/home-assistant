@@ -1,0 +1,214 @@
+      name: My Home
+      image: /local/custom_ui/floorplan/floorplan.svg
+      stylesheet: /local/custom_ui/floorplan/base_css.css
+      warnings:
+#      pan_zoom:
+      hide_app_toolbar:
+
+#      last_motion_entity: sensor.template_last_motion
+#      last_motion_class: last-motion
+
+      # Table of contents
+      # Flowers
+      # Media Players
+      # Lights
+      # Scripts
+      # Scenes
+      # Switches
+      # Buttons
+      # Device trackers
+      # Forecast IO
+      # Text states
+      # Date text
+      # Time text
+
+      groups:
+
+        - name: Flowers
+          entities:
+             - sensor.flower_1_moisture
+             - sensor.flower_2_moisture
+             - sensor.flower_3_moisture
+          text_template: '${entity.state ? entity.state : "unknown"}'
+          class_template: '
+            var moist = parseFloat(entity.state.replace("%", ""));
+            if (moist < 10)
+              return "temp-very-high-background";
+            else if (moist < 20)
+              return "temp-average-background";
+            else
+              return "temp-below-average-background";
+            '
+        - name: Media Players
+          entities:
+            - media_player.badrum
+            - media_player.vardagsrum_musik
+            - media_player.vardagsrum_chromecast
+            - media_player.living_room_tv
+          states:
+            - state: 'off'
+              class: 'squeezebox-off'
+            - state: 'idle'
+              class: 'squeezebox-off'
+            - state: 'paused'
+              class: 'squeezebox-off'
+            - state: 'playing'
+              class: 'on-custom'
+
+        - name: Light toggle
+          entities:
+            - input_boolean.light_kokslampa
+            - input_boolean.light_sovrumstak
+            - input_boolean.light_vardagsrum
+            - input_boolean.group_hall_taklampa
+          states:
+            - state: 'on'
+              class: 'light-on-custom'
+            - state: 'off'
+              class: 'light-off-custom'
+          action:
+            service: toggle
+
+        - name: Light settings
+          entities:
+            - light.kokslampa
+            - light.sovrumstak
+            - light.vardagsrum
+            - group.hall_taklampa
+            - light.laslampa
+          states:
+            - state: 'on'
+              class: 'light-on-custom'
+            - state: 'off'
+              class: 'light-off-custom'
+
+        - name: Scripts
+          entities:
+            - script.sonos_pause_all
+            - script.wake_up
+            - script.sonos_guest_mode
+            - script.sonos_group_players
+          states:
+            - state: 'on'
+              class: 'button-on'
+            - state: 'off'
+              class: 'button-off'
+          action:
+            service: toggle
+
+        - name: Scenes
+          entities:
+            - scene.ceiling_max
+            - scene.ceiling_mid
+            - scene.ceiling_low
+            - scene.all_lights_off
+          states:
+            - state: 'on'
+              class: 'button-on'
+            - state: 'off'
+              class: 'button-off'
+          action:
+            service: turn_on
+
+        - name: Switches
+          entities:
+             - switch.koksbank
+             - switch.sovrum
+             - switch.garderob
+          states:
+            - state: 'on'
+              class: 'light-on-custom'
+            - state: 'off'
+              class: 'light-off-custom'
+          action:
+            service: toggle
+
+        - name: Ceiling buttons
+          elements:
+            - toggle_ceiling_button
+          action:
+            domain: class
+            service: toggle
+            data:
+              elements:
+                - ceiling_buttons_layer
+              classes:
+                - layer-visible
+                - layer-hidden
+              default_class: layer-hidden
+
+        - name: Sonos buttons
+          elements:
+            - toggle_sonos_button
+          action:
+            domain: class
+            service: toggle
+            data:
+              elements:
+                - sonos_buttons_layer
+              classes:
+                - layer-visible
+                - layer-hidden
+              default_class: layer-hidden
+
+        - name: Device trackers
+          entities:
+             - device_tracker.patrik_iphone
+          states:
+            - state: 'Home'
+              class: 'device-tracker-home'
+            - state: 'Away'
+              class: 'device-tracker-not-home'
+
+        - name: text_per_cent
+          entities:
+            - sensor.cpu_used
+            - sensor.disk_used_home
+            - sensor.system_wifi_strength
+            - sensor.ram_used
+          text_template: '${entity.state ? Math.ceil(entity.state) + "%": "undefined"}'
+          class_template: 'return "static-temp";'
+
+        - name: text_mib
+          entities:
+            - sensor.ram_available
+          text_template: '${entity.state ? Math.ceil(entity.state) + " MiB": "undefined"}'
+          class_template: 'return "static-temp";'
+
+        - name: temp_forecastio
+          entities:
+            - sensor.forecastio_apparent_temperature
+          text_template: '${entity.state ? Math.ceil(entity.state) + "°": "undefined"}'
+          class_template: 'return "static-temp";'
+
+        - name: text_states
+          entities:
+            - sensor.forecastio_hourly_summary
+            - binary_sensor.systemstate_sonoscontrol
+            - binary_sensor.systemstate_homebridge
+            - binary_sensor.systemstate_mosquitto
+            - binary_sensor.systemstate_pm2
+            - binary_sensor.systemstate_ftpserver
+            - binary_sensor.systemstate_ssh
+          text_template: '${entity.state ? entity.state.replace(/\s{3,}/g,"") : "undefined"}'
+          class_template: 'return "static-text";'
+
+        - name: text_font_date
+          entities:
+            - sensor.floorplan_date
+          text_template: '${entity.state ? entity.state : "undefined"}'
+          class_template: 'return "static-text-date";'
+
+        - name: text_font_time
+          entities:
+            - sensor.floorplan_time
+          text_template: '${entity.state ? entity.state : "undefined"}'
+          class_template: 'return "static-text-time";'
+
+        - name: text_states_boolean
+          entities:
+            - input_boolean.arm_wakeup_alarm
+          text_template: '${entity.state ? entity.state.replace(/\s{3,}/g,"") : "undefined"}'
+          class_template: 'return "static-text";'
+          action:
+            service: toggle

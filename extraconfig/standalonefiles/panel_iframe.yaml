@@ -1,0 +1,9 @@
+router:
+  title: 'Router'
+  icon: 'mdi:router-wireless'
+  url: 'http://192.168.0.1'
+sonosen:
+  title: 'Sonos'
+  icon: 'mdi:surround-sound'
+  url: 'http://192.168.0.85:1400/status'
+

@@ -1,0 +1,3 @@
+arm_wakeup_alarm:
+  name: Alarm system
+  initial: on

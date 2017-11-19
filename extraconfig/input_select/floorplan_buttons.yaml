@@ -1,0 +1,15 @@
+floorplan_buttons_ceiling:
+  options:
+   - True
+   - False
+
+floorplan_buttons_sonos:
+  options:
+   - True
+   - False
+
+floorplan_buttons_misc:
+  options:
+   - True
+   - False
+
