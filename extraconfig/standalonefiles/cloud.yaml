@@ -1,0 +1,25 @@
+mode: development
+cognito_client_id: !secret cloud_cognito_client_id
+user_pool_id: !secret cloud_user_pool_id
+region: 'us-east-1'
+relayer: !secret cloud_relayer
+alexa:
+  filter:
+    exclude_domains:
+      - automation
+      - scene
+      - script
+      - switch
+      - input_boolean
+      - group
+      - light
+      - media_player
+    include_entities:
+      - light.laslampa
+      - light.sovrum
+      - light.vardagsrum
+      - light.kokslampa
+      - group.hall_taklampa
+      - media_player.vardagsrum_musik
+      - scene.all_lights_off
+

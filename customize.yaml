@@ -1,3 +1,38 @@
+light.laslampa:
+  alexa_name: "Reading lamp"
+  alexa_description: "Reading lamp in the living room"
+
+light.kokslampa:
+  alexa_name: "Kitchen light"
+  alexa_description: "Rooftop light in kitchen"
+
+light.sovrum:
+  alexa_name: "Bedroom light"
+  alexa_description: "Rooftop light in bedroom"
+
+media_player.vardagsrum_musik:
+  alexa_name: "Sonos"
+  alexa_description: "Main controller for Sonos"
+  friendly_name: "Sonos Vardagsrum"
+
+### HALLWAY
+group.hall_taklampa:
+  icon: mdi:ceiling-light
+  alexa_name: "Hallway"
+  alexa_description: "Rooftop light in hallway"
+  friendly_name: "Hall"
+
+light.vardagsrum:
+  alexa_name: "Living room"
+  alexa_description: "Rooftop light in living room"
+
+scene.all_lights_off:
+  alexa_name: "Go dark"
+  alexa_description: "Shut of all lights"
+  alexa_display_categories:
+   - SCENE_TRIGGER
+
+
 binary_sensor.systemstate_homebridge:
   friendly_name: "Homebridge"
 
@@ -15,10 +50,6 @@ binary_sensor.systemstate_ftpserver:
 
 binary_sensor.systemstate_ssh:
   friendly_name: "SSH server"
-
-media_player.vardagsrum_musik:
-  friendly_name: "Sonos Vardagsrum"
-  homebridge_name: "Musik vardagsrum"
 
 media_player.vardagsrum_chromecast:
   friendly_name: "Chromecast vardagsrum"
@@ -59,10 +90,6 @@ group.security_monitor:
 
 group.system:
   order: 900
-
-scene.all_lights_off:
-  homebridge_visible: true
-  homebridge_name: "Nattsvart"
 
 scene.ceiling_low:
   homebridge_visible: true
@@ -130,9 +157,6 @@ group.sovrum_switchar:
 switch.koksbank:
   friendly_name: "Köksbänk"
 
-switch.laslampa:
-  friendly_name: "Läslampa"
-
 ### VARDAGSRUM
 light.vardagsrumstak_1:
   icon: mdi:ceiling-light
@@ -148,28 +172,6 @@ group.vardagsrum_tak:
   icon: mdi:ceiling-light
   homebridge_visible: true
   homebridge_name: Vardagsrumstak
-
-### SOVRUM
-light.sovrumstak:
-  icon: mdi:ceiling-light
-  homebridge_visible: true
-  homebridge_name: Sovrumstak
-
-### KITCHEN
-light.kokslampa:
-  icon: mdi:ceiling-light
-  homebridge_visible: false
-  homebridge_name: Kökstak
-  homebridge_mfg: IKEA
-  homebridge_model: TRADFRI-1
-  homebridge_serial: 123456789
-
-### HALLWAY
-group.hall_taklampa:
-  icon: mdi:ceiling-light
-  homebridge_visible: true
-  homebridge_name: Hall
-
 
 # WIFI SIGNAL STRENGTH
 sensor.system_wifi_strength:

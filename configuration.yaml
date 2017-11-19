@@ -23,7 +23,6 @@ panel_custom:
     url_path: floorplan
     config: !include extraconfig/standalonefiles/floorplan.yaml
 
-
 updater:
   include_used_components: true
 
@@ -74,6 +73,7 @@ scene: !include_dir_list extraconfig/scenes
 
 
 camera: !include extraconfig/standalonefiles/camera.yaml
+cloud: !include extraconfig/standalonefiles/cloud.yaml
 device_tracker: !include extraconfig/standalonefiles/device-tracker.yaml
 google: !include extraconfig/standalonefiles/googlecalendar.yaml
 media_player: !include extraconfig/standalonefiles/media_player.yaml
@@ -81,7 +81,7 @@ mqtt: !include extraconfig/standalonefiles/mqtt.yaml
 notify: !include extraconfig/standalonefiles/notify.yaml
 panel_iframe: !include extraconfig/standalonefiles/panel_iframe.yaml
 switch: !include extraconfig/standalonefiles/switch.yaml
-tellduslive: !include extraconfig/standalonefiles/tellduslive.yaml
+#tellduslive: !include extraconfig/standalonefiles/tellduslive.yaml
 tts: !include extraconfig/standalonefiles/tts.yaml
 zone: !include extraconfig/standalonefiles/zones.yaml
 zwave: !include extraconfig/standalonefiles/zwave.yaml
