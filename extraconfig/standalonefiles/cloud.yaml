@@ -22,4 +22,4 @@ alexa:
       - group.hall_taklampa
       - media_player.vardagsrum_musik
       - scene.all_lights_off
-
+      - script.wake_up

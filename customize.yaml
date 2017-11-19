@@ -29,9 +29,12 @@ light.vardagsrum:
 scene.all_lights_off:
   alexa_name: "Go dark"
   alexa_description: "Shut of all lights"
-  alexa_display_categories:
-   - SCENE_TRIGGER
+#  alexa_display_categories:
+#   - SCENE_TRIGGER
 
+script.wake_up:
+  alexa_name: "Top of the morning"
+  alexa_description: "Script to wake up"
 
 binary_sensor.systemstate_homebridge:
   friendly_name: "Homebridge"
