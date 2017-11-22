@@ -1,15 +1,3 @@
-light.laslampa:
-  alexa_name: "Reading lamp"
-  alexa_description: "Reading lamp in the living room"
-
-light.kokslampa:
-  alexa_name: "Kitchen light"
-  alexa_description: "Rooftop light in kitchen"
-
-light.sovrum:
-  alexa_name: "Bedroom light"
-  alexa_description: "Rooftop light in bedroom"
-
 media_player.vardagsrum_musik:
   alexa_name: "Sonos"
   alexa_description: "Main controller for Sonos"
@@ -22,15 +10,9 @@ group.hall_taklampa:
   alexa_description: "Rooftop light in hallway"
   friendly_name: "Hall"
 
-light.vardagsrum:
-  alexa_name: "Living room"
-  alexa_description: "Rooftop light in living room"
-
 scene.all_lights_off:
   alexa_name: "Go dark"
   alexa_description: "Shut of all lights"
-#  alexa_display_categories:
-#   - SCENE_TRIGGER
 
 script.wake_up:
   alexa_name: "Top of the morning"
@@ -129,16 +111,6 @@ group.weatherbasics:
   friendly_name: " "
   order: 1
 
-group.vaxt1:
-  friendly_name: "Juvelorkidé | vardagsrum"
-
-group.vaxt2:
-  friendly_name: "Juvelorkidé | sovrum"
-  order: 3
-
-group.vaxt3:
-  friendly_name: "Chili | vardagsrum"
-
 group.wan_stats:
   friendly_name: "WAN"
 
@@ -159,17 +131,6 @@ group.sovrum_switchar:
 
 switch.koksbank:
   friendly_name: "Köksbänk"
-
-### VARDAGSRUM
-light.vardagsrumstak_1:
-  icon: mdi:ceiling-light
-  hidden: true
-
-light.vardagsrumstak_2:
-  icon: mdi:ceiling-light
-
-light.vardagsrumstak_3:
-  icon: mdi:ceiling-light
 
 group.vardagsrum_tak:
   icon: mdi:ceiling-light
@@ -212,52 +173,3 @@ sensor.forecastio_wind_speed:
 # Sonos
 sensor.sonos_controller_online:
   friendly_name: "Sonos Controller"
-
-# Växter
-sensor.flower_1_light_intensity:
-  friendly_name: "Ljusstyrka"
-
-sensor.flower_1_moisture:
-  friendly_name: "Fuktighet"
-
-sensor.flower_1_conductivity:
-  friendly_name: "Näringshalt"
-
-sensor.flower_1_temperature:
-  friendly_name: "Temperatur vardagsrum"
-
-sensor.flower_1_battery:
-  friendly_name: "Batteri | Juvelorkidé | vardagsrum"
-  icon: mdi:battery
-
-sensor.flower_2_light_intensity:
-  friendly_name: "Ljusstyrka"
-
-sensor.flower_2_moisture:
-  friendly_name: "Fuktighet"
-
-sensor.flower_2_conductivity:
-  friendly_name: "Näringshalt"
-
-sensor.flower_2_temperature:
-  friendly_name: "Temperatur sovrum"
-
-sensor.flower_2_battery:
-  friendly_name: "Batteri | Juvelorkidé | sovrum"
-  icon: mdi:battery
-
-sensor.flower_3_light_intensity:
-  friendly_name: "Ljusstyrka"
-
-sensor.flower_3_moisture:
-  friendly_name: "Fuktighet"
-
-sensor.flower_3_conductivity:
-  friendly_name: "Näringshalt"
-
-sensor.flower_3_temperature:
-  friendly_name: "Temperatur hall"
-
-sensor.flower_3_battery:
-  friendly_name: "Batteri | Ej använd Mi Flora"
-

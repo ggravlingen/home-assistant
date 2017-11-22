@@ -1,0 +1,53 @@
+homeassistant:
+  customize:
+    light.laslampa:
+      alexa_name: "Reading lamp"
+      alexa_description: "Reading lamp in the living room"
+
+    light.kokslampa:
+      alexa_name: "Kitchen light"
+      alexa_description: "Rooftop light in kitchen"
+
+    light.sovrum:
+      alexa_name: "Bedroom light"
+      alexa_description: "Rooftop light in bedroom"
+
+    light.vardagsrum:
+      alexa_name: "Living room"
+      alexa_description: "Rooftop light in living room"
+
+    light.vardagsrumstak_1:
+      hidden: true
+
+    light.vardagsrumstak_2:
+      hidden: true
+
+    light.vardagsrumstak_3:
+      hidden: true
+
+  automation:
+  - action:
+    - service: script.a_walk_in_the_night
+    alias: Misc | Turn on light at night
+    id: '1495643723115'
+    trigger:
+    - entity_id: binary_sensor.neo_coolcam_battery_powered_pir_sensor_sensor
+      platform: state
+      to: 'on'
+    condition:
+    - condition: and
+      conditions:
+      - after: 00:00:00
+        before: 07:00:00
+        condition: time
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+        - sat
+        - sun
+      - condition: state
+        entity_id: input_select.arm_debug
+        state: Av

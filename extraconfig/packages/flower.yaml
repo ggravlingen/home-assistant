@@ -1,0 +1,99 @@
+homeassistant:
+  customize:
+    sensor.flower_1_light_intensity:
+      friendly_name: "Ljusstyrka"
+
+    sensor.flower_1_moisture:
+      friendly_name: "Fuktighet"
+
+    sensor.flower_1_conductivity:
+      friendly_name: "Naringshalt"
+
+    sensor.flower_1_temperature:
+      friendly_name: "Temperatur vardagsrum"
+
+    sensor.flower_1_battery:
+      friendly_name: "Batteri | Juvelorkid   | vardagsrum"
+      icon: mdi:battery
+
+    sensor.flower_2_light_intensity:
+      friendly_name: "Ljusstyrka"
+
+    sensor.flower_2_moisture:
+      friendly_name: "Fuktighet"
+
+    sensor.flower_2_conductivity:
+      friendly_name: "N  ringshalt"
+
+    sensor.flower_2_temperature:
+      friendly_name: "Temperatur sovrum"
+
+    sensor.flower_2_battery:
+      friendly_name: "Batteri | Juvelorkid   | sovrum"
+      icon: mdi:battery
+
+    sensor.flower_3_light_intensity:
+      friendly_name: "Ljusstyrka"
+
+    sensor.flower_3_moisture:
+      friendly_name: "Fuktighet"
+
+    sensor.flower_3_conductivity:
+      friendly_name: "N  ringshalt"
+
+    sensor.flower_3_temperature:
+      friendly_name: "Temperatur hall"
+
+    sensor.flower_3_battery:
+      friendly_name: "Batteri | Ej anv  nd Mi Flora"
+
+    group.vaxt1:
+      friendly_name: "Juvelorkid   | vardagsrum"
+
+    group.vaxt2:
+      friendly_name: "Juvelorkid   | sovrum"
+      order: 3
+
+    group.vaxt3:
+      friendly_name: "Chili | vardagsrum"
+
+automation:
+- action:
+  - alias: ''
+    data_template:
+      msg_body: "Dags att vattna mig!"
+      msg_title: "Dobelnsgatan | Juvelorkid\xE9 | vardagsrum"
+    service: script.send_notification
+  alias: Flower | Vardagsrum | Juvelorkide
+  id: '1495725269130'
+  trigger:
+  - below: '-1'
+    entity_id: sensor.flower_1_moisture
+    platform: numeric_state
+
+- action:
+  - alias: ''
+    data:
+      message: "Juvelorkid\xE9 | sovrum"
+      title: Please water me!
+    service: notify.pushover
+  alias: Flower | Sovrum | Juvelorkide
+  id: '1495725269131'
+  trigger:
+  - below: '10'
+    entity_id: sensor.flower_2_moisture
+    platform: numeric_state
+
+- action:
+  - alias: ''
+    data:
+      message: Chili | vardagsrum
+      title: Please water me!
+      priority: 1
+    service: notify.pushover
+  alias: Flower | Vardagsrum | Chili
+  id: '1495725269130'
+  trigger:
+  - below: '10'
+    entity_id: sensor.flower_3_moisture
+    platform: numeric_state
