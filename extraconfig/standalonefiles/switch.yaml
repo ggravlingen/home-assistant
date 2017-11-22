@@ -1,18 +1,18 @@
-# Example configuration.yaml entry
--  platform: broadlink
-   host: 192.168.0.141
-   mac: '34:ea:34:b2:f8:fc'
-   switches:
-     reciever:
-       command_on: 'switch_packet on'
-       command_off: 'switch_packet off'
+## Example configuration.yaml entry
+#-  platform: broadlink
+#   host: 192.168.0.141
+#   mac: '34:ea:34:b2:f8:fc'
+#   switches:
+#     reciever:
+#       command_on: 'switch_packet on'
+#       command_off: 'switch_packet off'
 
--  platform: broadlink
-   host: 192.168.0.141
-   mac: '34:ea:34:b2:f8:fc'
-   timeout: 15
-   switches:
-     tv_lg:
-       friendly_name: "LG Tv Power"
-       command_on: 'JgBQAAABKpEVEBMSEzYUERMSExISEhQREzcTNhQREzYUNhM2EzYUNhMSExESExQ2ExESExITExITNhQ1FDYTEhM2EzcTNhM2EgAFIgABKEoSAA0FAAAAAAAAAAA='
-       command_off: 'JgBQAAABKpEVEBMSEzYUERMSExISEhQREzcTNhQREzYUNhM2EzYUNhMSExESExQ2ExESExITExITNhQ1FDYTEhM2EzcTNhM2EgAFIgABKEoSAA0FAAAAAAAAAAA='
+#-  platform: broadlink
+#   host: 192.168.0.141
+#   mac: '34:ea:34:b2:f8:fc'
+#   timeout: 15
+#   switches:
+#     tv_lg:
+#       friendly_name: "LG Tv Power"
+#       command_on: 'JgBQAAABKpEVEBMSEzYUERMSExISEhQREzcTNhQREzYUNhM2EzYUNhMSExESExQ2ExESExITExITNhQ1FDYTEhM2EzcTNhM2EgAFIgABKEoSAA0FAAAAAAAAAAA='
+#       command_off: 'JgBQAAABKpEVEBMSEzYUERMSExISEhQREzcTNhQREzYUNhM2EzYUNhMSExESExQ2ExESExITExITNhQ1FDYTEhM2EzcTNhM2EgAFIgABKEoSAA0FAAAAAAAAAAA='

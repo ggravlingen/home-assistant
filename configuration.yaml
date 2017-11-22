@@ -64,7 +64,7 @@ script: !include_dir_merge_named extraconfig/scripts
 
 
 
-binary_sensor: !include_dir_merge_list extraconfig/binary_sensors
+#binary_sensor: !include_dir_merge_list extraconfig/binary_sensors
 light: !include_dir_merge_list extraconfig/light
 sensor: !include_dir_merge_list extraconfig/sensors
 

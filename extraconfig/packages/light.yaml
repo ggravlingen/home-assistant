@@ -3,29 +3,28 @@ homeassistant:
     light.laslampa:
       alexa_name: "Reading lamp"
       alexa_description: "Reading lamp in the living room"
-
     light.kokslampa:
       alexa_name: "Kitchen light"
       alexa_description: "Rooftop light in kitchen"
-
     light.sovrum:
       alexa_name: "Bedroom light"
       alexa_description: "Rooftop light in bedroom"
-
     light.vardagsrum:
       alexa_name: "Living room"
       alexa_description: "Rooftop light in living room"
-
     light.vardagsrumstak_1:
       hidden: true
-
     light.vardagsrumstak_2:
       hidden: true
-
     light.vardagsrumstak_3:
       hidden: true
+    group.hall_taklampa:
+      icon: mdi:ceiling-light
+      alexa_name: "Hallway"
+      alexa_description: "Rooftop light in hallway"
+      friendly_name: "Hall"
 
-  automation:
+automation:
   - action:
     - service: script.a_walk_in_the_night
     alias: Misc | Turn on light at night

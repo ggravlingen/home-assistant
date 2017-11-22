@@ -3,13 +3,6 @@ media_player.vardagsrum_musik:
   alexa_description: "Main controller for Sonos"
   friendly_name: "Sonos Vardagsrum"
 
-### HALLWAY
-group.hall_taklampa:
-  icon: mdi:ceiling-light
-  alexa_name: "Hallway"
-  alexa_description: "Rooftop light in hallway"
-  friendly_name: "Hall"
-
 scene.all_lights_off:
   alexa_name: "Go dark"
   alexa_description: "Shut of all lights"

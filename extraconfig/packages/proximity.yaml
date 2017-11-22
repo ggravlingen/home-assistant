@@ -1,0 +1,40 @@
+automation:
+- action:
+  - service: script.arrive_home
+  alias: Enter/exit | Home from work
+  id: '1496517463812'
+  trigger:
+  - entity_id: device_tracker.e9bdccf176d84a46b89bd9f4d8334c0a
+    platform: state
+    to: hemma
+  condition:
+  - condition: and
+    conditions:
+    - condition: time
+      after: '15:00:00'
+      before: '23:00:00'
+      weekday:
+      - mon
+      - tue
+      - wed
+      - thu
+      - fri
+    - condition: state
+      entity_id: input_select.arm_debug
+      state: Av
+- action:
+  - service: script.arrive_home_anytime
+  alias: Enter/exit | Arrive home
+  id: '1496517346021'
+  trigger:
+  - entity_id: device_tracker.e9bdccf176d84a46b89bd9f4d8334c0a
+    platform: state
+    to: hemma
+- action:
+  - service: script.left_home
+  alias: Enter/exit | Left home
+  id: '1496517407855'
+  trigger:
+  - entity_id: device_tracker.e9bdccf176d84a46b89bd9f4d8334c0a
+    platform: state
+    to: not_home
