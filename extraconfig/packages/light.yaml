@@ -34,6 +34,7 @@ light:
 automation:
   - action:
     - service: script.a_walk_in_the_night
+    hide_entity: True
     alias: Misc | Turn on light at night
     id: '1495643723115'
     trigger:

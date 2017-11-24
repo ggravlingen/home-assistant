@@ -6,6 +6,7 @@ automation:
     data:
       message: "Diskutrymme \xF6ver tr\xF6skel"
       title: "D\xF6belnsgatan 89 | RPI3"
+  hide_entity: True
   alias: Maintenance | System | Disk space
   id: '1496517175891'
   trigger:
@@ -15,11 +16,22 @@ automation:
 
 - action:
   - service: zwave.heal_network
+  hide_entity: True
   alias: Maintenance | Z-wave | Heal
   id: '1496477445434'
   trigger:
   - at: '2:31:00'
     platform: time
+
+- alias: Start automations
+  hide_entity: True
+  trigger:
+     platform: homeassistant
+     event: start
+  action:
+    - delay:
+        seconds: 20
+    - service: 
 
 binary_sensor:
   - platform: command_line

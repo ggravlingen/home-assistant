@@ -1,6 +1,7 @@
 automation:
   - action:
     - service: script.sonos_stereo_on
+    hide_entity: True
     alias: Sonos | Vardagsrum | Start stereo
     id: '1496478237477'
     trigger:
@@ -10,6 +11,7 @@ automation:
 
   - action:
     - service: script.sonos_stereo_off
+    hide_entity: True
     alias: Sonos | Vardagsrum | Stereo off (idle)
     id: '1496478400400'
     trigger:
@@ -19,6 +21,7 @@ automation:
 
   - action:
     - service: script.sonos_stereo_off
+    hide_entity: True
     alias: Sonos | Vardagsrum | Stereo off (pause)
     id: '1496478447779'
     trigger:
@@ -33,6 +36,7 @@ automation:
         ", "").replace("-", "")}}
 
         '
+    hide_entity: True
     alias: Sonos | Play favorite
     id: '1496478661322'
     trigger:
@@ -46,6 +50,7 @@ automation:
         ", "").replace("-", "")}}
 
         '
+    hide_entity: True
     alias: Sonos | Play playlist
     id: '1496478802292'
     trigger:
