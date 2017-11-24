@@ -30,7 +30,7 @@ vardagsrum_switchar:
 vardagsrum_media:
   name: "Media players"
   entities:
-    - media_player.vardagsrum_musik
+    - media_player.living_room
     - media_player.vardagsrum_chromecast
     - media_player.living_room_tv
 #    - configurator.plex_media_server
@@ -79,8 +79,7 @@ hall_switchar:
 hall_taklampa:
   name: "Taklampa"
   entities:
-  - light.hall_1
-  - light.hall_2
+  - light.hall
 
 
 ### SYSTEM
@@ -184,8 +183,7 @@ taklampor:
     - light.vardagsrumstak_2
     - light.vardagsrumstak_3
     - light.kokslampa
-    - light.hall_1
-    - light.hall_2
+    - light.hall
     - light.koksbord
 
 ### MISC

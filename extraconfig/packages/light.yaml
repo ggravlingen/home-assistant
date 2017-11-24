@@ -24,6 +24,13 @@ homeassistant:
       alexa_description: "Rooftop light in hallway"
       friendly_name: "Hall"
 
+light:
+  - platform: tradfri
+    host: 192.168.0.129
+  - platform: hue
+    host: 192.168.0.189
+
+
 automation:
   - action:
     - service: script.a_walk_in_the_night
@@ -50,3 +57,73 @@ automation:
       - condition: state
         entity_id: input_select.arm_debug
         state: Av
+
+scene:
+  - name: Ceiling low
+    entities:
+      group.hall_taklampa:
+        state: on
+        brightness: 1
+      group.vardagsrum_tak:
+        state: on
+        brightness: 1
+      light.kokslampa:
+        state: on
+        brightness: 1
+      light.sovrumstak:
+        state: on
+        brightness: 1
+
+  - name: Ceiling mid
+    entities:
+      group.hall_taklampa:
+        state: on
+        brightness: 100
+      group.vardagsrum_tak:
+        state: on
+        brightness: 100
+      light.kokslampa:
+        state: on
+        brightness: 100
+      light.sovrumstak:
+        brightness: 100
+        state: on
+
+  - name: Ceiling max
+    entities:
+      group.hall_taklampa:
+        state: on
+        brightness: 254
+      group.vardagsrum_tak:
+        state: on
+        brightness: 165
+      light.kokslampa:
+        state: on
+        brightness: 254
+      light.sovrumstak:
+        state: on
+        brightness: 254
+
+  - name: All lights off
+    entities:
+      group.all_lights:
+        state: off
+      switch.garderob:
+        state: off
+      switch.koksbank:
+        state: off
+      switch.sovrum:
+        state: off
+
+  - name: Ceiling TV
+    entities:
+      group.hall_taklampa:
+        state: on
+        brightness: 100
+      group.vardagsrum_tak:
+        state: on
+        brightness: 90
+      light.kokslampa:
+        state: off
+      light.sovrumstak:
+        state: off

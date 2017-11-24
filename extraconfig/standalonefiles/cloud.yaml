@@ -20,6 +20,6 @@ alexa:
       - light.vardagsrum
       - light.kokslampa
       - group.hall_taklampa
-      - media_player.vardagsrum_musik
+      - media_player.living_room_tv
       - scene.all_lights_off
       - script.wake_up

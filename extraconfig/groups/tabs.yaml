@@ -15,7 +15,7 @@ all_lights:
   name: Lights
   #icon: mdi:emoticon-happy
   entities:
-  - group.hall_taklampa
+  - light.hall
   - light.kokslampa
   - light.sovrumstak
   - light.vardagsrum
@@ -68,7 +68,7 @@ bathroom:
   icon: mdi:scale-bathroom
   name: "Badrum"
   entities:
-    - media_player.badrum
+    - media_player.bathroom
 
 
 

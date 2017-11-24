@@ -4,7 +4,7 @@ automation:
     alias: Sonos | Vardagsrum | Start stereo
     id: '1496478237477'
     trigger:
-    - entity_id: media_player.vardagsrum_musik
+    - entity_id: media_player.living_room
       platform: state
       to: playing
 
@@ -13,7 +13,7 @@ automation:
     alias: Sonos | Vardagsrum | Stereo off (idle)
     id: '1496478400400'
     trigger:
-    - entity_id: media_player.vardagsrum_musik
+    - entity_id: media_player.living_room
       platform: state
       to: idle
 
@@ -22,7 +22,7 @@ automation:
     alias: Sonos | Vardagsrum | Stereo off (pause)
     id: '1496478447779'
     trigger:
-    - entity_id: media_player.vardagsrum_musik
+    - entity_id: media_player.living_room
       platform: state
       to: paused
 
@@ -68,7 +68,7 @@ shell_command:
 
 
 # SONOS: BASIC COMMANDS COMMAND
-  sonos_control_pause: /usr/bin/curl -X GET http://192.168.0.140:5005/vardagsrum%20musik/pause
-  sonos_control_shuffle_on: /usr/bin/curl -X GET http://192.168.0.140:5005/vardagsrum%20musik/shuffle/on
-  sonos_control_shuffle_off: /usr/bin/curl -X GET http://192.168.0.140:5005/vardagsrum%20musik/shuffle/off
-  sonos_control_next: /usr/bin/curl -X GET http://192.168.0.140:5005/vardagsrum%20musik/next
+  sonos_control_pause: /usr/bin/curl -X GET http://192.168.0.140:5005/living%20room/pause
+  sonos_control_shuffle_on: /usr/bin/curl -X GET http://192.168.0.140:5005/living%20room/shuffle/on
+  sonos_control_shuffle_off: /usr/bin/curl -X GET http://192.168.0.140:5005/living%20room/shuffle/off
+  sonos_control_next: /usr/bin/curl -X GET http://192.168.0.140:5005/living%20room/next
