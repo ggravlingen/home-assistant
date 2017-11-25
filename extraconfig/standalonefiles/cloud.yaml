@@ -19,7 +19,7 @@ alexa:
       - light.sovrum
       - light.vardagsrum
       - light.kokslampa
-      - group.hall_taklampa
+      - light.hall
       - media_player.living_room_tv
       - scene.all_lights_off
       - script.wake_up

@@ -18,11 +18,11 @@ homeassistant:
       hidden: true
     light.vardagsrumstak_3:
       hidden: true
-    group.hall_taklampa:
+    light.hall:
       icon: mdi:ceiling-light
       alexa_name: "Hallway"
       alexa_description: "Rooftop light in hallway"
-      friendly_name: "Hall"
+
 
 light:
   - platform: tradfri
@@ -74,6 +74,7 @@ scene:
       light.sovrumstak:
         state: on
         brightness: 1
+
 
   - name: Ceiling mid
     entities:
