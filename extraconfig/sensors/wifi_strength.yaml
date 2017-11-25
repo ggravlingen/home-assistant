@@ -1,4 +1,0 @@
-- platform: command_line
-  command: /usr/bin/awk 'NR==3 {print $3 "00"}''' /proc/net/wireless
-  name: system_wifi_strength
-  unit_of_measurement: "%"

@@ -1,37 +1,35 @@
-homeassistant:
-
 automation:
-- action:
-  - service: notify.pushover
-    data:
-      message: "Diskutrymme \xF6ver tr\xF6skel"
-      title: "D\xF6belnsgatan 89 | RPI3"
-  hide_entity: True
-  alias: Maintenance | System | Disk space
-  id: '1496517175891'
-  trigger:
-  - above: '75'
-    entity_id: sensor.disk_use_home
-    platform: numeric_state
+  - action:
+    - service: notify.pushover
+      data:
+        message: "Diskutrymme \xF6ver tr\xF6skel"
+        title: "D\xF6belnsgatan 89 | RPI3"
+    hide_entity: True
+    alias: Maintenance | System | Disk space
+    id: '1496517175891'
+    trigger:
+    - above: '75'
+      entity_id: sensor.disk_use_home
+      platform: numeric_state
 
-- action:
-  - service: zwave.heal_network
-  hide_entity: True
-  alias: Maintenance | Z-wave | Heal
-  id: '1496477445434'
-  trigger:
-  - at: '2:31:00'
-    platform: time
+  - action:
+    - service: zwave.heal_network
+    hide_entity: True
+    alias: Maintenance | Z-wave | Heal
+    id: '1496477445434'
+    trigger:
+    - at: '2:31:00'
+      platform: time
 
-- alias: Start automations
-  hide_entity: True
-  trigger:
-     platform: homeassistant
-     event: start
-  action:
-    - delay:
-        seconds: 20
-    - service: 
+  - alias: Start automations
+    hide_entity: True
+    trigger:
+       platform: homeassistant
+       event: start
+    action:
+      - delay:
+          seconds: 20
+      - service:
 
 binary_sensor:
   - platform: command_line
@@ -86,3 +84,18 @@ shell_command:
   # UNIX: RANDOM STUFF
   system_check_wifi_strength: /usr/bin/awk 'NR==3 {print $3 "00"}''' /proc/net/wireless
   sonos_check_controller: /usr/bin/nmap -p 5005 localhost | grep open &> /dev/null && echo success || echo fail
+
+sensor:
+  - platform: command_line
+    command: /usr/bin/awk 'NR==3 {print $3 "00"}''' /proc/net/wireless
+    name: system_wifi_strength
+    unit_of_measurement: "%"
+
+  - platform: systemmonitor
+    resources:
+      - type: disk_use_percent
+        arg: /home
+      - type: memory_free
+      - type: processor_use
+      - type: memory_use_percent
+      - type: since_last_boot

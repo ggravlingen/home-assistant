@@ -5,9 +5,12 @@ logs:
 #  custom_components: debug
 #  homeassistant.components.zwave: debug
 #  homeassistant.components.shell_command: debug
-  homeassistant.components.tradfri: debug
+#  homeassistant.components.tradfri: debug
 #  homeassistant.components.camera: debug
 #  homeassistant.components.keyboard-remote: debug
+  homeassistant.components.automation: debug
+#  homeassistant.components.script: debug
+#  homeassistant.components.scene: debug
 #  homeassistant.components.ffmpeg: debug
 #  homeassistant.components.mqtt: debug
 #  homeassistant.components.binary_sensor: debug
@@ -16,4 +19,4 @@ logs:
 #  homeassistant.components.switch: debug
 #  homeassistant.components.scene: debug
 #  homeassistant.components.tellduslive: debug
-  homeassistant.components.cloud: debug
+#  homeassistant.components.cloud: debug

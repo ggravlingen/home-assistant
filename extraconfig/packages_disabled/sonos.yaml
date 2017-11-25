@@ -1,0 +1,162 @@
+automation:
+  - action:
+    - service: script.sonos_stereo_on
+    alias: Sonos | Vardagsrum | Start stereo
+    id: '1496478237477'
+    trigger:
+    - entity_id: media_player.living_room
+      platform: state
+      to: 'playing'
+
+  - action:
+    - service: script.sonos_stereo_off
+    alias: Sonos | Vardagsrum | Stereo off (idle)
+    id: '1496478400400'
+    trigger:
+    - entity_id: media_player.living_room
+      platform: state
+      to: 'idle'
+
+  - action:
+    - service: script.sonos_stereo_off
+    alias: Sonos | Vardagsrum | Stereo off (pause)
+    id: '1496478447779'
+    trigger:
+    - entity_id: media_player.living_room
+      platform: state
+      to: 'paused'
+
+  - action:
+    - service: shell_command.sonos_control_shuffle_off
+    - service: shell_command.sonos_volume_8
+    - service_template: 'shell_command.sonos_favorite_{{states.input_select.sonos_favorites.state.lower().replace("
+        ", "").replace("-", "")}}'
+    alias: Sonos | Play favorite
+    id: '1496478661322'
+    trigger:
+    - entity_id: input_select.sonos_favorites
+      platform: state
+
+  - action:
+    - service: shell_command.sonos_control_shuffle_off
+    - service: shell_command.sonos_volume_8
+    - service_template: 'shell_command.sonos_playlist_{{states.input_select.sonos_playlist.state.lower().replace("
+        ", "").replace("-", "")}}'
+    alias: Sonos | Play playlist
+    id: '1496478802292'
+    trigger:
+    - entity_id: input_select.sonos_playlist
+      platform: state
+
+
+shell_command:
+# SONOS MISC
+  sonos_leave_main_group: '/usr/bin/curl -X GET http://192.168.0.140:5005/{{where}}/leave' # works better than built-in
+
+# SONOS: COMFORTABLE VOLUMES
+  sonos_volume_8: '/usr/bin/curl -X GET http://192.168.0.140:5005/vardagsrum%20musik/volume/8'
+  sonos_volume_18: '/usr/bin/curl -X GET http://192.168.0.140:5005/vardagsrum%20musik/volume/18'
+
+  sonos_volume_low: '/usr/bin/curl -X GET http://192.168.0.140:5005/vardagsrum%20musik/volume/30'
+  sonos_volume_high: '/usr/bin/curl -X GET http://192.168.0.140:5005/vardagsrum%20musik/volume/50'
+
+  sonos_badrum_volume_low: '/usr/bin/curl -X GET http://192.168.0.140:5005/badrum/volume/10'
+  sonos_volume_custom: '/usr/bin/curl -X GET http://192.168.0.140:5005/vardagsrum%20musik/volume/'
+
+# SONOS: BASIC COMMANDS COMMAND
+  sonos_control_pause: /usr/bin/curl -X GET http://192.168.0.140:5005/living%20room/pause
+  sonos_control_shuffle_on: /usr/bin/curl -X GET http://192.168.0.140:5005/living%20room/shuffle/on
+  sonos_control_shuffle_off: /usr/bin/curl -X GET http://192.168.0.140:5005/living%20room/shuffle/off
+  sonos_control_next: /usr/bin/curl -X GET http://192.168.0.140:5005/living%20room/next
+
+
+script:
+  sonos_stereo_off:
+    alias: Turn off Stereo
+    sequence:
+      - alias: Stereo off
+        service: homeassistant.turn_off
+        data:
+          entity_id: switch.wenzhou_tkb_control_system_tz68_onoff_switch_socket_switch
+
+  sonos_stereo_on:
+    alias: Turn on Stereo
+    sequence:
+      - alias: Stereo On
+        service: homeassistant.turn_on
+        data:
+          entity_id: switch.wenzhou_tkb_control_system_tz68_onoff_switch_socket_switch
+
+
+  sonos_play_pause:
+    alias: Sonos Play Pause
+    sequence:
+      - service: media_player.media_play_pause
+        data_template:
+          entity_id: "{{ 'media_player.' ~ where }}"
+
+  sonos_pause_all:
+    alias: Pause all players
+    sequence:
+      - service: script.sonos_play_pause
+        data_template:
+          where: 'living_room'
+
+  sonos_guest_mode:
+    alias: Sonos guest mode
+    sequence:
+      - service: shell_command.sonos_leave_main_group
+        data_template:
+          where: 'Badrum'
+
+      - service: media_player.volume_set
+        data:
+          entity_id: media_player.badrum
+          volume_level: 0.20
+
+      - service: shell_command.sonos_favorites_aninstrumentalsunday_badrum
+      - service: shell_command.sonos_favorites_dinnerromance_vardagsrum
+
+  sonos_group_players:
+    alias: Sonos group players
+    sequence:
+      - service: media_player.sonos_join
+        data:
+          master: media_player.vardagsrum_musik
+        entity_id:
+          - media_player.badrum
+
+# https://community.home-assistant.io/t/sonos-tts-script/8896/62
+  sonos_tts:
+    alias: Sonos Text To Speech
+    sequence:
+      - service: media_player.sonos_snapshot
+        data_template:
+          entity_id: "{{ 'media_player.' ~ where }}"
+          with_group: yes
+      - service: media_player.sonos_unjoin
+        data_template:
+          entity_id: "{{ 'media_player.' ~ where }}"
+      - service: media_player.volume_set
+        data_template:
+          entity_id: "{{ 'media_player.' ~ where }}"
+          volume_level: 0.40
+      - service: tts.google_say
+        data_template:
+          entity_id: "{{ 'media_player.' ~ where }}"
+          message: "{{ what }}"
+
+      - wait_template: >-
+          {{ is_state('media_player.' ~ where , 'playing') }}
+        timeout: '00:00:5'
+
+      - wait_template: >-
+          {{ not is_state('media_player.' ~ where , 'playing') }}
+        timeout: '00:00:05'
+
+      - service: media_player.sonos_restore
+        data_template:
+          entity_id: "{{ 'media_player.' ~ where }}"
+          with_group: yes
+
+      - service: script.sonos_group_players

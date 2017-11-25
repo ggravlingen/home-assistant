@@ -12,16 +12,16 @@ homeassistant:
     light.vardagsrum:
       alexa_name: "Living room"
       alexa_description: "Rooftop light in living room"
+    light.hall:
+      icon: mdi:ceiling-light
+      alexa_name: "Hallway"
+      alexa_description: "Rooftop light in hallway"
     light.vardagsrumstak_1:
       hidden: true
     light.vardagsrumstak_2:
       hidden: true
     light.vardagsrumstak_3:
       hidden: true
-    light.hall:
-      icon: mdi:ceiling-light
-      alexa_name: "Hallway"
-      alexa_description: "Rooftop light in hallway"
 
 
 light:

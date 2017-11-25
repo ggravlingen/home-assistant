@@ -58,45 +58,79 @@ homeassistant:
       friendly_name: "Chili | vardagsrum"
 
 automation:
-- action:
-  - alias: ''
-    data_template:
-      msg_body: "Dags att vattna mig!"
-      msg_title: "Dobelnsgatan | Juvelorkid\xE9 | vardagsrum"
-    service: script.send_notification
-  hide_entity: True
-  alias: Flower | Vardagsrum | Juvelorkide
-  id: '1495725269130'
-  trigger:
-  - below: '10'
-    entity_id: sensor.flower_1_moisture
-    platform: numeric_state
+  - action:
+    - alias: ''
+      data_template:
+        msg_body: "Dags att vattna mig!"
+        msg_title: "Dobelnsgatan | Juvelorkid\xE9 | vardagsrum"
+      service: script.send_notification
+    hide_entity: True
+    alias: Flower | Vardagsrum | Juvelorkide
+    id: '1495725269130'
+    trigger:
+    - below: '10'
+      entity_id: sensor.flower_1_moisture
+      platform: numeric_state
 
-- action:
-  - alias: ''
-    data:
-      message: "Juvelorkid\xE9 | sovrum"
-      title: Please water me!
-    service: notify.pushover
-  hide_entity: True
-  alias: Flower | Sovrum | Juvelorkide
-  id: '1495725269131'
-  trigger:
-  - below: '10'
-    entity_id: sensor.flower_2_moisture
-    platform: numeric_state
+  - action:
+    - alias: ''
+      data:
+        message: "Juvelorkid\xE9 | sovrum"
+        title: Please water me!
+      service: notify.pushover
+    hide_entity: True
+    alias: Flower | Sovrum | Juvelorkide
+    id: '1495725269131'
+    trigger:
+    - below: '10'
+      entity_id: sensor.flower_2_moisture
+      platform: numeric_state
 
-- action:
-  - alias: ''
-    data:
-      message: Chili | vardagsrum
-      title: Please water me!
-      priority: 1
-    service: notify.pushover
-  hide_entity: True
-  alias: Flower | Vardagsrum | Chili
-  id: '1495725269130'
-  trigger:
-  - below: '10'
-    entity_id: sensor.flower_3_moisture
-    platform: numeric_state
+  - action:
+    - alias: ''
+      data:
+        message: Chili | vardagsrum
+        title: Please water me!
+        priority: 1
+      service: notify.pushover
+    hide_entity: True
+    alias: Flower | Vardagsrum | Chili
+    id: '1495725269130'
+    trigger:
+    - below: '10'
+      entity_id: sensor.flower_3_moisture
+      platform: numeric_state
+
+sensor:
+  - platform: miflora
+    mac: C4:7C:8D:61:3C:D9
+    name: Flower 1
+    force_update: false
+    monitored_conditions:
+     - moisture
+     - light
+     - temperature
+     - conductivity
+     - battery
+
+  - platform: miflora
+    mac: C4:7C:8D:61:3C:DC
+    name: Flower 2
+    force_update: false
+    monitored_conditions:
+     - moisture
+     - light
+     - temperature
+     - conductivity
+     - battery
+
+  - platform: miflora
+    mac: C4:7C:8D:61:7E:CC
+    name: Flower 3
+    force_update: false
+    monitored_conditions:
+     - moisture
+     - light
+     - temperature
+     - conductivity
+     - battery

@@ -6,7 +6,7 @@ import json, sys, urllib
 #sys.setdefaultencoding("utf-8")
 
 # CONFIG
-url_playlist = "http://192.168.0.140:5005/vardagsrum%20musik/playlists"
+url_playlist = "http://192.168.0.140:5005/living%20room/playlists"
 url_favorites = "http://192.168.0.140:5005/favorites"
 
 location_input_select = '/home/homeassistant/.homeassistant/extraconfig/input_select/'
@@ -57,11 +57,11 @@ def fileWriter(location_shell_command, outputfile, sonosCommand, dataArray):
     keyvalue = urllib.quote(key.encode("utf-8"))
     try:
       # for backwards compatibility
-      writeString = outputfile + "_" + keyname + ": /usr/bin/curl +X POST http://192.168.0.140:5005/vardagsrum%20musik/" + sonosCommand + "/" + keyvalue + "\n"
+      writeString = outputfile + "_" + keyname + ": /usr/bin/curl +X POST http://192.168.0.140:5005/living%20room/" + sonosCommand + "/" + keyvalue + "\n"
       f.write(writeString)
-      writeString = outputfile + "_" + keyname + "_vardagsrum: /usr/bin/curl +X POST http://192.168.0.140:5005/vardagsrum%20musik/" + sonosCommand + "/" + keyvalue + "\n"
+      writeString = outputfile + "_" + keyname + "_livingroom: /usr/bin/curl +X POST http://192.168.0.140:5005/living%20room/" + sonosCommand + "/" + keyvalue + "\n"
       f.write(writeString)
-      writeString = outputfile + "_" + keyname + "_badrum: /usr/bin/curl +X POST http://192.168.0.140:5005/badrum/" + sonosCommand + "/" + keyvalue + "\n"
+      writeString = outputfile + "_" + keyname + "_bathroom: /usr/bin/curl +X POST http://192.168.0.140:5005/bathroom/" + sonosCommand + "/" + keyvalue + "\n"
       f.write(writeString)
     except:
       print("")

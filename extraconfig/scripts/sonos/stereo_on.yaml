@@ -1,9 +1,0 @@
-sonos_stereo_on:
-    alias: Turn on Stereo
-    sequence:
-      - alias: Stereo On
-        service: homeassistant.turn_on
-        data:
-          entity_id:
-          - switch.wenzhou_tkb_control_system_tz68_onoff_switch_socket_switch
-

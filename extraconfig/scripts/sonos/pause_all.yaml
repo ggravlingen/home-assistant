@@ -1,6 +1,0 @@
-sonos_pause_all:
-  alias: Pause all players
-  sequence:
-    - service: script.sonos_play_pause
-      data_template:
-        where: 'vardagsrum_musik'

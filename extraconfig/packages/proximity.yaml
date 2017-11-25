@@ -1,114 +1,114 @@
 automation:
-- action:
-  - service: script.arrive_home
-  hide_entity: True
-  alias: Enter/exit | Home from work
-  id: '1496517463812'
-  trigger:
-  - entity_id: device_tracker.e9bdccf176d84a46b89bd9f4d8334c0a
-    platform: state
-    to: hemma
-  condition:
-  - condition: and
-    conditions:
-    - condition: time
-      after: '15:00:00'
-      before: '23:00:00'
-      weekday:
-      - mon
-      - tue
-      - wed
-      - thu
-      - fri
-    - condition: state
-      entity_id: input_select.arm_debug
-      state: Av
-- action:
-  - service: script.arrive_home_anytime
-  hide_entity: True
-  alias: Enter/exit | Arrive home
-  id: '1496517346021'
-  trigger:
-  - entity_id: device_tracker.e9bdccf176d84a46b89bd9f4d8334c0a
-    platform: state
-    to: hemma
-- action:
-  - service: script.left_home
-  hide_entity: True
-  alias: Enter/exit | Left home
-  id: '1496517407855'
-  trigger:
-  - entity_id: device_tracker.e9bdccf176d84a46b89bd9f4d8334c0a
-    platform: state
-    to: not_home
+  - action:
+    - service: script.arrive_home
+    alias: Enter/exit | Home from work
+    id: '1496517463812'
+    trigger:
+    - entity_id: device_tracker.e9bdccf176d84a46b89bd9f4d8334c0a
+      platform: state
+      to: 'hemma'
+    condition:
+    - condition: and
+      conditions:
+      - condition: time
+        after: '15:00:00'
+        before: '23:00:00'
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+      - condition: state
+        entity_id: input_select.arm_debug
+        state: Av
+
+  - action:
+    - service: script.arrive_home_anytime
+    alias: Enter/exit | Arrive home
+    id: '1496517346021'
+    trigger:
+    - entity_id: device_tracker.e9bdccf176d84a46b89bd9f4d8334c0a
+      platform: state
+      to: 'hemma'
+
+  - action:
+    - service: script.left_home
+    alias: Enter/exit | Left home
+    id: '1496517407855'
+    trigger:
+    - entity_id: device_tracker.e9bdccf176d84a46b89bd9f4d8334c0a
+      platform: state
+      to: 'not_home'
 
 script:
   arrive_home_anytime:
-      alias: Arrive home anytime
-      sequence:
-        - alias: Notify Patrik
-          service: script.send_notification
-          data_template:
-            msg_title: 'Dobelnsgatan'
-            msg_body: 'Nagon ar hemma'
-        - alias: do stuff
-          service: scene.turn_on
-          entity_id: scene.ceiling_max
+    alias: Arrive home anytime
+    sequence:
+      - alias: Notify Patrik
+        service: script.send_notification
+        data_template:
+          msg_title: 'Dobelnsgatan'
+          msg_body: 'Nagon ar hemma'
+      - alias: do stuff
+        service: scene.turn_on
+        entity_id: scene.ceiling_max
+
   arrive_home:
-      alias: Arrive home
-      sequence:
-        - alias: Lights on
-          service: homeassistant.turn_on
-          data:
-            entity_id:
-            - switch.garderob
-            - switch.koksbank
+    alias: Arrive home
+    sequence:
+      - alias: Lights on
+        service: homeassistant.turn_on
+        data:
+          entity_id:
+          - switch.garderob
+          - switch.koksbank
 
-        - alias: Set volume
-          service: shell_command.sonos_volume_low
+      - alias: Set volume
+        service: shell_command.sonos_volume_low
 
-        - delay:
-            minutes: 1
+      - delay:
+          minutes: 1
 
-        - alias: Enable shuffle
-          service: shell_command.sonos_control_shuffle_on
+      - alias: Enable shuffle
+        service: shell_command.sonos_control_shuffle_on
 
-        - delay:
-            minutes: 1
+      - delay:
+          minutes: 1
 
-        - alias: Start playlist
-          service: shell_command.sonos_playlist_homefromwork
+      - alias: Start playlist
+        service: shell_command.sonos_playlist_homefromwork
 
-        - delay:
-            minutes: 45
+      - delay:
+          minutes: 45
 
-        - alias: Wardrobe off again
-          service: homeassistant.turn_off
-          data:
-            entity_id:
-            - switch.garderob
+      - alias: Wardrobe off again
+        service: homeassistant.turn_off
+        data:
+          entity_id:
+          - switch.garderob
 
   left_home:
-      alias: Left home
-      sequence:
-        - alias: Lights off
-          service: homeassistant.turn_off
-          data:
-            entity_id:
-            - group.lights
-            - group.taklampor
+    alias: Left home
+    sequence:
+      - alias: Lights off
+        service: homeassistant.turn_off
+        data:
+          entity_id:
+          - group.lights
+          - group.taklampor
 
-        - alias: Sonos off
-          service: shell_command.sonos_control_pause
+      - alias: Sonos off
+        service: shell_command.sonos_control_pause
 
-        - alias: Webcam on
-          service: homeassistant.turn_on
-          data:
-            entity_id:
-            - switch.webcam
+      - alias: Webcam on
+        service: homeassistant.turn_on
+        data:
+          entity_id:
+          - switch.webcam
 
-        - alias: Notify Patrik
-          service: script.send_notification
-          data_template:
-            msg_title: 'Dobelnsgatan'
-            msg_body: 'Ingen ar hemma'
+      - alias: Notify Patrik
+        service: script.send_notification
+        data_template:
+          msg_title: 'Dobelnsgatan'
+          msg_body: 'Ingen ar hemma'

@@ -1,6 +1,0 @@
-sonos_play_pause:
-  alias: Sonos Play Pause
-  sequence:
-    - service: media_player.media_play_pause
-      data_template:
-        entity_id: "{{ 'media_player.' ~ where }}"
