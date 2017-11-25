@@ -8,28 +8,17 @@ automation:
     alias: Maintenance | System | Disk space
     id: '1496517175891'
     trigger:
-    - above: '75'
+    - above: '50'
       entity_id: sensor.disk_use_home
       platform: numeric_state
 
   - action:
     - service: zwave.heal_network
-    hide_entity: True
     alias: Maintenance | Z-wave | Heal
     id: '1496477445434'
     trigger:
     - at: '2:31:00'
       platform: time
-
-  - alias: Start automations
-    hide_entity: True
-    trigger:
-       platform: homeassistant
-       event: start
-    action:
-      - delay:
-          seconds: 20
-      - service:
 
 binary_sensor:
   - platform: command_line
