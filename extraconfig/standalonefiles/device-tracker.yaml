@@ -1,6 +1,0 @@
-- platform: mqtt
-  qos: 1
-  devices:
-    patrik_iphone: /location/patrik_iphone
-
-- platform: geofency

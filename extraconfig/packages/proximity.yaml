@@ -41,6 +41,11 @@ automation:
       platform: state
       to: 'not_home'
 
+
+device_tracker:
+  - platform: geofency
+
+
 script:
   arrive_home_anytime:
     alias: Arrive home anytime

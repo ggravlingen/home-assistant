@@ -61,10 +61,8 @@ sensor: !include_dir_merge_list extraconfig/sensors
 
 camera: !include extraconfig/standalonefiles/camera.yaml
 cloud: !include extraconfig/standalonefiles/cloud.yaml
-device_tracker: !include extraconfig/standalonefiles/device-tracker.yaml
 google: !include extraconfig/standalonefiles/googlecalendar.yaml
 media_player: !include extraconfig/standalonefiles/media_player.yaml
-mqtt: !include extraconfig/standalonefiles/mqtt.yaml
 panel_iframe: !include extraconfig/standalonefiles/panel_iframe.yaml
 switch: !include extraconfig/standalonefiles/switch.yaml
 tts: !include extraconfig/standalonefiles/tts.yaml

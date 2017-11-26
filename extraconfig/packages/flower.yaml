@@ -57,6 +57,25 @@ homeassistant:
     group.vaxt3:
       friendly_name: "Chili | vardagsrum"
 
+group:
+  vaxt1:
+    - sensor.flower_1_light_intensity
+    - sensor.flower_1_moisture
+    - sensor.flower_1_conductivity
+    - sensor.flower_1_temperature
+
+  vaxt2:
+    - sensor.flower_2_light_intensity
+    - sensor.flower_2_moisture
+    - sensor.flower_2_conductivity
+    - sensor.flower_2_temperature
+
+  vaxt3:
+    - sensor.flower_3_light_intensity
+    - sensor.flower_3_moisture
+    - sensor.flower_3_conductivity
+    - sensor.flower_3_temperature
+
 automation:
   - action:
     - alias: ''

@@ -28,6 +28,24 @@ input_select:
      - 'På'
      - 'Av'
 
+
+group:
+  system_sensors:
+    name: "System"
+    entities:
+    - sensor.cpu_used
+    - sensor.disk_used_home
+    - sensor.ram_available
+    - sensor.ram_used
+    - sensor.since_last_boot
+    - sensor.system_wifi_strength
+
+  system_wan_stats:
+    - sensor.speedtest_download
+    - sensor.speedtest_upload
+    - sensor.speedtest_ping
+
+
 input_boolean:
   arm_wakeup_alarm:
     name: Alarm system
@@ -83,10 +101,12 @@ binary_sensor:
     payload_off: "Offline"
     device_class: connectivity
 
+
 shell_command:
   # UNIX: RANDOM STUFF
   system_check_wifi_strength: /usr/bin/awk 'NR==3 {print $3 "00"}''' /proc/net/wireless
   sonos_check_controller: /usr/bin/nmap -p 5005 localhost | grep open &> /dev/null && echo success || echo fail
+
 
 sensor:
   - platform: command_line

@@ -36,22 +36,6 @@ vardagsrum_media:
 #    - configurator.plex_media_server
 #    - configurator.lg_webos_tv
 
-vaxt1:
-  - sensor.flower_1_light_intensity
-  - sensor.flower_1_moisture
-  - sensor.flower_1_conductivity
-  - sensor.flower_1_temperature
-
-
-
-### SOVRUM
-vaxt2:
-  - sensor.flower_2_light_intensity
-  - sensor.flower_2_moisture
-  - sensor.flower_2_conductivity
-  - sensor.flower_2_temperature
-
-
 sovrum_lights:
   name: " "
   entities:
@@ -82,27 +66,11 @@ hall_taklampa:
   - light.hall
 
 
-### SYSTEM
-system_sensors:
-  name: "System"
-  entities:
-  - sensor.cpu_used
-  - sensor.disk_used_home
-  - sensor.ram_available
-  - sensor.ram_used
-  - sensor.since_last_boot
-  - sensor.system_wifi_strength
-
 system_arm:
   name: "Aktivera system"
   entities:
   - input_boolean.arm_wakeup_alarm
   - input_select.arm_debug
-
-system_wan_stats:
-  - sensor.speedtest_download
-  - sensor.speedtest_upload
-  - sensor.speedtest_ping
 
 debug_sethomeaway:
   - script.debug_sethome
@@ -117,29 +85,6 @@ switch_other:
   entities:
     - switch.wenzhou_tkb_control_system_tz68_onoff_switch_socket_switch_6_0
 
-### DIFFERENT CAMERAS
-camera1:
-  name: "Vardagsrum"
-  entities:
-  - camera.vardagsrum
-
-
-
-
-### USER TRACKING ###
-user_tracking:
-  entities:
-  - device_tracker.patrik_iphone
-
-
-### SONOS MANAGEMENT  ###
-mysonos:
-  - input_select.sonos_playlist
-  - input_select.sonos_favorites
-
-
-
-
 ### WEATHER DATA
 weatherbasics:
   - sensor.forecastio_humidity
@@ -150,13 +95,6 @@ weatherbasics:
   - sensor.forecastio_wind_bearing
   - sensor.forecastio_wind_speed
 
-
-### FLOWER MONITOR CONFIGURATION ###
-vaxt3:
-  - sensor.flower_3_light_intensity
-  - sensor.flower_3_moisture
-  - sensor.flower_3_conductivity
-  - sensor.flower_3_temperature
 
 
 ### SCENES
