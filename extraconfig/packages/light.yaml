@@ -23,7 +23,7 @@ homeassistant:
     light.vardagsrumstak_3:
       hidden: true
     scene.all_lights_off:
-      alexa_name: "Night mode"
+      alexa_name: "Time for bed"
       alexa_description: "Shut of all lights"
     scene.ceiling_low:
       homebridge_visible: true
