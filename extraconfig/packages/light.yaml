@@ -22,6 +22,18 @@ homeassistant:
       hidden: true
     light.vardagsrumstak_3:
       hidden: true
+    scene.all_lights_off:
+      alexa_name: "Night mode"
+      alexa_description: "Shut of all lights"
+    scene.ceiling_low:
+      homebridge_visible: true
+      homebridge_name: "Lampor lågt"
+    scene.ceiling_mid:
+      homebridge_visible: true
+      homebridge_name: "Lampor medel"
+    scene.ceiling_max:
+      homebridge_visible: true
+      homebridge_name: "Lampor högt"
 
 
 light:
@@ -129,3 +141,22 @@ scene:
         state: off
       light.sovrumstak:
         state: off
+
+script:
+  a_walk_in_the_night:
+      alias: "Dags att vakna"
+      sequence:
+        - alias: Start lights
+          service: light.turn_on
+          data:
+            entity_id: light.laslampa
+            brightness: 1
+            rgb_color: [74, 65, 138]
+
+        - delay:
+            minutes: 5
+
+        - alias: Start lights
+          service: light.turn_off
+          data:
+            entity_id: light.laslampa

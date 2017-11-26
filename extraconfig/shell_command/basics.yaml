@@ -1,1 +1,0 @@
-camera_livingroom: '/bin/nc -z -v -w3 192.168.0.198 81  &> /dev/null && echo success || echo fail'

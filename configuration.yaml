@@ -53,7 +53,6 @@ config:
 logger: !include extraconfig/standalonefiles/logger.yaml
 
 group: !include_dir_merge_named extraconfig/groups
-input_boolean: !include_dir_merge_named extraconfig/input_boolean
 input_select: !include_dir_merge_named extraconfig/input_select
 shell_command: !include_dir_merge_named extraconfig/shell_command
 script: !include_dir_merge_named extraconfig/scripts
@@ -66,7 +65,6 @@ device_tracker: !include extraconfig/standalonefiles/device-tracker.yaml
 google: !include extraconfig/standalonefiles/googlecalendar.yaml
 media_player: !include extraconfig/standalonefiles/media_player.yaml
 mqtt: !include extraconfig/standalonefiles/mqtt.yaml
-notify: !include extraconfig/standalonefiles/notify.yaml
 panel_iframe: !include extraconfig/standalonefiles/panel_iframe.yaml
 switch: !include extraconfig/standalonefiles/switch.yaml
 tts: !include extraconfig/standalonefiles/tts.yaml

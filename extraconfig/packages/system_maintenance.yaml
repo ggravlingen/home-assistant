@@ -20,6 +20,20 @@ automation:
     - at: '2:31:00'
       platform: time
 
+input_select:
+  arm_debug:
+    name: Debug
+    initial: 'Av'
+    options:
+     - 'På'
+     - 'Av'
+
+input_boolean:
+  arm_wakeup_alarm:
+    name: Alarm system
+    initial: on
+
+
 binary_sensor:
   - platform: command_line
     name: systemstate_homebridge

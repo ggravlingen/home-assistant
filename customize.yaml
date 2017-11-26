@@ -3,10 +3,6 @@ media_player.vardagsrum_musik:
   alexa_description: "Main controller for Sonos"
   friendly_name: "Sonos Vardagsrum"
 
-scene.all_lights_off:
-  alexa_name: "Go dark"
-  alexa_description: "Shut of all lights"
-
 script.wake_up:
   alexa_name: "Top of the morning"
   alexa_description: "Script to wake up"
@@ -72,18 +68,6 @@ group.security_monitor:
 
 group.system:
   order: 900
-
-scene.ceiling_low:
-  homebridge_visible: true
-  homebridge_name: "Lampor lågt"
-
-scene.ceiling_mid:
-  homebridge_visible: true
-  homebridge_name: "Lampor medel"
-
-scene.ceiling_max:
-  homebridge_visible: true
-  homebridge_name: "Lampor högt"
 
 shell_command.group:
   hidden: true
