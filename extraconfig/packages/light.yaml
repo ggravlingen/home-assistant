@@ -105,18 +105,18 @@ scene:
 
   - name: Ceiling max
     entities:
-      group.hall_taklampa:
+      light.hall:
         state: on
         brightness: 254
       group.vardagsrum_tak:
         state: on
-        brightness: 165
+        brightness: 254
       light.kokslampa:
         state: on
         brightness: 254
       light.sovrumstak:
         state: on
-        brightness: 254
+        brightness: 20
 
   - name: All lights off
     entities:
