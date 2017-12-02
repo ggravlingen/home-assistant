@@ -70,8 +70,7 @@ script:
         service: homeassistant.turn_on
         data:
           entity_id:
-          - switch.garderob
-          - switch.koksbank
+          - switch.fibaro_system_fgwpe_wall_plug_switch
 
       - alias: Set volume
         service: shell_command.sonos_volume_low
@@ -95,7 +94,7 @@ script:
         service: homeassistant.turn_off
         data:
           entity_id:
-          - switch.garderob
+          - switch.fibaro_system_fgwpe_wall_plug_switch
 
   left_home:
     alias: Left home

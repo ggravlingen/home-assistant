@@ -33,7 +33,6 @@ vardagsrum:
   - group.vaxt1
   - group.vaxt3
 
-
 ### SOVRUM
 sovrum:
   view: yes
@@ -59,8 +58,8 @@ hallway:
   icon: mdi:glassdoor
   name: "Hall"
   entities:
-  - group.hall_switchar
-  - group.hall_taklampa
+  - switch.fibaro_system_fgwpe_wall_plug_switch
+  - light.hall
 
 ### Badrum
 bathroom:
@@ -69,8 +68,6 @@ bathroom:
   name: "Badrum"
   entities:
     - media_player.bathroom
-
-
 
 
 automation:
@@ -87,7 +84,6 @@ misc_weathercenter:
   view: yes
   entities:
   - group.weatherbasics
-
 
 system:
   name: "System"
