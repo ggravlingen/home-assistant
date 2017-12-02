@@ -23,7 +23,7 @@ homeassistant:
     light.vardagsrumstak_3:
       hidden: true
     scene.all_lights_off:
-      alexa_name: "Time for bed"
+      alexa_name: "Back to black"
       alexa_description: "Shut of all lights"
     scene.ceiling_low:
       homebridge_visible: true
@@ -107,7 +107,6 @@ scene:
     entities:
       light.hall:
         state: on
-        brightness: 254
       group.vardagsrum_tak:
         state: on
         brightness: 254

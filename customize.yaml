@@ -3,10 +3,6 @@ media_player.vardagsrum_musik:
   alexa_description: "Main controller for Sonos"
   friendly_name: "Sonos Vardagsrum"
 
-script.wake_up:
-  alexa_name: "Top of the morning"
-  alexa_description: "Script to wake up"
-
 media_player.living_room_tv:
   alexa_name: "TV"
   alexa_description: "LG TV in living room"

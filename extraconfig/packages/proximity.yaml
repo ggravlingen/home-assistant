@@ -31,6 +31,10 @@ automation:
     - entity_id: device_tracker.e9bdccf176d84a46b89bd9f4d8334c0a
       platform: state
       to: 'hemma'
+    condition:
+      condition: state
+      entity_id: input_select.arm_debug
+      state: Av
 
   - action:
     - service: script.left_home
