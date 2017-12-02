@@ -1,8 +1,0 @@
-- platform: mqtt
-  name: Test temp
-  state_topic: /myDevice/sensor/Temp
-
-#- platform: mqtt
-#  name: Test temp 2
-#  state_topic: myDevice/sensor/Humid
-
