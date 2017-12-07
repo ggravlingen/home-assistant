@@ -12,7 +12,7 @@ automation:
     id: '1495718802448'
     trigger:
     - hours: 5
-      minutes: 50
+      minutes: 45
       platform: time
       seconds: 0
     condition:
