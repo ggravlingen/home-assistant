@@ -39,23 +39,22 @@ homeassistant:
       friendly_name: "Fuktighet"
 
     sensor.flower_3_conductivity:
-      friendly_name: "N  ringshalt"
+      friendly_name: "Näringshalt"
 
     sensor.flower_3_temperature:
-      friendly_name: "Temperatur hall"
+      friendly_name: "Temperatur kök"
 
     sensor.flower_3_battery:
       friendly_name: "Batteri | Ej anv  nd Mi Flora"
 
     group.vaxt1:
-      friendly_name: "Juvelorkid   | vardagsrum"
+      friendly_name: "Juvelorkid | vardagsrum"
 
     group.vaxt2:
-      friendly_name: "Juvelorkid   | sovrum"
-      order: 3
+      friendly_name: "Juvelorkid | sovrum"
 
     group.vaxt3:
-      friendly_name: "Chili | vardagsrum"
+      friendly_name: "Julblomma | kök"
 
 group:
   vaxt1:
@@ -108,12 +107,12 @@ automation:
   - action:
     - alias: ''
       data:
-        message: Chili | vardagsrum
+        message: Julblomma | kök
         title: Please water me!
         priority: 1
       service: notify.pushover
     hide_entity: True
-    alias: Flower | Vardagsrum | Chili
+    alias: Flower | Kök | Julblomma
     id: '1495725269130'
     trigger:
     - below: '10'

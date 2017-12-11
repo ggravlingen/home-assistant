@@ -51,6 +51,7 @@ kitchen:
   entities:
   - group.kitchen_switchar
   - light.kokslampa
+  - group.vaxt3
 
 ### HALL
 hallway:
