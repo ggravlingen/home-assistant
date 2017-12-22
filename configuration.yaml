@@ -16,12 +16,12 @@ http:
   login_attempts_threshold: 5
 
 
-panel_custom:
-  - name: floorplan
-    sidebar_title: Floorplan
-    sidebar_icon: mdi:home
-    url_path: floorplan
-    config: !include extraconfig/standalonefiles/floorplan.yaml
+#panel_custom:
+#  - name: floorplan
+#    sidebar_title: Floorplan
+#    sidebar_icon: mdi:home
+#    url_path: floorplan
+#    config: !include extraconfig/standalonefiles/floorplan.yaml
 
 updater:
   include_used_components: true
