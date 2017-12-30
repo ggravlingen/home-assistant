@@ -1,8 +1,3 @@
-#mode: development
-#cognito_client_id: !secret cloud_cognito_client_id
-#user_pool_id: !secret cloud_user_pool_id
-#region: 'us-east-1'
-#relayer: !secret cloud_relayer
 alexa:
   filter:
     exclude_domains:
