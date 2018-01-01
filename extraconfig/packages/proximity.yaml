@@ -84,6 +84,12 @@ script:
       - delay:
           minutes: 1
 
+      - alias: Start radio
+        service: script.media_player_select_source_play
+        data_template:
+          where: "living_room"
+          select_source: "Coffee Table Jazz"
+
       - alias: Start playlist
         service: shell_command.sonos_playlist_homefromwork
 

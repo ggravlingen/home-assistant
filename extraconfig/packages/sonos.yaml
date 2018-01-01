@@ -26,29 +26,6 @@ automation:
       platform: state
       to: 'paused'
 
-  - action:
-    - service: shell_command.sonos_control_shuffle_off
-    - service: shell_command.sonos_volume_8
-    - service_template: 'shell_command.sonos_favorite_{{states.input_select.sonos_favorites.state.lower().replace("
-        ", "").replace("-", "")}}'
-    alias: Sonos | Play favorite
-    id: '1496478661322'
-    trigger:
-    - entity_id: input_select.sonos_favorites
-      platform: state
-
-  - action:
-    - service: shell_command.sonos_control_shuffle_off
-    - service: shell_command.sonos_volume_8
-    - service_template: 'shell_command.sonos_playlist_{{states.input_select.sonos_playlist.state.lower().replace("
-        ", "").replace("-", "")}}'
-    alias: Sonos | Play playlist
-    id: '1496478802292'
-    trigger:
-    - entity_id: input_select.sonos_playlist
-      platform: state
-
-
 shell_command:
 # SONOS MISC
   sonos_leave_main_group: '/usr/bin/curl -X GET http://192.168.0.140:5005/{{where}}/leave' # works better than built-in
@@ -87,7 +64,6 @@ script:
         data:
           entity_id: switch.wenzhou_tkb_control_system_tz68_onoff_switch_socket_switch
 
-
   sonos_play_pause:
     alias: Sonos Play Pause
     sequence:
@@ -125,6 +101,17 @@ script:
           master: media_player.vardagsrum_musik
         entity_id:
           - media_player.badrum
+
+  media_player_select_source_play:
+    alias: Sonos Select Source
+    sequence:
+      - service: media_player.select_source
+        data_template:
+          entity_id: "{{ 'media_player.' ~ where }}"
+          source: "{{ select_source }}"
+      - service: media_player.media_play
+        data_template:
+          entity_id: "{{ 'media_player.' ~ where }}"
 
 # https://community.home-assistant.io/t/sonos-tts-script/8896/62
   sonos_tts:

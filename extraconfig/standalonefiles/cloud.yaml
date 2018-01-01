@@ -15,6 +15,6 @@ alexa:
       - light.vardagsrum
       - light.kokslampa
       - light.hall
-      - media_player.living_room_tv
+      - media_player.tv
       - scene.all_lights_off
       - script.wake_up

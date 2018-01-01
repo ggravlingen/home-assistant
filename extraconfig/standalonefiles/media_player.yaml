@@ -7,5 +7,5 @@
   hosts: 192.168.0.40
 
 - platform: webostv
-  host: 192.168.0.235
+  host: 192.168.0.174
   name: TV

@@ -65,11 +65,11 @@ script:
         - alias: Set volume
           service: shell_command.sonos_volume_low
 
-  #      - alias: Set volume badrum
-  #        service: shell_command.sonos_badrum_volume_low
-
         - alias: Start radio
-          service: shell_command.sonos_favorites_bbcradio4
+          service: script.media_player_select_source_play
+          data_template:
+            where: "living_room"
+            select_source: "BBC Radio 4"
 
         - alias: Start kitchen lights
           service: light.turn_on
@@ -88,12 +88,3 @@ script:
           data:
             entity_id:
               - switch.garderob
-              - switch.koksbank
-
-        - delay:
-            minutes: 15
-
-        - alias: Bed lights on
-          service: homeassistant.turn_on
-          data:
-            entity_id: switch.sovrum
