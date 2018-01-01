@@ -63,7 +63,16 @@ script:
             transition: 900
 
         - alias: Set volume
-          service: shell_command.sonos_volume_low
+          service: script.media_player_set_volume
+          data_template:
+            where: "living_room"
+            volume_level: "0.12"
+
+        - alias: Set volume
+          service: script.media_player_set_volume
+          data_template:
+            where: "bathroom"
+            volume_level: "0.1"
 
         - alias: Start radio
           service: script.media_player_select_source_play

@@ -12,6 +12,8 @@ deps
 
 cert
 
+*.swp
+
 *.log
 
 *.xml

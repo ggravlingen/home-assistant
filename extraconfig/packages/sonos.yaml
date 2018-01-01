@@ -87,7 +87,7 @@ script:
 
       - service: media_player.volume_set
         data:
-          entity_id: media_player.badrum
+          entity_id: media_player.bathroom
           volume_level: 0.20
 
       - service: shell_command.sonos_favorites_aninstrumentalsunday_badrum
@@ -103,7 +103,7 @@ script:
           - media_player.badrum
 
   media_player_select_source_play:
-    alias: Sonos Select Source
+    alias: Media Player Select Source
     sequence:
       - service: media_player.select_source
         data_template:
@@ -112,6 +112,16 @@ script:
       - service: media_player.media_play
         data_template:
           entity_id: "{{ 'media_player.' ~ where }}"
+
+  media_player_set_volume:
+    alias: Media Player Set Volume
+    sequence:
+      - service: media_player.volume_set
+        data_template:
+          entity_id: "{{ 'media_player.' ~ where }}"
+          volume_level: "{{ volume_level }}"
+
+
 
 # https://community.home-assistant.io/t/sonos-tts-script/8896/62
   sonos_tts:
