@@ -1,6 +1,6 @@
 #default: fatal
 default: critical
-#logs:
+logs:
 #  custom_components.sensor: debug
 #  custom_components: debug
 #  homeassistant.components.zwave: critical
@@ -15,4 +15,4 @@ default: critical
 #  homeassistant.components.automation: debug
 #  homeassistant.components.switch: debug
 #  homeassistant.components.scene: debug
-#  homeassistant.components.cloud: debug
+  homeassistant.components.cloud: debug

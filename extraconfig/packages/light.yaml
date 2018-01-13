@@ -23,7 +23,7 @@ homeassistant:
     light.vardagsrumstak_3:
       hidden: true
     scene.all_lights_off:
-      alexa_name: "Back to black"
+      alexa_name: "Enter night mode"
       alexa_description: "Shut of all lights"
     scene.ceiling_low:
       homebridge_visible: true
@@ -122,10 +122,6 @@ scene:
       group.all_lights:
         state: off
       switch.garderob:
-        state: off
-      switch.koksbank:
-        state: off
-      switch.sovrum:
         state: off
 
   - name: Ceiling TV

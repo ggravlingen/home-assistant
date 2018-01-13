@@ -76,7 +76,7 @@ script:
         service: script.media_player_set_volume
         data_template:
           where: "living_room"
-          volume_level: "0.14"
+          volume_level: "0.16"
 
       - alias: Set volume
         service: script.media_player_set_volume
