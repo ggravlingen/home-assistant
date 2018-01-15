@@ -18,3 +18,25 @@ alexa:
       - media_player.tv
       - scene.all_lights_off
       - script.wake_up
+  entity_config:
+    script.wake_up:
+      name: "Top of the morning"
+      description: "Script to wake up"
+    light.laslampa:
+      name: "Reading lamp"
+      description: "Reading lamp in the living room"
+    light.kokslampa:
+      name: "Kitchen light"
+      description: "Rooftop light in kitchen"
+    light.sovrum:
+      name: "Bedroom light"
+      description: "Rooftop light in bedroom"
+    light.vardagsrum:
+      name: "Living room"
+      description: "Rooftop light in living room"
+    light.hall:
+      name: "Hallway"
+      description: "Rooftop light in hallway"
+    media_player.tv:
+      name: "TV"
+      description: "LG TV in living room"

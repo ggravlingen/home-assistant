@@ -1,12 +1,3 @@
-media_player.vardagsrum_musik:
-  alexa_name: "Sonos"
-  alexa_description: "Main controller for Sonos"
-  friendly_name: "Sonos Vardagsrum"
-
-media_player.tv:
-  alexa_name: "TV"
-  alexa_description: "LG TV in living room"
-
 binary_sensor.systemstate_homebridge:
   friendly_name: "Homebridge"
 

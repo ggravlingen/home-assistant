@@ -1,21 +1,5 @@
 homeassistant:
   customize:
-    light.laslampa:
-      alexa_name: "Reading lamp"
-      alexa_description: "Reading lamp in the living room"
-    light.kokslampa:
-      alexa_name: "Kitchen light"
-      alexa_description: "Rooftop light in kitchen"
-    light.sovrum:
-      alexa_name: "Bedroom light"
-      alexa_description: "Rooftop light in bedroom"
-    light.vardagsrum:
-      alexa_name: "Living room"
-      alexa_description: "Rooftop light in living room"
-    light.hall:
-      icon: mdi:ceiling-light
-      alexa_name: "Hallway"
-      alexa_description: "Rooftop light in hallway"
     light.vardagsrumstak_1:
       hidden: true
     light.vardagsrumstak_2:
