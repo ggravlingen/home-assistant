@@ -40,3 +40,7 @@ alexa:
     media_player.tv:
       name: "TV"
       description: "LG TV in living room"
+    scene.all_lights_off:
+      name: "commence shutdown"
+      description: "Shut of all lights"
+

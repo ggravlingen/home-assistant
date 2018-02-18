@@ -1,0 +1,60 @@
+media_player.living_room:
+  platform: sonos
+  unique_id: RINCON_B8E93791928A01400
+media_player.bathroom:
+  platform: sonos
+  unique_id: RINCON_B8E937585AD801400
+sensor.the_lur_of_p_v6_battery_state:
+  platform: ios
+  unique_id: state_the_lur_of_p_v6
+sensor.the_lur_of_p_v6_battery_level:
+  platform: ios
+  unique_id: level_the_lur_of_p_v6
+switch.wenzhou_tkb_control_system_tz68_onoff_switch_socket_switch:
+  platform: zwave
+  unique_id: 13-72057594260832256
+switch.fibaro_system_fgwpe_wall_plug_switch:
+  platform: zwave
+  unique_id: 15-72057594294386688
+sensor.fibaro_system_fgwpe_wall_plug_power:
+  platform: zwave
+  unique_id: 15-72057594294583362
+sensor.fibaro_system_fgwpe_wall_plug_energy:
+  platform: zwave
+  unique_id: 15-72057594294599682
+sensor.fibaro_system_fgwpe_wall_plug_previous_reading:
+  platform: zwave
+  unique_id: 15-72057594294599698
+sensor.fibaro_system_fgwpe_wall_plug_interval:
+  platform: zwave
+  unique_id: 15-72057594294599715
+binary_sensor.neo_coolcam_battery_powered_pir_sensor_sensor:
+  platform: zwave
+  unique_id: 16-72057594311344128
+sensor.neo_coolcam_battery_powered_pir_sensor_luminance:
+  platform: zwave
+  unique_id: 16-72057594311360562
+sensor.neo_coolcam_battery_powered_pir_sensor_alarm_type:
+  platform: zwave
+  unique_id: 16-72057594312409089
+sensor.neo_coolcam_battery_powered_pir_sensor_alarm_level:
+  platform: zwave
+  unique_id: 16-72057594312409105
+sensor.neo_coolcam_battery_powered_pir_sensor_sourcenodeid:
+  platform: zwave
+  unique_id: 16-72057594312409121
+sensor.neo_coolcam_battery_powered_pir_sensor_burglar:
+  platform: zwave
+  unique_id: 16-72057594312409249
+light.vardagsrumstak_1:
+  platform: hue
+  unique_id: 00:17:88:01:02:6c:15:20-0b
+light.vardagsrumstak_2:
+  platform: hue
+  unique_id: 00:17:88:01:02:6c:15:f5-0b
+light.sovrumstak:
+  platform: hue
+  unique_id: 00:17:88:01:02:30:63:2e-0b
+light.vardagsrumstak_3:
+  platform: hue
+  unique_id: 00:17:88:01:02:6c:14:ce-0b

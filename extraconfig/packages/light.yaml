@@ -6,9 +6,6 @@ homeassistant:
       hidden: true
     light.vardagsrumstak_3:
       hidden: true
-    scene.all_lights_off:
-      alexa_name: "Enter night mode"
-      alexa_description: "Shut of all lights"
     scene.ceiling_low:
       homebridge_visible: true
       homebridge_name: "Lampor lågt"

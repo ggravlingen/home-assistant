@@ -124,23 +124,4 @@ zwavedebug:
     - binary_sensor.neo_coolcam_battery_powered_pir_sensor_sensor
     - switch.wenzhou_tkb_control_system_tz68_onoff_switch_socket_switch
 
-### FLOORPLAN ###
 
-floorplan_sonos:
-  name: "Sonos"
-  entities:
-    - script.sonos_pause_all
-    - script.sonos_group_players
-    - script.sonos_guest_mode
-
-floorplan_ceiling:
-  name: "Ceiling"
-  entities:
-    - script.all_lights_off
-    - scene.ceiling_relax
-    - scene.ceiling_at_home
-
-floorplan_misc:
-  name: "Misc"
-  entities:
-    - script.wake_up

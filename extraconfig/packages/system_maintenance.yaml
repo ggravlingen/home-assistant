@@ -33,10 +33,10 @@ group:
   system_sensors:
     name: "System"
     entities:
-    - sensor.cpu_used
+    - sensor.processor_use
     - sensor.disk_used_home
-    - sensor.ram_available
-    - sensor.ram_used
+    - sensor.memory_free
+    - sensor.memory_use
     - sensor.since_last_boot
     - sensor.system_wifi_strength
 
