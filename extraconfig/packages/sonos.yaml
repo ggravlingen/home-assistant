@@ -54,7 +54,7 @@ script:
       - alias: Stereo off
         service: homeassistant.turn_off
         data:
-          entity_id: switch.wenzhou_tkb_control_system_tz68_onoff_switch_socket_switch
+          entity_id: light.onoff_plugin_unit_1
 
   sonos_stereo_on:
     alias: Turn on Stereo
@@ -62,7 +62,7 @@ script:
       - alias: Stereo On
         service: homeassistant.turn_on
         data:
-          entity_id: switch.wenzhou_tkb_control_system_tz68_onoff_switch_socket_switch
+          entity_id: light.onoff_plugin_unit_1
 
   sonos_play_pause:
     alias: Sonos Play Pause

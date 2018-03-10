@@ -58,3 +58,9 @@ light.sovrumstak:
 light.vardagsrumstak_3:
   platform: hue
   unique_id: 00:17:88:01:02:6c:14:ce-0b
+media_player.vardagsrum_chromecast:
+  platform: cast
+  unique_id: 832a83e9-4be6-e0fa-308a-1bdbe6302b20
+light.onoff_plugin_unit_1:
+  platform: hue
+  unique_id: 7c:b0:3e:aa:00:b1:af:83-03

@@ -122,6 +122,6 @@ zwavedebug:
     - sensor.fibaro_system_fgwpe_wall_plug_energy
     - sensor.fibaro_system_fgwpe_wall_plug_power
     - binary_sensor.neo_coolcam_battery_powered_pir_sensor_sensor
-    - switch.wenzhou_tkb_control_system_tz68_onoff_switch_socket_switch
+    - light.onoff_plugin_unit_1
 
 

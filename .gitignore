@@ -65,3 +65,5 @@ debug*
 *.cloud
 
 *.json
+
+zwave_device_config.yaml
