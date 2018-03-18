@@ -76,13 +76,13 @@ script:
         - alias: Start kitchen lights
           service: light.turn_on
           data:
-            entity_id: light.kokslampa
+            entity_id: light.kokstak
             brightness: 200
 
         - alias: Start hallway lights
           service: light.turn_on
           data:
-            entity_id: light.hall_1, light.hall_2
+            entity_id: light.hall
             brightness: 254
 
         - alias: Start other

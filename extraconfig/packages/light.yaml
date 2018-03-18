@@ -20,9 +20,14 @@ homeassistant:
 light:
   - platform: tradfri
     host: 192.168.0.129
+    allow_tradfri_groups: false
   - platform: hue
     host: 192.168.0.189
-
+  - platform: group
+    name: Hall
+    entities:
+      - light.halltak_1
+      - light.halltak_2
 
 automation:
   - action:

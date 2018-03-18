@@ -9,11 +9,12 @@ alexa:
       - group
       - light
       - media_player
+      - sensor
     include_entities:
       - light.laslampa
       - light.sovrum
       - light.vardagsrum
-      - light.kokslampa
+      - light.kokstak
       - light.hall
       - media_player.tv
       - scene.all_lights_off
@@ -25,7 +26,7 @@ alexa:
     light.laslampa:
       name: "Reading lamp"
       description: "Reading lamp in the living room"
-    light.kokslampa:
+    light.kokstak:
       name: "Kitchen light"
       description: "Rooftop light in kitchen"
     light.sovrum:
@@ -43,4 +44,3 @@ alexa:
     scene.all_lights_off:
       name: "commence shutdown"
       description: "Shut of all lights"
-

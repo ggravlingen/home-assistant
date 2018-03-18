@@ -10,13 +10,13 @@ default_view:
   - group.systemstates
 
 ### ALL LIGHTS
-all_lights:
+all_lights_tab:
   view: yes
   name: Lights
-  #icon: mdi:emoticon-happy
+  icon: mdi:emoticon-happy
   entities:
   - light.hall
-  - light.kokslampa
+  - light.kokstak
   - light.sovrumstak
   - light.vardagsrum
   - light.laslampa
@@ -98,5 +98,5 @@ system:
   - switch.remote_2_on
   - script.svt_live
   - group.system_wan_stats
-  - group.batteries
+  - group.battery_levels
   - group.zwavedebug

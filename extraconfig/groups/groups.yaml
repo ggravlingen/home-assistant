@@ -109,11 +109,11 @@ scripts:
     - scene.all_lights_off
 
 ### BATTERY LEVELS
-batteries:
+battery_levels:
   - sensor.flower_1_battery
   - sensor.flower_2_battery
   - sensor.flower_3_battery
-  - sensor.coolcam_battery_powered_pir_sensor_16_batter_level
+  - sensor.coolcam_battery_powered_pir_sensor_16_battery_level
 
 ### DEBUG
 zwavedebug:
@@ -123,5 +123,6 @@ zwavedebug:
     - sensor.fibaro_system_fgwpe_wall_plug_power
     - binary_sensor.neo_coolcam_battery_powered_pir_sensor_sensor
     - light.onoff_plugin_unit_1
+
 
 

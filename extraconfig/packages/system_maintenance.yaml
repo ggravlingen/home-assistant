@@ -20,6 +20,24 @@ automation:
     - at: '2:31:00'
       platform: time
 
+  - alias: 'Low battery alert'
+    trigger:
+      - platform: time
+        at: '19:00:00'
+    condition:
+      - condition: template
+        value_template: >-
+          {% for entity_id in states.group.battery_levels.attributes.entity_id if states(entity_id) | int < 40 %}
+          {%- if loop.first -%}
+          {{ true }}
+          {%- endif -%}
+          {% endfor %}
+    action:
+      service: notify.pushover
+      data:
+        title: "D\xF6belnsgatan 89"
+        message: 'Low battery detected for at least one sensor'
+
 input_select:
   arm_debug:
     name: Debug
